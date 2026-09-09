@@ -483,15 +483,117 @@
       letter-spacing: -2px;
     }
 
-    /* Pricing Section */
+    /* Pricing Section (Focus Cabinets Médicaux) */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-      margin-top: 3.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 3.5rem auto 0;
     }
-    @media (max-width: 920px) {
+    @media (max-width: 768px) {
       .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* App Slideshow / Video Demo Mockup */
+    .slideshow-wrapper {
+      background: #090e17;
+      border-radius: 28px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .slideshow-topbar {
+      background: #0f172a;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e293b;
+    }
+    .slideshow-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-slide-ctrl {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid #334155;
+      padding: 0.4rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .btn-slide-ctrl:hover {
+      background: #334155;
+      color: #38bdf8;
+    }
+    .slide-progress-track {
+      width: 100%;
+      height: 4px;
+      background: #1e293b;
+      position: relative;
+    }
+    .slide-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #0284c7, #10b981);
+      width: 0%;
+      transition: width 0.08s linear;
+    }
+    .demo-tabs-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+    }
+    @media (max-width: 768px) {
+      .demo-tabs-nav { grid-template-columns: repeat(2, 1fr); }
+    }
+    .demo-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 1.1rem 0.8rem;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .demo-tab-btn:hover {
+      color: #f1f5f9;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .demo-tab-btn.active {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.09);
+      border-bottom-color: #38bdf8;
+    }
+    .slide-content-pane {
+      display: none;
+      padding: 2.5rem 2rem;
+      min-height: 430px;
+      color: #f8fafc;
+    }
+    .slide-content-pane.active {
+      display: block;
+      animation: fadeInSlide 0.3s ease-in-out;
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .price-card {
       background: white;
@@ -684,50 +786,292 @@
     </div>
   </section>
 
-  <!-- LIVE SIMULATOR SECTION (Relaxing Medical Display) -->
-  <section id="simulateur" class="container">
-    <div class="live-demo">
-      <div class="demo-grid">
-        <div>
-          <div class="section-eyebrow">DÉMONSTRATION EN DIRECT</div>
-          <h3 style="font-size: 2.1rem; font-weight: 900; margin-bottom: 1rem; color: var(--slate-900); letter-spacing: -0.5px;">
-            Testez l'Appel Sonore &amp; la Synchronisation
-          </h3>
-          <p style="color: var(--slate-600); font-size: 1rem; margin-bottom: 1.75rem; line-height: 1.6;">
-            Cliquez sur les commandes ci-dessous pour simuler l'avancement d'un patient et écouter la sonnerie d'appel harmonieuse intégrée.
-          </p>
+  <!-- INTERACTIVE APPLICATION SHOWCASE / SLIDESHOW DEMO -->
+  <section id="simulateur" class="container" style="padding: 2rem 0 4rem;">
+    <div style="text-align: center; max-width: 750px; margin: 0 auto 1.5rem;">
+      <div class="section-eyebrow">DÉMONSTRATION INTERACTIVE EN DIRECT</div>
+      <h2 class="section-title">Les 4 Écrans Clés de l'Application en Action</h2>
+      <p class="section-subtitle">
+        Explorez la synchronisation instantanée entre la TV de la salle d'attente, la console médecin et le smartphone des patients.
+      </p>
+    </div>
 
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <button class="btn-dl-main btn-dl-pro" style="padding: 0.95rem 1.6rem;" onclick="simNextPatient()">
-              ▶ Appeler Suivant (Touche F1)
+    <div class="slideshow-wrapper">
+      <!-- Player Topbar & Controls -->
+      <div class="slideshow-topbar">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="width: 10px; height: 10px; border-radius: 9999px; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #f8fafc;">tafwita-demo-player // <span id="simActiveTitle">Écran TV Salle d'Attente</span></span>
+        </div>
+
+        <div class="slideshow-controls">
+          <button class="btn-slide-ctrl" id="simPlayPauseBtn" onclick="toggleSimAutoplay()">
+            <span id="simPlayIcon">⏸</span> <span id="simPlayLabel">Pause</span>
+          </button>
+          <button class="btn-slide-ctrl" onclick="prevSlide()" title="Écran précédent">◀</button>
+          <span id="simSlideCounter" style="font-size: 0.8rem; font-weight: 800; color: #94a3b8; padding: 0 0.25rem;">01 / 04</span>
+          <button class="btn-slide-ctrl" onclick="nextSlide()" title="Écran suivant">▶</button>
+        </div>
+      </div>
+
+      <!-- Animated Progress Track -->
+      <div class="slide-progress-track">
+        <div id="simProgressBar" class="slide-progress-bar"></div>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="demo-tabs-nav">
+        <button class="demo-tab-btn active" id="tab-btn-0" onclick="showSlide(0)">
+          <span>📺</span> Écran TV Salle d'Attente
+        </button>
+        <button class="demo-tab-btn" id="tab-btn-1" onclick="showSlide(1)">
+          <span>💻</span> Console Médecin (F1)
+        </button>
+        <button class="demo-tab-btn" id="tab-btn-2" onclick="showSlide(2)">
+          <span>📋</span> Secrétariat &amp; Tickets
+        </button>
+        <button class="demo-tab-btn" id="tab-btn-3" onclick="showSlide(3)">
+          <span>📱</span> Smartphone Patient
+        </button>
+      </div>
+
+      <!-- SLIDE 0: ÉCRAN TV SALLE D'ATTENTE -->
+      <div class="slide-content-pane active" id="slide-pane-0" style="background: linear-gradient(135deg, #090e17 0%, #064e3b 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
+          <div>
+            <div style="color: #34d399; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
+              TAFWITA TV &bull; AFFICHAGE GRAND ÉCRAN APPAISANT
+            </div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.2rem;">
+              Cabinet Médical Dr. Benali &bull; Médecine Générale
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: monospace; font-size: 1.3rem; font-weight: 800; color: #34d399;">10:45:12</div>
+            <div style="font-size: 0.75rem; color: #a7f3d0;">🔔 Carillon Sonore Actif</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; padding: 2.5rem 1rem;">
+          <div style="display: inline-block; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #6ee7b7; font-weight: 800; font-size: 0.75rem; padding: 0.35rem 1.2rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
+            Actuellement en Consultation
+          </div>
+
+          <div id="simDisplayNum" class="demo-num" style="color: #6ee7b7; text-shadow: 0 0 35px rgba(16,185,129,0.5); font-size: 5.5rem; margin: 0.5rem 0;">
+            N° P-14
+          </div>
+
+          <div style="display: inline-block; background: #ffffff; color: #022c22; font-weight: 800; font-size: 0.95rem; padding: 0.6rem 1.5rem; border-radius: 9999px; box-shadow: 0 10px 25px rgba(0,0,0,0.25);">
+            VEUILLEZ ENTRER EN SALLE DE SOINS
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1rem; flex-wrap: wrap; gap: 1rem;">
+          <div style="font-size: 0.85rem; color: #94a3b8;">
+            Dernier ticket délivré : <strong id="simIssuedVal" style="color: #ffffff;">N° P-18</strong> &bull; Ambiance calme et silencieuse
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn-dl-main btn-dl-pro" style="padding: 0.65rem 1.2rem; font-size: 0.85rem;" onclick="simNextPatient()">
+              ▶ Appeler Suivant (F1)
             </button>
-            <button class="btn-dl-sub" onclick="simTakeTicket()">
-              + Prendre un Ticket (N° <span id="simNextNum">19</span>)
+            <button class="btn-dl-sub" style="padding: 0.65rem 1.2rem; font-size: 0.85rem; background: rgba(255,255,255,0.1); color: #ffffff; border-color: rgba(255,255,255,0.2);" onclick="playChimeSound()">
+              🔔 Tester le Ding-Dong
             </button>
-            <button class="btn-dl-sub" onclick="playChimeSound()">
-              🔔 Écouter la Sonnette Ding-Dong
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 1: CONSOLE MÉDECIN (F1) -->
+      <div class="slide-content-pane" id="slide-pane-1" style="background: linear-gradient(135deg, #090e17 0%, #0c4a6e 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
+          <div>
+            <span style="background: rgba(14, 165, 233, 0.2); color: #38bdf8; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">
+              Poste Médecin
+            </span>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.3rem;">
+              Console Bureau &bull; Dr. Benali
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <div style="background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border-radius: 12px; text-align: center;">
+              <div style="font-size: 1.1rem; font-weight: 900; color: #38bdf8;">12 min</div>
+              <div style="font-size: 0.7rem; color: #94a3b8;">Temps Moyen</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border-radius: 12px; text-align: center;">
+              <div id="simWaitingCount" style="font-size: 1.1rem; font-weight: 900; color: #34d399;">4</div>
+              <div style="font-size: 0.7rem; color: #94a3b8;">En Attente</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 1.75rem 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">PATIENT ACTUEL EN CONSULTATION :</div>
+              <div id="simDocCurrent" style="font-size: 2.8rem; font-weight: 900; color: #38bdf8; font-family: monospace; margin: 0.4rem 0;">
+                N° P-14
+              </div>
+              <div style="font-size: 0.8rem; color: #34d399;">✓ En consultation depuis 6 minutes</div>
+            </div>
+
+            <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.25rem; padding: 0.9rem 1.4rem; font-size: 0.95rem; width: 100%;" onclick="simNextPatient()">
+              Appeler Suivant (Touche Clavier F1)
+            </button>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 800; text-transform: uppercase;">File d'attente synchronisée :</div>
+            <div style="background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong id="simNextPatientNum" style="color: #38bdf8;">N° P-15</strong>
+                <span style="font-size: 0.75rem; color: #cbd5e1; margin-left: 0.5rem;">Prochain patient</span>
+              </div>
+              <span style="background: #0284c7; color: white; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">En Salle</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: #e2e8f0;">N° P-16</strong>
+                <span style="font-size: 0.75rem; color: #94a3b8; margin-left: 0.5rem;">Suivi smartphone</span>
+              </div>
+              <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 6px;">À 5 min</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: #e2e8f0;">N° P-17</strong>
+                <span style="font-size: 0.75rem; color: #94a3b8; margin-left: 0.5rem;">Ticket papier</span>
+              </div>
+              <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 6px;">Secrétariat</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; font-size: 0.8rem; color: #94a3b8;">
+          Raccourci F1 mondialement actif : appelez le patient sans jamais quitter votre logiciel d'ordonnances habituel.
+        </div>
+      </div>
+
+      <!-- SLIDE 2: CONSOLE SECRÉTARIAT & TICKETS -->
+      <div class="slide-content-pane" id="slide-pane-2" style="background: linear-gradient(135deg, #090e17 0%, #3b0764 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
+          <div>
+            <span style="background: rgba(192, 132, 252, 0.2); color: #c084fc; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">
+              Secrétariat &amp; Accueil
+            </span>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.3rem;">
+              Émission de Tickets Physiques pour Patients sans Smartphone
+            </div>
+          </div>
+          <div style="font-size: 0.8rem; color: #d8b4fe;">
+            Compatible Imprimante Thermique &bull; USB / Bluetooth
+          </div>
+        </div>
+
+        <div style="padding: 1.75rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+          <div>
+            <p style="color: #e2e8f0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
+              Pour les personnes âgées ou les patients sans smartphone, la secrétaire clique sur un bouton. Le ticket papier est imprimé et s'insère immédiatement dans la file numérique.
+            </p>
+
+            <button class="btn-dl-main" style="background: linear-gradient(135deg, #9333ea, #c084fc); padding: 0.9rem 1.5rem; font-size: 0.95rem; width: 100%; border: none; cursor: pointer;" onclick="simTakeTicket()">
+              + Émettre Ticket Papier (N° <span id="simNextNum">19</span>)
+            </button>
+
+            <div style="margin-top: 1.25rem; font-size: 0.82rem; color: #c084fc;">
+              ✓ Synchronisation automatique avec l'écran TV et la console du médecin
+            </div>
+          </div>
+
+          <!-- Thermal Ticket Graphic Simulation -->
+          <div style="background: #ffffff; color: #0f172a; padding: 1.5rem; border-radius: 16px; font-family: monospace; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.4); max-width: 260px; margin: 0 auto; border-top: 6px solid #9333ea;">
+            <div style="font-size: 0.8rem; font-weight: 900; letter-spacing: -0.5px;">CABINET MÉDICAL DR. BENALI</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.2rem;">TICKET FILE D'ATTENTE TAFWITA</div>
+            <div style="border-top: 1px dashed #cbd5e1; border-bottom: 1px dashed #cbd5e1; padding: 0.75rem 0; margin: 0.75rem 0;">
+              <div style="font-size: 0.75rem; color: #64748b;">VOTRE NUMÉRO :</div>
+              <div id="simTicketPreviewNum" style="font-size: 2.5rem; font-weight: 900; color: #0f172a;">N° P-18</div>
+            </div>
+            <div style="font-size: 0.75rem; color: #475569; line-height: 1.4;">
+              <div>Attente estimée : <strong>~30 min</strong></div>
+              <div>Patients avant vous : <strong id="simTicketWait">4</strong></div>
+            </div>
+            <div style="font-size: 0.65rem; color: #94a3b8; margin-top: 0.75rem; border-top: 1px solid #f1f5f9; pt: 0.5rem;">
+              Suivi sur <strong>tafwita.dz</strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; font-size: 0.8rem; color: #94a3b8;">
+          Total tickets distribués aujourd'hui : <strong id="simTotalIssued" style="color: #ffffff;">18</strong>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: SMARTPHONE PATIENT -->
+      <div class="slide-content-pane" id="slide-pane-3" style="background: linear-gradient(135deg, #090e17 0%, #064e3b 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
+          <div>
+            <span style="background: rgba(45, 212, 191, 0.2); color: #2dd4bf; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">
+              Application Mobile Patient
+            </span>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.3rem;">
+              Suivi en Direct &amp; Liberté Totale
+            </div>
+          </div>
+          <div>
+            <button class="btn-slide-ctrl" style="background: #14b8a6; color: #022c22; font-weight: 800;" onclick="simPatientAlert()">
+              🔔 Simuler Alerte SMS / Vibreur
             </button>
           </div>
         </div>
 
-        <!-- Visual Display (Clean & Soothing) -->
-        <div class="demo-display">
-          <div style="color: #047857; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">
-            ÉCRAN TV SALLE D'ATTENTE &bull; N° EN CONSULTATION
+        <div style="padding: 1.5rem 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center;">
+          <div>
+            <h4 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; line-height: 1.35; margin-bottom: 0.75rem;">
+              Le patient n'attend plus dans le couloir.
+            </h4>
+            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+              Il peut attendre chez lui, dans sa voiture ou au café voisin. L'application met à jour le tour en temps réel et prévient quand il faut se présenter au cabinet.
+            </p>
+            <ul class="features-list" style="color: #cbd5e1; font-size: 0.85rem;">
+              <li><span class="check-icon" style="color: #2dd4bf;">✓</span> Moins de promiscuité et d'infections en salle d'attente</li>
+              <li><span class="check-icon" style="color: #2dd4bf;">✓</span> Arrivée détendue et ponctuelle</li>
+              <li><span class="check-icon" style="color: #2dd4bf;">✓</span> Disponible gratuitement en Web App et APK Android</li>
+            </ul>
           </div>
-          <div class="demo-num" id="simDisplayNum">N° P-12</div>
-          <div style="color: #0f766e; font-weight: 800; font-size: 0.95rem; background: white; padding: 0.5rem 1rem; border-radius: 9999px; display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
-            VEUILLEZ ENTRER EN SALLE DE SOINS
+
+          <!-- Smartphone Frame Mockup -->
+          <div style="background: #020617; border: 4px solid #334155; border-radius: 32px; padding: 0.75rem; max-width: 240px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            <div style="width: 50px; height: 4px; background: #334155; border-radius: 9999px; margin: 0 auto 0.5rem;"></div>
+
+            <div style="background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%); border-radius: 24px; padding: 1rem; color: #0f172a; text-align: center;">
+              <div id="simSmsBanner" style="display: none; background: #f59e0b; color: #000; font-size: 0.65rem; font-weight: 800; padding: 0.35rem; border-radius: 8px; margin-bottom: 0.5rem; animation: fadeInSlide 0.3s;">
+                🔔 C'est bientôt votre tour !
+              </div>
+
+              <div style="font-size: 0.7rem; font-weight: 800; color: #0d9488; text-transform: uppercase;">Cabinet Dr. Benali</div>
+              <div style="font-size: 0.8rem; font-weight: 900; margin-top: 0.1rem;">Médecine Générale</div>
+
+              <div style="background: #ffffff; border: 1px solid #ccfbf1; border-radius: 16px; padding: 0.75rem; margin: 0.75rem 0; box-shadow: 0 4px 10px rgba(13,148,136,0.08);">
+                <div style="font-size: 0.65rem; color: #64748b; font-weight: 700;">VOTRE NUMÉRO</div>
+                <div id="simPatientMyNum" style="font-size: 2rem; font-weight: 900; color: #0d9488; font-family: monospace;">N° P-15</div>
+                <div style="font-size: 0.65rem; font-weight: 800; background: #ecfdf5; color: #047857; padding: 0.2rem 0.5rem; border-radius: 9999px; display: inline-block; margin-top: 0.25rem;">
+                  1 personne avant vous (~10 min)
+                </div>
+              </div>
+
+              <div style="font-size: 0.7rem; color: #64748b;">
+                En consultation : <strong id="simPatientCurrent">N° P-14</strong>
+              </div>
+            </div>
           </div>
-          <div style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--slate-600);">
-            Dernier ticket distribué : <span id="simIssuedVal" style="color: var(--slate-900); font-weight: 800;">N° P-18</span>
-          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; font-size: 0.8rem; color: #94a3b8;">
+          Aucune inscription complexe requise pour les patients : un simple scan de QR Code suffit.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING SECTION -->
+  <!-- PRICING SECTION (CABINETS MÉDICAUX UNIQUEMENT) -->
   <section id="tarifs" class="container" style="padding: 3rem 0 5rem;">
     <div class="section-eyebrow">TARIFS &amp; ABONNEMENTS PROFESSIONNELS</div>
     <h2 class="section-title">Des Tarifs Transparents et Accessibles</h2>
@@ -779,27 +1123,6 @@
           Choisir l'Annuel (30 000 DA)
         </button>
       </div>
-
-      <!-- Plan 3 : Clinique & Centre Médical -->
-      <div class="price-card">
-        <div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Clinique &amp; Centre Médical</h4>
-          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Multi-spécialités &amp; Multi-médecins</p>
-          <div class="price-amount" style="font-size: 1.8rem;">Sur Devis <span class="price-unit">/ selon structure</span></div>
-          <p style="font-size: 0.82rem; color: var(--slate-500); margin-top: 0.25rem;">Adapté aux polycliniques et centres de santé</p>
-          <ul class="features-list" style="margin-top: 1.5rem;">
-            <li><span class="check-icon">✓</span> Multi-médecins &amp; Multi-spécialités</li>
-            <li><span class="check-icon">✓</span> Affichage multi-écrans TV par service</li>
-            <li><span class="check-icon">✓</span> Accueil et secrétariat centralisé</li>
-            <li><span class="check-icon">✓</span> Statistiques d'affluence et de ponctualité</li>
-            <li><span class="check-icon">✓</span> Installation, câblage réseau et formation sur place</li>
-            <li><span class="check-icon">✓</span> Contrat de maintenance et support dédié</li>
-          </ul>
-        </div>
-        <button class="btn-dl-sub" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="alert('Contactez notre service commercial pour un devis personnalisé pour votre clinique : contact@tafwita.dz / 0550 00 00 00')">
-          Demander un Devis Clinique
-        </button>
-      </div>
     </div>
   </section>
 
@@ -819,52 +1142,178 @@
     </div>
   </footer>
 
-  <!-- Script with Real Download Handlers & Web Audio Simulator -->
+  <!-- Script with Real Download Handlers, Web Audio & Interactive Slideshow Engine -->
   <script>
-    let simServing = 12;
+    let simServing = 14;
     let simIssued = 18;
+    let currentSlide = 0;
+    const totalSlides = 4;
+    let isAutoplaying = true;
+    let progressTimer = null;
+    let slideProgress = 0;
+    const slideIntervalMs = 5000;
+    const updateFreqMs = 80;
 
-    // Web Audio Ding-Dong Chime (Crystal clear, relaxing, 100% offline)
+    const slideTitles = [
+      "Écran TV Salle d'Attente",
+      "Console Bureau Médecin (Appel F1)",
+      "Console Secrétariat & Tickets Papier",
+      "Application Mobile Patient (Suivi en Direct)"
+    ];
+
+    // Web Audio Ding-Dong Chime (Harmonious & Calming, 100% offline)
     function playChimeSound() {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         const now = audioCtx.currentTime;
         
-        // Gentle High chime
+        // High Chime (E5)
         const osc1 = audioCtx.createOscillator();
         const g1 = audioCtx.createGain();
-        osc1.frequency.setValueAtTime(659.25, now); // Mi (E5)
-        g1.gain.setValueAtTime(0.4, now);
-        g1.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+        osc1.frequency.setValueAtTime(659.25, now);
+        g1.gain.setValueAtTime(0.35, now);
+        g1.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
         osc1.connect(g1); g1.connect(audioCtx.destination);
-        osc1.start(now); osc1.stop(now + 0.8);
+        osc1.start(now); osc1.stop(now + 0.85);
 
-        // Soothing Low chime
+        // Low Chime (C5)
         const osc2 = audioCtx.createOscillator();
         const g2 = audioCtx.createGain();
-        osc2.frequency.setValueAtTime(523.25, now + 0.32); // Do (C5)
-        g2.gain.setValueAtTime(0.45, now + 0.32);
-        g2.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+        osc2.frequency.setValueAtTime(523.25, now + 0.32);
+        g2.gain.setValueAtTime(0.4, now + 0.32);
+        g2.gain.exponentialRampToValueAtTime(0.001, now + 1.45);
         osc2.connect(g2); g2.connect(audioCtx.destination);
-        osc2.start(now + 0.32); osc2.stop(now + 1.4);
+        osc2.start(now + 0.32); osc2.stop(now + 1.45);
       } catch(e) {}
+    }
+
+    function updateAllSyncDisplays() {
+      const curStr = 'N° P-' + String(simServing).padStart(2, '0');
+      const issStr = 'N° P-' + String(simIssued).padStart(2, '0');
+      const nextStr = 'N° P-' + String(simServing + 1).padStart(2, '0');
+      const waitingCount = Math.max(0, simIssued - simServing);
+
+      // Slide 0: TV Screen
+      const dNum = document.getElementById('simDisplayNum');
+      if (dNum) dNum.textContent = curStr;
+      const dIss = document.getElementById('simIssuedVal');
+      if (dIss) dIss.textContent = issStr;
+
+      // Slide 1: Doctor Console
+      const docCur = document.getElementById('simDocCurrent');
+      if (docCur) docCur.textContent = curStr;
+      const docWait = document.getElementById('simWaitingCount');
+      if (docWait) docWait.textContent = waitingCount;
+      const nextPat = document.getElementById('simNextPatientNum');
+      if (nextPat) nextPat.textContent = nextStr;
+
+      // Slide 2: Secretary Console & Ticket Preview
+      const nextNum = document.getElementById('simNextNum');
+      if (nextNum) nextNum.textContent = simIssued + 1;
+      const tickNum = document.getElementById('simTicketPreviewNum');
+      if (tickNum) tickNum.textContent = issStr;
+      const tickWait = document.getElementById('simTicketWait');
+      if (tickWait) tickWait.textContent = waitingCount;
+      const totalIss = document.getElementById('simTotalIssued');
+      if (totalIss) totalIss.textContent = simIssued;
+
+      // Slide 3: Patient Smartphone App
+      const patCur = document.getElementById('simPatientCurrent');
+      if (patCur) patCur.textContent = curStr;
+      const patMy = document.getElementById('simPatientMyNum');
+      if (patMy) patMy.textContent = nextStr;
     }
 
     function simNextPatient() {
       simServing++;
       if (simServing > simIssued) simIssued = simServing;
-      document.getElementById('simDisplayNum').textContent = 'N° P-' + String(simServing).padStart(2, '0');
-      document.getElementById('simIssuedVal').textContent = 'N° P-' + String(simIssued).padStart(2, '0');
-      document.getElementById('simNextNum').textContent = simIssued + 1;
+      updateAllSyncDisplays();
       playChimeSound();
     }
 
     function simTakeTicket() {
       simIssued++;
-      document.getElementById('simIssuedVal').textContent = 'N° P-' + String(simIssued).padStart(2, '0');
-      document.getElementById('simNextNum').textContent = simIssued + 1;
+      updateAllSyncDisplays();
       playChimeSound();
-      alert('Nouveau ticket attribué : N° P-' + String(simIssued).padStart(2, '0'));
+      alert('Nouveau ticket distribué : N° P-' + String(simIssued).padStart(2, '0'));
+    }
+
+    function simPatientAlert() {
+      playChimeSound();
+      const banner = document.getElementById('simSmsBanner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(() => { banner.style.display = 'none'; }, 4000);
+      }
+    }
+
+    // Slideshow Navigation & Autoplay
+    function showSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      slideProgress = 0;
+      updateProgressBar(0);
+
+      // Update Tabs & Panes
+      for (let i = 0; i < totalSlides; i++) {
+        const tabBtn = document.getElementById('tab-btn-' + i);
+        const pane = document.getElementById('slide-pane-' + i);
+        if (tabBtn) tabBtn.classList.toggle('active', i === currentSlide);
+        if (pane) pane.classList.toggle('active', i === currentSlide);
+      }
+
+      // Update Topbar Title & Counter
+      const titleEl = document.getElementById('simActiveTitle');
+      if (titleEl) titleEl.textContent = slideTitles[currentSlide];
+      const counterEl = document.getElementById('simSlideCounter');
+      if (counterEl) counterEl.textContent = '0' + (currentSlide + 1) + ' / 0' + totalSlides;
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function updateProgressBar(pct) {
+      const pBar = document.getElementById('simProgressBar');
+      if (pBar) pBar.style.width = pct + '%';
+    }
+
+    function toggleSimAutoplay() {
+      isAutoplaying = !isAutoplaying;
+      const icon = document.getElementById('simPlayIcon');
+      const label = document.getElementById('simPlayLabel');
+      if (icon) icon.textContent = isAutoplaying ? '⏸' : '▶';
+      if (label) label.textContent = isAutoplaying ? 'Pause' : 'Lecture';
+    }
+
+    function startAutoplayLoop() {
+      if (progressTimer) clearInterval(progressTimer);
+      progressTimer = setInterval(() => {
+        if (!isAutoplaying) return;
+        slideProgress += (updateFreqMs / slideIntervalMs) * 100;
+        if (slideProgress >= 100) {
+          slideProgress = 0;
+          nextSlide();
+        }
+        updateProgressBar(slideProgress);
+      }, updateFreqMs);
+    }
+
+    // Initialize slideshow and synced counts
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAllSyncDisplays();
+      showSlide(0);
+      startAutoplayLoop();
+    });
+
+    // In case DOM is already ready
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      updateAllSyncDisplays();
+      showSlide(0);
+      startAutoplayLoop();
     }
 
     function downloadPatientApk() {
