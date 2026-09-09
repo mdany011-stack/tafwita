@@ -258,35 +258,6 @@
       transform: translateY(-2px);
     }
 
-    /* Key Metrics Banner (Clean Light Cards) */
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin: 3.5rem 0 4.5rem;
-      padding: 1.75rem;
-      background: white;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.05);
-    }
-    @media (max-width: 768px) {
-      .metrics { grid-template-columns: repeat(2, 1fr); }
-    }
-    .metric-val {
-      font-size: 2.25rem;
-      font-weight: 900;
-      color: #0284c7;
-      line-height: 1.2;
-    }
-    .metric-label {
-      font-size: 0.85rem;
-      color: var(--slate-600);
-      font-weight: 600;
-      margin-top: 0.3rem;
-    }
-
     /* DOWNLOAD HUB SECTION */
     .download-hub {
       padding: 3rem 0 5rem;
@@ -555,53 +526,6 @@
       font-weight: 600;
     }
 
-    /* Testimonials */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-      margin-top: 3rem;
-    }
-    @media (max-width: 900px) {
-      .reviews-grid { grid-template-columns: 1fr; }
-    }
-    .review-card {
-      background: white;
-      border: 1px solid var(--slate-200);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-    }
-    .review-stars {
-      color: #f59e0b;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-    .review-text {
-      font-size: 0.96rem;
-      color: var(--slate-700);
-      font-style: italic;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .review-author {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-    .author-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #0284c7, #0d9488);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: white;
-      font-size: 0.9rem;
-    }
-
     /* Footer */
     footer {
       border-top: 1px solid var(--slate-200);
@@ -644,7 +568,6 @@
         <li><a href="#simulateur">Démonstrateur</a></li>
         <li><a href="#serenite">Sérénité Médicale</a></li>
         <li><a href="#tarifs">Tarifs</a></li>
-        <li><a href="#temoignages">Avis Médecins</a></li>
       </ul>
 
       <div class="nav-cta">
@@ -659,7 +582,7 @@
   <section class="hero">
     <div class="container">
       <div class="hero-badge">
-        <span>🌿</span> Moins d'attente, plus de sérénité • Déployé dans les 69 Wilayas
+        <span>🌿</span> Moins d'attente, plus de sérénité • Solution Professionnelle pour Cabinets &amp; Cliniques
       </div>
 
       <h1 class="hero-title">
@@ -668,7 +591,7 @@
       </h1>
 
       <p class="hero-subtitle">
-        Offrez une expérience douce et apaisante à vos patients. Suivi en direct du tour sur smartphone depuis leur voiture ou leur domicile, console médecin ultra-fluide et écran TV connecté — <strong>100% opérationnel en réseau Wi-Fi local gratuit</strong> ou via le Cloud.
+        Offrez une expérience douce et apaisante à vos patients. Suivi en direct du tour sur smartphone depuis leur véhicule ou leur domicile, console médecin ultra-fluide et écran TV connecté — solution clé en main disponible en réseau Wi-Fi local sécurisé ou synchronisée via le Cloud.
       </p>
 
       <div class="hero-actions">
@@ -678,26 +601,6 @@
         <a href="#simulateur" class="btn-hero-secondary">
           <span>🔔</span> Tester la Sonnette et la File en Direct
         </a>
-      </div>
-
-      <!-- Key Metrics -->
-      <div class="metrics">
-        <div>
-          <div class="metric-val">0 DZD</div>
-          <div class="metric-label">Mode Réseau Local Gratuit à vie</div>
-        </div>
-        <div>
-          <div class="metric-val">+350</div>
-          <div class="metric-label">Cabinets &amp; Cliniques Équipés</div>
-        </div>
-        <div>
-          <div class="metric-val">&lt; 2 min</div>
-          <div class="metric-label">Attente résiduelle en salle</div>
-        </div>
-        <div>
-          <div class="metric-val">100%</div>
-          <div class="metric-label">Autonome &amp; Sans Coupure ADSL</div>
-        </div>
       </div>
     </div>
   </section>
@@ -826,108 +729,76 @@
 
   <!-- PRICING SECTION -->
   <section id="tarifs" class="container" style="padding: 3rem 0 5rem;">
-    <div class="section-eyebrow">TRANSPARENCE &amp; PAIEMENT LOCAL</div>
-    <h2 class="section-title">Des Tarifs Doux et Clairs</h2>
+    <div class="section-eyebrow">TARIFS &amp; ABONNEMENTS PROFESSIONNELS</div>
+    <h2 class="section-title">Des Tarifs Transparents et Accessibles</h2>
     <p class="section-subtitle">
-      Démarrez gratuitement en réseau local ou optez pour la synchronisation Cloud avec alertes SMS et assistance dédiée.
+      Équipez votre cabinet avec une solution professionnelle éprouvée. Zéro surprise, paiement sécurisé par BaridiMob, CCP ou Carte CIB.
     </p>
 
     <div class="pricing-grid">
-      <!-- Plan 1 -->
+      <!-- Plan 1 : 3 000 DA / mois -->
       <div class="price-card">
         <div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Réseau Local Wi-Fi</h4>
-          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Autonome dans le cabinet</p>
-          <div class="price-amount">0 DZD <span class="price-unit">/ Gratuit à vie</span></div>
+          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Abonnement Mensuel</h4>
+          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Cabinet médical individuel</p>
+          <div class="price-amount">3 000 DZD <span class="price-unit">/ mois</span></div>
+          <p style="font-size: 0.82rem; color: var(--slate-500); margin-top: 0.25rem;">Sans engagement, renouvelable chaque mois</p>
           <ul class="features-list" style="margin-top: 1.5rem;">
-            <li><span class="check-icon">✓</span> Patients illimités</li>
-            <li><span class="check-icon">✓</span> Console PC Médecin (F1/F2)</li>
-            <li><span class="check-icon">✓</span> Écran TV Salle d'attente</li>
-            <li><span class="check-icon">✓</span> Fonctionne 100% sans Internet</li>
+            <li><span class="check-icon">✓</span> Patients et tickets illimités</li>
+            <li><span class="check-icon">✓</span> Console Médecin (touche F1 d'appel rapide)</li>
+            <li><span class="check-icon">✓</span> Console Secrétariat &amp; tickets papier</li>
+            <li><span class="check-icon">✓</span> Écran TV Salle d'attente avec carillon sonore</li>
+            <li><span class="check-icon">✓</span> Suivi en direct du tour sur smartphone patient</li>
+            <li><span class="check-icon">✓</span> Fonctionne en réseau Wi-Fi local et Cloud</li>
+            <li><span class="check-icon">✓</span> Paiement par BaridiMob, Carte CIB ou CCP</li>
           </ul>
         </div>
-        <a href="#telechargements" class="btn-dl-sub" style="margin-top: 1.5rem;">Télécharger Gratuitement</a>
+        <button class="btn-dl-sub" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="alert('Pour souscrire au Pack Mensuel (3 000 DA/mois), contactez notre équipe commerciale au 0550 00 00 00 ou par BaridiMob.')">
+          Souscrire (3 000 DA / mois)
+        </button>
       </div>
 
-      <!-- Plan 2 -->
+      <!-- Plan 2 : 30 000 DA / an (2 mois offerts) -->
       <div class="price-card featured">
-        <span class="card-badge badge-blue" style="align-self: flex-start;">LE PLUS CHOISI</span>
+        <span class="card-badge badge-blue" style="align-self: flex-start;">2 MOIS OFFERTS (ÉCONOMIE 6 000 DA)</span>
         <div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Cabinet Pro Cloud</h4>
-          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Réseau Local + Suivi à Distance</p>
-          <div class="price-amount">2 500 DZD <span class="price-unit">/ mois</span></div>
+          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Abonnement Annuel</h4>
+          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">La formule sérénité recommandée</p>
+          <div class="price-amount">30 000 DZD <span class="price-unit">/ an</span></div>
+          <p style="font-size: 0.82rem; color: #0284c7; font-weight: 700; margin-top: 0.25rem;">Soit 2 500 DA/mois (au lieu de 36 000 DA)</p>
           <ul class="features-list" style="margin-top: 1.5rem;">
-            <li><span class="check-icon check-icon-blue">✓</span> Tout le pack Réseau Local inclus</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Suivi patient à domicile en direct</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Notification de rappel par SMS</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Paiement BaridiMob, CCP, CIB</li>
+            <li><span class="check-icon check-icon-blue">✓</span> Tous les services de l'abonnement mensuel</li>
+            <li><span class="check-icon check-icon-blue">✓</span> <strong>2 mois offerts</strong> (économie directe de 6 000 DA)</li>
+            <li><span class="check-icon check-icon-blue">✓</span> Aide à l'installation et support prioritaire 7j/7</li>
+            <li><span class="check-icon check-icon-blue">✓</span> Affiches plastifiées QR Code livrées au cabinet</li>
+            <li><span class="check-icon check-icon-blue">✓</span> Zéro coupure de service pendant 12 mois</li>
+            <li><span class="check-icon check-icon-blue">✓</span> Paiement par BaridiMob, Carte CIB ou CCP</li>
           </ul>
         </div>
-        <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.5rem;" onclick="alert('Pour souscrire au Pack Pro Cloud, contactez notre équipe commerciale au 0550 00 00 00 ou par BaridiMob.')">
-          Souscrire au Pack Pro
+        <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="alert('Pour souscrire au Pack Annuel (30 000 DA/an avec 2 mois offerts), contactez notre équipe commerciale au 0550 00 00 00 ou par BaridiMob.')">
+          Choisir l'Annuel (30 000 DA)
         </button>
       </div>
 
-      <!-- Plan 3 -->
+      <!-- Plan 3 : Clinique & Centre Médical -->
       <div class="price-card">
         <div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Clinique &amp; Centre</h4>
-          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Multi-spécialités</p>
-          <div class="price-amount">6 000 DZD <span class="price-unit">/ mois</span></div>
+          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Clinique &amp; Centre Médical</h4>
+          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Multi-spécialités &amp; Multi-médecins</p>
+          <div class="price-amount" style="font-size: 1.8rem;">Sur Devis <span class="price-unit">/ selon structure</span></div>
+          <p style="font-size: 0.82rem; color: var(--slate-500); margin-top: 0.25rem;">Adapté aux polycliniques et centres de santé</p>
           <ul class="features-list" style="margin-top: 1.5rem;">
-            <li><span class="check-icon">✓</span> Multi-médecins &amp; Multi-salles</li>
-            <li><span class="check-icon">✓</span> Affichage multi-écrans synchronisés</li>
-            <li><span class="check-icon">✓</span> Statistiques d'affluence avancées</li>
-            <li><span class="check-icon">✓</span> Installation et formation sur place</li>
+            <li><span class="check-icon">✓</span> Multi-médecins &amp; Multi-spécialités</li>
+            <li><span class="check-icon">✓</span> Affichage multi-écrans TV par service</li>
+            <li><span class="check-icon">✓</span> Accueil et secrétariat centralisé</li>
+            <li><span class="check-icon">✓</span> Statistiques d'affluence et de ponctualité</li>
+            <li><span class="check-icon">✓</span> Installation, câblage réseau et formation sur place</li>
+            <li><span class="check-icon">✓</span> Contrat de maintenance et support dédié</li>
           </ul>
         </div>
-        <button class="btn-dl-sub" style="margin-top: 1.5rem;" onclick="alert('Contactez notre service commercial pour un devis personnalisé pour votre clinique.')">
-          Demander un Devis
+        <button class="btn-dl-sub" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="alert('Contactez notre service commercial pour un devis personnalisé pour votre clinique : contact@tafwita.dz / 0550 00 00 00')">
+          Demander un Devis Clinique
         </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS SECTION -->
-  <section id="temoignages" class="container" style="padding: 2rem 0 5rem;">
-    <div class="section-eyebrow">ILS NOUS FONT CONFIANCE</div>
-    <h2 class="section-title">Témoignages de Confrères Médecins</h2>
-
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">« L'ambiance au cabinet s'est totalement transformée. Les enfants et les parents n'attendent plus des heures entassés dans le couloir. Ils arrivent détendus, pile à l'heure. »</p>
-        <div class="review-author">
-          <div class="author-avatar">YB</div>
-          <div>
-            <div style="font-weight: 800; color: var(--slate-900);">Dr. Y. Brahimi</div>
-            <div style="font-size: 0.8rem; color: var(--slate-500);">Pédiatre &bull; Alger Centre</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">« La touche F1 au clavier et le carillon TV très doux évitent à ma secrétaire de crier les noms. L'atmosphère est calme, professionnelle et reposante. »</p>
-        <div class="review-author">
-          <div class="author-avatar" style="background: linear-gradient(135deg, #0d9488, #10b981);">SM</div>
-          <div>
-            <div style="font-weight: 800; color: var(--slate-900);">Dr. S. Mansouri</div>
-            <div style="font-size: 0.8rem; color: var(--slate-500);">Gynécologue &bull; Oran</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">« Le gros plus : le mode Wi-Fi local sans connexion Internet. Même quand la 4G ou l'ADSL flanche, le cabinet continue de fonctionner sans aucun accroc. »</p>
-        <div class="review-author">
-          <div class="author-avatar" style="background: linear-gradient(135deg, #0284c7, #6366f1);">KC</div>
-          <div>
-            <div style="font-weight: 800; color: var(--slate-900);">Dr. K. Chaoui</div>
-            <div style="font-size: 0.8rem; color: var(--slate-500);">Ophtalmologue &bull; Constantine</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
