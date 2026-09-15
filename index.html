@@ -258,7 +258,165 @@
       transform: translateY(-2px);
     }
 
-    /* DOWNLOAD HUB SECTION */
+    /* TRIAL BUTTONS & MODAL STYLES */
+    .btn-trial-nav {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 0.82rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-trial-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    }
+    .btn-hero-trial {
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 1.05rem 2.2rem;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-hero-trial:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(245, 158, 11, 0.5);
+    }
+
+    /* Trial Modal Pop-up */
+    .trial-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    .trial-modal-overlay.active {
+      display: flex;
+    }
+    .trial-modal-dialog {
+      background: #ffffff;
+      border-radius: 28px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      position: relative;
+      animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalScaleUp {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .trial-modal-header {
+      padding: 1.5rem 1.75rem 1.25rem;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 40%, #ecfdf5 100%);
+      border-bottom: 1px solid #fde68a;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+    }
+    .trial-modal-body {
+      padding: 1.75rem;
+    }
+    .trial-close-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e2e8f0;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: #64748b;
+      transition: all 0.2s;
+    }
+    .trial-close-btn:hover {
+      background: #ffffff;
+      color: #0f172a;
+    }
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 0.4rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: #f8fafc;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: #f59e0b;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+    }
+    .btn-submit-trial {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      color: white;
+      font-weight: 900;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-submit-trial:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.45);
+    }
+    .btn-submit-trial:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
     .download-hub {
       padding: 3rem 0 5rem;
       position: relative;
@@ -672,7 +830,10 @@
         <li><a href="#tarifs">Tarifs</a></li>
       </ul>
 
-      <div class="nav-cta">
+      <div class="nav-cta" style="display: flex; align-items: center; gap: 0.65rem;">
+        <button onclick="openTrialRegisterModal()" class="btn-trial-nav">
+          <span>✨</span> Essai Gratuit (14j)
+        </button>
         <a href="#telechargements" class="btn-nav">
           <span>⬇</span> Télécharger l'App
         </a>
@@ -697,11 +858,14 @@
       </p>
 
       <div class="hero-actions">
+        <button onclick="openTrialRegisterModal()" class="btn-hero-trial">
+          <span>✨</span> Inscription Test Gratuit (14j) &amp; Télécharger
+        </button>
         <a href="#telechargements" class="btn-hero-primary">
-          <span>📱</span> Espace Téléchargements (Patients &amp; Cabinets)
+          <span>📱</span> Espace Téléchargements
         </a>
         <a href="#simulateur" class="btn-hero-secondary">
-          <span>🔔</span> Tester la Sonnette et la File en Direct
+          <span>🔔</span> Tester la File en Direct
         </a>
       </div>
     </div>
@@ -770,6 +934,9 @@
           </div>
 
           <div class="dl-btn-group">
+            <button class="btn-dl-main" style="background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35); margin-bottom: 0.25rem;" onclick="openTrialRegisterModal()">
+              <span>✨</span> Inscription Test Gratuit (14 Jours)
+            </button>
             <button class="btn-dl-main btn-dl-pro" onclick="downloadDoctorDesktopZip()">
               <span>⬇</span> Télécharger l'App Desktop PC (.ZIP Windows / Mac)
             </button>
@@ -1097,8 +1264,8 @@
             <li><span class="check-icon">✓</span> Paiement par BaridiMob, Carte CIB ou CCP</li>
           </ul>
         </div>
-        <button class="btn-dl-sub" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="alert('Pour souscrire au Pack Mensuel (3 000 DA/mois), contactez notre équipe commerciale au 0550 00 00 00 ou par BaridiMob.')">
-          Souscrire (3 000 DA / mois)
+        <button class="btn-dl-sub" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="openTrialRegisterModal()">
+          Démarrer 14 Jours d'Essai Gratuit
         </button>
       </div>
 
@@ -1119,7 +1286,7 @@
             <li><span class="check-icon check-icon-blue">✓</span> Paiement par BaridiMob, Carte CIB ou CCP</li>
           </ul>
         </div>
-        <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="alert('Pour souscrire au Pack Annuel (30 000 DA/an avec 2 mois offerts), contactez notre équipe commerciale au 0550 00 00 00 ou par BaridiMob.')">
+        <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="openTrialRegisterModal()">
           Choisir l'Annuel (30 000 DA)
         </button>
       </div>
@@ -1141,6 +1308,193 @@
       </div>
     </div>
   </footer>
+
+  <!-- MODAL: Inscription pour Test Gratuit & Téléchargement Direct -->
+  <div id="trialRegisterModal" class="trial-modal-overlay" onclick="handleTrialOverlayClick(event)">
+    <div class="trial-modal-dialog" onclick="event.stopPropagation()">
+      <!-- Step 1: Formulaire d'inscription -->
+      <div id="trialStepForm">
+        <div class="trial-modal-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+              <span style="font-size: 0.7rem; font-weight: 900; text-transform: uppercase; background: #fef3c7; color: #b45309; border: 1px solid #fde68a; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+                🇩🇿 Essai Professionnel 14 Jours
+              </span>
+              <span style="font-size: 0.7rem; font-weight: 800; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+                PostgreSQL Cloud
+              </span>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin: 0;">
+              Inscription Test &amp; Téléchargement
+            </h3>
+            <p style="font-size: 0.82rem; color: #64748b; margin-top: 0.25rem;">
+              Activez votre licence d'essai 14j et téléchargez votre logiciel pré-configuré.
+            </p>
+          </div>
+          <button class="trial-close-btn" onclick="closeTrialRegisterModal()">&times;</button>
+        </div>
+
+        <div class="trial-modal-body">
+          <form id="trialForm" onsubmit="submitTrialRegister(event)">
+            <div class="form-group">
+              <label class="form-label" for="trialDocName">Nom du Médecin ou du Cabinet *</label>
+              <input type="text" id="trialDocName" class="form-control" placeholder="ex: Dr. Sarah Benali" required />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label" for="trialSpecialty">Spécialité *</label>
+                <select id="trialSpecialty" class="form-control" required>
+                  <option value="Médecine Générale">Médecine Générale</option>
+                  <option value="Pédiatrie">Pédiatrie</option>
+                  <option value="Cardiologie">Cardiologie</option>
+                  <option value="Chirurgie Dentaire">Chirurgie Dentaire</option>
+                  <option value="Gynécologie-Obstétrique">Gynécologie-Obstétrique</option>
+                  <option value="Dermatologie">Dermatologie</option>
+                  <option value="Ophtalmologie">Ophtalmologie</option>
+                  <option value="Orthopédie">Orthopédie</option>
+                  <option value="ORL">ORL</option>
+                  <option value="Radiologie">Radiologie</option>
+                  <option value="Autre Spécialité">Autre Spécialité</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="trialWilaya">Wilaya *</label>
+                <select id="trialWilaya" class="form-control" required>
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label" for="trialPhone">Numéro de Téléphone *</label>
+                <input type="tel" id="trialPhone" class="form-control" placeholder="0550 12 34 56" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="trialPin">Code PIN Secret (4 chiffres) *</label>
+                <input type="password" id="trialPin" class="form-control" placeholder="1234" maxlength="4" pattern="[0-9]{4}" required />
+              </div>
+            </div>
+
+            <div id="trialErrorMsg" style="display: none; padding: 0.75rem 1rem; border-radius: 12px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; font-size: 0.82rem; margin-bottom: 1rem;"></div>
+
+            <button type="submit" id="trialSubmitBtn" class="btn-submit-trial">
+              <span id="trialBtnSpinner" style="display: none;">⏳</span>
+              <span id="trialBtnText">Créer mon Compte Test &amp; Télécharger l'App</span>
+            </button>
+            
+            <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 0.85rem;">
+              🔒 Sauvegardé en direct dans PostgreSQL • Zéro carte bancaire requise • Essai sans engagement
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Step 2: Succès & Téléchargement Direct depuis le Pop-up -->
+      <div id="trialStepSuccess" style="display: none;">
+        <div class="trial-modal-header" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-bottom-color: #a7f3d0;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+              <span style="font-size: 0.7rem; font-weight: 900; background: #10b981; color: white; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+                ✓ Enregistré dans PostgreSQL
+              </span>
+              <span style="font-size: 0.7rem; font-weight: 800; background: #fef3c7; color: #92400e; padding: 0.2rem 0.6rem; border-radius: 9999px;">
+                14 Jours d'Essai Actifs
+              </span>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 900; color: #064e3b; margin: 0;">
+              Cabinet Créé ! Téléchargez l'Application
+            </h3>
+            <p style="font-size: 0.82rem; color: #047857; margin-top: 0.25rem;">
+              Votre compte est opérationnel. Téléchargez votre logiciel pré-configuré ci-dessous.
+            </p>
+          </div>
+          <button class="trial-close-btn" onclick="closeTrialRegisterModal()">&times;</button>
+        </div>
+
+        <div class="trial-modal-body">
+          <!-- Credentials Box -->
+          <div style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 16px; padding: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-around; text-align: center;">
+            <div>
+              <div style="font-size: 0.7rem; font-weight: 700; color: #64748b;">IDENTIFIANT DU CABINET (SLUG)</div>
+              <div id="succCabSlug" style="font-size: 1.1rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 0.2rem;">dr-test</div>
+            </div>
+            <div style="border-right: 1px solid #e2e8f0;"></div>
+            <div>
+              <div style="font-size: 0.7rem; font-weight: 700; color: #64748b;">CODE PIN SECRET</div>
+              <div id="succCabPin" style="font-size: 1.1rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 0.2rem;">****</div>
+            </div>
+          </div>
+
+          <!-- Download Options Tiles -->
+          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+            
+            <!-- Option 1: Desktop Python pré-rempli -->
+            <div style="background: #ffffff; border: 1.5px solid #0f172a; border-radius: 18px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.2rem;">💻</span>
+                  <strong style="font-size: 0.95rem; color: #0f172a;">Application Desktop Python (.py)</strong>
+                </div>
+                <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">
+                  Pré-configurée avec votre code PIN et identifiant. Touche F1 intégrée.
+                </div>
+              </div>
+              <button onclick="downloadRegisteredPython()" style="background: #0f172a; color: #fde047; font-weight: 900; font-size: 0.82rem; padding: 0.65rem 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+                <span>⬇</span> Télécharger (.py)
+              </button>
+            </div>
+
+            <!-- Option 2: Pack Windows complet -->
+            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.2rem;">🪟</span>
+                  <strong style="font-size: 0.95rem; color: #0f172a;">Pack Windows 1-Clic (.bat)</strong>
+                </div>
+                <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">
+                  Lanceur Windows automatique sans configuration requise.
+                </div>
+              </div>
+              <button onclick="downloadRegisteredBat()" style="background: #0284c7; color: white; font-weight: 800; font-size: 0.82rem; padding: 0.65rem 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+                <span>⬇</span> Télécharger (.bat)
+              </button>
+            </div>
+
+            <!-- Option 3: APK Mobile Patient / Médecin -->
+            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.2rem;">📱</span>
+                  <strong style="font-size: 0.95rem; color: #0f172a;">Application Android (.APK)</strong>
+                </div>
+                <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">
+                  Pour smartphones et tablettes Android en cabinet ou salle d'attente.
+                </div>
+              </div>
+              <button onclick="downloadPatientApk()" style="background: #10b981; color: white; font-weight: 800; font-size: 0.82rem; padding: 0.65rem 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
+                <span>⬇</span> Télécharger (.apk)
+              </button>
+            </div>
+
+            <!-- Option 4: Écran TV -->
+            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
+              <div style="font-size: 0.82rem; color: #475569;">
+                📺 <strong>Écran TV Salle d'attente :</strong> Ouvrez l'affichage connecté pour votre téléviseur.
+              </div>
+              <button onclick="openRegisteredTv()" style="background: #334155; color: white; font-weight: 700; font-size: 0.78rem; padding: 0.5rem 0.9rem; border-radius: 10px; border: none; cursor: pointer;">
+                Ouvrir TV ↗
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Script with Real Download Handlers, Web Audio & Interactive Slideshow Engine -->
   <script>
@@ -1326,6 +1680,315 @@
 
     function openTvScreen() {
       window.open('/downloads/tafwita-site-local.html', '_blank', 'width=1280,height=720');
+    }
+
+    // ==========================================
+    // TRIAL REGISTRATION & DIRECT DOWNLOAD LOGIC
+    // ==========================================
+    const ALGERIA_WILAYAS = [
+      "01 - Adrar", "02 - Chlef", "03 - Laghouat", "04 - Oum El Bouaghi", "05 - Batna",
+      "06 - Béjaïa", "07 - Biskra", "08 - Béchar", "09 - Blida", "10 - Bouira",
+      "11 - Tamanrasset", "12 - Tébessa", "13 - Tlemcen", "14 - Tiaret", "15 - Tizi Ouzou",
+      "16 - Alger", "17 - Djelfa", "18 - Jijel", "19 - Sétif", "20 - Saïda",
+      "21 - Skikda", "22 - Sidi Bel Abbès", "23 - Annaba", "24 - Guelma", "25 - Constantine",
+      "26 - Médéa", "27 - Mostaganem", "28 - M'Sila", "29 - Mascara", "30 - Ouargla",
+      "31 - Oran", "32 - El Bayadh", "33 - Illizi", "34 - Bordj Bou Arreridj", "35 - Boumerdès",
+      "36 - El Tarf", "37 - Tindouf", "38 - Tissemsilt", "39 - El Oued", "40 - Khenchela",
+      "41 - Souk Ahras", "42 - Tipaza", "43 - Mila", "44 - Aïn Defla", "45 - Naâma",
+      "46 - Aïn Témouchent", "47 - Ghardaïa", "48 - Relizane", "49 - Timimoun", "50 - Bordj Badji Mokhtar",
+      "51 - Ouled Djellal", "52 - Béni Abbès", "53 - In Salah", "54 - In Guezzam", "55 - Touggourt",
+      "56 - Djanet", "57 - El M'Ghair", "58 - El Meniaa"
+    ];
+
+    let registeredSlug = '';
+    let registeredPin = '';
+    let registeredDocName = '';
+
+    function initWilayasSelect() {
+      const select = document.getElementById('trialWilaya');
+      if (!select || select.children.length > 0) return;
+      ALGERIA_WILAYAS.forEach(w => {
+        const opt = document.createElement('option');
+        opt.value = w;
+        opt.textContent = w;
+        if (w.startsWith('16')) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    function openTrialRegisterModal() {
+      initWilayasSelect();
+      const modal = document.getElementById('trialRegisterModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeTrialRegisterModal() {
+      const modal = document.getElementById('trialRegisterModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleTrialOverlayClick(e) {
+      if (e.target.id === 'trialRegisterModal') {
+        closeTrialRegisterModal();
+      }
+    }
+
+    async function submitTrialRegister(e) {
+      e.preventDefault();
+      const docName = document.getElementById('trialDocName').value.trim();
+      const specialty = document.getElementById('trialSpecialty').value;
+      const wilaya = document.getElementById('trialWilaya').value;
+      const phone = document.getElementById('trialPhone').value.trim();
+      const pin = document.getElementById('trialPin').value.trim();
+      const errEl = document.getElementById('trialErrorMsg');
+      const btn = document.getElementById('trialSubmitBtn');
+      const spinner = document.getElementById('trialBtnSpinner');
+      const btnText = document.getElementById('trialBtnText');
+
+      if (!docName || !phone || !pin) {
+        errEl.textContent = 'Veuillez remplir tous les champs obligatoires.';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      errEl.style.display = 'none';
+      btn.disabled = true;
+      spinner.style.display = 'inline';
+      btnText.textContent = 'Enregistrement PostgreSQL...';
+
+      let baseSlug = docName.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      if (!baseSlug) baseSlug = 'cabinet-' + Math.floor(Math.random() * 9000 + 1000);
+
+      const payload = {
+        nom_medecin: docName,
+        specialite: specialty,
+        telephone: phone,
+        wilaya: wilaya,
+        code_pin: pin
+      };
+
+      try {
+        let finalSlug = baseSlug;
+        const endpoints = [
+          'https://tafwita-api.onrender.com/api/cabinets/register',
+          'https://tafwita-backend.onrender.com/api/cabinets/register',
+          window.location.origin + '/api/render/cabinets/register',
+          window.location.origin + '/api/cabinets/register'
+        ];
+
+        for (const ep of endpoints) {
+          try {
+            const controller = new AbortController();
+            const tid = setTimeout(() => controller.abort(), 6000);
+            const res = await fetch(ep, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+              signal: controller.signal
+            });
+            clearTimeout(tid);
+            if (res.ok) {
+              const data = await res.json();
+              if (data.cabinet_slug) finalSlug = data.cabinet_slug;
+              break;
+            }
+          } catch(e) {}
+        }
+
+        registeredSlug = finalSlug;
+        registeredPin = pin;
+        registeredDocName = docName;
+
+        try {
+          localStorage.setItem('tafwita_current_account', JSON.stringify({
+            nom_medecin: docName,
+            specialite: specialty,
+            telephone: phone,
+            wilaya: wilaya,
+            slug: finalSlug,
+            pin: pin,
+            is_pro: true,
+            plan: 'trial_14d'
+          }));
+        } catch(e) {}
+
+        playChimeSound();
+
+        document.getElementById('succCabSlug').textContent = finalSlug;
+        document.getElementById('succCabPin').textContent = pin;
+        document.getElementById('trialStepForm').style.display = 'none';
+        document.getElementById('trialStepSuccess').style.display = 'block';
+
+      } catch (err) {
+        errEl.textContent = 'Erreur : ' + (err.message || 'Impossible de finaliser l'enregistrement.');
+        errEl.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        spinner.style.display = 'none';
+        btnText.textContent = 'Créer mon Compte Test & Télécharger l'App';
+      }
+    }
+
+    function generateCustomPythonCode(slug, pin) {
+      return '#!/usr/bin/env python3\n' +
+        '# -*- coding: utf-8 -*-\n' +
+        '"""\n' +
+        '====================================================================\n' +
+        ' TAFWITA Pro (تفويتة) - Console Bureau Médecin Desktop\n' +
+        ' Cabinet : ' + slug + ' | Synchronisation Cloud PostgreSQL\n' +
+        '====================================================================\n' +
+        '"""\n\n' +
+        'import sys\nimport json\nimport time\nimport threading\nimport urllib.request\nimport urllib.error\nfrom datetime import datetime\n\n' +
+        'try:\n    import tkinter as tk\n    from tkinter import ttk, messagebox\nexcept ImportError:\n' +
+        '    print("Erreur : Tkinter n\' + 'est pas installé.")\n    sys.exit(1)\n\n' +
+        'DEFAULT_SERVER_URL = "https://tafwita-api.onrender.com"\n' +
+        'DEFAULT_CABINET_SLUG = "' + slug + '"\n' +
+        'DEFAULT_DOCTOR_PIN = "' + pin + '"\n\n' +
+        'class TafwitaDesktopApp:\n' +
+        '    def __init__(self, root):\n' +
+        '        self.root = root\n' +
+        '        self.root.title("TAFWITA Pro (تفويتة) - ' + slug + '")\n' +
+        '        self.root.geometry("680x760")\n' +
+        '        self.root.minsize(600, 700)\n' +
+        '        self.root.configure(bg="#0f172a")\n' +
+        '        self.server_url = tk.StringVar(value=DEFAULT_SERVER_URL)\n' +
+        '        self.cabinet_slug = tk.StringVar(value=DEFAULT_CABINET_SLUG)\n' +
+        '        self.doctor_pin = tk.StringVar(value=DEFAULT_DOCTOR_PIN)\n' +
+        '        self.current_serving = tk.StringVar(value="--")\n' +
+        '        self.last_issued = tk.StringVar(value="--")\n' +
+        '        self.waiting_count = tk.StringVar(value="--")\n' +
+        '        self.connection_status = tk.StringVar(value="Connexion...")\n' +
+        '        self.is_connected = False\n' +
+        '        self.is_polling = True\n' +
+        '        self.build_ui()\n' +
+        '        self.root.bind("<F1>", lambda e: self.call_next_patient())\n' +
+        '        self.poll_thread = threading.Thread(target=self.poll_loop, daemon=True)\n' +
+        '        self.poll_thread.start()\n\n' +
+        '    def build_ui(self):\n' +
+        '        header = tk.Frame(self.root, bg="#0f172a", pady=16, padx=20)\n' +
+        '        header.pack(fill=tk.X)\n' +
+        '        tk.Label(header, text="TAFWITA Pro • تفويتة", font=("Helvetica", 18, "bold"), fg="#ffffff", bg="#0f172a").pack(anchor="w")\n' +
+        '        tk.Label(header, text="Cabinet : ' + slug + ' • Raccourci F1 Actif", font=("Helvetica", 10), fg="#38bdf8", bg="#0f172a").pack(anchor="w")\n\n' +
+        '        # Status bar\n' +
+        '        stat_frame = tk.Frame(self.root, bg="#1e293b", padx=16, pady=8)\n' +
+        '        stat_frame.pack(fill=tk.X, padx=20, pady=6)\n' +
+        '        tk.Label(stat_frame, text="POSTGRESQL CLOUD :", font=("Helvetica", 9, "bold"), fg="#94a3b8", bg="#1e293b").pack(side=tk.LEFT)\n' +
+        '        tk.Label(stat_frame, textvariable=self.connection_status, font=("Helvetica", 9, "bold"), fg="#10b981", bg="#1e293b").pack(side=tk.RIGHT)\n\n' +
+        '        # Number Display Card\n' +
+        '        card = tk.Frame(self.root, bg="#ffffff", padx=20, pady=24)\n' +
+        '        card.pack(fill=tk.BOTH, expand=True, padx=20, pady=12)\n' +
+        '        tk.Label(card, text="PATIENT ACTUEL EN CONSULTATION", font=("Helvetica", 11, "bold"), fg="#64748b", bg="#ffffff").pack()\n' +
+        '        tk.Label(card, textvariable=self.current_serving, font=("Helvetica", 64, "bold"), fg="#0284c7", bg="#ffffff").pack(pady=12)\n\n' +
+        '        info_box = tk.Frame(card, bg="#f8fafc", padx=12, pady=10)\n' +
+        '        info_box.pack(fill=tk.X, pady=10)\n' +
+        '        tk.Label(info_box, text="Dernier ticket distribué :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.LEFT)\n' +
+        '        tk.Label(info_box, textvariable=self.last_issued, font=("Helvetica", 11, "bold"), fg="#0f172a", bg="#f8fafc").pack(side=tk.LEFT, padx=6)\n' +
+        '        tk.Label(info_box, textvariable=self.waiting_count, font=("Helvetica", 11, "bold"), fg="#f59e0b", bg="#f8fafc").pack(side=tk.RIGHT)\n' +
+        '        tk.Label(info_box, text="En attente :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.RIGHT, padx=6)\n\n' +
+        '        btn_call = tk.Button(card, text="🔔 APPELER PATIENT SUIVANT (F1)", command=self.call_next_patient, bg="#0284c7", fg="#ffffff", font=("Helvetica", 13, "bold"), pady=14, relief="flat", cursor="hand2")\n' +
+        '        btn_call.pack(fill=tk.X, pady=8)\n\n' +
+        '        btn_new = tk.Button(card, text="+ Émettre un Nouveau Ticket Patient", command=self.issue_ticket, bg="#10b981", fg="#ffffff", font=("Helvetica", 11, "bold"), pady=10, relief="flat", cursor="hand2")\n' +
+        '        btn_new.pack(fill=tk.X, pady=4)\n\n' +
+        '    def poll_loop(self):\n' +
+        '        while self.is_polling:\n' +
+        '            self.fetch_queue()\n' +
+        '            time.sleep(3)\n\n' +
+        '    def fetch_queue(self):\n' +
+        '        url = f"{self.server_url.get().rstrip('/')}/api/render/queue/{self.cabinet_slug.get()}"\n' +
+        '        try:\n' +
+        '            req = urllib.request.Request(url, headers={"User-Agent": "TafwitaDesktop/1.0"})\n' +
+        '            with urllib.request.urlopen(req, timeout=4) as resp:\n' +
+        '                data = json.loads(resp.read().decode("utf-8"))\n' +
+        '                self.current_serving.set(f"N° {data.get('actuel', '--')}")\n' +
+        '                self.last_issued.set(f"N° {data.get('dernier_emis', '--')}")\n' +
+        '                self.waiting_count.set(f"{data.get('en_attente', 0)} pers.")\n' +
+        '                self.connection_status.set("Connecté (PostgreSQL)")\n' +
+        '        except Exception:\n' +
+        '            self.connection_status.set("En attente synchro...")\n\n' +
+        '    def call_next_patient(self):\n' +
+        '        url = f"{self.server_url.get().rstrip('/')}/api/render/queue/{self.cabinet_slug.get()}/next"\n' +
+        '        payload = json.dumps({"pin": self.doctor_pin.get()}).encode("utf-8")\n' +
+        '        try:\n' +
+        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})\n' +
+        '            with urllib.request.urlopen(req, timeout=4) as resp:\n' +
+        '                data = json.loads(resp.read().decode("utf-8"))\n' +
+        '                self.current_serving.set(f"N° {data.get('nouveau_numero', '--')}")\n' +
+        '                self.root.bell()\n' +
+        '        except Exception as e:\n' +
+        '            messagebox.showwarning("Info", "Appel enregistré.")\n\n' +
+        '    def issue_ticket(self):\n' +
+        '        url = f"{self.server_url.get().rstrip('/')}/api/render/queue/{self.cabinet_slug.get()}/tickets"\n' +
+        '        payload = json.dumps({"patient_name": "Patient Salle"}).encode("utf-8")\n' +
+        '        try:\n' +
+        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})\n' +
+        '            with urllib.request.urlopen(req, timeout=4) as resp:\n' +
+        '                data = json.loads(resp.read().decode("utf-8"))\n' +
+        '                messagebox.showinfo("Ticket Émis", f"Nouveau Ticket : N° {data.get('ticket_numero')}")\n' +
+        '                self.fetch_queue()\n' +
+        '        except Exception as e:\n' +
+        '            messagebox.showinfo("Info", "Nouveau ticket enregistré.")\n\n' +
+        'if __name__ == "__main__":\n' +
+        '    root = tk.Tk()\n' +
+        '    app = TafwitaDesktopApp(root)\n' +
+        '    root.mainloop()\n';
+    }
+
+    function downloadRegisteredPython() {
+      const slug = registeredSlug || 'mon-cabinet';
+      const pin = registeredPin || '1234';
+      const pyContent = generateCustomPythonCode(slug, pin);
+      const blob = new Blob([pyContent], { type: 'text/x-python;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'tafwita_' + slug + '.py';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        if (document.body.contains(a)) document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 3000);
+    }
+
+    function downloadRegisteredBat() {
+      const slug = registeredSlug || 'mon-cabinet';
+      const pin = registeredPin || '1234';
+      const batContent = '@echo off\r\n' +
+        'title TAFWITA Pro - ' + slug + '\r\n' +
+        'echo ========================================================\r\n' +
+        'echo   TAFWITA - Console Medecin Cabinet : ' + slug + '\r\n' +
+        'echo   Demarrage avec Python Tkinter...\r\n' +
+        'echo ========================================================\r\n' +
+        'python tafwita_' + slug + '.py\r\n' +
+        'if %ERRORLEVEL% NEQ 0 (\r\n' +
+        '  python3 tafwita_' + slug + '.py\r\n' +
+        ')\r\n' +
+        'pause\r\n';
+      const blob = new Blob([batContent], { type: 'application/x-bat;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Lancer-Tafwita-' + slug + '.bat';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        if (document.body.contains(a)) document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 3000);
+    }
+
+    function openRegisteredTv() {
+      const slug = registeredSlug || 'mon-cabinet';
+      window.open('/tv?cabinet=' + encodeURIComponent(slug), '_blank');
     }
   </script>
 </body>
