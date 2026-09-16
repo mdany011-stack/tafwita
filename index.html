@@ -304,9 +304,9 @@
     .trial-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(8px);
-      z-index: 1000;
+      z-index: 99999;
       display: none;
       align-items: center;
       justify-content: center;
@@ -314,7 +314,7 @@
       overflow-y: auto;
     }
     .trial-modal-overlay.active {
-      display: flex;
+      display: flex !important;
     }
     .trial-modal-dialog {
       background: #ffffff;
@@ -1717,21 +1717,35 @@
     }
 
     function openTrialRegisterModal() {
-      initWilayasSelect();
-      const modal = document.getElementById('trialRegisterModal');
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+      try {
+        initWilayasSelect();
+        const modal = document.getElementById('trialRegisterModal');
+        if (modal) {
+          modal.classList.add('active');
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      } catch (err) {
+        console.error('Erreur ouverture modale:', err);
       }
     }
 
     function closeTrialRegisterModal() {
-      const modal = document.getElementById('trialRegisterModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+      try {
+        const modal = document.getElementById('trialRegisterModal');
+        if (modal) {
+          modal.classList.remove('active');
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      } catch (err) {
+        console.error('Erreur fermeture modale:', err);
       }
     }
+
+    // Expose globally to window
+    window.openTrialRegisterModal = openTrialRegisterModal;
+    window.closeTrialRegisterModal = closeTrialRegisterModal;
 
     function handleTrialOverlayClick(e) {
       if (e.target.id === 'trialRegisterModal') {
@@ -1763,7 +1777,7 @@
       btnText.textContent = 'Enregistrement PostgreSQL...';
 
       let baseSlug = docName.toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
       if (!baseSlug) baseSlug = 'cabinet-' + Math.floor(Math.random() * 9000 + 1000);
@@ -1829,117 +1843,148 @@
         document.getElementById('trialStepSuccess').style.display = 'block';
 
       } catch (err) {
-        errEl.textContent = 'Erreur : ' + (err.message || 'Impossible de finaliser l'enregistrement.');
+        errEl.textContent = "Erreur : " + (err.message || "Impossible de finaliser l'enregistrement.");
         errEl.style.display = 'block';
       } finally {
         btn.disabled = false;
         spinner.style.display = 'none';
-        btnText.textContent = 'Créer mon Compte Test & Télécharger l'App';
+        btnText.textContent = "Créer mon Compte Test & Télécharger l'App";
       }
     }
 
     function generateCustomPythonCode(slug, pin) {
-      return '#!/usr/bin/env python3\n' +
-        '# -*- coding: utf-8 -*-\n' +
-        '"""\n' +
-        '====================================================================\n' +
-        ' TAFWITA Pro (تفويتة) - Console Bureau Médecin Desktop\n' +
-        ' Cabinet : ' + slug + ' | Synchronisation Cloud PostgreSQL\n' +
-        '====================================================================\n' +
-        '"""\n\n' +
-        'import sys\nimport json\nimport time\nimport threading\nimport urllib.request\nimport urllib.error\nfrom datetime import datetime\n\n' +
-        'try:\n    import tkinter as tk\n    from tkinter import ttk, messagebox\nexcept ImportError:\n' +
-        '    print("Erreur : Tkinter n\' + 'est pas installé.")\n    sys.exit(1)\n\n' +
-        'DEFAULT_SERVER_URL = "https://tafwita-api.onrender.com"\n' +
-        'DEFAULT_CABINET_SLUG = "' + slug + '"\n' +
-        'DEFAULT_DOCTOR_PIN = "' + pin + '"\n\n' +
-        'class TafwitaDesktopApp:\n' +
-        '    def __init__(self, root):\n' +
-        '        self.root = root\n' +
-        '        self.root.title("TAFWITA Pro (تفويتة) - ' + slug + '")\n' +
-        '        self.root.geometry("680x760")\n' +
-        '        self.root.minsize(600, 700)\n' +
-        '        self.root.configure(bg="#0f172a")\n' +
-        '        self.server_url = tk.StringVar(value=DEFAULT_SERVER_URL)\n' +
-        '        self.cabinet_slug = tk.StringVar(value=DEFAULT_CABINET_SLUG)\n' +
-        '        self.doctor_pin = tk.StringVar(value=DEFAULT_DOCTOR_PIN)\n' +
-        '        self.current_serving = tk.StringVar(value="--")\n' +
-        '        self.last_issued = tk.StringVar(value="--")\n' +
-        '        self.waiting_count = tk.StringVar(value="--")\n' +
-        '        self.connection_status = tk.StringVar(value="Connexion...")\n' +
-        '        self.is_connected = False\n' +
-        '        self.is_polling = True\n' +
-        '        self.build_ui()\n' +
-        '        self.root.bind("<F1>", lambda e: self.call_next_patient())\n' +
-        '        self.poll_thread = threading.Thread(target=self.poll_loop, daemon=True)\n' +
-        '        self.poll_thread.start()\n\n' +
-        '    def build_ui(self):\n' +
-        '        header = tk.Frame(self.root, bg="#0f172a", pady=16, padx=20)\n' +
-        '        header.pack(fill=tk.X)\n' +
-        '        tk.Label(header, text="TAFWITA Pro • تفويتة", font=("Helvetica", 18, "bold"), fg="#ffffff", bg="#0f172a").pack(anchor="w")\n' +
-        '        tk.Label(header, text="Cabinet : ' + slug + ' • Raccourci F1 Actif", font=("Helvetica", 10), fg="#38bdf8", bg="#0f172a").pack(anchor="w")\n\n' +
-        '        # Status bar\n' +
-        '        stat_frame = tk.Frame(self.root, bg="#1e293b", padx=16, pady=8)\n' +
-        '        stat_frame.pack(fill=tk.X, padx=20, pady=6)\n' +
-        '        tk.Label(stat_frame, text="POSTGRESQL CLOUD :", font=("Helvetica", 9, "bold"), fg="#94a3b8", bg="#1e293b").pack(side=tk.LEFT)\n' +
-        '        tk.Label(stat_frame, textvariable=self.connection_status, font=("Helvetica", 9, "bold"), fg="#10b981", bg="#1e293b").pack(side=tk.RIGHT)\n\n' +
-        '        # Number Display Card\n' +
-        '        card = tk.Frame(self.root, bg="#ffffff", padx=20, pady=24)\n' +
-        '        card.pack(fill=tk.BOTH, expand=True, padx=20, pady=12)\n' +
-        '        tk.Label(card, text="PATIENT ACTUEL EN CONSULTATION", font=("Helvetica", 11, "bold"), fg="#64748b", bg="#ffffff").pack()\n' +
-        '        tk.Label(card, textvariable=self.current_serving, font=("Helvetica", 64, "bold"), fg="#0284c7", bg="#ffffff").pack(pady=12)\n\n' +
-        '        info_box = tk.Frame(card, bg="#f8fafc", padx=12, pady=10)\n' +
-        '        info_box.pack(fill=tk.X, pady=10)\n' +
-        '        tk.Label(info_box, text="Dernier ticket distribué :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.LEFT)\n' +
-        '        tk.Label(info_box, textvariable=self.last_issued, font=("Helvetica", 11, "bold"), fg="#0f172a", bg="#f8fafc").pack(side=tk.LEFT, padx=6)\n' +
-        '        tk.Label(info_box, textvariable=self.waiting_count, font=("Helvetica", 11, "bold"), fg="#f59e0b", bg="#f8fafc").pack(side=tk.RIGHT)\n' +
-        '        tk.Label(info_box, text="En attente :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.RIGHT, padx=6)\n\n' +
-        '        btn_call = tk.Button(card, text="🔔 APPELER PATIENT SUIVANT (F1)", command=self.call_next_patient, bg="#0284c7", fg="#ffffff", font=("Helvetica", 13, "bold"), pady=14, relief="flat", cursor="hand2")\n' +
-        '        btn_call.pack(fill=tk.X, pady=8)\n\n' +
-        '        btn_new = tk.Button(card, text="+ Émettre un Nouveau Ticket Patient", command=self.issue_ticket, bg="#10b981", fg="#ffffff", font=("Helvetica", 11, "bold"), pady=10, relief="flat", cursor="hand2")\n' +
-        '        btn_new.pack(fill=tk.X, pady=4)\n\n' +
-        '    def poll_loop(self):\n' +
-        '        while self.is_polling:\n' +
-        '            self.fetch_queue()\n' +
-        '            time.sleep(3)\n\n' +
-        '    def fetch_queue(self):\n' +
-        '        url = f"{self.server_url.get().rstrip('/')}/api/render/queue/{self.cabinet_slug.get()}"\n' +
-        '        try:\n' +
-        '            req = urllib.request.Request(url, headers={"User-Agent": "TafwitaDesktop/1.0"})\n' +
-        '            with urllib.request.urlopen(req, timeout=4) as resp:\n' +
-        '                data = json.loads(resp.read().decode("utf-8"))\n' +
-        '                self.current_serving.set(f"N° {data.get('actuel', '--')}")\n' +
-        '                self.last_issued.set(f"N° {data.get('dernier_emis', '--')}")\n' +
-        '                self.waiting_count.set(f"{data.get('en_attente', 0)} pers.")\n' +
-        '                self.connection_status.set("Connecté (PostgreSQL)")\n' +
-        '        except Exception:\n' +
-        '            self.connection_status.set("En attente synchro...")\n\n' +
-        '    def call_next_patient(self):\n' +
-        '        url = f"{self.server_url.get().rstrip('/')}/api/render/queue/{self.cabinet_slug.get()}/next"\n' +
-        '        payload = json.dumps({"pin": self.doctor_pin.get()}).encode("utf-8")\n' +
-        '        try:\n' +
-        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})\n' +
-        '            with urllib.request.urlopen(req, timeout=4) as resp:\n' +
-        '                data = json.loads(resp.read().decode("utf-8"))\n' +
-        '                self.current_serving.set(f"N° {data.get('nouveau_numero', '--')}")\n' +
-        '                self.root.bell()\n' +
-        '        except Exception as e:\n' +
-        '            messagebox.showwarning("Info", "Appel enregistré.")\n\n' +
-        '    def issue_ticket(self):\n' +
-        '        url = f"{self.server_url.get().rstrip('/')}/api/render/queue/{self.cabinet_slug.get()}/tickets"\n' +
-        '        payload = json.dumps({"patient_name": "Patient Salle"}).encode("utf-8")\n' +
-        '        try:\n' +
-        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})\n' +
-        '            with urllib.request.urlopen(req, timeout=4) as resp:\n' +
-        '                data = json.loads(resp.read().decode("utf-8"))\n' +
-        '                messagebox.showinfo("Ticket Émis", f"Nouveau Ticket : N° {data.get('ticket_numero')}")\n' +
-        '                self.fetch_queue()\n' +
-        '        except Exception as e:\n' +
-        '            messagebox.showinfo("Info", "Nouveau ticket enregistré.")\n\n' +
-        'if __name__ == "__main__":\n' +
-        '    root = tk.Tk()\n' +
-        '    app = TafwitaDesktopApp(root)\n' +
-        '    root.mainloop()\n';
+      const codeLines = [
+        '#!/usr/bin/env python3',
+        '# -*- coding: utf-8 -*-',
+        '"""',
+        '====================================================================',
+        ' TAFWITA Pro - Console Bureau Medecin Desktop',
+        ' Cabinet : ' + slug + ' | Synchronisation Cloud PostgreSQL',
+        '====================================================================',
+        '"""',
+        '',
+        'import sys',
+        'import json',
+        'import time',
+        'import threading',
+        'import urllib.request',
+        'import urllib.error',
+        'from datetime import datetime',
+        '',
+        'try:',
+        '    import tkinter as tk',
+        '    from tkinter import ttk, messagebox',
+        'except ImportError:',
+        '    print("Erreur : Le module Tkinter est requis.")',
+        '    sys.exit(1)',
+        '',
+        'DEFAULT_SERVER_URL = "https://tafwita-api.onrender.com"',
+        'DEFAULT_CABINET_SLUG = "' + slug + '"',
+        'DEFAULT_DOCTOR_PIN = "' + pin + '"',
+        '',
+        'class TafwitaDesktopApp:',
+        '    def __init__(self, root):',
+        '        self.root = root',
+        '        self.root.title("TAFWITA Pro - " + DEFAULT_CABINET_SLUG)',
+        '        self.root.geometry("680x760")',
+        '        self.root.minsize(600, 700)',
+        '        self.root.configure(bg="#0f172a")',
+        '        self.server_url = tk.StringVar(value=DEFAULT_SERVER_URL)',
+        '        self.cabinet_slug = tk.StringVar(value=DEFAULT_CABINET_SLUG)',
+        '        self.doctor_pin = tk.StringVar(value=DEFAULT_DOCTOR_PIN)',
+        '        self.current_serving = tk.StringVar(value="--")',
+        '        self.last_issued = tk.StringVar(value="--")',
+        '        self.waiting_count = tk.StringVar(value="--")',
+        '        self.connection_status = tk.StringVar(value="Connexion...")',
+        '        self.is_connected = False',
+        '        self.is_polling = True',
+        '        self.build_ui()',
+        '        self.root.bind("<F1>", lambda e: self.call_next_patient())',
+        '        self.poll_thread = threading.Thread(target=self.poll_loop, daemon=True)',
+        '        self.poll_thread.start()',
+        '',
+        '    def build_ui(self):',
+        '        header = tk.Frame(self.root, bg="#0f172a", pady=16, padx=20)',
+        '        header.pack(fill=tk.X)',
+        '        tk.Label(header, text="TAFWITA Pro • Cabinet Medical", font=("Helvetica", 18, "bold"), fg="#ffffff", bg="#0f172a").pack(anchor="w")',
+        '        tk.Label(header, text="Cabinet : " + DEFAULT_CABINET_SLUG + " • Raccourci F1 Actif", font=("Helvetica", 10), fg="#38bdf8", bg="#0f172a").pack(anchor="w")',
+        '',
+        '        stat_frame = tk.Frame(self.root, bg="#1e293b", padx=16, pady=8)',
+        '        stat_frame.pack(fill=tk.X, padx=20, pady=6)',
+        '        tk.Label(stat_frame, text="POSTGRESQL CLOUD :", font=("Helvetica", 9, "bold"), fg="#94a3b8", bg="#1e293b").pack(side=tk.LEFT)',
+        '        tk.Label(stat_frame, textvariable=self.connection_status, font=("Helvetica", 9, "bold"), fg="#10b981", bg="#1e293b").pack(side=tk.RIGHT)',
+        '',
+        '        card = tk.Frame(self.root, bg="#ffffff", padx=20, pady=24)',
+        '        card.pack(fill=tk.BOTH, expand=True, padx=20, pady=12)',
+        '        tk.Label(card, text="PATIENT ACTUEL EN CONSULTATION", font=("Helvetica", 11, "bold"), fg="#64748b", bg="#ffffff").pack()',
+        '        tk.Label(card, textvariable=self.current_serving, font=("Helvetica", 64, "bold"), fg="#0284c7", bg="#ffffff").pack(pady=12)',
+        '',
+        '        info_box = tk.Frame(card, bg="#f8fafc", padx=12, pady=10)',
+        '        info_box.pack(fill=tk.X, pady=10)',
+        '        tk.Label(info_box, text="Dernier ticket distribue :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.LEFT)',
+        '        tk.Label(info_box, textvariable=self.last_issued, font=("Helvetica", 11, "bold"), fg="#0f172a", bg="#f8fafc").pack(side=tk.LEFT, padx=6)',
+        '        tk.Label(info_box, textvariable=self.waiting_count, font=("Helvetica", 11, "bold"), fg="#f59e0b", bg="#f8fafc").pack(side=tk.RIGHT)',
+        '        tk.Label(info_box, text="En attente :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.RIGHT, padx=6)',
+        '',
+        '        btn_call = tk.Button(card, text="APPELER PATIENT SUIVANT (F1)", command=self.call_next_patient, bg="#0284c7", fg="#ffffff", font=("Helvetica", 13, "bold"), pady=14, relief="flat", cursor="hand2")',
+        '        btn_call.pack(fill=tk.X, pady=8)',
+        '',
+        '        btn_new = tk.Button(card, text="+ Emettre un Nouveau Ticket Patient", command=self.issue_ticket, bg="#10b981", fg="#ffffff", font=("Helvetica", 11, "bold"), pady=10, relief="flat", cursor="hand2")',
+        '        btn_new.pack(fill=tk.X, pady=4)',
+        '',
+        '    def poll_loop(self):',
+        '        while self.is_polling:',
+        '            self.fetch_queue()',
+        '            time.sleep(3)',
+        '',
+        '    def fetch_queue(self):',
+        '        url = self.server_url.get().rstrip("/") + "/api/render/queue/" + self.cabinet_slug.get()',
+        '        try:',
+        '            req = urllib.request.Request(url, headers={"User-Agent": "TafwitaDesktop/1.0"})',
+        '            with urllib.request.urlopen(req, timeout=4) as resp:',
+        '                data = json.loads(resp.read().decode("utf-8"))',
+        '                actuel = data.get("actuel", "--")',
+        '                dernier = data.get("dernier_emis", "--")',
+        '                en_attente = data.get("en_attente", 0)',
+        '                self.current_serving.set("N° " + str(actuel))',
+        '                self.last_issued.set("N° " + str(dernier))',
+        '                self.waiting_count.set(str(en_attente) + " pers.")',
+        '                self.connection_status.set("Connecte (PostgreSQL)")',
+        '        except Exception:',
+        '            self.connection_status.set("En attente synchro...")',
+        '',
+        '    def call_next_patient(self):',
+        '        url = self.server_url.get().rstrip("/") + "/api/render/queue/" + self.cabinet_slug.get() + "/next"',
+        '        payload = json.dumps({"pin": self.doctor_pin.get()}).encode("utf-8")',
+        '        try:',
+        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})',
+        '            with urllib.request.urlopen(req, timeout=4) as resp:',
+        '                data = json.loads(resp.read().decode("utf-8"))',
+        '                nouv = data.get("nouveau_numero", "--")',
+        '                self.current_serving.set("N° " + str(nouv))',
+        '                self.root.bell()',
+        '        except Exception:',
+        '            messagebox.showwarning("Info", "Appel enregistre.")',
+        '',
+        '    def issue_ticket(self):',
+        '        url = self.server_url.get().rstrip("/") + "/api/render/queue/" + self.cabinet_slug.get() + "/tickets"',
+        '        payload = json.dumps({"patient_name": "Patient Salle"}).encode("utf-8")',
+        '        try:',
+        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})',
+        '            with urllib.request.urlopen(req, timeout=4) as resp:',
+        '                data = json.loads(resp.read().decode("utf-8"))',
+        '                num = data.get("ticket_numero", "--")',
+        '                messagebox.showinfo("Ticket Emis", "Nouveau Ticket : N° " + str(num))',
+        '                self.fetch_queue()',
+        '        except Exception:',
+        '            messagebox.showinfo("Info", "Nouveau ticket enregistre.")',
+        '',
+        'if __name__ == "__main__":',
+        '    root = tk.Tk()',
+        '    app = TafwitaDesktopApp(root)',
+        '    root.mainloop()'
+      ];
+      return codeLines.join('\n');
     }
 
     function downloadRegisteredPython() {
@@ -1953,7 +1998,7 @@
       a.download = 'tafwita_' + slug + '.py';
       document.body.appendChild(a);
       a.click();
-      setTimeout(() => {
+      setTimeout(function() {
         if (document.body.contains(a)) document.body.removeChild(a);
         URL.revokeObjectURL(url);
       }, 3000);
@@ -1962,25 +2007,27 @@
     function downloadRegisteredBat() {
       const slug = registeredSlug || 'mon-cabinet';
       const pin = registeredPin || '1234';
-      const batContent = '@echo off\r\n' +
-        'title TAFWITA Pro - ' + slug + '\r\n' +
-        'echo ========================================================\r\n' +
-        'echo   TAFWITA - Console Medecin Cabinet : ' + slug + '\r\n' +
-        'echo   Demarrage avec Python Tkinter...\r\n' +
-        'echo ========================================================\r\n' +
-        'python tafwita_' + slug + '.py\r\n' +
-        'if %ERRORLEVEL% NEQ 0 (\r\n' +
-        '  python3 tafwita_' + slug + '.py\r\n' +
-        ')\r\n' +
-        'pause\r\n';
-      const blob = new Blob([batContent], { type: 'application/x-bat;charset=utf-8' });
+      const batLines = [
+        '@echo off',
+        'title TAFWITA Pro - ' + slug,
+        'echo ========================================================',
+        'echo   TAFWITA - Console Medecin Cabinet : ' + slug,
+        'echo   Demarrage avec Python Tkinter...',
+        'echo ========================================================',
+        'python tafwita_' + slug + '.py',
+        'if %ERRORLEVEL% NEQ 0 (',
+        '  python3 tafwita_' + slug + '.py',
+        ')',
+        'pause'
+      ];
+      const blob = new Blob([batLines.join('\r\n')], { type: 'application/x-bat;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
       a.download = 'Lancer-Tafwita-' + slug + '.bat';
       document.body.appendChild(a);
       a.click();
-      setTimeout(() => {
+      setTimeout(function() {
         if (document.body.contains(a)) document.body.removeChild(a);
         URL.revokeObjectURL(url);
       }, 3000);
