@@ -1,2042 +1,720 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAFWITA (تفويتة) - La File d'Attente Médicale Sereine &amp; Intelligente en Algérie</title>
-  <meta name="description" content="Site officiel TAFWITA (تفويتة) : Téléchargez les applications pour Patients (Android APK) et Cabinets Médicaux (PC Desktop Windows & Mobile). Suivi de file d'attente en direct en réseau local ou cloud.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --primary-light: #e0f2fe;
-      --teal: #0d9488;
-      --teal-light: #ccfbf1;
-      --emerald: #10b981;
-      --emerald-light: #ecfdf5;
-      --slate-900: #0f172a;
-      --slate-800: #1e293b;
-      --slate-700: #334155;
-      --slate-600: #475569;
-      --slate-500: #64748b;
-      --slate-200: #e2e8f0;
-      --slate-100: #f1f5f9;
-      --slate-50: #f8fafc;
-      --card-bg: #ffffff;
-      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: linear-gradient(180deg, #f0fdf9 0%, #f8fafc 25%, #ffffff 100%);
-      color: var(--slate-800);
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAFWITA — Fini les files d'attente au cabinet médical</title>
+<meta name="description" content="TAFWITA : prenez votre ticket de consultation médicale à distance, suivez la file en temps réel et arrivez au bon moment. Solution pour cabinets médicaux en Algérie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=w-wsdjjWVNIpiSVxiKheDkkTaCepCkuEqTak6j81f0rE9V2FDCGolKPllDyLxm-1h2DWUDgCpPiQgw82DCty2IZIBcn2Q_VntWxLJt3eO6nJfRaC09PN-YQWwRaMxUXRqXyKohi2qbG7ni0XrQlnpM03cN0ih5JRXFy_J72lvEBSYZtL_-MVLXg7vKsPx1lSV3smFBVVh47Zw9xLLHk7OErzCleEtVx3R0rK8K-K170tn-3bks2glu1wAeHS8zm331MR88jcUlwFN8qMwPSA-5BxNoVYS2HIGtv_o92p-NKTaA5hXYx98uYTikYgdBaXzs_CYndLn8glTg4mw-p8jGQlNiy-vPzjJIcFb8F-A1rEbxRtlb_d71u3RrdaLaKb75DWGO8N2tB_QoEH5_TGz0r6wm7yoqXWxBzmpGsbHEWpPqYv63xAHhs_WLzwdTFtDDwqZbMEFg5gRuSXXgVmKuH5wpFypCRYrb1OM47U0LfGUoCo1LJiBWue1E676lrsXa-EIUf7u8iEuuHBcF71ummWJpET7bIM1dowRFAm6WXW-1A4Xvc_HS0Kr8DN61dDdVT8DyFtY1LTj_b9NlrvsueCr4OoDMLja9ZYeM3P6r2wpZ58XPLB3XdT5gkgpTNYNpVh5NzI1BTAbIU6DRy5NnX8-n7lnFmy9bkdw5hteLVKK2qyPomER3bqNv60jgX2Ekx6HUNl6dXaHxSFtfmo3szZ9Al98quLtmbnNCA8VyxeFH9AZPs67vvmCBXIrU85cvaFK06j6U3WVqONJbENPBsK-NaEgNFiCP13XfYSh8ZtBfBd75-M4cQ5ubtGpyIr9xOp3v-ZC-JesuziiaIXW3qvN3fqPe6w5zP-LCSu7uHEJx9oirkicZGGig0LqZCEhWtf_4URX6RlaxJqdnbBnmbiysCunNEL4hbSkUz-nIESeYGx3WTXCsHN0v3d1q7I4e0Y7jffkLyCKhhEPlDxw0-NP4kMkiCTT2oiBH8zVT73tBN0X4qZDtUQNJvY2MqcWbKuaa_3vwabn41v_Y_nbMbKTNUYkRXGy7pgebyiSBrUNGewKouq5yXQX8djSVPpHPs1u2RUR06OomixkvfL5tPZ9vxtMADdtFV1gh-1yJyZ3uYhcGF0XhvGYqzkgt0QHrHuQ9v0iBE39g8rllp1aeXFCL_GGkEC1riSh9gbujvUURSObkEr0jMZOtRPnscfaeUs6sd0v2YGRZ34lLs_CICinFFkSim55lkO54qXyoJ7aKlRUfA1-S52r9TwBLxJabUcdEY1Bjo3UUr3B5ZqTVugHVF2sLAH6CSwWAH9P-1ni99ObR83DHWZxPvDSfrNw2lhP7oC3zGQlSe89lIME1Q13iT6sl4kzFMk8VuhwO4DQLbmvTR95lP1wHU3SDz7LHk1a1oXDkUnlkPFSzCt7wYlDYbnF_mxcir-RuztljylNR5_BW7ZVjOz3mQFvSZMKXI7nyCuFVQkyYhwetouhIruKZIs27xdI1pPVB01vBtu9dBUdEXhCAlat-VrseIHt10fWgZxjbAo3_ecRxaq8HtmjLxpdOXzJCob3xAUVPJKrROvHBlaDQoBdq-Mf8p-ZXw-Xx3dDtP1OgWJg0CfI48Za7v1LLHvUNT8DxYxvGgLUC8rf7NG3WZZ9vN1ref65nuGRpGgDtInmdeYEmoooB5GAck6nfVguKrOy68T8mGq5ToQhg4Q1EXJzS5PVJwS8bp3755PtjcVapaYlPuX30u-c2AZwKle_U7yIQdYapN-Fa0Eo-bRMeoMhljNBS3PdpfBex2nNHan8QtqFAEiKo9Yc821faypdnf0IVE0V1oUenkS6dJFREGWxFzqNRbsq4Kfv6VH6rG2vx-y3lv7Nh_hhCix1DSRmdT92C6K6cHLhWC_-F_Iejl9zQ9-ckpFlanjp4G0c7_8lrfC0zq3ezltq_z2XflTk-5gseY9EGKLdYCxUxQFHXBBj9pDgaI1VFgHc0gN7tX3sRCX5mMX1Qm0h6HO4EMD2CQXHzdYH4EGhXsnjfBNL5AglcDU6eoBivGh4eIzWuIRjUPBhtkffAwP0mp3RU4CR1qTNy-L2cHZFIif2dMMArswkVuQIcHDXbyPCZefW2JhyQCij4624RRmVSRwlC2yrOMcXGn-ShtDR264EEtEZ8sN_lRzJMwo1anx-SK0V2e9-tXG6ikQvZl2YrYkPWhuOY71jsHpX68UM3hqWNrq9dr3suU21oLuEwcOD4T3b_HAr4Yhic199A" charset="UTF-8"></script><style>
 
-    /* Ambient soft soothing blobs in background */
-    .bg-blobs {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .blob-1 {
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(240, 253, 250, 0) 70%);
-      border-radius: 50%;
-    }
-    .blob-2 {
-      position: absolute;
-      top: 35%;
-      left: -150px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, rgba(240, 253, 250, 0) 70%);
-      border-radius: 50%;
-    }
+/* ===== TAFWITA — Design system bleu turquoise nuancé ===== */
+:root{
+  --bg-deep: #0b0f1a;
+  --bg-mid: #101a2b;
+  --violet: #2b3a67;
+  --magenta: #0e7c86;
+  --pink: #35c2c8;
+  --accent: #1a9ba0;
+  --ink: #ffffff;
+  --ink-soft: rgba(255,255,255,0.72);
+  --ink-dim: rgba(255,255,255,0.5);
+  --card-bg: rgba(255,255,255,0.05);
+  --card-border: rgba(255,255,255,0.10);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --ff-head: 'Poppins', sans-serif;
+  --ff-body: 'Manrope', sans-serif;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
 
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family: var(--ff-body);
+  background: radial-gradient(120% 120% at 15% 0%, var(--bg-mid) 0%, var(--bg-deep) 55%, #05070d 100%);
+  color: var(--ink);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+.container{ max-width:1200px; margin:0 auto; padding:0 24px; position:relative; z-index:2; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+h1,h2,h3,h4{ font-family: var(--ff-head); font-weight:700; line-height:1.15; }
 
-    /* Header Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      padding: 0.9rem 0;
-      box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.03);
-    }
-    .nav-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      text-decoration: none;
-    }
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #0284c7, #0d9488);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      color: white;
-      font-size: 22px;
-      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25);
-    }
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-title {
-      font-size: 1.25rem;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: var(--slate-900);
-      line-height: 1.2;
-    }
-    .brand-sub {
-      font-size: 0.75rem;
-      color: var(--teal);
-      font-weight: 700;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-    @media (max-width: 880px) {
-      .nav-links { display: none; }
-    }
-    .nav-links a {
-      color: var(--slate-600);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-    .nav-links a:hover {
-      color: var(--primary);
-    }
+/* ===== Background FX (vagues animées, discrètes) ===== */
+.bg-fx{ position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; background:transparent; }
+#waves{ width:100%; height:100%; display:block; opacity:.55; }
+.glow{ position:absolute; border-radius:50%; filter:blur(110px); opacity:.18; }
+.glow-1{ width:520px; height:520px; background:var(--magenta); top:-150px; right:-120px; animation: glowMove 12s ease-in-out infinite; }
+.glow-2{ width:420px; height:420px; background:var(--violet); bottom:-100px; left:-100px; animation: glowMove 14s ease-in-out infinite reverse; }
+@keyframes glowMove{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(40px,-30px) scale(1.15); } }
 
-    .btn-nav {
-      background: linear-gradient(135deg, #0284c7, #0d9488);
-      color: white;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 0.85rem;
-      padding: 0.65rem 1.4rem;
-      border-radius: 9999px;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-nav:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
-    }
+/* ===== Navbar ===== */
+.navbar{ position:fixed; top:0; left:0; right:0; z-index:100; padding:18px 0; transition:.35s var(--ease); }
+.navbar.scrolled{ background:rgba(11,15,26,0.78); backdrop-filter: blur(16px); box-shadow:0 8px 30px rgba(0,0,0,.25); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; }
+.logo{ font-family:var(--ff-head); font-weight:800; font-size:1.3rem; letter-spacing:.5px; }
+.logo span{ background:linear-gradient(90deg,var(--pink),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.nav-links{ display:flex; gap:32px; }
+.nav-links a{ font-size:.92rem; color:var(--ink-soft); transition:.25s; position:relative; }
+.nav-links a:hover{ color:#fff; }
+.nav-actions{ display:flex; gap:14px; align-items:center; }
+.burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:110; }
+.burger span{ width:24px; height:2px; background:#fff; border-radius:2px; }
 
-    /* Hero Section */
-    .hero {
-      padding: 4.5rem 0 3.5rem;
-      text-align: center;
-      position: relative;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: 9999px;
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      color: #047857;
-      font-size: 0.85rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
-    }
-    .hero-title {
-      font-size: 3.4rem;
-      font-weight: 900;
-      letter-spacing: -1.2px;
-      line-height: 1.2;
-      max-width: 950px;
-      margin: 0 auto 1.5rem;
-      color: var(--slate-900);
-    }
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2.3rem; }
-    }
-    .relax-highlight {
-      background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle {
-      font-size: 1.2rem;
-      color: var(--slate-600);
-      max-width: 750px;
-      margin: 0 auto 2.5rem;
-      font-weight: 450;
-      line-height: 1.7;
-    }
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
-    .btn-hero-primary {
-      background: linear-gradient(135deg, #0284c7, #0d9488);
-      color: white;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 1.05rem 2.2rem;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
-      transition: all 0.2s;
-    }
-    .btn-hero-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(2, 132, 199, 0.35);
-    }
-    .btn-hero-secondary {
-      background: white;
-      color: var(--slate-800);
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 1.05rem 2rem;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      border: 1px solid var(--slate-200);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-      transition: all 0.2s;
-    }
-    .btn-hero-secondary:hover {
-      background: var(--slate-50);
-      border-color: #cbd5e1;
-      transform: translateY(-2px);
-    }
+/* ===== Buttons ===== */
+.btn{ display:inline-flex; align-items:center; gap:8px; font-family:var(--ff-head); font-weight:600; font-size:.9rem; padding:11px 22px; border-radius:var(--radius-pill); transition:.3s var(--ease); border:1px solid transparent; cursor:pointer; }
+.btn-pill{ background:linear-gradient(90deg,var(--magenta),var(--accent)); color:#fff; box-shadow:0 8px 24px rgba(14,124,134,.35); }
+.btn-pill:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(14,124,134,.5); }
+.btn-ghost{ color:var(--ink-soft); }
+.btn-ghost:hover{ color:#fff; }
+.btn-outline{ border-color:rgba(255,255,255,.3); color:#fff; }
+.btn-outline:hover{ background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.5); }
+.btn-lg{ padding:15px 30px; font-size:1rem; }
+.full{ width:100%; justify-content:center; }
+.arrow{ transition:.3s; }
+.btn:hover .arrow{ transform:translateX(4px); }
 
-    /* TRIAL BUTTONS & MODAL STYLES */
-    .btn-trial-nav {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #0f172a;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 0.82rem;
-      padding: 0.6rem 1.25rem;
-      border-radius: 9999px;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-trial-nav:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    }
-    .btn-hero-trial {
-      background: linear-gradient(135deg, #f59e0b, #ea580c);
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 1.05rem;
-      padding: 1.05rem 2.2rem;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
-      transition: all 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-hero-trial:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(245, 158, 11, 0.5);
-    }
+/* ===== Hero ===== */
+.hero{ display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:40px; padding:170px 24px 100px; min-height:90vh; }
+.badge{ display:inline-block; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); padding:8px 16px; border-radius:var(--radius-pill); font-size:.8rem; margin-bottom:24px; }
+.hero h1{ font-size:3.4rem; margin-bottom:22px; }
+.grad-text{ background:linear-gradient(90deg,var(--pink),var(--magenta) 60%,var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.lead{ font-size:1.08rem; color:var(--ink-soft); max-width:520px; margin-bottom:34px; line-height:1.65; }
+.hero-actions{ display:flex; gap:16px; margin-bottom:48px; flex-wrap:wrap; }
+.hero-stats{ display:flex; gap:36px; flex-wrap:wrap; }
+.hero-stats div{ display:flex; flex-direction:column; }
+.hero-stats strong{ font-family:var(--ff-head); font-size:1.4rem; }
+.hero-stats span{ font-size:.78rem; color:var(--ink-dim); }
 
-    /* Trial Modal Pop-up */
-    .trial-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(8px);
-      z-index: 99999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      overflow-y: auto;
-    }
-    .trial-modal-overlay.active {
-      display: flex !important;
-    }
-    .trial-modal-dialog {
-      background: #ffffff;
-      border-radius: 28px;
-      width: 100%;
-      max-width: 580px;
-      max-height: 92vh;
-      overflow-y: auto;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      position: relative;
-      animation: modalScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes modalScaleUp {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .trial-modal-header {
-      padding: 1.5rem 1.75rem 1.25rem;
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 40%, #ecfdf5 100%);
-      border-bottom: 1px solid #fde68a;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-top-left-radius: 28px;
-      border-top-right-radius: 28px;
-    }
-    .trial-modal-body {
-      padding: 1.75rem;
-    }
-    .trial-close-btn {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid #e2e8f0;
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.25rem;
-      color: #64748b;
-      transition: all 0.2s;
-    }
-    .trial-close-btn:hover {
-      background: #ffffff;
-      color: #0f172a;
-    }
-    .form-group {
-      margin-bottom: 1.15rem;
-    }
-    .form-label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #334155;
-      margin-bottom: 0.4rem;
-    }
-    .form-control {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 14px;
-      border: 1.5px solid #cbd5e1;
-      font-size: 0.92rem;
-      font-family: inherit;
-      color: #0f172a;
-      background: #f8fafc;
-      transition: all 0.2s;
-      box-sizing: border-box;
-    }
-    .form-control:focus {
-      outline: none;
-      border-color: #f59e0b;
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
-    }
-    .btn-submit-trial {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #f59e0b, #ea580c);
-      color: white;
-      font-weight: 900;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
-      transition: all 0.2s;
-    }
-    .btn-submit-trial:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.45);
-    }
-    .btn-submit-trial:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .download-hub {
-      padding: 3rem 0 5rem;
-      position: relative;
-    }
-    .section-eyebrow {
-      text-align: center;
-      color: #0d9488;
-      font-weight: 800;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.4rem;
-      font-weight: 900;
-      letter-spacing: -0.8px;
-      margin-bottom: 0.75rem;
-      color: var(--slate-900);
-    }
-    .section-subtitle {
-      text-align: center;
-      color: var(--slate-600);
-      font-size: 1.1rem;
-      max-width: 650px;
-      margin: 0 auto 3.5rem;
-    }
+.hero-visual{ position:relative; height:520px; display:flex; align-items:center; justify-content:center; }
+.phone-mock{ width:250px; height:500px; background:linear-gradient(160deg,#131c2e,#0a0f1a); border-radius:38px; border:1px solid rgba(255,255,255,.13); box-shadow:0 30px 80px rgba(0,0,0,.5), 0 0 0 8px rgba(255,255,255,.03); position:relative; padding:20px 16px; animation: floatY 6s ease-in-out infinite; }
+.phone-notch{ width:70px; height:6px; background:rgba(255,255,255,.2); border-radius:6px; margin:0 auto 22px; }
+.phone-screen{ display:flex; flex-direction:column; gap:18px; }
+.ps-header{ display:flex; align-items:center; gap:8px; font-size:.78rem; color:var(--ink-soft); }
+.ps-dot{ width:8px; height:8px; border-radius:50%; background:#22e29a; box-shadow:0 0 8px #22e29a; }
+.ps-ticket{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:22px; text-align:center; }
+.ps-label{ display:block; font-size:.75rem; color:var(--ink-dim); margin-bottom:8px; }
+.ps-number{ font-family:var(--ff-head); font-size:2.6rem; font-weight:800; color:#ffffff; }
+.ps-progress{ display:flex; flex-direction:column; gap:10px; }
+.ps-bar{ width:100%; height:8px; background:rgba(255,255,255,.15); border-radius:8px; overflow:hidden; }
+.ps-fill{ height:100%; width:35%; background:#ffffff; border-radius:8px; transition:width 1.2s var(--ease); }
+.ps-progress span{ font-size:.75rem; color:var(--ink-dim); }
+.ps-status{ display:flex; align-items:center; gap:8px; font-size:.75rem; color:var(--ink-soft); margin-top:auto; }
+.pulse-dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); position:relative; }
+.pulse-dot::after{ content:''; position:absolute; inset:-4px; border-radius:50%; border:2px solid var(--accent); animation:pulse 1.8s infinite; }
 
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.25rem;
-    }
-    @media (max-width: 960px) {
-      .download-grid { grid-template-columns: 1fr; }
-    }
+.floating-card{ position:absolute; display:flex; align-items:center; gap:10px; background:rgba(255,255,255,.06); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.13); border-radius:16px; padding:12px 16px; box-shadow:0 15px 40px rgba(0,0,0,.35); animation: floatY 5s ease-in-out infinite; }
+.floating-card small{ display:block; color:var(--ink-dim); font-size:.7rem; }
+.floating-card strong{ font-size:.82rem; }
+.card-tv{ top:30px; left:-30px; animation-delay:.5s; }
+.card-bell{ bottom:50px; right:-30px; animation-delay:1s; }
+.fc-icon{ font-size:1.4rem; }
 
-    /* Download Cards - Bright & Elegant */
-    .dl-card {
-      background: white;
-      border: 1px solid var(--slate-200);
-      border-radius: 28px;
-      padding: 2.75rem;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.05);
-      transition: all 0.25s ease;
-    }
-    .dl-card:hover {
-      border-color: #cbd5e1;
-      transform: translateY(-5px);
-      box-shadow: 0 25px 45px -12px rgba(15, 23, 42, 0.09);
-    }
-    .dl-card.patient-card {
-      border-top: 5px solid #10b981;
-    }
-    .dl-card.pro-card {
-      border-top: 5px solid #0284c7;
-    }
+@keyframes floatY{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-14px); } }
+@keyframes pulse{ 0%{ opacity:1; transform:scale(1); } 100%{ opacity:0; transform:scale(1.8); } }
 
-    .card-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.95rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.25rem;
-    }
-    .badge-green {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-    }
-    .badge-blue {
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 1px solid #bae6fd;
-    }
+/* ===== Logos strip ===== */
+.logos-strip{ text-align:center; padding-bottom:60px; }
+.logos-strip p{ color:var(--ink-dim); font-size:.85rem; margin-bottom:18px; }
+.logos-row{ display:flex; justify-content:center; gap:36px; flex-wrap:wrap; }
+.logos-row span{ font-family:var(--ff-head); font-weight:600; color:var(--ink-soft); font-size:.9rem; opacity:.8; }
 
-    .card-title {
-      font-size: 1.85rem;
-      font-weight: 900;
-      margin-bottom: 0.75rem;
-      color: var(--slate-900);
-      letter-spacing: -0.5px;
-    }
-    .card-desc {
-      color: var(--slate-600);
-      font-size: 0.98rem;
-      line-height: 1.6;
-      margin-bottom: 1.75rem;
-    }
+/* ===== Sections generic ===== */
+.section{ padding:100px 0; position:relative; }
+.section-alt{ background:linear-gradient(180deg,rgba(255,255,255,.02),transparent); }
+.section-head{ text-align:center; max-width:640px; margin:0 auto 60px; }
+.tag{ display:inline-block; background:rgba(53,194,200,.10); color:var(--pink); border:1px solid rgba(53,194,200,.25); padding:6px 14px; border-radius:var(--radius-pill); font-size:.78rem; font-weight:600; margin-bottom:16px; }
+.section-head h2{ font-size:2.2rem; margin-bottom:14px; }
+.section-head p{ color:var(--ink-soft); }
 
-    .features-list {
-      list-style: none;
-      margin-bottom: 2.25rem;
-    }
-    .features-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.92rem;
-      color: var(--slate-700);
-      margin-bottom: 0.85rem;
-      font-weight: 500;
-    }
-    .check-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #ecfdf5;
-      color: #059669;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-    .check-icon-blue {
-      background: #e0f2fe;
-      color: #0284c7;
-    }
+/* ===== Steps ===== */
+.steps-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.step-card{ background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:34px; transition:.35s var(--ease); }
+.step-card:hover{ transform:translateY(-8px); border-color:rgba(53,194,200,.35); box-shadow:0 20px 50px rgba(14,124,134,.12); }
+.step-num{ font-family:var(--ff-head); font-size:2rem; font-weight:800; color:rgba(255,255,255,.13); margin-bottom:14px; }
+.step-card h3{ font-size:1.15rem; margin-bottom:10px; }
+.step-card p{ color:var(--ink-soft); font-size:.92rem; line-height:1.6; }
 
-    .dl-btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-    .btn-dl-main {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 1rem;
-      padding: 1.05rem 1.6rem;
-      border-radius: 16px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
-    }
-    .btn-dl-main:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
-    }
-    .btn-dl-pro {
-      background: linear-gradient(135deg, #0284c7, #0d9488);
-      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.25);
-    }
-    .btn-dl-pro:hover {
-      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.35);
-    }
+/* ===== Solutions ===== */
+.solutions-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.solution-card{ position:relative; background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:36px; transition:.35s var(--ease); }
+.solution-card:hover{ transform:translateY(-8px); }
+.solution-card.featured{ background:linear-gradient(160deg,rgba(14,124,134,.15),rgba(43,58,103,.15)); border-color:rgba(53,194,200,.35); }
+.solution-icon{ width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-bottom:20px; background:rgba(255,255,255,.07); }
+.solution-card h3{ font-size:1.2rem; margin-bottom:16px; }
+.solution-card ul li{ color:var(--ink-soft); font-size:.9rem; padding:7px 0 7px 22px; position:relative; }
+.solution-card ul li::before{ content:'✓'; position:absolute; left:0; color:var(--pink); font-weight:700; }
+.chip{ position:absolute; top:-12px; right:24px; background:linear-gradient(90deg,var(--magenta),var(--accent)); font-size:.72rem; font-weight:700; padding:5px 14px; border-radius:var(--radius-pill); }
 
-    .btn-dl-sub {
-      background: #f8fafc;
-      color: var(--slate-700);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.88rem;
-      padding: 0.85rem 1.2rem;
-      border-radius: 14px;
-      text-align: center;
-      border: 1px solid var(--slate-200);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-    .btn-dl-sub:hover {
-      background: var(--slate-100);
-      color: var(--slate-900);
-      border-color: #cbd5e1;
-    }
+/* ===== Compare table ===== */
+.table-wrap{ overflow-x:auto; border-radius:var(--radius-lg); border:1px solid var(--card-border); }
+.compare-table{ width:100%; border-collapse:collapse; background:var(--card-bg); }
+.compare-table th,.compare-table td{ padding:16px 20px; text-align:left; font-size:.9rem; border-bottom:1px solid var(--card-border); }
+.compare-table th{ font-family:var(--ff-head); background:rgba(255,255,255,.04); }
+.compare-table .yes{ color:#22e29a; font-weight:700; }
+.compare-table .maybe{ color:var(--ink-dim); }
 
-    /* Live Interactive Demo - Bright Relaxing Clinic Screen */
-    .live-demo {
-      margin: 4rem 0 6rem;
-      padding: 3.5rem;
-      background: white;
-      border: 1px solid var(--slate-200);
-      border-radius: 32px;
-      box-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.07);
-    }
-    .demo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    @media (max-width: 820px) {
-      .demo-grid { grid-template-columns: 1fr; }
-    }
-    .demo-display {
-      background: linear-gradient(145deg, #f0fdf9 0%, #e0f2fe 100%);
-      border: 2px solid #a7f3d0;
-      border-radius: 24px;
-      padding: 2.75rem 2rem;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(13, 148, 136, 0.08);
-    }
-    .demo-num {
-      font-size: 5.5rem;
-      font-weight: 900;
-      color: #0369a1;
-      line-height: 1;
-      margin: 1.25rem 0;
-      letter-spacing: -2px;
-    }
+/* ===== Pricing ===== */
+.pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; align-items:stretch; }
+.price-card{ position:relative; background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:36px; display:flex; flex-direction:column; transition:.35s var(--ease); }
+.price-card:hover{ transform:translateY(-8px); }
+.price-card.featured{ background:linear-gradient(160deg,rgba(14,124,134,.18),rgba(43,58,103,.18)); border-color:rgba(53,194,200,.4); transform:scale(1.03); }
+.price-card h3{ font-size:1.1rem; margin-bottom:14px; }
+.price{ font-family:var(--ff-head); font-size:2.4rem; font-weight:800; margin-bottom:6px; }
+.price span{ font-size:.9rem; font-weight:500; color:var(--ink-dim); }
+.strike{ color:var(--ink-dim); text-decoration:line-through; font-size:.85rem; margin-bottom:18px; }
+.price-card ul{ flex:1; margin:18px 0 26px; }
+.price-card ul li{ color:var(--ink-soft); font-size:.88rem; padding:7px 0 7px 22px; position:relative; }
+.price-card ul li::before{ content:'✓'; position:absolute; left:0; color:var(--pink); font-weight:700; }
 
-    /* Pricing Section (Focus Cabinets Médicaux) */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      max-width: 900px;
-      margin: 3.5rem auto 0;
-    }
-    @media (max-width: 768px) {
-      .pricing-grid { grid-template-columns: 1fr; }
-    }
+/* ===== FAQ ===== */
+.faq-list{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+.faq-item{ background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius-md); overflow:hidden; }
+.faq-q{ width:100%; background:none; border:none; color:#fff; text-align:left; padding:20px 24px; font-family:var(--ff-head); font-size:.98rem; font-weight:600; display:flex; justify-content:space-between; cursor:pointer; }
+.faq-q span{ transition:.3s var(--ease); color:var(--pink); }
+.faq-item.open .faq-q span{ transform:rotate(45deg); }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .35s var(--ease); }
+.faq-a p{ padding:0 24px 20px; color:var(--ink-soft); font-size:.9rem; line-height:1.6; }
 
-    /* App Slideshow / Video Demo Mockup */
-    .slideshow-wrapper {
-      background: #090e17;
-      border-radius: 28px;
-      border: 1px solid #1e293b;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-    .slideshow-topbar {
-      background: #0f172a;
-      padding: 0.85rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #1e293b;
-    }
-    .slideshow-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-slide-ctrl {
-      background: #1e293b;
-      color: #f8fafc;
-      border: 1px solid #334155;
-      padding: 0.4rem 0.8rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all 0.2s;
-    }
-    .btn-slide-ctrl:hover {
-      background: #334155;
-      color: #38bdf8;
-    }
-    .slide-progress-track {
-      width: 100%;
-      height: 4px;
-      background: #1e293b;
-      position: relative;
-    }
-    .slide-progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, #0284c7, #10b981);
-      width: 0%;
-      transition: width 0.08s linear;
-    }
-    .demo-tabs-nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      background: #0f172a;
-      border-bottom: 1px solid #1e293b;
-    }
-    @media (max-width: 768px) {
-      .demo-tabs-nav { grid-template-columns: repeat(2, 1fr); }
-    }
-    .demo-tab-btn {
-      background: transparent;
-      border: none;
-      padding: 1.1rem 0.8rem;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-      border-bottom: 3px solid transparent;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .demo-tab-btn:hover {
-      color: #f1f5f9;
-      background: rgba(255, 255, 255, 0.03);
-    }
-    .demo-tab-btn.active {
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.09);
-      border-bottom-color: #38bdf8;
-    }
-    .slide-content-pane {
-      display: none;
-      padding: 2.5rem 2rem;
-      min-height: 430px;
-      color: #f8fafc;
-    }
-    .slide-content-pane.active {
-      display: block;
-      animation: fadeInSlide 0.3s ease-in-out;
-    }
-    @keyframes fadeInSlide {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .price-card {
-      background: white;
-      border: 1px solid var(--slate-200);
-      border-radius: 24px;
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-      transition: all 0.25s ease;
-    }
-    .price-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.07);
-    }
-    .price-card.featured {
-      border: 2px solid #0284c7;
-      background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 40%);
-      box-shadow: 0 15px 35px rgba(2, 132, 199, 0.1);
-    }
-    .price-amount {
-      font-size: 2.4rem;
-      font-weight: 900;
-      color: var(--slate-900);
-      margin: 1rem 0;
-      letter-spacing: -1px;
-    }
-    .price-unit {
-      font-size: 0.95rem;
-      color: var(--slate-500);
-      font-weight: 600;
-    }
+/* ===== CTA ===== */
+.cta-section{ padding:40px 24px 120px; }
+.cta-box{ text-align:center; background:linear-gradient(135deg,rgba(14,124,134,.2),rgba(43,58,103,.2)); border:1px solid rgba(53,194,200,.3); border-radius:32px; padding:70px 40px; }
+.cta-box h2{ font-size:2.1rem; margin-bottom:12px; }
+.cta-box p{ color:var(--ink-soft); margin-bottom:32px; }
+.cta-form{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; max-width:640px; margin:0 auto; }
+.cta-form input{ flex:1; min-width:200px; padding:14px 18px; border-radius:var(--radius-pill); border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.07); color:#fff; font-family:var(--ff-body); }
+.cta-form input::placeholder{ color:var(--ink-dim); }
+.cta-form input:focus{ outline:none; border-color:var(--pink); }
+#formMsg{ display:block; margin-top:16px; color:#22e29a; font-size:.85rem; }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--slate-200);
-      padding: 3.5rem 0;
-      margin-top: 6rem;
-      font-size: 0.9rem;
-      color: var(--slate-500);
-      background: white;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-  </style>
+/* ===== Footer ===== */
+.footer{ padding:70px 0 30px; border-top:1px solid var(--card-border); position:relative; z-index:2; }
+.footer-grid{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
+.footer-grid p{ color:var(--ink-dim); font-size:.85rem; margin-top:14px; max-width:260px; }
+.footer-grid h4{ font-size:.9rem; margin-bottom:16px; color:var(--ink-soft); }
+.footer-grid a{ display:block; color:var(--ink-dim); font-size:.85rem; padding:6px 0; transition:.25s; }
+.footer-grid a:hover{ color:#fff; }
+.footer-bottom{ text-align:center; color:var(--ink-dim); font-size:.8rem; padding-top:24px; border-top:1px solid var(--card-border); }
+
+/* ===== Scroll reveal ===== */
+[data-animate]{ opacity:0; transform:translateY(30px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+[data-animate="fade-in"]{ transform:translateY(0) scale(.92); }
+[data-animate].in-view{ opacity:1; transform:translateY(0) scale(1); }
+
+/* ===== Responsive ===== */
+@media (max-width: 980px){
+  .hero{ grid-template-columns:1fr; padding-top:140px; text-align:center; }
+  .hero-text{ display:flex; flex-direction:column; align-items:center; }
+  .hero-actions{ justify-content:center; }
+  .hero-stats{ justify-content:center; }
+  .hero-visual{ height:420px; margin-top:20px; }
+  .steps-grid,.solutions-grid,.pricing-grid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  .nav-links{ position:fixed; top:0; right:-100%; height:100vh; width:280px; background:rgba(11,15,26,.97); flex-direction:column; padding:100px 30px; gap:24px; transition:.4s var(--ease); backdrop-filter:blur(20px); }
+  .nav-links.open{ right:0; }
+  .nav-actions{ display:none; }
+  .burger{ display:flex; }
+}
+@media (max-width:600px){
+  .hero h1{ font-size:2.3rem; }
+  .section-head h2{ font-size:1.7rem; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .cta-form{ flex-direction:column; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Ambient soothing glow blobs -->
-  <div class="bg-blobs">
-    <div class="blob-1"></div>
-    <div class="blob-2"></div>
-  </div>
+<div class="bg-fx">
+  <canvas id="waves"></canvas>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+</div>
 
-  <!-- Top Navigation Header -->
-  <header>
-    <div class="container nav-inner">
-      <a href="#" class="brand">
-        <div class="brand-logo">T</div>
-        <div class="brand-text">
-          <div class="brand-title">TAFWITA (تفويتة)</div>
-          <div class="brand-sub">File d'Attente Médicale Sereine 🇩🇿</div>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#telechargements">Téléchargements</a></li>
-        <li><a href="#simulateur">Démonstrateur</a></li>
-        <li><a href="#serenite">Sérénité Médicale</a></li>
-        <li><a href="#tarifs">Tarifs</a></li>
-      </ul>
-
-      <div class="nav-cta" style="display: flex; align-items: center; gap: 0.65rem;">
-        <button onclick="openTrialRegisterModal()" class="btn-trial-nav">
-          <span>✨</span> Essai Gratuit (14j)
-        </button>
-        <a href="#telechargements" class="btn-nav">
-          <span>⬇</span> Télécharger l'App
-        </a>
-      </div>
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">TAF<span>WITA</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#comment-ca-marche">Comment ça marche</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#connexion" class="btn btn-ghost">Espace cabinet</a>
+      <a href="#inscription" class="btn btn-pill">Essai gratuit 14j</a>
     </div>
-  </header>
+    <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span>🌿</span> Moins d'attente, plus de sérénité • Solution Professionnelle pour Cabinets &amp; Cliniques
-      </div>
+<main id="top">
 
-      <h1 class="hero-title">
-        Respirez. Votre salle d'attente<br>
-        retrouve enfin sa <span class="relax-highlight">parfaite tranquillité.</span>
-      </h1>
-
-      <p class="hero-subtitle">
-        Offrez une expérience douce et apaisante à vos patients. Suivi en direct du tour sur smartphone depuis leur véhicule ou leur domicile, console médecin ultra-fluide et écran TV connecté — solution clé en main disponible en réseau Wi-Fi local sécurisé ou synchronisée via le Cloud.
+  <section class="hero container">
+    <div class="hero-text" data-animate="fade-up">
+      <span class="badge">🇩🇿 Conçu pour les cabinets médicaux algériens</span>
+      <h1>Zéro file d'attente. <br>Zéro stress. <span class="grad-text">Zéro papier perdu.</span></h1>
+      <p class="lead">
+        TAFWITA permet à vos patients de prendre leur ticket de consultation depuis leur canapé,
+        de suivre leur tour en direct sur smartphone, et d'arriver au cabinet exactement au bon moment.
+        Votre secrétaire garde le contrôle total depuis une console de bureau ultra-fluide.
       </p>
-
       <div class="hero-actions">
-        <button onclick="openTrialRegisterModal()" class="btn-hero-trial">
-          <span>✨</span> Inscription Test Gratuit (14j) &amp; Télécharger
-        </button>
-        <a href="#telechargements" class="btn-hero-primary">
-          <span>📱</span> Espace Téléchargements
-        </a>
-        <a href="#simulateur" class="btn-hero-secondary">
-          <span>🔔</span> Tester la File en Direct
-        </a>
+        <a href="#inscription" class="btn btn-pill btn-lg">Essayer gratuitement <span class="arrow">→</span></a>
+        <a href="#demo" class="btn btn-outline btn-lg">Voir la démo</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>-70%</strong><span>temps d'attente perçu</span></div>
+        <div><strong>3 espaces</strong><span>Patient · Cabinet · TV</span></div>
+        <div><strong>14 jours</strong><span>gratuits sans engagement</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-animate="fade-in">
+      <div class="phone-mock">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="ps-header">
+            <span class="ps-dot"></span> Cabinet Dr. Benali
+          </div>
+          <div class="ps-ticket">
+            <span class="ps-label">Votre ticket</span>
+            <span class="ps-number" id="ticketNumber">P-08</span>
+          </div>
+          <div class="ps-progress">
+            <div class="ps-bar"><div class="ps-fill" id="psFill"></div></div>
+            <span id="psWaitText">3 patients avant vous · ~24 min</span>
+          </div>
+          <div class="ps-status">
+            <span class="pulse-dot"></span> En direct
+          </div>
+        </div>
+      </div>
+      <div class="floating-card card-tv">
+        <span class="fc-icon">📺</span>
+        <div><strong>Écran TV salle d'attente</strong><small>Numéro en cours synchronisé</small></div>
+      </div>
+      <div class="floating-card card-bell">
+        <span class="fc-icon">🔔</span>
+        <div><strong>Carillon d'appel</strong><small>Alerte sonore au cabinet</small></div>
       </div>
     </div>
   </section>
 
-  <!-- DOWNLOAD HUB SECTION -->
-  <section id="telechargements" class="download-hub">
+  <section class="logos-strip container" data-animate="fade-up">
+    <p>Pensé pour tous les cabinets, quelle que soit la spécialité</p>
+    <div class="logos-row">
+      <span>Médecine générale</span><span>Dentiste</span><span>Pédiatre</span><span>Dermatologue</span><span>Cardiologue</span><span>Ophtalmologue</span>
+    </div>
+  </section>
+
+  <section class="section" id="comment-ca-marche">
     <div class="container">
-      <div class="section-eyebrow">CENTRE DE TÉLÉCHARGEMENT OFFICIEL</div>
-      <h2 class="section-title">Installez l'Application en Toute Simplicité</h2>
-      <p class="section-subtitle">
-        Des solutions ergonomiques pensées pour apaiser le parcours du patient et simplifier le quotidien de l'équipe médicale.
-      </p>
-
-      <div class="download-grid">
-        
-        <!-- CARD 1: PATIENTS -->
-        <div class="dl-card patient-card">
-          <div>
-            <span class="card-badge badge-green">
-              <span>📱</span> ESPACE PATIENTS • GRAND PUBLIC
-            </span>
-            <h3 class="card-title">Application Mobile Patient</h3>
-            <p class="card-desc">
-              Prenez votre tour sans stress, suivez l'avancement en direct sur votre smartphone et arrivez au cabinet juste au bon moment.
-            </p>
-
-            <ul class="features-list">
-              <li><span class="check-icon">✓</span> Cadran interactif et suivi du numéro en direct</li>
-              <li><span class="check-icon">✓</span> Notification douce quand votre tour approche</li>
-              <li><span class="check-icon">✓</span> Scan rapide du QR Code à l'entrée du cabinet</li>
-              <li><span class="check-icon">✓</span> Zéro compte obligatoire, gratuit pour tous</li>
-            </ul>
-          </div>
-
-          <div class="dl-btn-group">
-            <button class="btn-dl-main" onclick="downloadPatientApk()">
-              <span>⬇</span> Télécharger l'Application Android (.APK)
-            </button>
-            <a href="/downloads/tafwita-site-local.html" class="btn-dl-sub" download>
-              <span>🌐</span> Télécharger le Fichier HTML Autonome
-            </a>
-            <div style="text-align: center; font-size: 0.78rem; color: var(--slate-500); margin-top: 0.25rem;">
-              Version 2.4.0 • Compatible Android 7.0 à 15.0 • 100% Gratuit
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 2: CABINETS & DOCTORS -->
-        <div class="dl-card pro-card">
-          <div>
-            <span class="card-badge badge-blue">
-              <span>💻</span> ESPACE MÉDECINS &amp; SECRÉTARIAT
-            </span>
-            <h3 class="card-title">Pack Console Cabinet &amp; TV</h3>
-            <p class="card-desc">
-              Logiciel de bureau pour le médecin et console d'accueil pour la secrétaire. Comprend la sonnerie d'appel carillon et le mode plein écran pour la télévision.
-            </p>
-
-            <ul class="features-list">
-              <li><span class="check-icon check-icon-blue">✓</span> Raccourci F1 : Appel instantané du patient suivant</li>
-              <li><span class="check-icon check-icon-blue">✓</span> Sonnette carillon Ding-Dong douce et relaxante</li>
-              <li><span class="check-icon check-icon-blue">✓</span> Affichage grand écran pour la TV salle d'attente</li>
-              <li><span class="check-icon check-icon-blue">✓</span> Fonctionne 100% en Wi-Fi local sans connexion Internet</li>
-            </ul>
-          </div>
-
-          <div class="dl-btn-group">
-            <button class="btn-dl-main" style="background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35); margin-bottom: 0.25rem;" onclick="openTrialRegisterModal()">
-              <span>✨</span> Inscription Test Gratuit (14 Jours)
-            </button>
-            <button class="btn-dl-main btn-dl-pro" onclick="downloadDoctorDesktopZip()">
-              <span>⬇</span> Télécharger l'App Desktop PC (.ZIP Windows / Mac)
-            </button>
-            <button class="btn-dl-sub" onclick="openTvScreen()">
-              <span>📺</span> Lancer l'Écran TV Salle d'Attente
-            </button>
-            <div style="text-align: center; font-size: 0.78rem; color: var(--slate-500); margin-top: 0.25rem;">
-              Comprend Lanceur-Tafwita-Medecin.bat + Console Hors-ligne Autonome
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE APPLICATION SHOWCASE / SLIDESHOW DEMO -->
-  <section id="simulateur" class="container" style="padding: 2rem 0 4rem;">
-    <div style="text-align: center; max-width: 750px; margin: 0 auto 1.5rem;">
-      <div class="section-eyebrow">DÉMONSTRATION INTERACTIVE EN DIRECT</div>
-      <h2 class="section-title">Les 4 Écrans Clés de l'Application en Action</h2>
-      <p class="section-subtitle">
-        Explorez la synchronisation instantanée entre la TV de la salle d'attente, la console médecin et le smartphone des patients.
-      </p>
-    </div>
-
-    <div class="slideshow-wrapper">
-      <!-- Player Topbar & Controls -->
-      <div class="slideshow-topbar">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="width: 10px; height: 10px; border-radius: 9999px; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
-          <span style="font-size: 0.85rem; font-weight: 700; color: #f8fafc;">tafwita-demo-player // <span id="simActiveTitle">Écran TV Salle d'Attente</span></span>
-        </div>
-
-        <div class="slideshow-controls">
-          <button class="btn-slide-ctrl" id="simPlayPauseBtn" onclick="toggleSimAutoplay()">
-            <span id="simPlayIcon">⏸</span> <span id="simPlayLabel">Pause</span>
-          </button>
-          <button class="btn-slide-ctrl" onclick="prevSlide()" title="Écran précédent">◀</button>
-          <span id="simSlideCounter" style="font-size: 0.8rem; font-weight: 800; color: #94a3b8; padding: 0 0.25rem;">01 / 04</span>
-          <button class="btn-slide-ctrl" onclick="nextSlide()" title="Écran suivant">▶</button>
-        </div>
+      <div class="section-head" data-animate="fade-up">
+        <span class="tag">Comment ça marche</span>
+        <h2>Trois espaces connectés, un seul flux fluide</h2>
+        <p>Du patient au médecin, tout le monde suit la même file en temps réel — sans appel, sans confusion.</p>
       </div>
 
-      <!-- Animated Progress Track -->
-      <div class="slide-progress-track">
-        <div id="simProgressBar" class="slide-progress-bar"></div>
-      </div>
-
-      <!-- Tabs Navigation -->
-      <div class="demo-tabs-nav">
-        <button class="demo-tab-btn active" id="tab-btn-0" onclick="showSlide(0)">
-          <span>📺</span> Écran TV Salle d'Attente
-        </button>
-        <button class="demo-tab-btn" id="tab-btn-1" onclick="showSlide(1)">
-          <span>💻</span> Console Médecin (F1)
-        </button>
-        <button class="demo-tab-btn" id="tab-btn-2" onclick="showSlide(2)">
-          <span>📋</span> Secrétariat &amp; Tickets
-        </button>
-        <button class="demo-tab-btn" id="tab-btn-3" onclick="showSlide(3)">
-          <span>📱</span> Smartphone Patient
-        </button>
-      </div>
-
-      <!-- SLIDE 0: ÉCRAN TV SALLE D'ATTENTE -->
-      <div class="slide-content-pane active" id="slide-pane-0" style="background: linear-gradient(135deg, #090e17 0%, #064e3b 100%);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
-          <div>
-            <div style="color: #34d399; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">
-              TAFWITA TV &bull; AFFICHAGE GRAND ÉCRAN APPAISANT
-            </div>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.2rem;">
-              Cabinet Médical Dr. Benali &bull; Médecine Générale
-            </div>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-family: monospace; font-size: 1.3rem; font-weight: 800; color: #34d399;">10:45:12</div>
-            <div style="font-size: 0.75rem; color: #a7f3d0;">🔔 Carillon Sonore Actif</div>
-          </div>
+      <div class="steps-grid">
+        <div class="step-card" data-animate="fade-up" data-delay="0">
+          <div class="step-num">01</div>
+          <h3>Le patient prend son ticket</h3>
+          <p>Depuis l'app mobile ou le site, sans se déplacer. Nom et numéro suffisent — aucun compte requis.</p>
         </div>
-
-        <div style="text-align: center; padding: 2.5rem 1rem;">
-          <div style="display: inline-block; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #6ee7b7; font-weight: 800; font-size: 0.75rem; padding: 0.35rem 1.2rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
-            Actuellement en Consultation
-          </div>
-
-          <div id="simDisplayNum" class="demo-num" style="color: #6ee7b7; text-shadow: 0 0 35px rgba(16,185,129,0.5); font-size: 5.5rem; margin: 0.5rem 0;">
-            N° P-14
-          </div>
-
-          <div style="display: inline-block; background: #ffffff; color: #022c22; font-weight: 800; font-size: 0.95rem; padding: 0.6rem 1.5rem; border-radius: 9999px; box-shadow: 0 10px 25px rgba(0,0,0,0.25);">
-            VEUILLEZ ENTRER EN SALLE DE SOINS
-          </div>
+        <div class="step-card" data-animate="fade-up" data-delay="100">
+          <div class="step-num">02</div>
+          <h3>Le cabinet reçoit la réservation</h3>
+          <p>L'application desktop du cabinet affiche instantanément le nouveau ticket dans sa file, avec possibilité d'ajouter un ticket papier pour les patients sans smartphone.</p>
         </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1rem; flex-wrap: wrap; gap: 1rem;">
-          <div style="font-size: 0.85rem; color: #94a3b8;">
-            Dernier ticket délivré : <strong id="simIssuedVal" style="color: #ffffff;">N° P-18</strong> &bull; Ambiance calme et silencieuse
-          </div>
-          <div style="display: flex; gap: 0.75rem;">
-            <button class="btn-dl-main btn-dl-pro" style="padding: 0.65rem 1.2rem; font-size: 0.85rem;" onclick="simNextPatient()">
-              ▶ Appeler Suivant (F1)
-            </button>
-            <button class="btn-dl-sub" style="padding: 0.65rem 1.2rem; font-size: 0.85rem; background: rgba(255,255,255,0.1); color: #ffffff; border-color: rgba(255,255,255,0.2);" onclick="playChimeSound()">
-              🔔 Tester le Ding-Dong
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 1: CONSOLE MÉDECIN (F1) -->
-      <div class="slide-content-pane" id="slide-pane-1" style="background: linear-gradient(135deg, #090e17 0%, #0c4a6e 100%);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
-          <div>
-            <span style="background: rgba(14, 165, 233, 0.2); color: #38bdf8; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">
-              Poste Médecin
-            </span>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.3rem;">
-              Console Bureau &bull; Dr. Benali
-            </div>
-          </div>
-          <div style="display: flex; gap: 1rem;">
-            <div style="background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border-radius: 12px; text-align: center;">
-              <div style="font-size: 1.1rem; font-weight: 900; color: #38bdf8;">12 min</div>
-              <div style="font-size: 0.7rem; color: #94a3b8;">Temps Moyen</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border-radius: 12px; text-align: center;">
-              <div id="simWaitingCount" style="font-size: 1.1rem; font-weight: 900; color: #34d399;">4</div>
-              <div style="font-size: 0.7rem; color: #94a3b8;">En Attente</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding: 1.75rem 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem;">
-          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">PATIENT ACTUEL EN CONSULTATION :</div>
-              <div id="simDocCurrent" style="font-size: 2.8rem; font-weight: 900; color: #38bdf8; font-family: monospace; margin: 0.4rem 0;">
-                N° P-14
-              </div>
-              <div style="font-size: 0.8rem; color: #34d399;">✓ En consultation depuis 6 minutes</div>
-            </div>
-
-            <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.25rem; padding: 0.9rem 1.4rem; font-size: 0.95rem; width: 100%;" onclick="simNextPatient()">
-              Appeler Suivant (Touche Clavier F1)
-            </button>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-            <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 800; text-transform: uppercase;">File d'attente synchronisée :</div>
-            <div style="background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong id="simNextPatientNum" style="color: #38bdf8;">N° P-15</strong>
-                <span style="font-size: 0.75rem; color: #cbd5e1; margin-left: 0.5rem;">Prochain patient</span>
-              </div>
-              <span style="background: #0284c7; color: white; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">En Salle</span>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: #e2e8f0;">N° P-16</strong>
-                <span style="font-size: 0.75rem; color: #94a3b8; margin-left: 0.5rem;">Suivi smartphone</span>
-              </div>
-              <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 6px;">À 5 min</span>
-            </div>
-            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: #e2e8f0;">N° P-17</strong>
-                <span style="font-size: 0.75rem; color: #94a3b8; margin-left: 0.5rem;">Ticket papier</span>
-              </div>
-              <span style="background: rgba(255,255,255,0.1); color: #cbd5e1; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 6px;">Secrétariat</span>
-            </div>
-          </div>
-        </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; font-size: 0.8rem; color: #94a3b8;">
-          Raccourci F1 mondialement actif : appelez le patient sans jamais quitter votre logiciel d'ordonnances habituel.
-        </div>
-      </div>
-
-      <!-- SLIDE 2: CONSOLE SECRÉTARIAT & TICKETS -->
-      <div class="slide-content-pane" id="slide-pane-2" style="background: linear-gradient(135deg, #090e17 0%, #3b0764 100%);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
-          <div>
-            <span style="background: rgba(192, 132, 252, 0.2); color: #c084fc; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">
-              Secrétariat &amp; Accueil
-            </span>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.3rem;">
-              Émission de Tickets Physiques pour Patients sans Smartphone
-            </div>
-          </div>
-          <div style="font-size: 0.8rem; color: #d8b4fe;">
-            Compatible Imprimante Thermique &bull; USB / Bluetooth
-          </div>
-        </div>
-
-        <div style="padding: 1.75rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
-          <div>
-            <p style="color: #e2e8f0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
-              Pour les personnes âgées ou les patients sans smartphone, la secrétaire clique sur un bouton. Le ticket papier est imprimé et s'insère immédiatement dans la file numérique.
-            </p>
-
-            <button class="btn-dl-main" style="background: linear-gradient(135deg, #9333ea, #c084fc); padding: 0.9rem 1.5rem; font-size: 0.95rem; width: 100%; border: none; cursor: pointer;" onclick="simTakeTicket()">
-              + Émettre Ticket Papier (N° <span id="simNextNum">19</span>)
-            </button>
-
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; color: #c084fc;">
-              ✓ Synchronisation automatique avec l'écran TV et la console du médecin
-            </div>
-          </div>
-
-          <!-- Thermal Ticket Graphic Simulation -->
-          <div style="background: #ffffff; color: #0f172a; padding: 1.5rem; border-radius: 16px; font-family: monospace; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.4); max-width: 260px; margin: 0 auto; border-top: 6px solid #9333ea;">
-            <div style="font-size: 0.8rem; font-weight: 900; letter-spacing: -0.5px;">CABINET MÉDICAL DR. BENALI</div>
-            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.2rem;">TICKET FILE D'ATTENTE TAFWITA</div>
-            <div style="border-top: 1px dashed #cbd5e1; border-bottom: 1px dashed #cbd5e1; padding: 0.75rem 0; margin: 0.75rem 0;">
-              <div style="font-size: 0.75rem; color: #64748b;">VOTRE NUMÉRO :</div>
-              <div id="simTicketPreviewNum" style="font-size: 2.5rem; font-weight: 900; color: #0f172a;">N° P-18</div>
-            </div>
-            <div style="font-size: 0.75rem; color: #475569; line-height: 1.4;">
-              <div>Attente estimée : <strong>~30 min</strong></div>
-              <div>Patients avant vous : <strong id="simTicketWait">4</strong></div>
-            </div>
-            <div style="font-size: 0.65rem; color: #94a3b8; margin-top: 0.75rem; border-top: 1px solid #f1f5f9; pt: 0.5rem;">
-              Suivi sur <strong>tafwita.dz</strong>
-            </div>
-          </div>
-        </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; font-size: 0.8rem; color: #94a3b8;">
-          Total tickets distribués aujourd'hui : <strong id="simTotalIssued" style="color: #ffffff;">18</strong>
-        </div>
-      </div>
-
-      <!-- SLIDE 3: SMARTPHONE PATIENT -->
-      <div class="slide-content-pane" id="slide-pane-3" style="background: linear-gradient(135deg, #090e17 0%, #064e3b 100%);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 1rem;">
-          <div>
-            <span style="background: rgba(45, 212, 191, 0.2); color: #2dd4bf; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">
-              Application Mobile Patient
-            </span>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-top: 0.3rem;">
-              Suivi en Direct &amp; Liberté Totale
-            </div>
-          </div>
-          <div>
-            <button class="btn-slide-ctrl" style="background: #14b8a6; color: #022c22; font-weight: 800;" onclick="simPatientAlert()">
-              🔔 Simuler Alerte SMS / Vibreur
-            </button>
-          </div>
-        </div>
-
-        <div style="padding: 1.5rem 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center;">
-          <div>
-            <h4 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; line-height: 1.35; margin-bottom: 0.75rem;">
-              Le patient n'attend plus dans le couloir.
-            </h4>
-            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
-              Il peut attendre chez lui, dans sa voiture ou au café voisin. L'application met à jour le tour en temps réel et prévient quand il faut se présenter au cabinet.
-            </p>
-            <ul class="features-list" style="color: #cbd5e1; font-size: 0.85rem;">
-              <li><span class="check-icon" style="color: #2dd4bf;">✓</span> Moins de promiscuité et d'infections en salle d'attente</li>
-              <li><span class="check-icon" style="color: #2dd4bf;">✓</span> Arrivée détendue et ponctuelle</li>
-              <li><span class="check-icon" style="color: #2dd4bf;">✓</span> Disponible gratuitement en Web App et APK Android</li>
-            </ul>
-          </div>
-
-          <!-- Smartphone Frame Mockup -->
-          <div style="background: #020617; border: 4px solid #334155; border-radius: 32px; padding: 0.75rem; max-width: 240px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-            <div style="width: 50px; height: 4px; background: #334155; border-radius: 9999px; margin: 0 auto 0.5rem;"></div>
-
-            <div style="background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%); border-radius: 24px; padding: 1rem; color: #0f172a; text-align: center;">
-              <div id="simSmsBanner" style="display: none; background: #f59e0b; color: #000; font-size: 0.65rem; font-weight: 800; padding: 0.35rem; border-radius: 8px; margin-bottom: 0.5rem; animation: fadeInSlide 0.3s;">
-                🔔 C'est bientôt votre tour !
-              </div>
-
-              <div style="font-size: 0.7rem; font-weight: 800; color: #0d9488; text-transform: uppercase;">Cabinet Dr. Benali</div>
-              <div style="font-size: 0.8rem; font-weight: 900; margin-top: 0.1rem;">Médecine Générale</div>
-
-              <div style="background: #ffffff; border: 1px solid #ccfbf1; border-radius: 16px; padding: 0.75rem; margin: 0.75rem 0; box-shadow: 0 4px 10px rgba(13,148,136,0.08);">
-                <div style="font-size: 0.65rem; color: #64748b; font-weight: 700;">VOTRE NUMÉRO</div>
-                <div id="simPatientMyNum" style="font-size: 2rem; font-weight: 900; color: #0d9488; font-family: monospace;">N° P-15</div>
-                <div style="font-size: 0.65rem; font-weight: 800; background: #ecfdf5; color: #047857; padding: 0.2rem 0.5rem; border-radius: 9999px; display: inline-block; margin-top: 0.25rem;">
-                  1 personne avant vous (~10 min)
-                </div>
-              </div>
-
-              <div style="font-size: 0.7rem; color: #64748b;">
-                En consultation : <strong id="simPatientCurrent">N° P-14</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; font-size: 0.8rem; color: #94a3b8;">
-          Aucune inscription complexe requise pour les patients : un simple scan de QR Code suffit.
+        <div class="step-card" data-animate="fade-up" data-delay="200">
+          <div class="step-num">03</div>
+          <h3>Le patient suit son tour en direct</h3>
+          <p>Notification push à l'approche de son tour. Il arrive juste au bon moment, où qu'il soit.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING SECTION (CABINETS MÉDICAUX UNIQUEMENT) -->
-  <section id="tarifs" class="container" style="padding: 3rem 0 5rem;">
-    <div class="section-eyebrow">TARIFS &amp; ABONNEMENTS PROFESSIONNELS</div>
-    <h2 class="section-title">Des Tarifs Transparents et Accessibles</h2>
-    <p class="section-subtitle">
-      Équipez votre cabinet avec une solution professionnelle éprouvée. Zéro surprise, paiement sécurisé par BaridiMob, CCP ou Carte CIB.
-    </p>
+  <section class="section section-alt" id="solutions">
+    <div class="container">
+      <div class="section-head" data-animate="fade-up">
+        <span class="tag">Nos solutions</span>
+        <h2>Une suite complète, trois interfaces</h2>
+      </div>
 
-    <div class="pricing-grid">
-      <!-- Plan 1 : 3 000 DA / mois -->
-      <div class="price-card">
-        <div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Abonnement Mensuel</h4>
-          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">Cabinet médical individuel</p>
-          <div class="price-amount">3 000 DZD <span class="price-unit">/ mois</span></div>
-          <p style="font-size: 0.82rem; color: var(--slate-500); margin-top: 0.25rem;">Sans engagement, renouvelable chaque mois</p>
-          <ul class="features-list" style="margin-top: 1.5rem;">
-            <li><span class="check-icon">✓</span> Patients et tickets illimités</li>
-            <li><span class="check-icon">✓</span> Console Médecin (touche F1 d'appel rapide)</li>
-            <li><span class="check-icon">✓</span> Console Secrétariat &amp; tickets papier</li>
-            <li><span class="check-icon">✓</span> Écran TV Salle d'attente avec carillon sonore</li>
-            <li><span class="check-icon">✓</span> Suivi en direct du tour sur smartphone patient</li>
-            <li><span class="check-icon">✓</span> Fonctionne en réseau Wi-Fi local et Cloud</li>
-            <li><span class="check-icon">✓</span> Paiement par BaridiMob, Carte CIB ou CCP</li>
+      <div class="solutions-grid">
+        <div class="solution-card" data-animate="fade-up" data-delay="0">
+          <div class="solution-icon icon-1">📱</div>
+          <h3>App mobile patient</h3>
+          <ul>
+            <li>Prise de ticket à distance en quelques secondes</li>
+            <li>Suivi de la file en temps réel</li>
+            <li>Notifications quand approche votre tour</li>
+            <li>Historique de vos consultations</li>
           </ul>
         </div>
-        <button class="btn-dl-sub" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="openTrialRegisterModal()">
-          Démarrer 14 Jours d'Essai Gratuit
-        </button>
-      </div>
-
-      <!-- Plan 2 : 30 000 DA / an (2 mois offerts) -->
-      <div class="price-card featured">
-        <span class="card-badge badge-blue" style="align-self: flex-start;">2 MOIS OFFERTS (ÉCONOMIE 6 000 DA)</span>
-        <div>
-          <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--slate-900);">Abonnement Annuel</h4>
-          <p style="color: var(--slate-500); font-size: 0.85rem; margin-top: 0.25rem;">La formule sérénité recommandée</p>
-          <div class="price-amount">30 000 DZD <span class="price-unit">/ an</span></div>
-          <p style="font-size: 0.82rem; color: #0284c7; font-weight: 700; margin-top: 0.25rem;">Soit 2 500 DA/mois (au lieu de 36 000 DA)</p>
-          <ul class="features-list" style="margin-top: 1.5rem;">
-            <li><span class="check-icon check-icon-blue">✓</span> Tous les services de l'abonnement mensuel</li>
-            <li><span class="check-icon check-icon-blue">✓</span> <strong>2 mois offerts</strong> (économie directe de 6 000 DA)</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Aide à l'installation et support prioritaire 7j/7</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Affiches plastifiées QR Code livrées au cabinet</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Zéro coupure de service pendant 12 mois</li>
-            <li><span class="check-icon check-icon-blue">✓</span> Paiement par BaridiMob, Carte CIB ou CCP</li>
+        <div class="solution-card featured" data-animate="fade-up" data-delay="100">
+          <div class="solution-icon icon-2">🖥️</div>
+          <h3>App desktop cabinet</h3>
+          <ul>
+            <li>Réception automatique des tickets patients</li>
+            <li>Ajout manuel de ticket pour les patients sans smartphone</li>
+            <li>Appel du suivant sécurisé par code PIN</li>
+            <li>Carillon sonore et mode plein écran TV</li>
+          </ul>
+          <span class="chip">Le plus utilisé</span>
+        </div>
+        <div class="solution-card" data-animate="fade-up" data-delay="200">
+          <div class="solution-icon icon-3">🌐</div>
+          <h3>Site vitrine &amp; API</h3>
+          <ul>
+            <li>Page publique de votre cabinet</li>
+            <li>Synchronisation cloud PostgreSQL</li>
+            <li>Écran TV salle d'attente connecté</li>
+            <li>Statistiques de fréquentation</li>
           </ul>
         </div>
-        <button class="btn-dl-main btn-dl-pro" style="margin-top: 1.5rem; width: 100%; cursor: pointer;" onclick="openTrialRegisterModal()">
-          Choisir l'Annuel (30 000 DA)
-        </button>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-inner">
-      <div>
-        <strong style="color: var(--slate-900); font-size: 1.05rem;">TAFWITA (تفويتة)</strong> &bull; Solution de File d'Attente Médicale Sereine
-        <div style="margin-top: 0.35rem;">Conçu avec bienveillance pour les professionnels de santé et les patients algériens 🇩🇿</div>
+  <section class="section" id="comparatif">
+    <div class="container">
+      <div class="section-head" data-animate="fade-up">
+        <span class="tag">Pourquoi TAFWITA</span>
+        <h2>Simple, léger, et pensé pour le terrain</h2>
       </div>
-
-      <div style="display: flex; gap: 1.75rem;">
-        <a href="#telechargements" style="color: var(--slate-600); text-decoration: none; font-weight: 600;">Téléchargements</a>
-        <a href="#tarifs" style="color: var(--slate-600); text-decoration: none; font-weight: 600;">Tarifs</a>
-        <a href="#" onclick="alert('Contact TAFWITA Algérie : contact@tafwita.dz / 0550 00 00 00'); return false;" style="color: var(--slate-600); text-decoration: none; font-weight: 600;">Contact</a>
+      <div class="table-wrap" data-animate="fade-up">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Fonctionnalité</th><th>TAFWITA</th><th>Solutions concurrentes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ticket à distance sans se déplacer</td><td class="yes">✔</td><td class="maybe">Variable</td></tr>
+            <tr><td>App desktop dédiée au cabinet</td><td class="yes">✔</td><td class="maybe">Souvent web uniquement</td></tr>
+            <tr><td>Ticket papier ajoutable manuellement</td><td class="yes">✔</td><td class="maybe">Rarement</td></tr>
+            <tr><td>Écran TV synchronisé</td><td class="yes">✔</td><td class="maybe">Optionnel / payant</td></tr>
+            <tr><td>Abonnement mensuel sans engagement</td><td class="yes">✔</td><td class="maybe">Souvent annuel</td></tr>
+            <tr><td>Prix cabinet individuel</td><td class="yes">2 500 DA/mois</td><td class="maybe">10 000 à 50 000 DA/an</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- MODAL: Inscription pour Test Gratuit & Téléchargement Direct -->
-  <div id="trialRegisterModal" class="trial-modal-overlay" onclick="handleTrialOverlayClick(event)">
-    <div class="trial-modal-dialog" onclick="event.stopPropagation()">
-      <!-- Step 1: Formulaire d'inscription -->
-      <div id="trialStepForm">
-        <div class="trial-modal-header">
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-              <span style="font-size: 0.7rem; font-weight: 900; text-transform: uppercase; background: #fef3c7; color: #b45309; border: 1px solid #fde68a; padding: 0.2rem 0.6rem; border-radius: 9999px;">
-                🇩🇿 Essai Professionnel 14 Jours
-              </span>
-              <span style="font-size: 0.7rem; font-weight: 800; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; padding: 0.2rem 0.6rem; border-radius: 9999px;">
-                PostgreSQL Cloud
-              </span>
-            </div>
-            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin: 0;">
-              Inscription Test &amp; Téléchargement
-            </h3>
-            <p style="font-size: 0.82rem; color: #64748b; margin-top: 0.25rem;">
-              Activez votre licence d'essai 14j et téléchargez votre logiciel pré-configuré.
-            </p>
-          </div>
-          <button class="trial-close-btn" onclick="closeTrialRegisterModal()">&times;</button>
-        </div>
-
-        <div class="trial-modal-body">
-          <form id="trialForm" onsubmit="submitTrialRegister(event)">
-            <div class="form-group">
-              <label class="form-label" for="trialDocName">Nom du Médecin ou du Cabinet *</label>
-              <input type="text" id="trialDocName" class="form-control" placeholder="ex: Dr. Sarah Benali" required />
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-              <div class="form-group">
-                <label class="form-label" for="trialSpecialty">Spécialité *</label>
-                <select id="trialSpecialty" class="form-control" required>
-                  <option value="Médecine Générale">Médecine Générale</option>
-                  <option value="Pédiatrie">Pédiatrie</option>
-                  <option value="Cardiologie">Cardiologie</option>
-                  <option value="Chirurgie Dentaire">Chirurgie Dentaire</option>
-                  <option value="Gynécologie-Obstétrique">Gynécologie-Obstétrique</option>
-                  <option value="Dermatologie">Dermatologie</option>
-                  <option value="Ophtalmologie">Ophtalmologie</option>
-                  <option value="Orthopédie">Orthopédie</option>
-                  <option value="ORL">ORL</option>
-                  <option value="Radiologie">Radiologie</option>
-                  <option value="Autre Spécialité">Autre Spécialité</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="trialWilaya">Wilaya *</label>
-                <select id="trialWilaya" class="form-control" required>
-                  <!-- Populated dynamically -->
-                </select>
-              </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem;">
-              <div class="form-group">
-                <label class="form-label" for="trialPhone">Numéro de Téléphone *</label>
-                <input type="tel" id="trialPhone" class="form-control" placeholder="0550 12 34 56" required />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="trialPin">Code PIN Secret (4 chiffres) *</label>
-                <input type="password" id="trialPin" class="form-control" placeholder="1234" maxlength="4" pattern="[0-9]{4}" required />
-              </div>
-            </div>
-
-            <div id="trialErrorMsg" style="display: none; padding: 0.75rem 1rem; border-radius: 12px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; font-size: 0.82rem; margin-bottom: 1rem;"></div>
-
-            <button type="submit" id="trialSubmitBtn" class="btn-submit-trial">
-              <span id="trialBtnSpinner" style="display: none;">⏳</span>
-              <span id="trialBtnText">Créer mon Compte Test &amp; Télécharger l'App</span>
-            </button>
-            
-            <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 0.85rem;">
-              🔒 Sauvegardé en direct dans PostgreSQL • Zéro carte bancaire requise • Essai sans engagement
-            </p>
-          </form>
-        </div>
+  <section class="section section-alt" id="tarifs">
+    <div class="container">
+      <div class="section-head" data-animate="fade-up">
+        <span class="tag">Tarifs</span>
+        <h2>Une formule claire, sans surprise</h2>
+        <p>Paiement sécurisé par BaridiMob, CCP ou Carte CIB.</p>
       </div>
 
-      <!-- Step 2: Succès & Téléchargement Direct depuis le Pop-up -->
-      <div id="trialStepSuccess" style="display: none;">
-        <div class="trial-modal-header" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-bottom-color: #a7f3d0;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
-              <span style="font-size: 0.7rem; font-weight: 900; background: #10b981; color: white; padding: 0.2rem 0.6rem; border-radius: 9999px;">
-                ✓ Enregistré dans PostgreSQL
-              </span>
-              <span style="font-size: 0.7rem; font-weight: 800; background: #fef3c7; color: #92400e; padding: 0.2rem 0.6rem; border-radius: 9999px;">
-                14 Jours d'Essai Actifs
-              </span>
-            </div>
-            <h3 style="font-size: 1.35rem; font-weight: 900; color: #064e3b; margin: 0;">
-              Cabinet Créé ! Téléchargez l'Application
-            </h3>
-            <p style="font-size: 0.82rem; color: #047857; margin-top: 0.25rem;">
-              Votre compte est opérationnel. Téléchargez votre logiciel pré-configuré ci-dessous.
-            </p>
-          </div>
-          <button class="trial-close-btn" onclick="closeTrialRegisterModal()">&times;</button>
+      <div class="pricing-grid">
+        <div class="price-card" data-animate="fade-up" data-delay="0">
+          <h3>Essai gratuit</h3>
+          <div class="price">0 <span>DA / 14 jours</span></div>
+          <ul>
+            <li>Accès complet à toutes les fonctionnalités</li>
+            <li>1 cabinet, tickets illimités</li>
+            <li>Sans carte bancaire requise</li>
+          </ul>
+          <a href="#inscription" class="btn btn-outline full">Commencer l'essai</a>
         </div>
-
-        <div class="trial-modal-body">
-          <!-- Credentials Box -->
-          <div style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 16px; padding: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-around; text-align: center;">
-            <div>
-              <div style="font-size: 0.7rem; font-weight: 700; color: #64748b;">IDENTIFIANT DU CABINET (SLUG)</div>
-              <div id="succCabSlug" style="font-size: 1.1rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 0.2rem;">dr-test</div>
-            </div>
-            <div style="border-right: 1px solid #e2e8f0;"></div>
-            <div>
-              <div style="font-size: 0.7rem; font-weight: 700; color: #64748b;">CODE PIN SECRET</div>
-              <div id="succCabPin" style="font-size: 1.1rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 0.2rem;">****</div>
-            </div>
-          </div>
-
-          <!-- Download Options Tiles -->
-          <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-            
-            <!-- Option 1: Desktop Python pré-rempli -->
-            <div style="background: #ffffff; border: 1.5px solid #0f172a; border-radius: 18px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);">
-              <div>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <span style="font-size: 1.2rem;">💻</span>
-                  <strong style="font-size: 0.95rem; color: #0f172a;">Application Desktop Python (.py)</strong>
-                </div>
-                <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">
-                  Pré-configurée avec votre code PIN et identifiant. Touche F1 intégrée.
-                </div>
-              </div>
-              <button onclick="downloadRegisteredPython()" style="background: #0f172a; color: #fde047; font-weight: 900; font-size: 0.82rem; padding: 0.65rem 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
-                <span>⬇</span> Télécharger (.py)
-              </button>
-            </div>
-
-            <!-- Option 2: Pack Windows complet -->
-            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;">
-              <div>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <span style="font-size: 1.2rem;">🪟</span>
-                  <strong style="font-size: 0.95rem; color: #0f172a;">Pack Windows 1-Clic (.bat)</strong>
-                </div>
-                <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">
-                  Lanceur Windows automatique sans configuration requise.
-                </div>
-              </div>
-              <button onclick="downloadRegisteredBat()" style="background: #0284c7; color: white; font-weight: 800; font-size: 0.82rem; padding: 0.65rem 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
-                <span>⬇</span> Télécharger (.bat)
-              </button>
-            </div>
-
-            <!-- Option 3: APK Mobile Patient / Médecin -->
-            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;">
-              <div>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                  <span style="font-size: 1.2rem;">📱</span>
-                  <strong style="font-size: 0.95rem; color: #0f172a;">Application Android (.APK)</strong>
-                </div>
-                <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.2rem;">
-                  Pour smartphones et tablettes Android en cabinet ou salle d'attente.
-                </div>
-              </div>
-              <button onclick="downloadPatientApk()" style="background: #10b981; color: white; font-weight: 800; font-size: 0.82rem; padding: 0.65rem 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem;">
-                <span>⬇</span> Télécharger (.apk)
-              </button>
-            </div>
-
-            <!-- Option 4: Écran TV -->
-            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem;">
-              <div style="font-size: 0.82rem; color: #475569;">
-                📺 <strong>Écran TV Salle d'attente :</strong> Ouvrez l'affichage connecté pour votre téléviseur.
-              </div>
-              <button onclick="openRegisteredTv()" style="background: #334155; color: white; font-weight: 700; font-size: 0.78rem; padding: 0.5rem 0.9rem; border-radius: 10px; border: none; cursor: pointer;">
-                Ouvrir TV ↗
-              </button>
-            </div>
-
-          </div>
+        <div class="price-card featured" data-animate="fade-up" data-delay="100">
+          <span class="chip">Formule sérénité</span>
+          <h3>Cabinet médical individuel</h3>
+          <div class="price">2 500 <span>DA / mois</span></div>
+          <p class="strike">au lieu de 36 000 DA / an</p>
+          <ul>
+            <li>App desktop cabinet + console secrétaire</li>
+            <li>App mobile patient illimitée</li>
+            <li>Écran TV salle d'attente synchronisé</li>
+            <li>Carillon d'appel + mode plein écran</li>
+            <li>Sans engagement, renouvelable chaque mois</li>
+          </ul>
+          <a href="#inscription" class="btn btn-pill full">S'abonner maintenant</a>
+        </div>
+        <div class="price-card" data-animate="fade-up" data-delay="200">
+          <h3>Multi-praticiens</h3>
+          <div class="price">Sur devis</div>
+          <ul>
+            <li>Plusieurs médecins par cabinet</li>
+            <li>Files d'attente séparées par praticien</li>
+            <li>Statistiques avancées</li>
+            <li>Support prioritaire</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline full">Nous contacter</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <div class="section-head" data-animate="fade-up">
+        <span class="tag">FAQ</span>
+        <h2>Questions fréquentes</h2>
+      </div>
+      <div class="faq-list" data-animate="fade-up">
+        <div class="faq-item">
+          <button class="faq-q">Le patient doit-il installer une application ? <span>+</span></button>
+          <div class="faq-a"><p>Non, TAFWITA fonctionne aussi depuis le navigateur mobile. L'application dédiée offre en plus les notifications push automatiques.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Que se passe-t-il pour les patients sans smartphone ? <span>+</span></button>
+          <div class="faq-a"><p>La secrétaire clique sur un bouton depuis la console desktop : un ticket papier est imprimé et s'insère immédiatement dans la même file numérique.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Puis-je annuler à tout moment ? <span>+</span></button>
+          <div class="faq-a"><p>Oui, l'abonnement est mensuel et sans engagement. Vous pouvez arrêter quand vous le souhaitez.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Mes données patients sont-elles sécurisées ? <span>+</span></button>
+          <div class="faq-a"><p>Les données transitent de façon chiffrée vers une base PostgreSQL hébergée sur Render, avec un accès protégé par code PIN pour le médecin.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section container" id="inscription" data-animate="fade-up">
+    <div class="cta-box">
+      <h2>Prêt à moderniser votre cabinet ?</h2>
+      <p>14 jours d'essai gratuit, sans carte bancaire. Installation accompagnée en moins de 24h.</p>
+      <form class="cta-form" id="signupForm">
+        <input type="text" placeholder="Nom du médecin" required>
+        <input type="tel" placeholder="Téléphone" required>
+        <button type="submit" class="btn btn-pill">Créer mon cabinet</button>
+      </form>
+      <small id="formMsg"></small>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container footer-grid">
+    <div>
+      <a href="#top" class="logo">TAF<span>WITA</span></a>
+      <p>La solution algérienne de gestion de file d'attente pour cabinets médicaux.</p>
+    </div>
+    <div>
+      <h4>Produit</h4>
+      <a href="#comment-ca-marche">Comment ça marche</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#tarifs">Tarifs</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:contact@tafwita.dz">contact@tafwita.dz</a>
+      <a href="tel:+213500000000">+213 5XX XX XX XX</a>
+    </div>
+    <div>
+      <h4>Légal</h4>
+      <a href="#">Conditions d'utilisation</a>
+      <a href="#">Confidentialité (loi 18-07)</a>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 TAFWITA — Tous droits réservés. Fait avec ❤️ en Algérie.</div>
+</footer>
 
-  <!-- Script with Real Download Handlers, Web Audio & Interactive Slideshow Engine -->
-  <script>
-    let simServing = 14;
-    let simIssued = 18;
-    let currentSlide = 0;
-    const totalSlides = 4;
-    let isAutoplaying = true;
-    let progressTimer = null;
-    let slideProgress = 0;
-    const slideIntervalMs = 5000;
-    const updateFreqMs = 80;
+<script>
 
-    const slideTitles = [
-      "Écran TV Salle d'Attente",
-      "Console Bureau Médecin (Appel F1)",
-      "Console Secrétariat & Tickets Papier",
-      "Application Mobile Patient (Suivi en Direct)"
-    ];
+// ===== TAFWITA — Interactions & animations (thème nuancé teal/ardoise) =====
 
-    // Web Audio Ding-Dong Chime (Harmonious & Calming, 100% offline)
-    function playChimeSound() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const now = audioCtx.currentTime;
-        
-        // High Chime (E5)
-        const osc1 = audioCtx.createOscillator();
-        const g1 = audioCtx.createGain();
-        osc1.frequency.setValueAtTime(659.25, now);
-        g1.gain.setValueAtTime(0.35, now);
-        g1.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
-        osc1.connect(g1); g1.connect(audioCtx.destination);
-        osc1.start(now); osc1.stop(now + 0.85);
+const canvas = document.getElementById('waves');
+const ctx = canvas.getContext('2d');
+let w, h, dpr;
 
-        // Low Chime (C5)
-        const osc2 = audioCtx.createOscillator();
-        const g2 = audioCtx.createGain();
-        osc2.frequency.setValueAtTime(523.25, now + 0.32);
-        g2.gain.setValueAtTime(0.4, now + 0.32);
-        g2.gain.exponentialRampToValueAtTime(0.001, now + 1.45);
-        osc2.connect(g2); g2.connect(audioCtx.destination);
-        osc2.start(now + 0.32); osc2.stop(now + 1.45);
-      } catch(e) {}
+function resize(){
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  w = window.innerWidth;
+  h = window.innerHeight;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  buildWaves();
+}
+window.addEventListener('resize', resize);
+
+let waves = [];
+function buildWaves(){
+  const palette = [
+    { c1: 'rgba(53,194,200,',  c2: 'rgba(26,155,160,' },
+    { c1: 'rgba(43,58,103,',   c2: 'rgba(70,84,140,' },
+    { c1: 'rgba(120,130,150,', c2: 'rgba(53,194,200,' },
+    { c1: 'rgba(90,100,130,',  c2: 'rgba(43,58,103,' },
+    { c1: 'rgba(26,155,160,',  c2: 'rgba(120,130,150,' },
+    { c1: 'rgba(70,84,140,',   c2: 'rgba(53,194,200,' }
+  ];
+  waves = palette.map((p, i) => ({
+    colorA: p.c1, colorB: p.c2,
+    amplitude: 45 + i * 18,
+    wavelength: 280 + i * 60,
+    speed: 0.28 + i * 0.10,
+    phase: i * 1.7,
+    yBase: h * (0.15 + i * 0.15),
+    lineWidth: 1.0 + (i % 3) * 0.4,
+    opacity: 0.32 - i * 0.03
+  }));
+}
+
+let t = 0;
+function drawWaves(){
+  ctx.clearRect(0, 0, w, h);
+  ctx.globalCompositeOperation = 'lighter';
+
+  waves.forEach((wave) => {
+    ctx.beginPath();
+    const points = [];
+    for (let x = -20; x <= w + 20; x += 6){
+      const y = wave.yBase
+        + Math.sin((x / wave.wavelength) + t * wave.speed + wave.phase) * wave.amplitude
+        + Math.sin((x / (wave.wavelength * 2.4)) - t * wave.speed * 0.6 + wave.phase) * (wave.amplitude * 0.35)
+        + Math.cos((x / (wave.wavelength * 0.6)) + t * wave.speed * 0.4) * (wave.amplitude * 0.15);
+      points.push([x, y]);
+    }
+    ctx.moveTo(points[0][0], points[0][1]);
+    for (let i = 1; i < points.length; i++){
+      ctx.lineTo(points[i][0], points[i][1]);
     }
 
-    function updateAllSyncDisplays() {
-      const curStr = 'N° P-' + String(simServing).padStart(2, '0');
-      const issStr = 'N° P-' + String(simIssued).padStart(2, '0');
-      const nextStr = 'N° P-' + String(simServing + 1).padStart(2, '0');
-      const waitingCount = Math.max(0, simIssued - simServing);
+    const grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, wave.colorA + (wave.opacity * 0.15) + ')');
+    grad.addColorStop(0.5, wave.colorB + wave.opacity + ')');
+    grad.addColorStop(1, wave.colorA + (wave.opacity * 0.15) + ')');
 
-      // Slide 0: TV Screen
-      const dNum = document.getElementById('simDisplayNum');
-      if (dNum) dNum.textContent = curStr;
-      const dIss = document.getElementById('simIssuedVal');
-      if (dIss) dIss.textContent = issStr;
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = wave.lineWidth;
+    ctx.shadowColor = wave.colorB + '0.35)';
+    ctx.shadowBlur = 5;
+    ctx.stroke();
+  });
 
-      // Slide 1: Doctor Console
-      const docCur = document.getElementById('simDocCurrent');
-      if (docCur) docCur.textContent = curStr;
-      const docWait = document.getElementById('simWaitingCount');
-      if (docWait) docWait.textContent = waitingCount;
-      const nextPat = document.getElementById('simNextPatientNum');
-      if (nextPat) nextPat.textContent = nextStr;
+  ctx.shadowBlur = 0;
+  ctx.globalCompositeOperation = 'source-over';
+  t += 0.014;
+  requestAnimationFrame(drawWaves);
+}
 
-      // Slide 2: Secretary Console & Ticket Preview
-      const nextNum = document.getElementById('simNextNum');
-      if (nextNum) nextNum.textContent = simIssued + 1;
-      const tickNum = document.getElementById('simTicketPreviewNum');
-      if (tickNum) tickNum.textContent = issStr;
-      const tickWait = document.getElementById('simTicketWait');
-      if (tickWait) tickWait.textContent = waitingCount;
-      const totalIss = document.getElementById('simTotalIssued');
-      if (totalIss) totalIss.textContent = simIssued;
+resize();
+drawWaves();
 
-      // Slide 3: Patient Smartphone App
-      const patCur = document.getElementById('simPatientCurrent');
-      if (patCur) patCur.textContent = curStr;
-      const patMy = document.getElementById('simPatientMyNum');
-      if (patMy) patMy.textContent = nextStr;
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+const animatedEls = document.querySelectorAll('[data-animate]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => entry.target.classList.add('in-view'), delay);
+      observer.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.15 });
+animatedEls.forEach(el => observer.observe(el));
 
-    function simNextPatient() {
-      simServing++;
-      if (simServing > simIssued) simIssued = simServing;
-      updateAllSyncDisplays();
-      playChimeSound();
-    }
-
-    function simTakeTicket() {
-      simIssued++;
-      updateAllSyncDisplays();
-      playChimeSound();
-      alert('Nouveau ticket distribué : N° P-' + String(simIssued).padStart(2, '0'));
-    }
-
-    function simPatientAlert() {
-      playChimeSound();
-      const banner = document.getElementById('simSmsBanner');
-      if (banner) {
-        banner.style.display = 'block';
-        setTimeout(() => { banner.style.display = 'none'; }, 4000);
-      }
-    }
-
-    // Slideshow Navigation & Autoplay
-    function showSlide(index) {
-      currentSlide = (index + totalSlides) % totalSlides;
-      slideProgress = 0;
-      updateProgressBar(0);
-
-      // Update Tabs & Panes
-      for (let i = 0; i < totalSlides; i++) {
-        const tabBtn = document.getElementById('tab-btn-' + i);
-        const pane = document.getElementById('slide-pane-' + i);
-        if (tabBtn) tabBtn.classList.toggle('active', i === currentSlide);
-        if (pane) pane.classList.toggle('active', i === currentSlide);
-      }
-
-      // Update Topbar Title & Counter
-      const titleEl = document.getElementById('simActiveTitle');
-      if (titleEl) titleEl.textContent = slideTitles[currentSlide];
-      const counterEl = document.getElementById('simSlideCounter');
-      if (counterEl) counterEl.textContent = '0' + (currentSlide + 1) + ' / 0' + totalSlides;
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      showSlide(currentSlide - 1);
-    }
-
-    function updateProgressBar(pct) {
-      const pBar = document.getElementById('simProgressBar');
-      if (pBar) pBar.style.width = pct + '%';
-    }
-
-    function toggleSimAutoplay() {
-      isAutoplaying = !isAutoplaying;
-      const icon = document.getElementById('simPlayIcon');
-      const label = document.getElementById('simPlayLabel');
-      if (icon) icon.textContent = isAutoplaying ? '⏸' : '▶';
-      if (label) label.textContent = isAutoplaying ? 'Pause' : 'Lecture';
-    }
-
-    function startAutoplayLoop() {
-      if (progressTimer) clearInterval(progressTimer);
-      progressTimer = setInterval(() => {
-        if (!isAutoplaying) return;
-        slideProgress += (updateFreqMs / slideIntervalMs) * 100;
-        if (slideProgress >= 100) {
-          slideProgress = 0;
-          nextSlide();
-        }
-        updateProgressBar(slideProgress);
-      }, updateFreqMs);
-    }
-
-    // Initialize slideshow and synced counts
-    document.addEventListener('DOMContentLoaded', () => {
-      updateAllSyncDisplays();
-      showSlide(0);
-      startAutoplayLoop();
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.faq-a').style.maxHeight = null;
     });
-
-    // In case DOM is already ready
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      updateAllSyncDisplays();
-      showSlide(0);
-      startAutoplayLoop();
+    if (!isOpen){
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
     }
+  });
+});
 
-    function downloadPatientApk() {
-      window.location.href = '/downloads/TAFWITA-Patient-v2.4.apk';
+let waitingBefore = 3;
+const psFillEl = document.getElementById('psFill');
+const psWaitTextEl = document.getElementById('psWaitText');
+
+function updateQueueMock(){
+  if (waitingBefore >= 0){
+    const pct = Math.max(8, 100 - waitingBefore * 28);
+    psFillEl.style.width = pct + '%';
+    psWaitTextEl.textContent = waitingBefore === 0
+      ? "C'est à vous ! Présentez-vous au cabinet"
+      : `${waitingBefore} patient${waitingBefore > 1 ? 's' : ''} avant vous · ~${waitingBefore * 8} min`;
+    waitingBefore--;
+  } else {
+    waitingBefore = 3;
+  }
+}
+setInterval(updateQueueMock, 3000);
+
+const API_BASE = window.TAFWITA_API_BASE || 'https://tafwita-api.onrender.com';
+
+const signupForm = document.getElementById('signupForm');
+const formMsg = document.getElementById('formMsg');
+
+signupForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const inputs = signupForm.querySelectorAll('input');
+  const nom_medecin = inputs[0].value.trim();
+  const telephone = inputs[1].value.trim();
+
+  if (!nom_medecin || !telephone){
+    formMsg.style.color = '#ff6b6b';
+    formMsg.textContent = 'Veuillez remplir tous les champs.';
+    return;
+  }
+
+  formMsg.style.color = '#fff';
+  formMsg.textContent = 'Création de votre cabinet en cours...';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/cabinets/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nom_medecin,
+        specialite: 'Médecine générale',
+        telephone,
+        wilaya: 'Oran',
+        code_pin: '0000'
+      })
+    });
+    const data = await res.json();
+    if (res.ok){
+      formMsg.style.color = '#22e29a';
+      formMsg.textContent = `Cabinet créé ! Slug: ${data.cabinet_slug}. Essai gratuit jusqu'au ${data.trial_end}.`;
+      signupForm.reset();
+    } else {
+      formMsg.style.color = '#ff6b6b';
+      formMsg.textContent = data.detail || 'Une erreur est survenue.';
     }
-
-    function downloadDoctorDesktopZip() {
-      window.location.href = '/downloads/tafwita-doctor-desktop.zip';
-    }
-
-    function openTvScreen() {
-      window.open('/downloads/tafwita-site-local.html', '_blank', 'width=1280,height=720');
-    }
-
-    // ==========================================
-    // TRIAL REGISTRATION & DIRECT DOWNLOAD LOGIC
-    // ==========================================
-    const ALGERIA_WILAYAS = [
-      "01 - Adrar", "02 - Chlef", "03 - Laghouat", "04 - Oum El Bouaghi", "05 - Batna",
-      "06 - Béjaïa", "07 - Biskra", "08 - Béchar", "09 - Blida", "10 - Bouira",
-      "11 - Tamanrasset", "12 - Tébessa", "13 - Tlemcen", "14 - Tiaret", "15 - Tizi Ouzou",
-      "16 - Alger", "17 - Djelfa", "18 - Jijel", "19 - Sétif", "20 - Saïda",
-      "21 - Skikda", "22 - Sidi Bel Abbès", "23 - Annaba", "24 - Guelma", "25 - Constantine",
-      "26 - Médéa", "27 - Mostaganem", "28 - M'Sila", "29 - Mascara", "30 - Ouargla",
-      "31 - Oran", "32 - El Bayadh", "33 - Illizi", "34 - Bordj Bou Arreridj", "35 - Boumerdès",
-      "36 - El Tarf", "37 - Tindouf", "38 - Tissemsilt", "39 - El Oued", "40 - Khenchela",
-      "41 - Souk Ahras", "42 - Tipaza", "43 - Mila", "44 - Aïn Defla", "45 - Naâma",
-      "46 - Aïn Témouchent", "47 - Ghardaïa", "48 - Relizane", "49 - Timimoun", "50 - Bordj Badji Mokhtar",
-      "51 - Ouled Djellal", "52 - Béni Abbès", "53 - In Salah", "54 - In Guezzam", "55 - Touggourt",
-      "56 - Djanet", "57 - El M'Ghair", "58 - El Meniaa"
-    ];
-
-    let registeredSlug = '';
-    let registeredPin = '';
-    let registeredDocName = '';
-
-    function initWilayasSelect() {
-      const select = document.getElementById('trialWilaya');
-      if (!select || select.children.length > 0) return;
-      ALGERIA_WILAYAS.forEach(w => {
-        const opt = document.createElement('option');
-        opt.value = w;
-        opt.textContent = w;
-        if (w.startsWith('16')) opt.selected = true;
-        select.appendChild(opt);
-      });
-    }
-
-    function openTrialRegisterModal() {
-      try {
-        initWilayasSelect();
-        const modal = document.getElementById('trialRegisterModal');
-        if (modal) {
-          modal.classList.add('active');
-          modal.style.display = 'flex';
-          document.body.style.overflow = 'hidden';
-        }
-      } catch (err) {
-        console.error('Erreur ouverture modale:', err);
-      }
-    }
-
-    function closeTrialRegisterModal() {
-      try {
-        const modal = document.getElementById('trialRegisterModal');
-        if (modal) {
-          modal.classList.remove('active');
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      } catch (err) {
-        console.error('Erreur fermeture modale:', err);
-      }
-    }
-
-    // Expose globally to window
-    window.openTrialRegisterModal = openTrialRegisterModal;
-    window.closeTrialRegisterModal = closeTrialRegisterModal;
-
-    function handleTrialOverlayClick(e) {
-      if (e.target.id === 'trialRegisterModal') {
-        closeTrialRegisterModal();
-      }
-    }
-
-    async function submitTrialRegister(e) {
-      e.preventDefault();
-      const docName = document.getElementById('trialDocName').value.trim();
-      const specialty = document.getElementById('trialSpecialty').value;
-      const wilaya = document.getElementById('trialWilaya').value;
-      const phone = document.getElementById('trialPhone').value.trim();
-      const pin = document.getElementById('trialPin').value.trim();
-      const errEl = document.getElementById('trialErrorMsg');
-      const btn = document.getElementById('trialSubmitBtn');
-      const spinner = document.getElementById('trialBtnSpinner');
-      const btnText = document.getElementById('trialBtnText');
-
-      if (!docName || !phone || !pin) {
-        errEl.textContent = 'Veuillez remplir tous les champs obligatoires.';
-        errEl.style.display = 'block';
-        return;
-      }
-
-      errEl.style.display = 'none';
-      btn.disabled = true;
-      spinner.style.display = 'inline';
-      btnText.textContent = 'Enregistrement PostgreSQL...';
-
-      let baseSlug = docName.toLowerCase()
-        .normalize('NFD').replace(/[̀-ͯ]/g, '')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-      if (!baseSlug) baseSlug = 'cabinet-' + Math.floor(Math.random() * 9000 + 1000);
-
-      const payload = {
-        nom_medecin: docName,
-        specialite: specialty,
-        telephone: phone,
-        wilaya: wilaya,
-        code_pin: pin
-      };
-
-      try {
-        let finalSlug = baseSlug;
-        const endpoints = [
-          'https://tafwita-api.onrender.com/api/cabinets/register',
-          'https://tafwita-backend.onrender.com/api/cabinets/register',
-          window.location.origin + '/api/render/cabinets/register',
-          window.location.origin + '/api/cabinets/register'
-        ];
-
-        for (const ep of endpoints) {
-          try {
-            const controller = new AbortController();
-            const tid = setTimeout(() => controller.abort(), 6000);
-            const res = await fetch(ep, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-              signal: controller.signal
-            });
-            clearTimeout(tid);
-            if (res.ok) {
-              const data = await res.json();
-              if (data.cabinet_slug) finalSlug = data.cabinet_slug;
-              break;
-            }
-          } catch(e) {}
-        }
-
-        registeredSlug = finalSlug;
-        registeredPin = pin;
-        registeredDocName = docName;
-
-        try {
-          localStorage.setItem('tafwita_current_account', JSON.stringify({
-            nom_medecin: docName,
-            specialite: specialty,
-            telephone: phone,
-            wilaya: wilaya,
-            slug: finalSlug,
-            pin: pin,
-            is_pro: true,
-            plan: 'trial_14d'
-          }));
-        } catch(e) {}
-
-        playChimeSound();
-
-        document.getElementById('succCabSlug').textContent = finalSlug;
-        document.getElementById('succCabPin').textContent = pin;
-        document.getElementById('trialStepForm').style.display = 'none';
-        document.getElementById('trialStepSuccess').style.display = 'block';
-
-      } catch (err) {
-        errEl.textContent = "Erreur : " + (err.message || "Impossible de finaliser l'enregistrement.");
-        errEl.style.display = 'block';
-      } finally {
-        btn.disabled = false;
-        spinner.style.display = 'none';
-        btnText.textContent = "Créer mon Compte Test & Télécharger l'App";
-      }
-    }
-
-    function generateCustomPythonCode(slug, pin) {
-      const codeLines = [
-        '#!/usr/bin/env python3',
-        '# -*- coding: utf-8 -*-',
-        '"""',
-        '====================================================================',
-        ' TAFWITA Pro - Console Bureau Medecin Desktop',
-        ' Cabinet : ' + slug + ' | Synchronisation Cloud PostgreSQL',
-        '====================================================================',
-        '"""',
-        '',
-        'import sys',
-        'import json',
-        'import time',
-        'import threading',
-        'import urllib.request',
-        'import urllib.error',
-        'from datetime import datetime',
-        '',
-        'try:',
-        '    import tkinter as tk',
-        '    from tkinter import ttk, messagebox',
-        'except ImportError:',
-        '    print("Erreur : Le module Tkinter est requis.")',
-        '    sys.exit(1)',
-        '',
-        'DEFAULT_SERVER_URL = "https://tafwita-api.onrender.com"',
-        'DEFAULT_CABINET_SLUG = "' + slug + '"',
-        'DEFAULT_DOCTOR_PIN = "' + pin + '"',
-        '',
-        'class TafwitaDesktopApp:',
-        '    def __init__(self, root):',
-        '        self.root = root',
-        '        self.root.title("TAFWITA Pro - " + DEFAULT_CABINET_SLUG)',
-        '        self.root.geometry("680x760")',
-        '        self.root.minsize(600, 700)',
-        '        self.root.configure(bg="#0f172a")',
-        '        self.server_url = tk.StringVar(value=DEFAULT_SERVER_URL)',
-        '        self.cabinet_slug = tk.StringVar(value=DEFAULT_CABINET_SLUG)',
-        '        self.doctor_pin = tk.StringVar(value=DEFAULT_DOCTOR_PIN)',
-        '        self.current_serving = tk.StringVar(value="--")',
-        '        self.last_issued = tk.StringVar(value="--")',
-        '        self.waiting_count = tk.StringVar(value="--")',
-        '        self.connection_status = tk.StringVar(value="Connexion...")',
-        '        self.is_connected = False',
-        '        self.is_polling = True',
-        '        self.build_ui()',
-        '        self.root.bind("<F1>", lambda e: self.call_next_patient())',
-        '        self.poll_thread = threading.Thread(target=self.poll_loop, daemon=True)',
-        '        self.poll_thread.start()',
-        '',
-        '    def build_ui(self):',
-        '        header = tk.Frame(self.root, bg="#0f172a", pady=16, padx=20)',
-        '        header.pack(fill=tk.X)',
-        '        tk.Label(header, text="TAFWITA Pro • Cabinet Medical", font=("Helvetica", 18, "bold"), fg="#ffffff", bg="#0f172a").pack(anchor="w")',
-        '        tk.Label(header, text="Cabinet : " + DEFAULT_CABINET_SLUG + " • Raccourci F1 Actif", font=("Helvetica", 10), fg="#38bdf8", bg="#0f172a").pack(anchor="w")',
-        '',
-        '        stat_frame = tk.Frame(self.root, bg="#1e293b", padx=16, pady=8)',
-        '        stat_frame.pack(fill=tk.X, padx=20, pady=6)',
-        '        tk.Label(stat_frame, text="POSTGRESQL CLOUD :", font=("Helvetica", 9, "bold"), fg="#94a3b8", bg="#1e293b").pack(side=tk.LEFT)',
-        '        tk.Label(stat_frame, textvariable=self.connection_status, font=("Helvetica", 9, "bold"), fg="#10b981", bg="#1e293b").pack(side=tk.RIGHT)',
-        '',
-        '        card = tk.Frame(self.root, bg="#ffffff", padx=20, pady=24)',
-        '        card.pack(fill=tk.BOTH, expand=True, padx=20, pady=12)',
-        '        tk.Label(card, text="PATIENT ACTUEL EN CONSULTATION", font=("Helvetica", 11, "bold"), fg="#64748b", bg="#ffffff").pack()',
-        '        tk.Label(card, textvariable=self.current_serving, font=("Helvetica", 64, "bold"), fg="#0284c7", bg="#ffffff").pack(pady=12)',
-        '',
-        '        info_box = tk.Frame(card, bg="#f8fafc", padx=12, pady=10)',
-        '        info_box.pack(fill=tk.X, pady=10)',
-        '        tk.Label(info_box, text="Dernier ticket distribue :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.LEFT)',
-        '        tk.Label(info_box, textvariable=self.last_issued, font=("Helvetica", 11, "bold"), fg="#0f172a", bg="#f8fafc").pack(side=tk.LEFT, padx=6)',
-        '        tk.Label(info_box, textvariable=self.waiting_count, font=("Helvetica", 11, "bold"), fg="#f59e0b", bg="#f8fafc").pack(side=tk.RIGHT)',
-        '        tk.Label(info_box, text="En attente :", font=("Helvetica", 10), fg="#64748b", bg="#f8fafc").pack(side=tk.RIGHT, padx=6)',
-        '',
-        '        btn_call = tk.Button(card, text="APPELER PATIENT SUIVANT (F1)", command=self.call_next_patient, bg="#0284c7", fg="#ffffff", font=("Helvetica", 13, "bold"), pady=14, relief="flat", cursor="hand2")',
-        '        btn_call.pack(fill=tk.X, pady=8)',
-        '',
-        '        btn_new = tk.Button(card, text="+ Emettre un Nouveau Ticket Patient", command=self.issue_ticket, bg="#10b981", fg="#ffffff", font=("Helvetica", 11, "bold"), pady=10, relief="flat", cursor="hand2")',
-        '        btn_new.pack(fill=tk.X, pady=4)',
-        '',
-        '    def poll_loop(self):',
-        '        while self.is_polling:',
-        '            self.fetch_queue()',
-        '            time.sleep(3)',
-        '',
-        '    def fetch_queue(self):',
-        '        url = self.server_url.get().rstrip("/") + "/api/render/queue/" + self.cabinet_slug.get()',
-        '        try:',
-        '            req = urllib.request.Request(url, headers={"User-Agent": "TafwitaDesktop/1.0"})',
-        '            with urllib.request.urlopen(req, timeout=4) as resp:',
-        '                data = json.loads(resp.read().decode("utf-8"))',
-        '                actuel = data.get("actuel", "--")',
-        '                dernier = data.get("dernier_emis", "--")',
-        '                en_attente = data.get("en_attente", 0)',
-        '                self.current_serving.set("N° " + str(actuel))',
-        '                self.last_issued.set("N° " + str(dernier))',
-        '                self.waiting_count.set(str(en_attente) + " pers.")',
-        '                self.connection_status.set("Connecte (PostgreSQL)")',
-        '        except Exception:',
-        '            self.connection_status.set("En attente synchro...")',
-        '',
-        '    def call_next_patient(self):',
-        '        url = self.server_url.get().rstrip("/") + "/api/render/queue/" + self.cabinet_slug.get() + "/next"',
-        '        payload = json.dumps({"pin": self.doctor_pin.get()}).encode("utf-8")',
-        '        try:',
-        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})',
-        '            with urllib.request.urlopen(req, timeout=4) as resp:',
-        '                data = json.loads(resp.read().decode("utf-8"))',
-        '                nouv = data.get("nouveau_numero", "--")',
-        '                self.current_serving.set("N° " + str(nouv))',
-        '                self.root.bell()',
-        '        except Exception:',
-        '            messagebox.showwarning("Info", "Appel enregistre.")',
-        '',
-        '    def issue_ticket(self):',
-        '        url = self.server_url.get().rstrip("/") + "/api/render/queue/" + self.cabinet_slug.get() + "/tickets"',
-        '        payload = json.dumps({"patient_name": "Patient Salle"}).encode("utf-8")',
-        '        try:',
-        '            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})',
-        '            with urllib.request.urlopen(req, timeout=4) as resp:',
-        '                data = json.loads(resp.read().decode("utf-8"))',
-        '                num = data.get("ticket_numero", "--")',
-        '                messagebox.showinfo("Ticket Emis", "Nouveau Ticket : N° " + str(num))',
-        '                self.fetch_queue()',
-        '        except Exception:',
-        '            messagebox.showinfo("Info", "Nouveau ticket enregistre.")',
-        '',
-        'if __name__ == "__main__":',
-        '    root = tk.Tk()',
-        '    app = TafwitaDesktopApp(root)',
-        '    root.mainloop()'
-      ];
-      return codeLines.join('\n');
-    }
-
-    function downloadRegisteredPython() {
-      const slug = registeredSlug || 'mon-cabinet';
-      const pin = registeredPin || '1234';
-      const pyContent = generateCustomPythonCode(slug, pin);
-      const blob = new Blob([pyContent], { type: 'text/x-python;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'tafwita_' + slug + '.py';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function() {
-        if (document.body.contains(a)) document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }, 3000);
-    }
-
-    function downloadRegisteredBat() {
-      const slug = registeredSlug || 'mon-cabinet';
-      const pin = registeredPin || '1234';
-      const batLines = [
-        '@echo off',
-        'title TAFWITA Pro - ' + slug,
-        'echo ========================================================',
-        'echo   TAFWITA - Console Medecin Cabinet : ' + slug,
-        'echo   Demarrage avec Python Tkinter...',
-        'echo ========================================================',
-        'python tafwita_' + slug + '.py',
-        'if %ERRORLEVEL% NEQ 0 (',
-        '  python3 tafwita_' + slug + '.py',
-        ')',
-        'pause'
-      ];
-      const blob = new Blob([batLines.join('\r\n')], { type: 'application/x-bat;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Lancer-Tafwita-' + slug + '.bat';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function() {
-        if (document.body.contains(a)) document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }, 3000);
-    }
-
-    function openRegisteredTv() {
-      const slug = registeredSlug || 'mon-cabinet';
-      window.open('/tv?cabinet=' + encodeURIComponent(slug), '_blank');
-    }
-  </script>
+  } catch (err){
+    formMsg.style.color = '#ff6b6b';
+    formMsg.textContent = "Impossible de contacter le serveur. Réessayez plus tard.";
+  }
+});
+</script>
 </body>
 </html>
