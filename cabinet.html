@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>TAFWITA - Console cabinet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f8f8" />
+  <style>
+    :root {
+      --bg: #f5f8f8;
+      --surface: #ffffff;
+      --mint: #f3faf8;
+      --border: #dbeae7;
+      --teal: #329f9a;
+      --teal-dark: #237873;
+      --text: #28373e;
+      --soft: #607078;
+      --muted: #9baabf;
+      --green: #2c8b69;
+      --red: #bc5d62;
+      --amber: #a97524;
+      --blue: #4d82a8;
+      --shadow: 0 18px 38px rgba(35, 99, 99, 0.18);
+      --ff: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: var(--ff);
+      background: radial-gradient(circle at top, #e5f5ff 0, #f5f8fb 52%, #f5f5f8 100%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    main { max-width: 1200px; width: 100%; height: 100vh; padding: 26px 16px 30px; }
+    .shell {
+      background: var(--bg);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 230px minmax(0,1fr);
+      height: 100%;
+      overflow: hidden;
+    }
+    .side {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 22px 18px 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .logo span { color: var(--teal); }
+    .sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .login-box {
+      background: #f5fbfa;
+      border-radius: 16px;
+      padding: 12px 10px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+    }
+    .login-box label {
+      display: block;
+      font-size: 11px;
+      color: var(--soft);
+      margin-bottom: 3px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      outline: none;
+    }
+    .login-box input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(50, 159, 154, 0.12);
+    }
+    .login-row { display: flex; gap: 8px; margin-top: 8px; }
+    .login-row > div { flex: 1; }
+    .btn-main {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(90deg, var(--teal), #43cdb7);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 9px 20px rgba(50, 159, 154, 0.25);
+    }
+    .btn-main:hover { filter: brightness(1.05); }
+    .nav {
+      margin-top: 20px;
+      flex: 1;
+    }
+    .nav button {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      color: var(--soft);
+      font-size: 13px;
+      padding: 9px 9px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .nav button.active {
+      background: #ddf2ee;
+      color: var(--teal-dark);
+      font-weight: 600;
+    }
+    .logout {
+      margin-top: 20px;
+    }
+    .logout button {
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      background: #fceeee;
+      color: var(--red);
+      font-size: 12px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .area {
+      padding: 22px 22px 20px;
+      overflow-y: auto;
+    }
+    .title {
+      font-size: 21px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+    .subtitle {
+      margin: 0 0 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      margin-left: 8px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .stat {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+    }
+    .stat h3 {
+      margin: 0 0 6px;
+      font-size: 11px;
+      color: var(--soft);
+    }
+    .stat strong {
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 14px 15px 12px;
+      margin-bottom: 14px;
+    }
+    .card h2 {
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+    .card p {
+      margin: 0 0 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .row-icons {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .icon-btn {
+      width: 40px;
+      height: 38px;
+      border-radius: 11px;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #eef5f4;
+      color: var(--text);
+    }
+    .icon-btn[data-role="next"] { background: #ddf2ee; color: var(--teal-dark); }
+    .icon-btn[data-role="add"] { background: #eaf1f8; color: var(--blue); }
+    .icon-btn[data-role="toggle"] { background: #fff4de; color: var(--amber); }
+    .icon-btn[data-role="close"] { background: #fceced; color: var(--red); }
+    .icon-btn:hover { filter: brightness(0.97); }
+    .tooltip {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #26363d;
+      color: #fff;
+      font-size: 11px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .tickets-list {
+      margin-top: 10px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .ticket-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 9px;
+      margin-bottom: 6px;
+      border-radius: 10px;
+      background: var(--mint);
+    }
+    .ticket-main { display: flex; align-items: center; gap: 10px; }
+    .ticket-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal-dark);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #ddf2ee;
+    }
+    .ticket-name { font-size: 12px; color: var(--soft); }
+    .ticket-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+    .ticket-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .msg {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      min-height: 14px;
+    }
+
+    .history-list, .settings-form {
+      margin-top: 12px;
+    }
+    .history-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 9px;
+      margin-bottom: 6px;
+      border-radius: 10px;
+      background: var(--mint);
+      font-size: 11px;
+    }
+    .history-main { display: flex; align-items: center; gap: 8px; }
+    .history-main span { display: inline-block; }
+    .history-date { color: var(--muted); }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px 20px;
+    }
+    .settings-field label {
+      display: block;
+      font-size: 11px;
+      color: var(--soft);
+      margin-bottom: 3px;
+    }
+    .settings-field input, .settings-field select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      outline: none;
+    }
+    .settings-field input:focus, .settings-field select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(50, 159, 154, 0.12);
+    }
+    .settings-actions {
+      margin-top: 12px;
+    }
+    .btn-save {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--teal);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: #24343d;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      box-shadow: 0 14px 30px rgba(2, 22, 40, 0.45);
+      max-width: 90vw;
+      z-index: 100;
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+      .side {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="shell">
+      <aside class="side">
+        <div>
+          <div class="logo">TAF<span>WITA</span></div>
+          <div class="sub">Console cabinet · file en direct</div>
+        </div>
+        <div class="login-box">
+          <label for="slug">Identifiant cabinet (slug)</label>
+          <input id="slug" placeholder="dr-votre-nom" />
+          <div class="login-row">
+            <div>
+              <label for="pin">Code PIN</label>
+              <input id="pin" type="password" placeholder="PIN" />
+            </div>
+            <div>
+              <button class="btn-main" id="btnSave" type="button">Memoriser</button>
+            </div>
+          </div>
+        </div>
+        <nav class="nav">
+          <button type="button" data-page="home" class="active">Accueil</button>
+          <button type="button" data-page="history">Historique</button>
+          <button type="button" data-page="settings">Horaires et regles</button>
+        </nav>
+        <div class="logout">
+          <button type="button" id="btnLogout">Se deconnecter</button>
+        </div>
+      </aside>
+      <section class="area" id="area">
+        <!-- contenu dynamique -->
+      </section>
+    </div>
+  </main>
+  <script>
+    const API = "https://tafwita-api.onrender.com";
+
+    const state = {
+      slug: "",
+      pin: "",
+      page: "home",
+      data: null,
+      history: [],
+      timer: null,
+    };
+
+    function $(id) { return document.getElementById(id); }
+
+    function showToast(text) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+      const div = document.createElement('div');
+      div.className = 'toast';
+      div.textContent = text;
+      document.body.appendChild(div);
+      setTimeout(() => div.remove(), 3800);
+    }
+
+    function attachTooltip(btn, text) {
+      let tip;
+      btn.addEventListener('mouseenter', () => {
+        tip = document.createElement('div');
+        tip.className = 'tooltip';
+        tip.textContent = text;
+        btn.appendChild(tip);
+      });
+      btn.addEventListener('mouseleave', () => {
+        if (tip) tip.remove();
+      });
+    }
+
+    async function api(method, path, { params = null, json = null } = {}) {
+      let url = API + path.replace(/\/+/g, '/');
+      if (params) {
+        const usp = new URLSearchParams(params);
+        url += (url.includes('?') ? '&' : '?') + usp.toString();
+      }
+      const res = await fetch(url, {
+        method,
+        headers: json ? { 'Content-Type': 'application/json' } : {},
+        body: json ? JSON.stringify(json) : null,
+      });
+      let data;
+      try { data = await res.json(); } catch { data = null; }
+      if (!res.ok) {
+        const msg = (data && (data.detail || data.message)) || 'Erreur HTTP ' + res.status;
+        throw new Error(msg);
+      }
+      return data;
+    }
+
+    function saveCabinet() {
+      const slug = $('slug').value.trim();
+      const pin = $('pin').value.trim();
+      if (!slug || !pin) {
+        showToast('Slug et PIN requis.');
+        return;
+      }
+      state.slug = slug;
+      state.pin = pin;
+      try {
+        localStorage.setItem('taf_cab_slug', slug);
+        localStorage.setItem('taf_cab_pin', pin);
+      } catch {}
+      showToast('Cabinet memorise.');
+      renderPage();
+      refresh();
+    }
+
+    function loadCabinet() {
+      try {
+        const slug = localStorage.getItem('taf_cab_slug');
+        const pin = localStorage.getItem('taf_cab_pin');
+        if (slug) {
+          state.slug = slug;
+          $('slug').value = slug;
+        }
+        if (pin) {
+          state.pin = pin;
+          $('pin').value = pin;
+        }
+      } catch {}
+    }
+
+    function logout() {
+      state.slug = '';
+      state.pin = '';
+      $('slug').value = '';
+      $('pin').value = '';
+      try {
+        localStorage.removeItem('taf_cab_slug');
+        localStorage.removeItem('taf_cab_pin');
+      } catch {}
+      clearInterval(state.timer);
+      state.data = null;
+      state.history = [];
+      renderPage();
+      showToast('Cabinet deconnecte.');
+    }
+
+    function setPage(page) {
+      state.page = page;
+      document.querySelectorAll('.nav button').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === page);
+      });
+      renderPage();
+      refresh();
+    }
+
+    function statusLabel(s) {
+      const map = {
+        waiting: 'En attente',
+        returned: 'Remis en attente',
+        suspended: 'Suspendu',
+        urgent: 'Urgence',
+        serving: 'En consultation',
+        completed: 'Termine',
+        cancelled: 'Annule',
+      };
+      return map[s] || s || '';
+    }
+
+    function statusColor(s) {
+      const map = {
+        waiting: '#237873',
+        returned: '#237873',
+        suspended: '#a97524',
+        urgent: '#9c6915',
+        serving: '#2c8b69',
+        completed: '#9baabf',
+        cancelled: '#bc5d62',
+      };
+      return map[s] || '#607078';
+    }
+
+    async function refresh() {
+      if (!state.slug) {
+        $('area').innerHTML = '<p>Renseignez le slug et le PIN pour afficher la file.</p>';
+        return;
+      }
+      try {
+        if (state.page === 'history') {
+          const hist = await api('GET', `/api/cabinets/${state.slug}/tickets`);
+          state.history = Array.isArray(hist) ? hist : (hist.tickets || []);
+          renderHistory();
+        } else {
+          const data = await api('GET', `/api/queue/${state.slug}`);
+          state.data = data;
+          renderHomeOrSettings();
+          if (state.timer) clearInterval(state.timer);
+          state.timer = setInterval(async () => {
+            try {
+              const d = await api('GET', `/api/queue/${state.slug}`);
+              state.data = d;
+              renderHomeOrSettings();
+            } catch (e) {
+              console.warn('Erreur refresh', e.message);
+            }
+          }, 10000);
+        }
+      } catch (e) {
+        showToast(e.message || 'Erreur de chargement.');
+      }
+    }
+
+    function renderPage() {
+      const area = $('area');
+      if (!state.slug) {
+        area.innerHTML = '<h1 class="title">Console cabinet</h1><p class="subtitle">Entrez le slug et le PIN pour mettre la file en route.</p>';
+        return;
+      }
+      if (state.page === 'home') {
+        area.innerHTML = '';
+      } else if (state.page === 'history') {
+        area.innerHTML = '';
+      } else {
+        area.innerHTML = '';
+      }
+    }
+
+    function renderHomeOrSettings() {
+      const area = $('area');
+      const d = state.data || {};
+      if (state.page === 'home') {
+        const closed = !!d.day_closed;
+        const open = !!d.accept_tickets;
+        const txt = closed ? 'JOURNEE CLOTUREE' : (open ? 'PRISE ACTIVE' : 'PRISE ARRETEE');
+        const col = closed ? 'var(--red)' : (open ? 'var(--green)' : 'var(--amber)');
+
+        area.innerHTML = '';
+        const header = document.createElement('div');
+        header.innerHTML = '<h1 class="title">Accueil</h1><p class="subtitle">Survolez une icone pour connaitre son action.</p>';
+        const badge = document.createElement('span');
+        badge.className = 'badge';
+        badge.style.backgroundColor = col;
+        badge.textContent = txt;
+        header.querySelector('h1').appendChild(badge);
+        area.appendChild(header);
+
+        const statsWrap = document.createElement('div');
+        statsWrap.className = 'stats';
+        const stats = [
+          { title: 'En consultation', value: d.display_serving || '-' },
+          { title: 'En attente', value: String(d.waiting_count || 0) },
+          { title: 'Tickets du jour', value: String(d.total_issued || 0) },
+        ];
+        stats.forEach(s => {
+          const div = document.createElement('div');
+          div.className = 'stat';
+          div.innerHTML = '<h3>' + s.title + '</h3><strong>' + s.value + '</strong>';
+          statsWrap.appendChild(div);
+        });
+        area.appendChild(statsWrap);
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = '<h2>Gestion de la journee</h2><p>Utilisez le megaphone pour appeler le patient suivant.</p>';
+        const row = document.createElement('div');
+        row.className = 'row-icons';
+
+        const btnStart = document.createElement('button');
+        btnStart.className = 'icon-btn';
+        btnStart.innerHTML = '▶';
+        attachTooltip(btnStart, 'Demarrer une nouvelle journee');
+        btnStart.onclick = startDay;
+        row.appendChild(btnStart);
+
+        const btnNext = document.createElement('button');
+        btnNext.className = 'icon-btn';
+        btnNext.dataset.role = 'next';
+        btnNext.innerHTML = '📣';
+        attachTooltip(btnNext, 'Appeler le patient suivant');
+        btnNext.onclick = nextPatient;
+        row.appendChild(btnNext);
+
+        const btnAdd = document.createElement('button');
+        btnAdd.className = 'icon-btn';
+        btnAdd.dataset.role = 'add';
+        btnAdd.innerHTML = '＋';
+        attachTooltip(btnAdd, 'Ajouter un ticket papier');
+        btnAdd.onclick = () => showToast('Ajout ticket papier: a implementer en HTML.');
+        row.appendChild(btnAdd);
+
+        const btnToggle = document.createElement('button');
+        btnToggle.className = 'icon-btn';
+        btnToggle.dataset.role = 'toggle';
+        btnToggle.innerHTML = open ? '⏸' : '▶';
+        attachTooltip(btnToggle, open ? 'Arreter la prise de tickets' : 'Reprendre la prise de tickets');
+        btnToggle.onclick = toggleTickets;
+        row.appendChild(btnToggle);
+
+        const btnClose = document.createElement('button');
+        btnClose.className = 'icon-btn';
+        btnClose.dataset.role = 'close';
+        btnClose.innerHTML = '■';
+        attachTooltip(btnClose, 'Cloturer la journee');
+        btnClose.onclick = closeDay;
+        row.appendChild(btnClose);
+
+        card.appendChild(row);
+        const msg = document.createElement('div');
+        msg.className = 'msg';
+        msg.id = 'msg';
+        card.appendChild(msg);
+        area.appendChild(card);
+
+        const cardList = document.createElement('div');
+        cardList.className = 'card';
+        cardList.innerHTML = '<h2>File en direct</h2>';
+        const list = document.createElement('div');
+        list.className = 'tickets-list';
+        list.id = 'ticketsList';
+        cardList.appendChild(list);
+        area.appendChild(cardList);
+
+        renderTickets(d.tickets || []);
+      } else {
+        // settings page
+        const d = state.data || {};
+        area.innerHTML = '';
+        const header = document.createElement('div');
+        header.innerHTML = '<h1 class="title">Horaires et regles</h1><p class="subtitle">Les patients peuvent prendre un ticket avant l\'ouverture. Le mode manuel convient aux horaires variables.</p>';
+        area.appendChild(header);
+        const card = document.createElement('div');
+        card.className = 'card';
+        const form = document.createElement('div');
+        form.className = 'settings-form';
+        const grid = document.createElement('div');
+        grid.className = 'settings-grid';
+
+        const modeField = document.createElement('div');
+        modeField.className = 'settings-field';
+        modeField.innerHTML = '<label>Mode de fermeture</label>';
+        const select = document.createElement('select');
+        select.id = 'mode';
+        ['manual', 'fixed'].forEach(v => {
+          const opt = document.createElement('option');
+          opt.value = v;
+          opt.textContent = v === 'manual' ? 'Fermeture manuelle' : 'Horaires fixes';
+          select.appendChild(opt);
+        });
+        select.value = d.ticket_mode || 'manual';
+        modeField.appendChild(select);
+        grid.appendChild(modeField);
+
+        const fields = [
+          { key: 'ticket_start', label: 'Debut prise de tickets', ph: '06:00', val: d.ticket_start_time || '06:00' },
+          { key: 'ticket_end', label: 'Fin auto prise (vide en manuel)', ph: '15:30', val: d.ticket_end_time || '' },
+          { key: 'opening', label: 'Ouverture cabinet', ph: '08:00', val: d.opening_time || '08:00' },
+          { key: 'closing', label: 'Fermeture prevue (optionnel)', ph: '17:00', val: d.closing_time || '' },
+          { key: 'maximum', label: 'Maximum tickets par jour', ph: '35', val: d.max_tickets_per_day != null ? String(d.max_tickets_per_day) : '' },
+        ];
+        fields.forEach(f => {
+          const wrap = document.createElement('div');
+          wrap.className = 'settings-field';
+          wrap.innerHTML = '<label>' + f.label + '</label>';
+          const inp = document.createElement('input');
+          inp.id = f.key;
+          inp.placeholder = f.ph;
+          inp.value = f.val || '';
+          wrap.appendChild(inp);
+          grid.appendChild(wrap);
+        });
+
+        form.appendChild(grid);
+        const msg = document.createElement('div');
+        msg.className = 'msg';
+        msg.id = 'setMsg';
+        form.appendChild(msg);
+        const actions = document.createElement('div');
+        actions.className = 'settings-actions';
+        const btn = document.createElement('button');
+        btn.className = 'btn-save';
+        btn.textContent = 'Enregistrer les regles';
+        btn.onclick = saveSettings;
+        actions.appendChild(btn);
+        form.appendChild(actions);
+        card.appendChild(form);
+        area.appendChild(card);
+      }
+    }
+
+    function renderTickets(ts) {
+      const list = $('ticketsList');
+      if (!list) return;
+      list.innerHTML = '';
+      if (!ts || !ts.length) {
+        list.innerHTML = '<p>Aucun ticket actif.</p>';
+        return;
+      }
+      ts.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'ticket-row';
+        const main = document.createElement('div');
+        main.className = 'ticket-main';
+        const num = document.createElement('span');
+        num.className = 'ticket-num';
+        num.textContent = 'P-' + String(t.ticket_num || 0).padStart(2, '0');
+        const name = document.createElement('span');
+        name.className = 'ticket-name';
+        name.textContent = t.nom_patient || 'Patient';
+        const status = document.createElement('span');
+        status.className = 'ticket-status';
+        status.textContent = statusLabel(t.statut || 'waiting');
+        status.style.backgroundColor = statusColor(t.statut);
+        status.style.color = '#fff';
+        main.appendChild(num);
+        main.appendChild(name);
+        main.appendChild(status);
+        row.appendChild(main);
+
+        const acts = document.createElement('div');
+        acts.className = 'ticket-actions';
+        const s = t.statut;
+        if (s === 'waiting' || s === 'returned') {
+          const b = document.createElement('button');
+          b.className = 'icon-btn';
+          b.textContent = '⏸';
+          attachTooltip(b, 'Suspendre ce ticket');
+          b.onclick = () => ticketAction(t, 'suspend');
+          acts.appendChild(b);
+        }
+        if (s === 'suspended') {
+          const b1 = document.createElement('button');
+          b1.className = 'icon-btn';
+          b1.textContent = '↩';
+          attachTooltip(b1, 'Remettre ce ticket dans la file');
+          b1.onclick = () => ticketAction(t, 'return-to-queue');
+          acts.appendChild(b1);
+          const b2 = document.createElement('button');
+          b2.className = 'icon-btn';
+          b2.textContent = '🔔';
+          attachTooltip(b2, 'Enregistrer un passage sans reponse');
+          b2.onclick = () => notifyTicket(t);
+          acts.appendChild(b2);
+          const b3 = document.createElement('button');
+          b3.className = 'icon-btn';
+          b3.textContent = '×';
+          attachTooltip(b3, 'Annuler apres 5 passages');
+          b3.onclick = () => cancelTicket(t);
+          acts.appendChild(b3);
+        }
+        if (s !== 'serving' && s !== 'completed' && s !== 'cancelled') {
+          const b4 = document.createElement('button');
+          b4.className = 'icon-btn';
+          b4.textContent = '!';
+          attachTooltip(b4, 'Valider une priorite medicale');
+          b4.onclick = () => urgentTicket(t);
+          acts.appendChild(b4);
+        }
+        const bt = document.createElement('button');
+        bt.className = 'icon-btn';
+        bt.textContent = '☷';
+        attachTooltip(bt, 'Voir la trace du ticket');
+        bt.onclick = () => traceTicket(t);
+        acts.appendChild(bt);
+
+        row.appendChild(acts);
+        list.appendChild(row);
+      });
+    }
+
+    function renderHistory() {
+      const area = $('area');
+      area.innerHTML = '<h1 class="title">Historique</h1><p class="subtitle">Tickets du cabinet et trace des actions.</p>';
+      const card = document.createElement('div');
+      card.className = 'card';
+      const list = document.createElement('div');
+      list.className = 'history-list';
+      if (!state.history.length) {
+        list.innerHTML = '<p>Aucun historique.</p>';
+      } else {
+        state.history.forEach(t => {
+          const row = document.createElement('div');
+          row.className = 'history-row';
+          const main = document.createElement('div');
+          main.className = 'history-main';
+          const num = document.createElement('span');
+          num.textContent = 'P-' + String(t.ticket_num || 0).padStart(2, '0');
+          const name = document.createElement('span');
+          name.textContent = t.nom_patient || 'Patient';
+          const st = document.createElement('span');
+          st.textContent = statusLabel(t.statut || '');
+          st.style.color = statusColor(t.statut);
+          const dt = document.createElement('span');
+          dt.className = 'history-date';
+          dt.textContent = (t.created_at || '').substring(0, 16).replace('T', ' ');
+          main.appendChild(num);
+          main.appendChild(name);
+          main.appendChild(st);
+          main.appendChild(dt);
+          const bt = document.createElement('button');
+          bt.className = 'icon-btn';
+          bt.textContent = '☷';
+          attachTooltip(bt, 'Voir la trace du ticket');
+          bt.onclick = () => traceTicket(t);
+          row.appendChild(main);
+          row.appendChild(bt);
+          list.appendChild(row);
+        });
+      }
+      card.appendChild(list);
+      area.appendChild(card);
+    }
+
+    async function ticketAction(t, action) {
+      try {
+        await api('POST', `/api/tickets/${t.id}/${action}`, {
+          json: { code_pin: state.pin, reason_code: 'desktop', reason_note: 'Action cabinet' },
+        });
+        showToast('Operation enregistree.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur ticket.');
+      }
+    }
+
+    async function notifyTicket(t) {
+      try {
+        const data = await api('POST', `/api/tickets/${t.id}/notify`, { params: { pin: state.pin } });
+        const n = data.notification_count;
+        showToast('Passage enregistre : ' + n);
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur notification.');
+      }
+    }
+
+    async function cancelTicket(t) {
+      const n = t.notification_count || 0;
+      if (n < 5) {
+        showToast('Annulation impossible : ' + n + '/5 passages enregistres.');
+        return;
+      }
+      if (!confirm(`Le ticket P-${String(t.ticket_num || 0).padStart(2,'0')} est suspendu et a ${n} passages sans reponse. Confirmer l'annulation ?`)) {
+        return;
+      }
+      try {
+        await api('POST', `/api/tickets/${t.id}/cabinet-cancel`, {
+          json: { code_pin: state.pin, reason_note: 'Absence apres 5 passages' },
+        });
+        showToast('Ticket annule.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur annulation.');
+      }
+    }
+
+    async function urgentTicket(t) {
+      const note = prompt('Motif urgence :');
+      if (!note) return;
+      try {
+        await api('POST', `/api/tickets/${t.id}/approve-urgent`, {
+          json: { code_pin: state.pin, urgent_reason: note },
+        });
+        showToast('Priorite medicale enregistree.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur urgence.');
+      }
+    }
+
+    async function traceTicket(t) {
+      try {
+        const data = await api('GET', `/api/tickets/${t.id}/events`);
+        const lines = Array.isArray(data) ? data : [];
+        let msg = 'Trace du ticket P-' + String(t.ticket_num || 0).padStart(2,'0') + '\n\n';
+        lines.forEach(x => {
+          const dt = (x.created_at || '').substring(0,16).replace('T',' ');
+          msg += dt + ' | ' + (x.event_type || '') + ' ' + (x.reason_note || '') + '\n';
+        });
+        alert(msg);
+      } catch (e) {
+        showToast(e.message || 'Erreur trace.');
+      }
+    }
+
+    async function nextPatient() {
+      try {
+        await api('POST', `/api/queue/${state.slug}/next`, { params: { pin: state.pin } });
+        showToast('Patient suivant appele.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur appel.');
+      }
+    }
+
+    async function startDay() {
+      if (!confirm('Demarrer une nouvelle journee et activer la prise de tickets ?')) return;
+      try {
+        await api('POST', `/api/cabinets/${state.slug}/start-day`, {
+          json: { code_pin: state.pin },
+        });
+        showToast('Nouvelle journee demarree.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur demarrage.');
+      }
+    }
+
+    async function closeDay() {
+      if (!confirm('Cloturer la journee ? Les tickets restants seront annules.')) return;
+      try {
+        await api('POST', `/api/cabinets/${state.slug}/close-day`, {
+          params: { pin: state.pin },
+          json: { reason: 'cabinet_closed', notify_patients: true },
+        });
+        showToast('Journee cloturee.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur cloture.');
+      }
+    }
+
+    async function toggleTickets() {
+      const d = state.data || {};
+      const current = !!d.accept_tickets;
+      try {
+        await api('PUT', `/api/cabinets/${state.slug}/settings`, {
+          params: { pin: state.pin },
+          json: { accept_tickets: !current },
+        });
+        showToast(!current ? 'Prise de tickets reprise.' : 'Prise de tickets arretee.');
+        refresh();
+      } catch (e) {
+        showToast(e.message || 'Erreur parametres.');
+      }
+    }
+
+    function validTime(x) {
+      if (!x) return true;
+      return /^\d{2}:\d{2}$/.test(x);
+    }
+
+    async function saveSettings() {
+      const mode = $('mode').value;
+      const st = $('ticket_start').value.trim();
+      const en = $('ticket_end').value.trim();
+      const op = $('opening').value.trim();
+      const cl = $('closing').value.trim();
+      const mx = $('maximum').value.trim();
+      const msg = $('setMsg');
+      msg.style.color = 'var(--red)';
+      if (!validTime(st) || !validTime(op) || (en && !validTime(en)) || (cl && !validTime(cl))) {
+        msg.textContent = 'Format heures invalide (HH:MM).';
+        return;
+      }
+      let maximum = null;
+      if (mx) {
+        const n = Number(mx);
+        if (!Number.isFinite(n) || n < 0) {
+          msg.textContent = 'Maximum invalide.';
+          return;
+        }
+        maximum = n;
+      }
+      try {
+        await api('PUT', `/api/cabinets/${state.slug}/settings`, {
+          params: { pin: state.pin },
+          json: {
+            ticket_mode: mode,
+            ticket_start_time: st || null,
+            ticket_end_time: en || null,
+            opening_time: op || null,
+            closing_time: cl || null,
+            max_tickets_per_day: maximum,
+          },
+        });
+        msg.style.color = 'var(--green)';
+        msg.textContent = 'Regles enregistrees.';
+        refresh();
+      } catch (e) {
+        msg.style.color = 'var(--red)';
+        msg.textContent = e.message || 'Erreur enregistrement.';
+      }
+    }
+
+    document.getElementById('btnSave').addEventListener('click', saveCabinet);
+    document.getElementById('btnLogout').addEventListener('click', logout);
+    document.querySelectorAll('.nav button').forEach(btn => {
+      btn.addEventListener('click', () => setPage(btn.dataset.page));
+    });
+
+    loadCabinet();
+    renderPage();
+    if (state.slug) refresh();
+  </script>
+</body>
+</html>
