@@ -1,0 +1,9 @@
+{
+  "name": "TAFWITA Patient",
+  "short_name": "TAFWITA",
+  "start_url": "./patient.html",
+  "display": "standalone",
+  "background_color": "#f5f8fb",
+  "theme_color": "#16b6b0",
+  "icons": []
+}
