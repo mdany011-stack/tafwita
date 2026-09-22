@@ -210,7 +210,7 @@
       <nav class="nav-links" id="navLinks">
         <a href="#fonctionnement">Comment ca marche</a>
         <a href="#solutions">Solutions</a>
-        <a href="#tarifs">Tarifs</a>
+        <a href="#">Tarifs</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
@@ -230,7 +230,7 @@
           <h1>La file d'attente medicale, <span>simple et humaine.</span></h1>
           <p class="hero-text">Avec TAFWITA, vos patients prennent leur ticket a distance, suivent leur tour en direct et arrivent au cabinet au bon moment. Vous gardez le controle de votre file, sans stress et sans papier perdu.</p>
           <div class="hero-actions">
-            <a href="#inscription" class="btn btn-primary btn-large">Essayer gratuitement</a>
+            <a href="#" class="btn btn-primary btn-large">Essayer gratuitement</a>
             <a href="#fonctionnement" class="btn btn-outline btn-large">Voir comment ca marche</a>
           </div>
           <div class="hero-proof">
@@ -299,9 +299,9 @@
       <div class="container">
         <div class="section-head" data-reveal><span class="tag">Tarifs transparents</span><h2>Choisissez la formule adaptee</h2><p>Commencez gratuitement, sans carte bancaire ni engagement.</p></div>
         <div class="pricing">
-          <article class="price-card" data-reveal><h3>Essai gratuit</h3><div class="price">0 <small>DA / 14 jours</small></div><p class="price-note">Testez toutes les fonctions.</p><ul><li>Un cabinet</li><li>Tickets illimites</li><li>Console et application patient</li></ul><a href="#inscription" class="btn btn-outline">Commencer l'essai</a></article>
-          <article class="price-card featured" data-reveal><span class="ribbon">Recommande</span><h3>Cabinet individuel</h3><div class="price">2 500 <small>DA / mois</small></div><p class="price-note"><span class="strike">36 000 DA / an</span> sans engagement.</p><ul><li>App desktop cabinet</li><li>Application patient</li><li>Ajout ticket papier</li><li>Historique et statistiques</li><li>Ecran TV synchronise</li></ul><a href="#inscription" class="btn btn-primary">Demarrer maintenant</a></article>
-          <article class="price-card" data-reveal><h3>Multi-praticiens</h3><div class="price">Sur devis</div><p class="price-note">Pour cliniques et centres medicaux.</p><ul><li>Plusieurs medecins</li><li>Files separees</li><li>Statistiques avancees</li><li>Accompagnement prioritaire</li></ul><a href="#inscription" class="btn btn-outline">Nous contacter</a></article>
+          <article class="price-card" data-reveal><h3>Essai gratuit</h3><div class="price">0 <small>DA / 14 jours</small></div><p class="price-note">Testez toutes les fonctions.</p><ul><li>Un cabinet</li><li>Tickets illimites</li><li>Console et application patient</li></ul><a href="#" class="js-trial-open btn btn-outline">Commencer l'essai</a></article>
+          <article class="price-card featured" data-reveal><span class="ribbon">Recommande</span><h3>Cabinet individuel</h3><div class="price">2 500 <small>DA / mois</small></div><p class="price-note"><span class="strike">36 000 DA / an</span> sans engagement.</p><ul><li>App desktop cabinet</li><li>Application patient</li><li>Ajout ticket papier</li><li>Historique et statistiques</li><li>Ecran TV synchronise</li></ul><a href="#" class="btn btn-primary">Demarrer maintenant</a></article>
+          <article class="price-card" data-reveal><h3>Multi-praticiens</h3><div class="price">Sur devis</div><p class="price-note">Pour cliniques et centres medicaux.</p><ul><li>Plusieurs medecins</li><li>Files separees</li><li>Statistiques avancees</li><li>Accompagnement prioritaire</li></ul><a href="#" class="btn btn-outline">Nous contacter</a></article>
         </div>
       </div>
     </section>
@@ -318,22 +318,13 @@
       </div>
     </section>
 
-    <section class="cta" id="inscription">
-      <div class="container">
-        <div class="cta-box" data-reveal>
-          <h2>Modernisez l'accueil de votre cabinet</h2>
-          <p>Commencez avec 14 jours d'essai gratuit. Aucun engagement, aucune carte bancaire necessaire.</p>
-          <form class="cta-form" id="signupForm"><input id="doctorName" type="text" placeholder="Nom du medecin ou du cabinet" required><button class="btn btn-primary" type="submit">Demander mon essai</button></form>
-          <p class="cta-message" id="ctaMessage"></p>
-        </div>
-      </div>
-    </section>
+    
   </main>
 
   <footer>
     <div class="container footer-grid">
       <div><a href="#accueil" class="logo">TAF<span>WITA</span></a><p>La solution algerienne de gestion de file d'attente pour cabinets medicaux.</p></div>
-      <div><h4>Produit</h4><a href="#fonctionnement">Comment ca marche</a><a href="#solutions">Solutions</a><a href="#tarifs">Tarifs</a></div>
+      <div><h4>Produit</h4><a href="#fonctionnement">Comment ca marche</a><a href="#solutions">Solutions</a><a href="#">Tarifs</a></div>
       <div><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a><a href="tel:+213500000000">+213 5XX XX XX XX</a></div>
       <div><h4>Legal</h4><a href="#">Conditions d'utilisation</a><a href="#">Confidentialite</a></div>
     </div>
@@ -370,5 +361,261 @@
       event.target.reset();
     });
   </script>
+
+<style id="trial-modal-style">
+.trial-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.trial-modal.open{display:flex}
+.trial-backdrop{position:absolute;inset:0;background:rgba(18,32,40,.58);backdrop-filter:blur(4px)}
+.trial-dialog{position:relative;z-index:1;width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;border:1px solid #dcefeb;border-radius:24px;box-shadow:0 30px 70px rgba(16,48,58,.22);padding:26px}
+.trial-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:999px;border:1px solid #dcefeb;background:#fff;color:#50646b;font-size:24px;cursor:pointer}
+.trial-header h2{margin:0 0 8px;font-size:28px}
+.trial-header p{margin:0 0 16px;color:#50646b;font-size:14px}
+.trial-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.trial-field label{display:block;margin-bottom:6px;font-size:12px;font-weight:700;color:#50646b}
+.trial-field input,
+.trial-field select{width:100%;min-height:46px;padding:0 14px;border:1px solid #dcefeb;border-radius:14px;font-size:14px;outline:none;background:#fff}
+.trial-field input:focus,
+.trial-field select:focus{border-color:#16b6b0;box-shadow:0 0 0 4px rgba(22,182,176,.12)}
+.trial-note{margin-top:14px;padding:12px 14px;border:1px solid #bfeee3;background:#f1fbf8;border-radius:14px;font-size:13px;color:#50646b}
+.trial-message{min-height:22px;margin-top:12px;font-size:13px}
+.trial-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}
+@media(max-width:700px){
+  .trial-grid{grid-template-columns:1fr}
+  .trial-dialog{padding:18px}
+}
+</style>
+
+<div id="trialModal" class="trial-modal" aria-hidden="true">
+  <div class="trial-backdrop" id="trialBackdrop"></div>
+  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
+    <button type="button" class="trial-close" id="trialClose" aria-label="Fermer">×</button>
+    <div class="trial-header">
+      <h2 id="trialTitle">Commencer l'essai gratuit</h2>
+      <p>Renseignez les informations du praticien. Les donnees seront envoyees a l'API.</p>
+    </div>
+    <form id="trialForm">
+      <div class="trial-grid">
+        <div class="trial-field">
+          <label for="trialNom">Nom</label>
+          <input id="trialNom" required>
+        </div>
+        <div class="trial-field">
+          <label for="trialPrenom">Prenom</label>
+          <input id="trialPrenom" required>
+        </div>
+        <div class="trial-field">
+          <label for="trialCabinet">Nom du cabinet</label>
+          <input id="trialCabinet" required>
+        </div>
+        <div class="trial-field">
+          <label for="trialTel">N° de telephone</label>
+          <input id="trialTel" required>
+        </div>
+
+        <!-- NOUVEAU : Spécialité en liste déroulante -->
+        <div class="trial-field">
+          <label for="trialSpecialite">Specialite</label>
+          <select id="trialSpecialite" required>
+            <option value="">Choisir une specialite</option>
+            <option value="Medecine generale">Medecine generale</option>
+            <option value="Cardiologie">Cardiologie</option>
+            <option value="Pediatrie">Pediatrie</option>
+            <option value="Dermatologie">Dermatologie</option>
+            <option value="Gynécologie-obstetrique">Gynecologie-obstetrique</option>
+            <option value="Chirurgie dentaire">Chirurgie dentaire</option>
+            <option value="Ophtalmologie">Ophtalmologie</option>
+            <option value="ORL">ORL</option>
+            <option value="Radiologie">Radiologie</option>
+            <option value="Neurologie">Neurologie</option>
+            <option value="Rhumatologie">Rhumatologie</option>
+            <option value="Gastro-enterologie">Gastro-enterologie</option>
+            <option value="Pneumologie">Pneumologie</option>
+            <option value="Endocrinologie">Endocrinologie</option>
+            <option value="Nephrologie">Nephrologie</option>
+            <option value="Urologie">Urologie</option>
+            <option value="Oncologie">Oncologie</option>
+            <option value="Medecine interne">Medecine interne</option>
+            <option value="Medecine du travail">Medecine du travail</option>
+            <option value="Psychiatrie">Psychiatrie</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <!-- Wilaya en liste déroulante complète -->
+      <div class="trial-field">
+  <label for="trialWilaya">Wilaya</label>
+  <select id="trialWilaya" required>
+    <option value="">Choisir une wilaya</option>
+
+    <option value="Adrar">01 - Adrar</option>
+    <option value="Chlef">02 - Chlef</option>
+    <option value="Laghouat">03 - Laghouat</option>
+    <option value="Oum El Bouaghi">04 - Oum El Bouaghi</option>
+    <option value="Batna">05 - Batna</option>
+    <option value="Bejaia">06 - Bejaia</option>
+    <option value="Biskra">07 - Biskra</option>
+    <option value="Bechar">08 - Bechar</option>
+    <option value="Blida">09 - Blida</option>
+    <option value="Bouira">10 - Bouira</option>
+    <option value="Tamanrasset">11 - Tamanrasset</option>
+    <option value="Tebessa">12 - Tebessa</option>
+    <option value="Tlemcen">13 - Tlemcen</option>
+    <option value="Tiaret">14 - Tiaret</option>
+    <option value="Tizi Ouzou">15 - Tizi Ouzou</option>
+    <option value="Alger">16 - Alger</option>
+    <option value="Djelfa">17 - Djelfa</option>
+    <option value="Jijel">18 - Jijel</option>
+    <option value="Setif">19 - Setif</option>
+    <option value="Saida">20 - Saida</option>
+    <option value="Skikda">21 - Skikda</option>
+    <option value="Sidi Bel Abbes">22 - Sidi Bel Abbes</option>
+    <option value="Annaba">23 - Annaba</option>
+    <option value="Guelma">24 - Guelma</option>
+    <option value="Constantine">25 - Constantine</option>
+    <option value="Medea">26 - Medea</option>
+    <option value="Mostaganem">27 - Mostaganem</option>
+    <option value="M'Sila">28 - M'Sila</option>
+    <option value="Mascara">29 - Mascara</option>
+    <option value="Ouargla">30 - Ouargla</option>
+    <option value="Oran">31 - Oran</option>
+    <option value="El Bayadh">32 - El Bayadh</option>
+    <option value="Illizi">33 - Illizi</option>
+    <option value="Bordj Bou Arreridj">34 - Bordj Bou Arreridj</option>
+    <option value="Boumerdes">35 - Boumerdes</option>
+    <option value="El Tarf">36 - El Tarf</option>
+    <option value="Tindouf">37 - Tindouf</option>
+    <option value="Tissemsilt">38 - Tissemsilt</option>
+    <option value="El Oued">39 - El Oued</option>
+    <option value="Khenchela">40 - Khenchela</option>
+    <option value="Souk Ahras">41 - Souk Ahras</option>
+    <option value="Tipaza">42 - Tipaza</option>
+    <option value="Mila">43 - Mila</option>
+    <option value="Ain Defla">44 - Ain Defla</option>
+    <option value="Naama">45 - Naama</option>
+    <option value="Ain Temouchent">46 - Ain Temouchent</option>
+    <option value="Ghardaia">47 - Ghardaia</option>
+    <option value="Relizane">48 - Relizane</option>
+    <option value="Timimoun">49 - Timimoun</option>
+    <option value="Bordj Badji Mokhtar">50 - Bordj Badji Mokhtar</option>
+    <option value="Ouled Djellal">51 - Ouled Djellal</option>
+    <option value="Beni Abbes">52 - Beni Abbes</option>
+    <option value="In Salah">53 - In Salah</option>
+    <option value="In Guezzam">54 - In Guezzam</option>
+    <option value="Touggourt">55 - Touggourt</option>
+    <option value="Djanet">56 - Djanet</option>
+    <option value="El Mghair">57 - El Mghair</option>
+    <option value="El Meniaa">58 - El Meniaa</option>
+    <option value="Aflou">59 - Aflou</option>
+    <option value="Barika">60 - Barika</option>
+    <option value="El Kantara">61 - El Kantara</option>
+    <option value="Bir El Ater">62 - Bir El Ater</option>
+    <option value="El Aricha">63 - El Aricha</option>
+    <option value="Ksar Chellala">64 - Ksar Chellala</option>
+    <option value="Ain Oussera">65 - Ain Oussera</option>
+    <option value="Messaad">66 - Messaad</option>
+    <option value="Ksar El Boukhari">67 - Ksar El Boukhari</option>
+    <option value="Bousaada">68 - Bousaada</option>
+    <option value="El Abiodh Sidi Cheikh">69 - El Abiodh Sidi Cheikh</option>
+  </select>
+</div>
+
+        <div class="trial-field">
+          <label for="trialPwd">Mot de passe</label>
+          <input id="trialPwd" type="password" required>
+        </div>
+        <div class="trial-field">
+          <label for="trialPwd2">Verification mot de passe</label>
+          <input id="trialPwd2" type="password" required>
+        </div>
+      </div>
+
+      <div class="trial-note">Le mail de verification sera gere par le backend.</div>
+      <div id="trialMessage" class="trial-message"></div>
+      <div class="trial-actions">
+        <button type="button" class="btn btn-outline" id="trialCancel">Annuler</button>
+        <button type="submit" class="btn btn-primary" id="trialSubmit">Envoyer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  const m = document.getElementById('trialModal'),
+        f = document.getElementById('trialForm'),
+        msg = document.getElementById('trialMessage'),
+        submit = document.getElementById('trialSubmit');
+
+  function open(){
+    m.classList.add('open');
+    m.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function close(){
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  document.querySelectorAll('.js-trial-open').forEach(x =>
+    x.addEventListener('click',e => {
+      e.preventDefault();
+      e.stopPropagation();
+      open();
+    })
+  );
+  document.getElementById('trialBackdrop').onclick = close;
+  document.getElementById('trialClose').onclick = close;
+  document.getElementById('trialCancel').onclick = close;
+  document.addEventListener('keydown',e => {if(e.key==='Escape')close()});
+
+  f.addEventListener('submit',async e => {
+    e.preventDefault();
+    const p = {
+      nom: trialNom.value.trim(),
+      prenom: trialPrenom.value.trim(),
+      cabinet: trialCabinet.value.trim(),
+      telephone: trialTel.value.trim(),
+      email: trialEmail.value.trim(),
+      specialite: trialSpecialite.value.trim(),
+      wilaya: trialWilaya.value.trim(),
+      password: trialPwd.value
+    };
+    const p2 = trialPwd2.value;
+
+    if (Object.values(p).some(v => !v)){
+      msg.style.color = '#c05050';
+      msg.textContent = 'Tous les champs sont obligatoires.';
+      return;
+    }
+    if (p.password !== p2){
+      msg.style.color = '#c05050';
+      msg.textContent = 'Les mots de passe ne correspondent pas.';
+      return;
+    }
+
+    submit.disabled = true;
+    msg.textContent = 'Envoi en cours...';
+    try{
+      const r = await fetch('https://tafwita-api.onrender.com/api/trial-signup',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(p)
+      });
+      const d = await r.json().catch(()=>({}));
+      if (!r.ok) throw Error(d.detail || d.message || 'Erreur inscription');
+      msg.style.color = '#2e8b57';
+      msg.textContent = 'Demande envoyee. Verifiez votre e-mail.';
+      f.reset();
+    }catch(e){
+      msg.style.color = '#c05050';
+      msg.textContent = e.message;
+    }finally{
+      submit.disabled = false;
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
