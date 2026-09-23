@@ -29,6 +29,37 @@ function card(c){let e=document.createElement("article"),can=!!c.accept_tickets&
 async function loadCabinets(){let box=$("cabinetList");box.innerHTML=`<div class="empty">${tr("loading")}</div>`;try{let q=$("search").value.trim(),r=await fetch(API+"/api/cabinets"+(q?"?q="+encodeURIComponent(q):"")),d=await json(r);if(!r.ok)throw Error(d.detail||"API");state.cabinets=d;box.innerHTML="";if(!d.length)box.innerHTML='<div class="empty">—</div>';d.forEach(c=>box.appendChild(card(c)))}catch(e){box.innerHTML=`<div class="empty"><b>API</b><br>${esc(e.message)}</div>`}}
 function renderFavorites(){let b=$("favoriteList"),a=store(FK);b.innerHTML="";if(!a.length){b.innerHTML=`<div class="empty"><b>${tr("noFavorite")}</b><br>${tr("noFavoriteText")}</div>`;return}a.forEach(c=>b.appendChild(card(c)))}
 async function openCabinet(c){state.selected=c;show("detail");renderDetail();try{let r=await fetch(API+"/api/cabinets/"+encodeURIComponent(c.slug)+"/public"),d=await json(r);if(r.ok){state.selected=d;renderDetail()}}catch{}}
+async function openCabinetFromQr() {
+  const params = new URLSearchParams(window.location.search);
+  const cabinetSlug = params.get("cabinet");
+
+  if (!cabinetSlug) {
+    loadCabinets();
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${API}/api/cabinets/${encodeURIComponent(cabinetSlug)}/public`
+    );
+
+    if (!response.ok) {
+      throw new Error("Cabinet introuvable");
+    }
+
+    const cabinet = await response.json();
+
+    state.selected = cabinet;
+    show("detail");
+    renderDetail();
+  } catch (error) {
+    console.error("Erreur QR cabinet :", error);
+    toast("Cabinet introuvable");
+    loadCabinets();
+  }
+}
+
+  
 function renderDetail(){let c=state.selected,can=!!c.accept_tickets&&!c.day_closed,mode=c.ticket_mode==="fixed"&&c.ticket_end_time?`${tr("fixed")} ${esc(c.ticket_end_time)}`:tr("manual");$("detailCard").innerHTML=`<div class="profile"><div class="big-avatar">${initials(c.nom_medecin)}</div><div><h2>${esc(c.nom_medecin)}</h2><p>${esc(c.specialite||"")}</p></div><button class="star ${isFav(c.slug)?"active":""}" id="detailStar">${isFav(c.slug)?"★":"☆"}</button></div><div class="details"><div class="detail"><small>${tr("ticketStart")}</small>${esc(c.ticket_start_time||"06:00")}</div><div class="detail"><small>${tr("cabinet")}</small>${mode}</div><div class="detail"><small>${tr("available")}</small>${can?tr("availableNow"):tr("unavailable")}</div></div><button class="primary" id="goTake" ${can?"":"disabled"}>${can?tr("takeNow"):tr("takeUnavailable")}</button>`;$("detailStar").onclick=()=>toggleFav(c);$("goTake").onclick=()=>{if(can){$("takeName").textContent=c.nom_medecin;$("takeInfo").textContent=`${tr("ticketStart")} ${c.ticket_start_time||"06:00"}`;show("take")}}}
 function saveTicket(t){let a=store(TK).filter(x=>x.id!==t.id);a.unshift(t);store(TK,a)}function renderTickets(){let b=$("ticketList"),a=store(TK);b.innerHTML="";if(!a.length){b.innerHTML='<div class="empty">—</div>';return}a.forEach(t=>{let e=document.createElement("article");e.className="ticket-row";e.innerHTML=`<div class="bubble">P-${String(t.ticket_num||0).padStart(2,"0")}</div><div class="main"><h3>${esc(t.cabinet_name||t.cabinet_slug)}</h3><div class="meta">${t.created_at?new Date(t.created_at).toLocaleString():"-"}</div><span class="status ${esc(t.statut||"waiting")}">${status(t.statut||"waiting")}</span></div>`;e.onclick=()=>openTicket(t);b.appendChild(e)})}
 function openTicket(t){state.ticket=t;$("ticketCabinet").textContent=t.cabinet_name||t.cabinet_slug;show("ticket");tracking();state.timer=setInterval(tracking,6000)}
@@ -37,7 +68,7 @@ function renderActions(t){let b=$("patientActions");b.innerHTML="";if(["waiting"
 function addAction(icon,title,fn,cl=""){let b=document.createElement("button");b.className="action "+cl;b.textContent=icon;b.title=title;b.onclick=fn;$("patientActions").appendChild(b)}async function patientAction(a,c,n){try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/"+a,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({reason_code:c,reason_note:n})}),d=await json(r);if(!r.ok)throw Error(d.detail||"Erreur");toast("✓");tracking()}catch(e){toast(e.message)}}
 async function loadEvents(){if(!state.ticket)return;try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/events"),d=await json(r),b=$("eventList");b.innerHTML="";d.forEach(x=>{let e=document.createElement("div");e.className="event";e.innerHTML=`<b>${esc(status(x.new_status||x.event_type))}</b><span>${x.created_at?new Date(x.created_at).toLocaleString():""}${x.reason_note?" — "+esc(x.reason_note):""}</span>`;b.appendChild(e)})}catch{}}
 $("ticketForm").onsubmit=async e=>{e.preventDefault();let c=state.selected,n=$("patientName").value.trim(),p=$("patientPhone").value.trim()||null;if(!n||!c)return;$("takeButton").disabled=true;try{let r=await fetch(API+"/api/tickets/take",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({cabinet_slug:c.slug,nom_patient:n,telephone:p})}),d=await json(r);if(!r.ok)throw Error(d.detail||"Erreur");state.ticket={...d.ticket,cabinet_name:c.nom_medecin};saveTicket(state.ticket);openTicket(state.ticket)}catch(x){$("takeMessage").textContent=x.message}finally{$("takeButton").disabled=false}};
-$("language").onclick=()=>{lang={FR:"EN",EN:"AR",AR:"FR"}[lang];localStorage.setItem(LK,lang);translate()};$("search").oninput=()=>{clearTimeout(window.st);window.st=setTimeout(loadCabinets,300)};$("refresh").onclick=loadCabinets;$("refreshEvents").onclick=loadEvents;document.querySelectorAll(".nav").forEach(x=>x.onclick=()=>show(x.dataset.view));document.querySelectorAll(".back").forEach(x=>x.onclick=()=>show(x.dataset.back));translate();loadCabinets();
+$("language").onclick=()=>{lang={FR:"EN",EN:"AR",AR:"FR"}[lang];localStorage.setItem(LK,lang);translate()};$("search").oninput=()=>{clearTimeout(window.st);window.st=setTimeout(loadCabinets,300)};$("refresh").onclick=loadCabinets;$("refreshEvents").onclick=loadEvents;document.querySelectorAll(".nav").forEach(x=>x.onclick=()=>show(x.dataset.view));document.querySelectorAll(".back").forEach(x=>x.onclick=()=>show(x.dataset.back));translate();openCabinetFromQr();
 </script>  <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(function(){});
