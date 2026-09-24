@@ -1,15 +1,31 @@
 {
-  "name": "TAFWITA Patient",
+  "name": "TAFWITA - File médicale",
   "short_name": "TAFWITA",
-  "description": "Prenez et suivez votre ticket medical.",
+  "description": "Prenez et suivez votre ticket médical à distance.",
+  "lang": "fr",
   "start_url": "./patient.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f8f8",
-  "theme_color": "#329f9a",
   "orientation": "portrait",
+  "theme_color": "#329F9A",
+  "background_color": "#F5F8F8",
+  "categories": [
+    "medical",
+    "health",
+    "productivity"
+  ],
   "icons": [
-    {"src":"./icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"./icon-512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
