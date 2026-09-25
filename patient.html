@@ -153,6 +153,60 @@ h2 {
   .actions .action:last-child {
     grid-column: 1 / -1;
   }
+html,
+body {
+  width: 100% !important;
+  min-width: 0 !important;
+  zoom: 1 !important;
+  transform: none !important;
+}
+
+body {
+  width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+.shell {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  zoom: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 649px) {
+  html {
+    font-size: 18px !important;
+  }
+
+  body {
+    font-size: 18px !important;
+  }
+
+  .shell {
+    padding: 20px 16px 120px !important;
+  }
+
+  h1 {
+    font-size: 32px !important;
+  }
+
+  h2 {
+    font-size: 25px !important;
+  }
+
+  .lead {
+    font-size: 18px !important;
+  }
+
+  input,
+  button,
+  select,
+  textarea {
+    min-height: 52px !important;
+    font-size: 18px !important;
+  }
+}
 }
 
 </style>
