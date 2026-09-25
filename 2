@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#329F9A">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="TAFWITA">
+
+  <title>TAFWITA — Patient</title>
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+
+  
+<style>
+/* =========================================================
+   TAFWITA — Mobile-first UI
+   ========================================================= */
+
+:root {
+  --bg: #f5f8f8;
+  --surface: #ffffff;
+  --surface-soft: #f3faf8;
+  --border: #dbeae7;
+  --primary: #329f9a;
+  --primary-dark: #237873;
+  --text: #28373e;
+  --muted: #607078;
+  --subtle: #9baab0;
+  --success: #2c8b69;
+  --warning: #a97524;
+  --danger: #bc5d62;
+  --shadow-sm: 0 5px 16px rgba(31, 92, 85, .06);
+  --shadow: 0 12px 30px rgba(31, 92, 85, .09);
+  --radius-sm: 12px;
+  --radius: 16px;
+  --radius-lg: 20px;
+  --nav-height: 68px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(145deg, #edf8f6 0%, var(--bg) 45%, #ffffff 100%);
+  color: var(--text);
+  font: 16px/1.45 "Segoe UI", Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(50, 159, 154, .25);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- App shell ---------- */
+
+.shell {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding:
+    max(16px, env(safe-area-inset-top))
+    16px
+    calc(var(--nav-height) + 34px + var(--safe-bottom));
+}
+
+/* ---------- Header ---------- */
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.top > div:first-child {
+  min-width: 0;
+}
+
+.logo {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.sub {
+  margin: 7px 0 0;
+  color: var(--subtle);
+  font-size: 14px;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.tool,
+.link,
+.back {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--primary-dark);
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.tool {
+  min-height: 50px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+}
+
+.tool:hover,
+.link:hover,
+.back:hover {
+  border-color: #bfe8df;
+  background: var(--surface-soft);
+}
+
+/* ---------- Views ---------- */
+
+.view {
+  display: none;
+  animation: viewIn .18s ease;
+}
+
+.view.active {
+  display: block;
+}
+
+@keyframes viewIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.lead {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* ---------- Cards / lists ---------- */
+
+.card {
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.doctor,
+.ticket-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  min-height: 92px;
+  padding: 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.doctor:hover,
+.ticket-row:hover {
+  background: var(--surface-soft);
+  border-color: #bfe8df;
+}
+
+.avatar,
+.bubble {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  border-radius: 16px;
+  background: #ddf2ee;
+  color: var(--primary-dark);
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.main {
+  min-width: 0;
+  flex: 1;
+}
+
+.main h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.badge,
+.status {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #e4f5ee;
+  color: var(--success);
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.status.suspended,
+.status.urgent {
+  background: #fff4de;
+  color: var(--warning);
+}
+
+.status.cancelled {
+  background: #fceced;
+  color: var(--danger);
+}
+
+.status.serving {
+  background: #e4f5ee;
+  color: var(--success);
+}
+
+.status.completed {
+  background: #edf0f0;
+  color: var(--muted);
+}
+
+.star {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #b2bec2;
+  font-size: 29px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.star.active {
+  color: #d39a27;
+}
+
+.empty {
+  padding: 26px 18px;
+  border: 1px dashed #bcded7;
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ---------- Inputs ---------- */
+
+.search,
+.input {
+  display: block;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 15px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+  outline: 0;
+}
+
+.search:focus,
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(50, 159, 154, .12);
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 700;
+}
+
+/* ---------- Section heads ---------- */
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 25px 0 13px;
+}
+
+.link {
+  min-height: 42px;
+  padding: 7px 12px;
+  border-radius: 10px;
+}
+
+.topline {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.back {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 25px;
+  line-height: 1;
+}
+
+/* ---------- Cabinet details ---------- */
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.big-avatar {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 68px;
+  border-radius: 19px;
+  background: #ddf2ee;
+  color: var(--primary-dark);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.profile > div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
+
+.profile h2 {
+  margin: 0 0 4px;
+  font-size: 21px;
+}
+
+.profile p {
+  margin: 0;
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.details {
+  display: grid;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.detail {
+  padding: 13px;
+  border-radius: 13px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.detail small {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--subtle);
+  font-size: 13px;
+}
+
+.primary {
+  width: 100%;
+  min-height: 56px;
+  border: 0;
+  border-radius: 15px;
+  background: linear-gradient(90deg, var(--primary), #55bcb2);
+  color: #fff;
+  font-weight: 800;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: 0 9px 20px rgba(50, 159, 154, .22);
+  touch-action: manipulation;
+}
+
+.primary:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.message {
+  min-height: 20px;
+  margin: 10px 0 0;
+  color: var(--danger);
+  text-align: center;
+  font-size: 13px;
+}
+
+/* ---------- Ticket ---------- */
+
+.ticket {
+  text-align: center;
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #e4f5ee;
+  color: var(--success);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.number {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid #bfe8df;
+  border-radius: 18px;
+  background: #ddf2ee;
+}
+
+.number small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.number strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--primary-dark);
+  font-size: clamp(44px, 15vw, 64px);
+  line-height: 1;
+}
+
+.notice {
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 13px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.notice.warn {
+  background: #fff4de;
+  color: #755714;
+}
+
+.notice.danger {
+  background: #fceced;
+  color: #963c43;
+}
+
+.progress {
+  height: 9px;
+  margin: 14px 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.progress div {
+  width: 5%;
+  height: 100%;
+  background: var(--primary);
+  transition: width .5s ease;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.action {
+  width: 100%;
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.action.orange {
+  background: #fffaf0;
+  color: var(--warning);
+  border-color: #f2d9a5;
+}
+
+.action.red {
+  background: #fff7f7;
+  color: var(--danger);
+  border-color: #f0cfd2;
+}
+
+.timeline {
+  display: grid;
+  gap: 8px;
+}
+
+.event {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  text-align: left;
+}
+
+.event b {
+  display: block;
+  font-size: 13px;
+}
+
+.event span {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+/* ---------- Bottom navigation ---------- */
+
+.bottom {
+  position: fixed;
+  z-index: 20;
+  right: 10px;
+  bottom: max(8px, var(--safe-bottom));
+  left: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: auto;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 12px 30px rgba(31, 92, 85, .14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav {
+  min-height: 56px;
+  border: 0;
+  border-radius: 13px;
+  background: transparent;
+  color: var(--subtle);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.nav.active {
+  background: #ddf2ee;
+  color: var(--primary-dark);
+}
+
+/* ---------- Toast ---------- */
+
+.toast {
+  position: fixed;
+  z-index: 50;
+  top: max(12px, env(safe-area-inset-top));
+  left: 50%;
+  max-width: calc(100% - 24px);
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -18px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Tablet / desktop ---------- */
+
+@media (min-width: 650px) {
+  .shell {
+    padding: 24px 20px 110px;
+  }
+
+  .top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tools {
+    width: auto;
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .tool {
+    min-width: 70px;
+  }
+
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bottom {
+    right: auto;
+    left: 50%;
+    width: min(calc(100% - 40px), 620px);
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Large desktop ---------- */
+
+@media (min-width: 900px) {
+  .shell {
+    padding-top: 30px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+
+</head>
+<body>
+<div class="shell">
+<header class="top">
+  
+  <button id="installPwaBtn" hidden>
+  Installer TAFWITA
+</button>
+  <div><div class="logo">TAF<span>WITA</span></div><p class="sub" data-i="sub">Votre consultation, au bon moment</p></div><div class="tools"><button class="tool" id="language">FR</button><button class="tool" id="refresh">↻</button><button class="tool" id="installAppBtn" type="button" style="display:none">Installer</button></div></header>
+<section class="view active" id="home"><h1 data-i="find">Trouver un medecin</h1><p class="lead" data-i="findLead">Prenez un ticket selon les regles du cabinet.</p><input class="search" id="search" data-ph="search" placeholder="Nom, specialite, wilaya..."><div class="head"><h2 data-i="available">Cabinets disponibles</h2></div><div class="list" id="cabinetList"></div></section>
+<section class="view" id="favorites"><h1 data-i="favorites">Favoris</h1><p class="lead" data-i="favoritesLead">Retrouvez rapidement vos cabinets preferes.</p><div class="list" id="favoriteList"></div></section>
+<section class="view" id="detail"><div class="topline"><button class="back" data-back="home">‹</button><h1 data-i="cabinet">Fiche du cabinet</h1></div><div class="card" id="detailCard"></div></section>
+<section class="view" id="take"><div class="topline"><button class="back" data-back="detail">‹</button><h1 data-i="take">Prendre un ticket</h1></div><div class="card"><h2 id="takeName"></h2><p class="lead" id="takeInfo"></p><form id="ticketForm"><label data-i="name">Votre nom complet</label><input class="input" id="patientName" required data-ph="namePh" placeholder="Ex : Farid Cherif"><label style="display:block;margin-top:13px" data-i="phone">Telephone optionnel</label><input class="input" id="patientPhone" data-ph="phonePh" placeholder="Ex : 0555 66 55 99"><button class="primary" id="takeButton" type="submit" style="margin-top:20px" data-i="takeBtn">Prendre mon ticket</button><p class="message" id="takeMessage"></p></form></div></section>
+<section class="view" id="tickets"><h1 data-i="myTickets">Mes tickets</h1><p class="lead" data-i="myTicketsLead">Les tickets pris sur cet appareil.</p><div class="list" id="ticketList"></div></section>
+<section class="view" id="ticket"><div class="topline"><button class="back" data-back="tickets">‹</button><h1 data-i="myTicket">Mon ticket</h1></div><div class="card ticket"><div class="check">✓</div><h2 data-i="confirmed">Ticket confirme</h2><p class="lead" id="ticketCabinet"></p><div class="number"><small data-i="yourNumber">Votre numero</small><strong id="ticketNumber">P-00</strong></div><div id="ticketStatus" class="notice">Chargement...</div><div class="progress"><div id="progress"></div></div><p class="lead" id="queueText"></p><div class="actions" id="patientActions"></div></div><div class="head"><h2 data-i="history">Historique</h2><button class="link" id="refreshEvents">↻</button></div><div class="timeline" id="eventList"></div></section>
+</div>
+<nav class="bottom"><button class="nav active" data-view="home">⌂<br><span data-i="home">Accueil</span></button><button class="nav" data-view="favorites">★<br><span data-i="favorites">Favoris</span></button><button class="nav" data-view="tickets">☷<br><span data-i="myTickets">Mes tickets</span></button></nav><div class="toast" id="toast"></div>
+<script>
+const API="https://tafwita-api.onrender.com",TK="tafwita_patient_v5_tickets",FK="tafwita_patient_v5_favorites",LK="tafwita_patient_v5_language";let lang=localStorage.getItem(LK)||"FR";
+const I={FR:{sub:"Votre consultation, au bon moment",find:"Trouver un medecin",findLead:"Prenez un ticket selon les regles du cabinet.",search:"Nom, specialite, wilaya...",available:"Cabinets disponibles",favorites:"Favoris",favoritesLead:"Retrouvez rapidement vos cabinets preferes.",cabinet:"Fiche du cabinet",take:"Prendre un ticket",name:"Votre nom complet",namePh:"Ex : Farid Cherif",phone:"Telephone optionnel",phonePh:"Ex : 0555 66 55 99",takeBtn:"Prendre mon ticket",myTickets:"Mes tickets",myTicketsLead:"Les tickets pris sur cet appareil.",myTicket:"Mon ticket",confirmed:"Ticket confirme",yourNumber:"Votre numero",history:"Historique",home:"Accueil",availableNow:"Prise de tickets disponible",unavailable:"Prise momentanement indisponible",noFavorite:"Aucun favori",noFavoriteText:"Ajoutez un cabinet avec l etoile depuis sa fiche.",ticketStart:"Prise a partir de",manual:"fermeture manuelle",fixed:"jusqu a",takeUnavailable:"Tickets indisponibles",takeNow:"Prendre un ticket",waiting:"En attente",returned:"Remis en attente",suspended:"Suspendu",urgent:"Priorite medicale",serving:"En consultation",completed:"Consultation terminee",cancelled:"Ticket annule",loading:"Chargement...",late:"Signaler un retard",cancel:"Annuler mon ticket",priority:"Demander priorite",present:"Je suis present",before:"patient(s) avant vous",estimate:"Estimation",minutes:"minutes",turn:"C est votre tour. Merci de vous presenter au cabinet.",done:"Votre consultation est terminee.",suspendedText:"Votre ticket est suspendu. Si vous etes present, confirmez votre presence.",cancelledText:"Votre ticket a ete annule."},EN:{sub:"Your appointment, at the right time",find:"Find a doctor",findLead:"Take a ticket according to clinic rules.",search:"Name, specialty, region...",available:"Available clinics",favorites:"Favorites",favoritesLead:"Find your favorite clinics quickly.",cabinet:"Clinic details",take:"Take a ticket",name:"Your full name",namePh:"Example: Farid Cherif",phone:"Phone (optional)",phonePh:"Example: 0555 66 55 99",takeBtn:"Take my ticket",myTickets:"My tickets",myTicketsLead:"Tickets taken on this device.",myTicket:"My ticket",confirmed:"Ticket confirmed",yourNumber:"Your number",history:"History",home:"Home",availableNow:"Ticket intake available",unavailable:"Ticket intake unavailable",noFavorite:"No favorites",noFavoriteText:"Add a clinic using the star from its details.",ticketStart:"Intake starts at",manual:"manual closing",fixed:"until",takeUnavailable:"Tickets unavailable",takeNow:"Take a ticket",waiting:"Waiting",returned:"Back in queue",suspended:"Suspended",urgent:"Medical priority",serving:"Being seen",completed:"Consultation complete",cancelled:"Ticket cancelled",loading:"Loading...",late:"Report delay",cancel:"Cancel my ticket",priority:"Request priority",present:"I am at the clinic",before:"patient(s) before you",estimate:"Estimated",minutes:"minutes",turn:"It is your turn. Please go to the clinic.",done:"Your consultation is complete.",suspendedText:"Your ticket is suspended. Confirm your presence if you are at the clinic.",cancelledText:"Your ticket was cancelled."},AR:{sub:"موعدك في الوقت المناسب",find:"ابحث عن طبيب",findLead:"خذ تذكرة حسب قواعد العيادة.",search:"الاسم، التخصص، الولاية...",available:"العيادات المتاحة",favorites:"المفضلة",favoritesLead:"اعثر بسرعة على عياداتك المفضلة.",cabinet:"معلومات العيادة",take:"أخذ تذكرة",name:"الاسم الكامل",namePh:"مثال: فريد شريف",phone:"الهاتف (اختياري)",phonePh:"مثال: 0555 66 55 99",takeBtn:"أخذ تذكرتي",myTickets:"تذاكري",myTicketsLead:"التذاكر المأخوذة من هذا الجهاز.",myTicket:"تذكرتي",confirmed:"تم تأكيد التذكرة",yourNumber:"رقمك",history:"السجل",home:"الرئيسية",availableNow:"أخذ التذاكر متاح",unavailable:"أخذ التذاكر غير متاح",noFavorite:"لا توجد مفضلة",noFavoriteText:"أضف عيادة باستعمال النجمة من صفحة العيادة.",ticketStart:"يبدأ أخذ التذاكر",manual:"إغلاق يدوي",fixed:"حتى",takeUnavailable:"التذاكر غير متاحة",takeNow:"أخذ تذكرة",waiting:"في الانتظار",returned:"عاد للقائمة",suspended:"معلق",urgent:"أولوية طبية",serving:"قيد المعاينة",completed:"انتهت المعاينة",cancelled:"تم إلغاء التذكرة",loading:"جار التحميل...",late:"إبلاغ عن التأخر",cancel:"إلغاء تذكرتي",priority:"طلب أولوية",present:"أنا حاضر في العيادة",before:"مريض قبلك",estimate:"الوقت المتوقع",minutes:"دقيقة",turn:"دورك الآن. الرجاء التوجه إلى العيادة.",done:"انتهت معاينتك.",suspendedText:"تذكرتك معلقة. أكد حضورك إذا كنت في العيادة.",cancelledText:"تم إلغاء تذكرتك."}};
+const $=id=>document.getElementById(id),tr=k=>I[lang][k]||k,json=async r=>{try{return await r.json()}catch{return {}}};function store(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));try{return JSON.parse(localStorage.getItem(k)||"[]")}catch{return []}}const state={cabinets:[],selected:null,ticket:null,timer:null};const initials=n=>String(n||"C").replace("Dr.","").trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase();const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
+function translate(){document.documentElement.lang=lang.toLowerCase();$("language").textContent=lang;document.querySelectorAll("[data-i]").forEach(e=>e.textContent=tr(e.dataset.i));document.querySelectorAll("[data-ph]").forEach(e=>e.placeholder=tr(e.dataset.ph));if(state.selected&&$("detail").classList.contains("active"))renderDetail();if($("favorites").classList.contains("active"))renderFavorites();if($("tickets").classList.contains("active"))renderTickets()}
+function toast(t){$("toast").textContent=t;$("toast").className="toast show";clearTimeout(window.tt);window.tt=setTimeout(()=>$("toast").className="toast",3200)}function show(v){if(state.timer&&v!=="ticket"){clearInterval(state.timer);state.timer=null}document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===v));document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.view===v));if(v==="tickets")renderTickets();if(v==="favorites")renderFavorites();window.scrollTo(0,0)}function status(s){return tr(s)||s}function isFav(slug){return store(FK).some(x=>x.slug===slug)}
+function toggleFav(c){let a=store(FK);if(isFav(c.slug)){a=a.filter(x=>x.slug!==c.slug);toast("✓")}else{a.unshift(c);a=a.slice(0,50);toast("★")}store(FK,a);if($("favorites").classList.contains("active"))renderFavorites();if(state.selected&&state.selected.slug===c.slug)renderDetail()}
+function card(c){let e=document.createElement("article"),can=!!c.accept_tickets&&!c.day_closed;e.className="doctor";e.innerHTML=`<div class="avatar">${initials(c.nom_medecin)}</div><div class="main"><h3>${esc(c.nom_medecin)}</h3><div class="meta">${esc(c.specialite)} · ${esc(c.wilaya)}</div><span class="badge">${can?tr("availableNow"):tr("unavailable")}</span></div><button class="star ${isFav(c.slug)?"active":""}">${isFav(c.slug)?"★":"☆"}</button>`;e.onclick=()=>openCabinet(c);e.querySelector(".star").onclick=x=>{x.stopPropagation();toggleFav(c)};return e}
+async function loadCabinets(){let box=$("cabinetList");box.innerHTML=`<div class="empty">${tr("loading")}</div>`;try{let q=$("search").value.trim(),r=await fetch(API+"/api/cabinets"+(q?"?q="+encodeURIComponent(q):"")),d=await json(r);if(!r.ok)throw Error(d.detail||"API");state.cabinets=d;box.innerHTML="";if(!d.length)box.innerHTML='<div class="empty">—</div>';d.forEach(c=>box.appendChild(card(c)))}catch(e){box.innerHTML=`<div class="empty"><b>API</b><br>${esc(e.message)}</div>`}}
+function renderFavorites(){let b=$("favoriteList"),a=store(FK);b.innerHTML="";if(!a.length){b.innerHTML=`<div class="empty"><b>${tr("noFavorite")}</b><br>${tr("noFavoriteText")}</div>`;return}a.forEach(c=>b.appendChild(card(c)))}
+async function openCabinet(c){state.selected=c;show("detail");renderDetail();try{let r=await fetch(API+"/api/cabinets/"+encodeURIComponent(c.slug)+"/public"),d=await json(r);if(r.ok){state.selected=d;renderDetail()}}catch{}}
+async function openCabinetFromQr(){
+  const slug=new URLSearchParams(location.search).get("cabinet");
+  if(!slug){loadCabinets();return;}
+  try{
+    const r=await fetch(`${API}/api/cabinets/${encodeURIComponent(slug)}/public`);
+    const d=await json(r);
+    if(!r.ok)throw Error(d.detail||"Cabinet introuvable");
+    state.selected=d;show("detail");renderDetail();
+  }catch(e){console.error(e);toast(e.message);loadCabinets();}
+}
+function renderDetail(){let c=state.selected,can=!!c.accept_tickets&&!c.day_closed,mode=c.ticket_mode==="fixed"&&c.ticket_end_time?`${tr("fixed")} ${esc(c.ticket_end_time)}`:tr("manual");$("detailCard").innerHTML=`<div class="profile"><div class="big-avatar">${initials(c.nom_medecin)}</div><div><h2>${esc(c.nom_medecin)}</h2><p>${esc(c.specialite||"")}</p></div><button class="star ${isFav(c.slug)?"active":""}" id="detailStar">${isFav(c.slug)?"★":"☆"}</button></div><div class="details"><div class="detail"><small>${tr("ticketStart")}</small>${esc(c.ticket_start_time||"06:00")}</div><div class="detail"><small>${tr("cabinet")}</small>${mode}</div><div class="detail"><small>${tr("available")}</small>${can?tr("availableNow"):tr("unavailable")}</div></div><button class="primary" id="goTake" ${can?"":"disabled"}>${can?tr("takeNow"):tr("takeUnavailable")}</button>`;$("detailStar").onclick=()=>toggleFav(c);$("goTake").onclick=()=>{if(can){$("takeName").textContent=c.nom_medecin;$("takeInfo").textContent=`${tr("ticketStart")} ${c.ticket_start_time||"06:00"}`;show("take")}}}
+function saveTicket(t){let a=store(TK).filter(x=>x.id!==t.id);a.unshift(t);store(TK,a)}function renderTickets(){let b=$("ticketList"),a=store(TK);b.innerHTML="";if(!a.length){b.innerHTML='<div class="empty">—</div>';return}a.forEach(t=>{let e=document.createElement("article");e.className="ticket-row";e.innerHTML=`<div class="bubble">P-${String(t.ticket_num||0).padStart(2,"0")}</div><div class="main"><h3>${esc(t.cabinet_name||t.cabinet_slug)}</h3><div class="meta">${t.created_at?new Date(t.created_at).toLocaleString():"-"}</div><span class="status ${esc(t.statut||"waiting")}">${status(t.statut||"waiting")}</span></div>`;e.onclick=()=>openTicket(t);b.appendChild(e)})}
+function openTicket(t){state.ticket=t;$("ticketCabinet").textContent=t.cabinet_name||t.cabinet_slug;show("ticket");tracking();state.timer=setInterval(tracking,6000)}
+async function tracking(){if(!state.ticket)return;try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/patient"),d=await json(r);if(!r.ok)throw Error(d.detail||"Ticket");state.ticket={...state.ticket,...d.ticket};saveTicket(state.ticket);let t=state.ticket,before=d.waiting_before_you||0;$("ticketNumber").textContent="P-"+String(t.ticket_num).padStart(2,"0");$("progress").style.width=Math.max(5,100/(before+1))+"%";let st=$("ticketStatus");st.className="notice";if(t.statut==="suspended"){st.className="notice warn";st.textContent=tr("suspendedText");$("queueText").textContent=""}else if(t.statut==="cancelled"){st.className="notice danger";st.textContent=tr("cancelledText");$("queueText").textContent=""}else if(t.statut==="serving"){st.textContent=tr("turn");$("queueText").textContent=""}else if(t.statut==="completed"){st.textContent=tr("done");$("queueText").textContent=""}else{st.textContent=status(t.statut);$("queueText").innerHTML=`<b>${before} ${tr("before")}</b><br>${tr("estimate")} : ${before*12} ${tr("minutes")}`}renderActions(t);loadEvents()}catch(e){$("ticketStatus").className="notice danger";$("ticketStatus").textContent=e.message}}
+function renderActions(t){let b=$("patientActions");b.innerHTML="";if(["waiting","returned"].includes(t.statut)){addAction("⏸",tr("late"),()=>patientAction("patient-suspend","patient_late",tr("late")),"orange");addAction("×",tr("cancel"),()=>confirm(tr("cancel")+" ?")&&patientAction("patient-cancel","patient_cancelled",tr("cancel")),"red");addAction("!",tr("priority"),()=>{let n=prompt(tr("priority"));if(n)patientAction("request-urgent","urgent_requested",n)})}else if(t.statut==="suspended"){addAction("✓",tr("present"),()=>patientAction("patient-present","present",tr("present")));addAction("×",tr("cancel"),()=>confirm(tr("cancel")+" ?")&&patientAction("patient-cancel","patient_cancelled",tr("cancel")),"red")}}
+function addAction(icon,title,fn,cl=""){let b=document.createElement("button");b.className="action "+cl;b.textContent=icon;b.title=title;b.onclick=fn;$("patientActions").appendChild(b)}async function patientAction(a,c,n){try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/"+a,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({reason_code:c,reason_note:n})}),d=await json(r);if(!r.ok)throw Error(d.detail||"Erreur");toast("✓");tracking()}catch(e){toast(e.message)}}
+async function loadEvents(){if(!state.ticket)return;try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/events"),d=await json(r),b=$("eventList");b.innerHTML="";d.forEach(x=>{let e=document.createElement("div");e.className="event";e.innerHTML=`<b>${esc(status(x.new_status||x.event_type))}</b><span>${x.created_at?new Date(x.created_at).toLocaleString():""}${x.reason_note?" — "+esc(x.reason_note):""}</span>`;b.appendChild(e)})}catch{}}
+$("ticketForm").onsubmit=async e=>{e.preventDefault();let c=state.selected,n=$("patientName").value.trim(),p=$("patientPhone").value.trim()||null;if(!n||!c)return;$("takeButton").disabled=true;try{let r=await fetch(API+"/api/tickets/take",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({cabinet_slug:c.slug,nom_patient:n,telephone:p})}),d=await json(r);if(!r.ok)throw Error(d.detail||"Erreur");state.ticket={...d.ticket,cabinet_name:c.nom_medecin};saveTicket(state.ticket);openTicket(state.ticket)}catch(x){$("takeMessage").textContent=x.message}finally{$("takeButton").disabled=false}};
+$("language").onclick=()=>{lang={FR:"EN",EN:"AR",AR:"FR"}[lang];localStorage.setItem(LK,lang);translate()};$("search").oninput=()=>{clearTimeout(window.st);window.st=setTimeout(loadCabinets,300)};$("refresh").onclick=loadCabinets;$("refreshEvents").onclick=loadEvents;document.querySelectorAll(".nav").forEach(x=>x.onclick=()=>show(x.dataset.view));document.querySelectorAll(".back").forEach(x=>x.onclick=()=>show(x.dataset.back));translate();openCabinetFromQr();
+</script>
+const API="https://tafwita-api.onrender.com",TK="tafwita_patient_v5_tickets",FK="tafwita_patient_v5_favorites",LK="tafwita_patient_v5_language";let lang=localStorage.getItem(LK)||"FR";
+const I={FR:{sub:"Votre consultation, au bon moment",find:"Trouver un medecin",findLead:"Prenez un ticket selon les regles du cabinet.",search:"Nom, specialite, wilaya...",available:"Cabinets disponibles",favorites:"Favoris",favoritesLead:"Retrouvez rapidement vos cabinets preferes.",cabinet:"Fiche du cabinet",take:"Prendre un ticket",name:"Votre nom complet",namePh:"Ex : Farid Cherif",phone:"Telephone optionnel",phonePh:"Ex : 0555 66 55 99",takeBtn:"Prendre mon ticket",myTickets:"Mes tickets",myTicketsLead:"Les tickets pris sur cet appareil.",myTicket:"Mon ticket",confirmed:"Ticket confirme",yourNumber:"Votre numero",history:"Historique",home:"Accueil",availableNow:"Prise de tickets disponible",unavailable:"Prise momentanement indisponible",noFavorite:"Aucun favori",noFavoriteText:"Ajoutez un cabinet avec l etoile depuis sa fiche.",ticketStart:"Prise a partir de",manual:"fermeture manuelle",fixed:"jusqu a",takeUnavailable:"Tickets indisponibles",takeNow:"Prendre un ticket",waiting:"En attente",returned:"Remis en attente",suspended:"Suspendu",urgent:"Priorite medicale",serving:"En consultation",completed:"Consultation terminee",cancelled:"Ticket annule",loading:"Chargement...",late:"Signaler un retard",cancel:"Annuler mon ticket",priority:"Demander priorite",present:"Je suis present",before:"patient(s) avant vous",estimate:"Estimation",minutes:"minutes",turn:"C est votre tour. Merci de vous presenter au cabinet.",done:"Votre consultation est terminee.",suspendedText:"Votre ticket est suspendu. Si vous etes present, confirmez votre presence.",cancelledText:"Votre ticket a ete annule."},EN:{sub:"Your appointment, at the right time",find:"Find a doctor",findLead:"Take a ticket according to clinic rules.",search:"Name, specialty, region...",available:"Available clinics",favorites:"Favorites",favoritesLead:"Find your favorite clinics quickly.",cabinet:"Clinic details",take:"Take a ticket",name:"Your full name",namePh:"Example: Farid Cherif",phone:"Phone (optional)",phonePh:"Example: 0555 66 55 99",takeBtn:"Take my ticket",myTickets:"My tickets",myTicketsLead:"Tickets taken on this device.",myTicket:"My ticket",confirmed:"Ticket confirmed",yourNumber:"Your number",history:"History",home:"Home",availableNow:"Ticket intake available",unavailable:"Ticket intake unavailable",noFavorite:"No favorites",noFavoriteText:"Add a clinic using the star from its details.",ticketStart:"Intake starts at",manual:"manual closing",fixed:"until",takeUnavailable:"Tickets unavailable",takeNow:"Take a ticket",waiting:"Waiting",returned:"Back in queue",suspended:"Suspended",urgent:"Medical priority",serving:"Being seen",completed:"Consultation complete",cancelled:"Ticket cancelled",loading:"Loading...",late:"Report delay",cancel:"Cancel my ticket",priority:"Request priority",present:"I am at the clinic",before:"patient(s) before you",estimate:"Estimated",minutes:"minutes",turn:"It is your turn. Please go to the clinic.",done:"Your consultation is complete.",suspendedText:"Your ticket is suspended. Confirm your presence if you are at the clinic.",cancelledText:"Your ticket was cancelled."},AR:{sub:"موعدك في الوقت المناسب",find:"ابحث عن طبيب",findLead:"خذ تذكرة حسب قواعد العيادة.",search:"الاسم، التخصص، الولاية...",available:"العيادات المتاحة",favorites:"المفضلة",favoritesLead:"اعثر بسرعة على عياداتك المفضلة.",cabinet:"معلومات العيادة",take:"أخذ تذكرة",name:"الاسم الكامل",namePh:"مثال: فريد شريف",phone:"الهاتف (اختياري)",phonePh:"مثال: 0555 66 55 99",takeBtn:"أخذ تذكرتي",myTickets:"تذاكري",myTicketsLead:"التذاكر المأخوذة من هذا الجهاز.",myTicket:"تذكرتي",confirmed:"تم تأكيد التذكرة",yourNumber:"رقمك",history:"السجل",home:"الرئيسية",availableNow:"أخذ التذاكر متاح",unavailable:"أخذ التذاكر غير متاح",noFavorite:"لا توجد مفضلة",noFavoriteText:"أضف عيادة باستعمال النجمة من صفحة العيادة.",ticketStart:"يبدأ أخذ التذاكر",manual:"إغلاق يدوي",fixed:"حتى",takeUnavailable:"التذاكر غير متاحة",takeNow:"أخذ تذكرة",waiting:"في الانتظار",returned:"عاد للقائمة",suspended:"معلق",urgent:"أولوية طبية",serving:"قيد المعاينة",completed:"انتهت المعاينة",cancelled:"تم إلغاء التذكرة",loading:"جار التحميل...",late:"إبلاغ عن التأخر",cancel:"إلغاء تذكرتي",priority:"طلب أولوية",present:"أنا حاضر في العيادة",before:"مريض قبلك",estimate:"الوقت المتوقع",minutes:"دقيقة",turn:"دورك الآن. الرجاء التوجه إلى العيادة.",done:"انتهت معاينتك.",suspendedText:"تذكرتك معلقة. أكد حضورك إذا كنت في العيادة.",cancelledText:"تم إلغاء تذكرتك."}};
+const $=id=>document.getElementById(id),tr=k=>I[lang][k]||k,json=async r=>{try{return await r.json()}catch{return {}}};function store(k,v){if(v!==undefined)localStorage.setItem(k,JSON.stringify(v));try{return JSON.parse(localStorage.getItem(k)||"[]")}catch{return []}}const state={cabinets:[],selected:null,ticket:null,timer:null};const initials=n=>String(n||"C").replace("Dr.","").trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase();const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
+function translate(){document.documentElement.lang=lang.toLowerCase();$("language").textContent=lang;document.querySelectorAll("[data-i]").forEach(e=>e.textContent=tr(e.dataset.i));document.querySelectorAll("[data-ph]").forEach(e=>e.placeholder=tr(e.dataset.ph));if(state.selected&&$("detail").classList.contains("active"))renderDetail();if($("favorites").classList.contains("active"))renderFavorites();if($("tickets").classList.contains("active"))renderTickets()}
+function toast(t){$("toast").textContent=t;$("toast").className="toast show";clearTimeout(window.tt);window.tt=setTimeout(()=>$("toast").className="toast",3200)}function show(v){if(state.timer&&v!=="ticket"){clearInterval(state.timer);state.timer=null}document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===v));document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.view===v));if(v==="tickets")renderTickets();if(v==="favorites")renderFavorites();window.scrollTo(0,0)}function status(s){return tr(s)||s}function isFav(slug){return store(FK).some(x=>x.slug===slug)}
+function toggleFav(c){let a=store(FK);if(isFav(c.slug)){a=a.filter(x=>x.slug!==c.slug);toast("✓")}else{a.unshift(c);a=a.slice(0,50);toast("★")}store(FK,a);if($("favorites").classList.contains("active"))renderFavorites();if(state.selected&&state.selected.slug===c.slug)renderDetail()}
+function card(c){let e=document.createElement("article"),can=!!c.accept_tickets&&!c.day_closed;e.className="doctor";e.innerHTML=`<div class="avatar">${initials(c.nom_medecin)}</div><div class="main"><h3>${esc(c.nom_medecin)}</h3><div class="meta">${esc(c.specialite)} · ${esc(c.wilaya)}</div><span class="badge">${can?tr("availableNow"):tr("unavailable")}</span></div><button class="star ${isFav(c.slug)?"active":""}">${isFav(c.slug)?"★":"☆"}</button>`;e.onclick=()=>openCabinet(c);e.querySelector(".star").onclick=x=>{x.stopPropagation();toggleFav(c)};return e}
+async function loadCabinets(){let box=$("cabinetList");box.innerHTML=`<div class="empty">${tr("loading")}</div>`;try{let q=$("search").value.trim(),r=await fetch(API+"/api/cabinets"+(q?"?q="+encodeURIComponent(q):"")),d=await json(r);if(!r.ok)throw Error(d.detail||"API");state.cabinets=d;box.innerHTML="";if(!d.length)box.innerHTML='<div class="empty">—</div>';d.forEach(c=>box.appendChild(card(c)))}catch(e){box.innerHTML=`<div class="empty"><b>API</b><br>${esc(e.message)}</div>`}}
+function renderFavorites(){let b=$("favoriteList"),a=store(FK);b.innerHTML="";if(!a.length){b.innerHTML=`<div class="empty"><b>${tr("noFavorite")}</b><br>${tr("noFavoriteText")}</div>`;return}a.forEach(c=>b.appendChild(card(c)))}
+async function openCabinet(c){state.selected=c;show("detail");renderDetail();try{let r=await fetch(API+"/api/cabinets/"+encodeURIComponent(c.slug)+"/public"),d=await json(r);if(r.ok){state.selected=d;renderDetail()}}catch{}}
+async function openCabinetFromQr(){
+  const slug=new URLSearchParams(location.search).get("cabinet");
+  if(!slug){loadCabinets();return;}
+  try{
+    const r=await fetch(`${API}/api/cabinets/${encodeURIComponent(slug)}/public`);
+    const d=await json(r);
+    if(!r.ok)throw Error(d.detail||"Cabinet introuvable");
+    state.selected=d;show("detail");renderDetail();
+  }catch(e){console.error(e);toast(e.message);loadCabinets();}
+}
+function renderDetail(){let c=state.selected,can=!!c.accept_tickets&&!c.day_closed,mode=c.ticket_mode==="fixed"&&c.ticket_end_time?`${tr("fixed")} ${esc(c.ticket_end_time)}`:tr("manual");$("detailCard").innerHTML=`<div class="profile"><div class="big-avatar">${initials(c.nom_medecin)}</div><div><h2>${esc(c.nom_medecin)}</h2><p>${esc(c.specialite||"")}</p></div><button class="star ${isFav(c.slug)?"active":""}" id="detailStar">${isFav(c.slug)?"★":"☆"}</button></div><div class="details"><div class="detail"><small>${tr("ticketStart")}</small>${esc(c.ticket_start_time||"06:00")}</div><div class="detail"><small>${tr("cabinet")}</small>${mode}</div><div class="detail"><small>${tr("available")}</small>${can?tr("availableNow"):tr("unavailable")}</div></div><button class="primary" id="goTake" ${can?"":"disabled"}>${can?tr("takeNow"):tr("takeUnavailable")}</button>`;$("detailStar").onclick=()=>toggleFav(c);$("goTake").onclick=()=>{if(can){$("takeName").textContent=c.nom_medecin;$("takeInfo").textContent=`${tr("ticketStart")} ${c.ticket_start_time||"06:00"}`;show("take")}}}
+function saveTicket(t){let a=store(TK).filter(x=>x.id!==t.id);a.unshift(t);store(TK,a)}function renderTickets(){let b=$("ticketList"),a=store(TK);b.innerHTML="";if(!a.length){b.innerHTML='<div class="empty">—</div>';return}a.forEach(t=>{let e=document.createElement("article");e.className="ticket-row";e.innerHTML=`<div class="bubble">P-${String(t.ticket_num||0).padStart(2,"0")}</div><div class="main"><h3>${esc(t.cabinet_name||t.cabinet_slug)}</h3><div class="meta">${t.created_at?new Date(t.created_at).toLocaleString():"-"}</div><span class="status ${esc(t.statut||"waiting")}">${status(t.statut||"waiting")}</span></div>`;e.onclick=()=>openTicket(t);b.appendChild(e)})}
+function openTicket(t){state.ticket=t;$("ticketCabinet").textContent=t.cabinet_name||t.cabinet_slug;show("ticket");tracking();state.timer=setInterval(tracking,6000)}
+async function tracking(){if(!state.ticket)return;try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/patient"),d=await json(r);if(!r.ok)throw Error(d.detail||"Ticket");state.ticket={...state.ticket,...d.ticket};saveTicket(state.ticket);let t=state.ticket,before=d.waiting_before_you||0;$("ticketNumber").textContent="P-"+String(t.ticket_num).padStart(2,"0");$("progress").style.width=Math.max(5,100/(before+1))+"%";let st=$("ticketStatus");st.className="notice";if(t.statut==="suspended"){st.className="notice warn";st.textContent=tr("suspendedText");$("queueText").textContent=""}else if(t.statut==="cancelled"){st.className="notice danger";st.textContent=tr("cancelledText");$("queueText").textContent=""}else if(t.statut==="serving"){st.textContent=tr("turn");$("queueText").textContent=""}else if(t.statut==="completed"){st.textContent=tr("done");$("queueText").textContent=""}else{st.textContent=status(t.statut);$("queueText").innerHTML=`<b>${before} ${tr("before")}</b><br>${tr("estimate")} : ${before*12} ${tr("minutes")}`}renderActions(t);loadEvents()}catch(e){$("ticketStatus").className="notice danger";$("ticketStatus").textContent=e.message}}
+function renderActions(t){let b=$("patientActions");b.innerHTML="";if(["waiting","returned"].includes(t.statut)){addAction("⏸",tr("late"),()=>patientAction("patient-suspend","patient_late",tr("late")),"orange");addAction("×",tr("cancel"),()=>confirm(tr("cancel")+" ?")&&patientAction("patient-cancel","patient_cancelled",tr("cancel")),"red");addAction("!",tr("priority"),()=>{let n=prompt(tr("priority"));if(n)patientAction("request-urgent","urgent_requested",n)})}else if(t.statut==="suspended"){addAction("✓",tr("present"),()=>patientAction("patient-present","present",tr("present")));addAction("×",tr("cancel"),()=>confirm(tr("cancel")+" ?")&&patientAction("patient-cancel","patient_cancelled",tr("cancel")),"red")}}
+function addAction(icon,title,fn,cl=""){let b=document.createElement("button");b.className="action "+cl;b.textContent=icon;b.title=title;b.onclick=fn;$("patientActions").appendChild(b)}async function patientAction(a,c,n){try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/"+a,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({reason_code:c,reason_note:n})}),d=await json(r);if(!r.ok)throw Error(d.detail||"Erreur");toast("✓");tracking()}catch(e){toast(e.message)}}
+async function loadEvents(){if(!state.ticket)return;try{let r=await fetch(API+"/api/tickets/"+state.ticket.id+"/events"),d=await json(r),b=$("eventList");b.innerHTML="";d.forEach(x=>{let e=document.createElement("div");e.className="event";e.innerHTML=`<b>${esc(status(x.new_status||x.event_type))}</b><span>${x.created_at?new Date(x.created_at).toLocaleString():""}${x.reason_note?" — "+esc(x.reason_note):""}</span>`;b.appendChild(e)})}catch{}}
+$("ticketForm").onsubmit=async e=>{e.preventDefault();let c=state.selected,n=$("patientName").value.trim(),p=$("patientPhone").value.trim()||null;if(!n||!c)return;$("takeButton").disabled=true;try{let r=await fetch(API+"/api/tickets/take",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({cabinet_slug:c.slug,nom_patient:n,telephone:p})}),d=await json(r);if(!r.ok)throw Error(d.detail||"Erreur");state.ticket={...d.ticket,cabinet_name:c.nom_medecin};saveTicket(state.ticket);openTicket(state.ticket)}catch(x){$("takeMessage").textContent=x.message}finally{$("takeButton").disabled=false}};
+$("language").onclick=()=>{lang={FR:"EN",EN:"AR",AR:"FR"}[lang];localStorage.setItem(LK,lang);translate()};$("search").oninput=()=>{clearTimeout(window.st);window.st=setTimeout(loadCabinets,300)};$("refresh").onclick=loadCabinets;$("refreshEvents").onclick=loadEvents;document.querySelectorAll(".nav").forEach(x=>x.onclick=()=>show(x.dataset.view));document.querySelectorAll(".back").forEach(x=>x.onclick=()=>show(x.dataset.back));translate();openCabinetFromQr();
+
+<script>
+(() => {
+  let deferredInstallPrompt = null;
+  const installAppBtn = document.getElementById("installAppBtn");
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    if (installAppBtn) installAppBtn.hidden = false;
+  });
+
+  if (installAppBtn) {
+    installAppBtn.addEventListener("click", async () => {
+      if (!deferredInstallPrompt) {
+        toast("Ouvrez le menu du navigateur puis choisissez « Ajouter à l’écran d’accueil ».");
+        return;
+      }
+
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installAppBtn.hidden = true;
+    });
+  }
+
+  window.addEventListener("appinstalled", () => {
+    if (installAppBtn) installAppBtn.hidden = true;
+  });
+
+  // Register a service worker only if sw.js actually exists.
+  // This avoids unregistering/deleting caches on every page load.
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(() => {
+        // PWA installation still works without a service worker.
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
