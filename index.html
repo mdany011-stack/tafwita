@@ -172,7 +172,7 @@
     [data-reveal].visible { opacity: 1; transform: translateY(0); }
 
     @media(max-width: 860px) {
-      .nav-links,.nav-actions  { display: none; }
+      .nav-links,.nav-actions .nav-actions   { display: none; }
       .burger { display: block; }
       .nav-links.open { position: absolute; top: 68px; left: 20px; right: 20px; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 10px; border: 1px solid var(--border); border-radius: 16px; background: white; box-shadow: var(--shadow); }
       .nav-links.open a { padding: 12px; }
@@ -213,10 +213,19 @@
         <a href="#">Tarifs</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <div class="nav-actions">
-        <a href="patient.html" class="btn btn-outline">App patient</a>
-        <a href="mysetup.zip" class="btn btn-primary">Telecharger TAFWITA (Windows)</a>
-      </div>
+     <div class="nav-actions">
+          <a href="./patient.html" class="btn btn-outline">
+            App patient
+          </a>
+        
+          <a
+            href="./mysetup.zip"
+            class="btn btn-primary desktop-download"
+            download
+          >
+            Télécharger TAFWITA (Windows)
+          </a>
+        </div>
       <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
     </div>
   </header>
