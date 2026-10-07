@@ -148,7 +148,7 @@
     .faq-sign { color: var(--turquoise); font-size: 24px; font-weight: 400; transition: transform .25s; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height .28s ease; }
     .faq-answer p { padding: 0 20px 18px; margin: 0; color: var(--text-soft); font-size: 13px; line-height: 1.6; }
-    .faq-item.open .faq-answer { max-height: 150px; }
+    .faq-item.open .faq-answer { max-height: 400px; }
     .faq-item.open .faq-sign { transform: rotate(45deg); }
 
     .cta { padding: 100px 0; }
@@ -199,6 +199,11 @@
       .footer-grid { grid-template-columns: 1fr; }
       .hero-proof { gap: 15px; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .wave, .phone, .float-card { animation: none; }
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -210,23 +215,18 @@
       <nav class="nav-links" id="navLinks">
         <a href="#fonctionnement">Comment ca marche</a>
         <a href="#solutions">Solutions</a>
-        <a href="#">Tarifs</a>
+        <a href="#tarifs">Tarifs</a>
         <a href="#faq">FAQ</a>
       </nav>
      <div class="nav-actions">
           <a href="./patient.html" class="btn btn-outline">
             App patient
           </a>
-        
-          <a
-            href="./mysetup.zip"
-            class="btn btn-primary desktop-download"
-            download
-          >
-            Télécharger TAFWITA (Windows)
+          <a href="#tarifs" class="btn btn-primary js-trial-open">
+            Essai gratuit
           </a>
         </div>
-      <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
@@ -238,7 +238,7 @@
           <h1>La file d'attente medicale, <span>simple et humaine.</span></h1>
           <p class="hero-text">Avec TAFWITA, vos patients prennent leur ticket a distance, suivent leur tour en direct et arrivent au cabinet au bon moment. Vous gardez le controle de votre file, sans stress et sans papier perdu.</p>
           <div class="hero-actions">
-            <a href="#" class="btn btn-primary btn-large">Essayer gratuitement</a>
+            <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Essayer gratuitement</a>
             <a href="#fonctionnement" class="btn btn-outline btn-large">Voir comment ca marche</a>
           </div>
           <div class="hero-proof">
@@ -283,7 +283,7 @@
         <div class="solution-grid">
           <article class="solution" data-reveal><div class="solution-icon">⌕</div><h3>Application patient</h3><ul><li>Recherche de medecins et cabinets</li><li>Favoris et derniers cabinets</li><li>Prise de ticket a distance</li><li>Suivi et rappel sonore</li></ul></article>
           <article class="solution featured" data-reveal><span class="ribbon">Essentiel</span><div class="solution-icon">▦</div><h3>Console cabinet</h3><ul><li>File d'attente en direct</li><li>Appel du patient suivant</li><li>Ajout de ticket papier</li><li>Historique et duree de consultation</li></ul></article>
-          <article class="solution" data-reveal><div class="solution-icon">▣</div><h3>Ecran salle d'attente</h3><ul><li>Numero en cours visible sur TV</li><li>Synchronisation avec la console</li><li>Affichage simple et lisible</li><li>Compatible avec le suivi mobile</li></ul></article>
+          <article class="solution" data-reveal><div class="solution-icon">▣</div><h3>Ecran salle d'attente</h3><ul><li>Affichage du numero en cours prevu pour la TV</li><li>Meme file que la console cabinet</li><li>Affichage simple et lisible</li><li>Compatible avec le suivi mobile</li></ul></article>
         </div>
       </div>
     </section>
@@ -307,9 +307,9 @@
       <div class="container">
         <div class="section-head" data-reveal><span class="tag">Tarifs transparents</span><h2>Choisissez la formule adaptee</h2><p>Commencez gratuitement, sans carte bancaire ni engagement.</p></div>
         <div class="pricing">
-          <article class="price-card" data-reveal><h3>Essai gratuit</h3><div class="price">0 <small>DA / 14 jours</small></div><p class="price-note">Testez toutes les fonctions.</p><ul><li>Un cabinet</li><li>Tickets illimites</li><li>Console et application patient</li></ul><a href="#" class="js-trial-open btn btn-outline">Commencer l'essai</a></article>
-          <article class="price-card featured" data-reveal><span class="ribbon">Recommande</span><h3>Cabinet individuel</h3><div class="price">2 500 <small>DA / mois</small></div><p class="price-note"><span class="strike">36 000 DA / an</span> sans engagement.</p><ul><li>App desktop cabinet</li><li>Application patient</li><li>Ajout ticket papier</li><li>Historique et statistiques</li><li>Ecran TV synchronise</li></ul><a href="#" class="btn btn-primary">Demarrer maintenant</a></article>
-          <article class="price-card" data-reveal><h3>Multi-praticiens</h3><div class="price">Sur devis</div><p class="price-note">Pour cliniques et centres medicaux.</p><ul><li>Plusieurs medecins</li><li>Files separees</li><li>Statistiques avancees</li><li>Accompagnement prioritaire</li></ul><a href="#" class="btn btn-outline">Nous contacter</a></article>
+          <article class="price-card" data-reveal><h3>Essai gratuit</h3><div class="price">0 <small>DA / 14 jours</small></div><p class="price-note">Testez toutes les fonctions.</p><ul><li>Un cabinet</li><li>Tickets illimites</li><li>Console et application patient</li></ul><a href="#tarifs" class="js-trial-open btn btn-outline">Commencer l'essai</a></article>
+          <article class="price-card featured" data-reveal><span class="ribbon">Recommande</span><h3>Cabinet individuel</h3><div class="price">2 500 <small>DA / mois</small></div><p class="price-note"><span class="strike">36 000 DA / an</span> sans engagement.</p><ul><li>App desktop cabinet</li><li>Application patient</li><li>Ajout ticket papier</li><li>Historique et statistiques</li><li>Ecran TV synchronise</li></ul><a href="#tarifs" class="btn btn-primary js-trial-open">Demarrer maintenant</a></article>
+          <article class="price-card" data-reveal><h3>Multi-praticiens</h3><div class="price">Sur devis</div><p class="price-note">Pour cliniques et centres medicaux.</p><ul><li>Plusieurs medecins</li><li>Files separees</li><li>Statistiques avancees</li><li>Accompagnement prioritaire</li></ul><a href="mailto:tafwitacontact@gmail.com" class="btn btn-outline">Nous contacter</a></article>
         </div>
       </div>
     </section>
@@ -332,9 +332,9 @@
   <footer>
     <div class="container footer-grid">
       <div><a href="#accueil" class="logo">TAF<span>WITA</span></a><p>La solution algerienne de gestion de file d'attente pour cabinets medicaux.</p></div>
-      <div><h4>Produit</h4><a href="#fonctionnement">Comment ca marche</a><a href="#solutions">Solutions</a><a href="#">Tarifs</a></div>
-      <div><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a><a href="tel:+213500000000">+213 5XX XX XX XX</a></div>
-      <div><h4>Legal</h4><a href="#">Conditions d'utilisation</a><a href="#">Confidentialite</a></div>
+      <div><h4>Produit</h4><a href="#fonctionnement">Comment ca marche</a><a href="#solutions">Solutions</a><a href="#tarifs">Tarifs</a></div>
+      <div><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a></div>
+      <div><h4>Legal</h4><a href="mailto:tafwitacontact@gmail.com">Conditions d'utilisation</a><a href="mailto:tafwitacontact@gmail.com">Confidentialite</a></div>
     </div>
     <div class="container copyright">© 2026 TAFWITA - Tous droits reserves. Fait avec soin en Algerie.</div>
   </footer>
@@ -345,8 +345,16 @@
 
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
-    navLinks.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', function(){ navLinks.classList.remove('open'); }); });
+    burger.addEventListener('click', function(){
+      const open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     document.querySelectorAll('.faq-question').forEach(function(button){
       button.addEventListener('click', function(){
@@ -360,14 +368,6 @@
       entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
     }, {threshold:.12});
     document.querySelectorAll('[data-reveal]').forEach(function(el){ revealObserver.observe(el); });
-
-    document.getElementById('signupForm').addEventListener('submit', function(event){
-      event.preventDefault();
-      const name = document.getElementById('doctorName').value.trim();
-      const message = document.getElementById('ctaMessage');
-      message.textContent = 'Merci ' + name + '. Votre demande d essai a bien ete enregistree.';
-      event.target.reset();
-    });
   </script>
 
 <style id="trial-modal-style">
@@ -426,6 +426,10 @@
             required
           >
         </div>
+        <div class="trial-field">
+          <label for="trialEmail">E-mail</label>
+          <input id="trialEmail" type="email" autocomplete="email" required>
+        </div>
 
         <!-- NOUVEAU : Spécialité en liste déroulante -->
         <div class="trial-field">
@@ -436,7 +440,7 @@
             <option value="Cardiologie">Cardiologie</option>
             <option value="Pediatrie">Pediatrie</option>
             <option value="Dermatologie">Dermatologie</option>
-            <option value="Gynécologie-obstetrique">Gynecologie-obstetrique</option>
+            <option value="Gynecologie-obstetrique">Gynecologie-obstetrique</option>
             <option value="Chirurgie dentaire">Chirurgie dentaire</option>
             <option value="Ophtalmologie">Ophtalmologie</option>
             <option value="ORL">ORL</option>
@@ -535,16 +539,16 @@
 </div>
 
         <div class="trial-field">
-          <label for="trialPwd">Mot de passe</label>
-          <input id="trialPwd" type="password" required>
+          <label for="trialPwd">Code PIN (6 chiffres)</label>
+          <input id="trialPwd" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" required>
         </div>
         <div class="trial-field">
-          <label for="trialPwd2">Verification mot de passe</label>
-          <input id="trialPwd2" type="password" required>
+          <label for="trialPwd2">Confirmer le PIN</label>
+          <input id="trialPwd2" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" required>
         </div>
       </div>
 
-      <div class="trial-note">Le mail de verification sera gere par le backend.</div>
+      <div class="trial-note">Ce PIN sert a ouvrir l'application bureau du cabinet. Votre identifiant sera le nom du cabinet.</div>
       <div id="trialMessage" class="trial-message"></div>
       <div class="trial-actions">
         <button type="button" class="btn btn-outline" id="trialCancel">Annuler</button>
@@ -603,9 +607,14 @@
       msg.textContent = 'Tous les champs sont obligatoires.';
       return;
     }
+    if (!/^\d{6}$/.test(p.password)){
+      msg.style.color = '#c05050';
+      msg.textContent = 'Le PIN doit contenir exactement 6 chiffres.';
+      return;
+    }
     if (p.password !== p2){
       msg.style.color = '#c05050';
-      msg.textContent = 'Les mots de passe ne correspondent pas.';
+      msg.textContent = 'Les PIN ne correspondent pas.';
       return;
     }
 
@@ -620,7 +629,8 @@
       const d = await r.json().catch(()=>({}));
       if (!r.ok) throw Error(d.detail || d.message || 'Erreur inscription');
       msg.style.color = '#2e8b57';
-      msg.textContent = 'Demande envoyee. Verifiez votre e-mail.';
+      const slug = d.cabinet_slug || p.cabinet;
+      msg.textContent = 'Essai active. Identifiant cabinet : ' + slug + '. Connectez-vous a l app bureau avec ce PIN.';
       f.reset();
     }catch(e){
       msg.style.color = '#c05050';
