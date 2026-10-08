@@ -196,6 +196,7 @@
       </nav>
       <div class="nav-actions">
         <a href="./patient.html" class="btn btn-outline">App patient</a>
+        <a href="./mysetup.exe" class="btn btn-outline" download="TAFWITA-cabinet-setup.exe">Telecharger TAFWITA cabinet</a>
         <a href="#tarifs" class="btn btn-primary js-trial-open">Essai gratuit</a>
       </div>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
@@ -279,6 +280,7 @@
               <li>Historique et horaires</li>
               <li>Affiche QR a imprimer</li>
             </ul>
+            <a href="./mysetup.exe" class="btn btn-primary" download="TAFWITA-cabinet-setup.exe" style="margin-top:18px">Telecharger TAFWITA cabinet</a>
           </article>
         </div>
       </div>
@@ -348,7 +350,7 @@
       <div class="container">
         <div class="cta-box" data-reveal>
           <h2>Essayer TAFWITA 45 jours</h2>
-          <p>Creez un cabinet d'essai, puis ouvrez l'application bureau avec votre PIN a 6 chiffres.</p>
+          <p>Creez un cabinet d'essai. A la fin, TAFWITA cabinet se telecharge. Installez-le et ouvrez-le avec votre PIN a 6 chiffres.</p>
           <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Commencer l'essai</a>
         </div>
       </div>
@@ -367,6 +369,7 @@
         <a href="#solutions">Solutions</a>
         <a href="#tarifs">Tarifs</a>
         <a href="./patient.html">App patient</a>
+        <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe">Telecharger TAFWITA cabinet</a>
       </div>
       <div>
         <h4>Contact</h4>
@@ -576,9 +579,15 @@
       });
       var d = await r.json().catch(function(){ return {}; });
       if (!r.ok) throw Error(d.detail || d.message || 'Erreur inscription');
+      var slug = d.cabinet_slug || p.cabinet;
       msg.style.color = '#2e8b57';
-      msg.textContent = 'Essai active. Identifiant : ' + (d.cabinet_slug || p.cabinet) + '. Ouvrez l app bureau avec ce PIN.';
-      f.reset();
+      msg.innerHTML = 'Essai active. Identifiant : <b>' + slug + '</b>. Telechargement de TAFWITA cabinet. <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe">Cliquez ici si le fichier ne part pas</a>. Installez puis ouvrez avec ce PIN.';
+      var a = document.createElement('a');
+      a.href = './mysetup.exe';
+      a.download = 'TAFWITA-cabinet-setup.exe';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     } catch (err) {
       msg.style.color = '#c05050';
       msg.textContent = err.message;
