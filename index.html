@@ -12,7 +12,6 @@
       --bg-soft: #edf7f5;
       --surface: #ffffff;
       --surface-mint: #f1fbf8;
-      --surface-hover: #e6f7f3;
       --border: #dcefeb;
       --border-strong: #bfeee3;
       --turquoise: #16b6b0;
@@ -22,8 +21,6 @@
       --text: #24343d;
       --text-soft: #50646b;
       --text-muted: #91a4a8;
-      --success: #39c996;
-      --warning: #f2b96b;
       --shadow: 0 14px 38px rgba(45, 121, 115, .10);
       --radius-xl: 30px;
       --radius-lg: 22px;
@@ -60,7 +57,7 @@
     .btn-outline:hover { background: var(--turquoise-pale); }
     .burger { display: none; border: 1px solid var(--border); width: 42px; height: 42px; color: var(--text); background: var(--surface); border-radius: 12px; cursor: pointer; font-size: 20px; }
 
-    .hero { padding: 93px 0 70px; background: radial-gradient(circle at 85% 15%, rgba(142,229,212,.29), transparent 25rem), linear-gradient(145deg, var(--bg-soft), var(--bg)); }
+    .hero { padding: 93px 0 70px; background: radial-gradient(circle at 85% 15%, rgba(142,229,212,.29), transparent 28rem), linear-gradient(145deg, var(--bg-soft), var(--bg)); }
     .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 58px; align-items: center; }
     .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 19px; border: 1px solid var(--border-strong); border-radius: 99px; padding: 8px 13px; color: var(--turquoise-dark); background: var(--surface); font-size: 12px; font-weight: 700; }
     .hero h1 { margin: 0 0 20px; max-width: 650px; font-size: clamp(38px, 5vw, 61px); line-height: 1.07; letter-spacing: -2px; }
@@ -81,7 +78,7 @@
     .phone-brand { color: #263740; font-size: 13px; font-weight: 850; letter-spacing: .4px; }
     .phone-brand span { color: var(--turquoise); }
     .phone-welcome { margin: 20px 0 10px; color: var(--text); font-size: 17px; font-weight: 800; }
-    .phone-doctor { padding: 15px; border-radius: 16px; color: white; background: linear-gradient(135deg,#16b6b0,#43cdb7); box-shadow: 0 10px 18px rgba(22,182,176,.18); }
+    .phone-doctor { padding: 15px; border-radius: 16px; color: white; background: linear-gradient(135deg,#16b6b0,#43cdb7); }
     .phone-doctor small { display: block; opacity: .82; font-size: 10px; }
     .phone-doctor strong { display: block; margin-top: 3px; font-size: 15px; }
     .phone-pill { display: inline-block; margin-top: 11px; padding: 5px 8px; border-radius: 99px; background: rgba(255,255,255,.23); font-size: 9px; }
@@ -106,105 +103,84 @@
     .section-head p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
     .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .step { padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 8px 18px rgba(45,121,115,.05); transition: .22s; }
-    .step:hover { transform: translateY(-5px); border-color: var(--turquoise-light); box-shadow: var(--shadow); }
-    .step-number { color: var(--turquoise); font-size: 32px; font-weight: 850; letter-spacing: -1px; }
+    .step { padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 8px 18px rgba(45,121,115,.05); }
+    .step-number { color: var(--turquoise); font-size: 32px; font-weight: 850; }
     .step h3 { margin: 16px 0 9px; font-size: 18px; }
     .step p { margin: 0; color: var(--text-soft); font-size: 14px; line-height: 1.6; }
 
-    .solution-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .solution { position: relative; padding: 29px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 8px 18px rgba(45,121,115,.05); }
-    .solution.featured { border-color: var(--turquoise-light); background: linear-gradient(145deg, #ffffff, #edfaf7); }
+    .solution-grid, .pricing { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .solution, .price-card { position: relative; padding: 29px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 8px 18px rgba(45,121,115,.05); }
+    .solution.featured, .price-card.featured { border-color: var(--turquoise-light); background: linear-gradient(145deg, #ffffff, #edfaf7); }
     .solution-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; color: var(--turquoise-dark); background: var(--turquoise-pale); font-size: 22px; }
-    .solution h3 { margin: 18px 0 13px; font-size: 19px; }
-    .solution ul { padding: 0; margin: 0; list-style: none; }
-    .solution li { position: relative; margin: 9px 0; padding-left: 20px; color: var(--text-soft); font-size: 13px; line-height: 1.4; }
-    .solution li::before { content: "✓"; position: absolute; left: 0; color: var(--turquoise); font-weight: 900; }
+    .solution h3, .price-card h3 { margin: 18px 0 13px; font-size: 19px; }
+    .solution ul, .price-card ul { padding: 0; margin: 0; list-style: none; }
+    .solution li, .price-card li { position: relative; margin: 9px 0; padding-left: 20px; color: var(--text-soft); font-size: 13px; line-height: 1.4; }
+    .solution li::before, .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--turquoise); font-weight: 900; }
     .ribbon { position: absolute; top: 17px; right: 17px; padding: 6px 10px; color: #fff; background: var(--turquoise); border-radius: 99px; font-size: 10px; font-weight: 750; }
-
-    .compare-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: white; box-shadow: var(--shadow); }
-    .compare { width: 100%; min-width: 640px; border-collapse: collapse; text-align: left; }
-    .compare th { padding: 17px 20px; color: var(--text-soft); background: var(--surface-mint); font-size: 13px; }
-    .compare td { padding: 16px 20px; color: var(--text-soft); border-top: 1px solid var(--border); font-size: 13px; }
-    .compare td:nth-child(2) { color: var(--turquoise-dark); font-weight: 750; }
-    .yes { color: var(--success); font-weight: 850; }
-    .muted { color: var(--text-muted); }
-
-    .pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; align-items: stretch; }
-    .price-card { position: relative; display: flex; flex-direction: column; padding: 29px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: white; box-shadow: 0 8px 18px rgba(45,121,115,.05); }
-    .price-card.featured { border: 2px solid var(--turquoise); background: linear-gradient(145deg,#ffffff,#effbf8); transform: translateY(-8px); box-shadow: 0 18px 35px rgba(22,182,176,.16); }
-    .price-card h3 { margin: 0 0 15px; font-size: 18px; }
-    .price { margin-bottom: 5px; font-size: 36px; font-weight: 850; color: var(--text); letter-spacing: -1px; }
+    .price-card { display: flex; flex-direction: column; }
+    .price-card h3 { margin: 0 0 15px; }
+    .price { margin-bottom: 5px; font-size: 36px; font-weight: 850; letter-spacing: -1px; }
     .price small { color: var(--text-muted); font-size: 13px; font-weight: 500; }
     .price-note { min-height: 24px; color: var(--text-muted); font-size: 12px; }
-    .strike { text-decoration: line-through; }
-    .price-card ul { flex: 1; padding: 0; margin: 19px 0 26px; list-style: none; }
-    .price-card li { position: relative; margin: 10px 0; padding-left: 20px; color: var(--text-soft); font-size: 13px; line-height: 1.4; }
-    .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--turquoise); font-weight: 900; }
+    .price-card ul { flex: 1; margin: 19px 0 26px; }
 
     .faq { max-width: 780px; margin: 0 auto; display: grid; gap: 10px; }
     .faq-item { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-md); background: white; }
     .faq-question { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 18px 20px; border: 0; color: var(--text); background: white; text-align: left; font-weight: 750; cursor: pointer; }
-    .faq-sign { color: var(--turquoise); font-size: 24px; font-weight: 400; transition: transform .25s; }
+    .faq-sign { color: var(--turquoise); font-size: 24px; font-weight: 400; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height .28s ease; }
     .faq-answer p { padding: 0 20px 18px; margin: 0; color: var(--text-soft); font-size: 13px; line-height: 1.6; }
     .faq-item.open .faq-answer { max-height: 400px; }
-    .faq-item.open .faq-sign { transform: rotate(45deg); }
 
     .cta { padding: 100px 0; }
     .cta-box { padding: 62px 32px; border: 1px solid var(--border-strong); border-radius: var(--radius-xl); text-align: center; background: linear-gradient(135deg,#e7faf4,#ffffff); box-shadow: var(--shadow); }
     .cta-box h2 { margin: 0 0 12px; font-size: clamp(28px,4vw,40px); }
     .cta-box p { max-width: 600px; margin: 0 auto 27px; color: var(--text-soft); line-height: 1.6; }
-    .cta-form { display: flex; max-width: 650px; margin: 0 auto; gap: 10px; }
-    .cta-form input { flex: 1; min-width: 0; height: 50px; padding: 0 15px; border: 1px solid var(--border-strong); border-radius: 99px; outline: none; background: white; font: 14px var(--ff); color: var(--text); }
-    .cta-form input:focus { border-color: var(--turquoise); box-shadow: 0 0 0 4px rgba(22,182,176,.11); }
-    .cta-message { min-height: 18px; margin: 13px 0 0; color: var(--turquoise-dark); font-size: 12px; }
 
     footer { padding: 56px 0 28px; background: #eaf5f2; border-top: 1px solid var(--border); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; }
     .footer-grid p { max-width: 280px; margin: 12px 0 0; color: var(--text-muted); font-size: 13px; line-height: 1.55; }
-    .footer-grid h4 { margin: 4px 0 12px; color: var(--text); font-size: 13px; }
+    .footer-grid h4 { margin: 4px 0 12px; font-size: 13px; }
     .footer-grid a { display: block; margin: 8px 0; color: var(--text-muted); font-size: 13px; }
     .footer-grid a:hover { color: var(--turquoise-dark); }
     .copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; font-size: 12px; }
 
-    [data-reveal] { opacity: 0; transform: translateY(20px); transition: .65s ease; }
-    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    .trial-modal { display: none; position: fixed; inset: 0; z-index: 80; place-items: center; padding: 18px; }
+    .trial-modal.open { display: grid; }
+    .trial-backdrop { position: absolute; inset: 0; background: rgba(18,32,40,.58); }
+    .trial-dialog { position: relative; z-index: 1; width: min(760px,100%); max-height: 92vh; overflow: auto; background: #fff; border: 1px solid #dcefeb; border-radius: 24px; box-shadow: 0 30px 70px rgba(16,48,58,.22); padding: 26px; }
+    .trial-close { position: absolute; top: 14px; right: 14px; width: 42px; height: 42px; border-radius: 99px; border: 1px solid #dcefeb; background: #fff; cursor: pointer; }
+    .trial-header h2 { margin: 0 0 8px; font-size: 28px; }
+    .trial-header p { margin: 0 0 16px; color: #50646b; font-size: 14px; }
+    .trial-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+    .trial-field label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; color: #50646b; }
+    .trial-field input, .trial-field select { width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid #dcefeb; border-radius: 14px; font-size: 14px; outline: none; background: #fff; }
+    .trial-note { margin-top: 14px; padding: 12px 14px; border: 1px solid #bfeee3; background: #f1fbf8; border-radius: 14px; font-size: 13px; color: #50646b; }
+    .trial-message { min-height: 22px; margin-top: 12px; font-size: 13px; }
+    .trial-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
 
-    @media(max-width: 860px) {
-      .nav-links,.desktop-download {display: none;}
-      .burger { display: block; }
-      .nav-links.open { position: absolute; top: 68px; left: 20px; right: 20px; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 10px; border: 1px solid var(--border); border-radius: 16px; background: white; box-shadow: var(--shadow); }
-      .nav-links.open a { padding: 12px; }
-      .hero { padding-top: 62px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-      .hero-copy { text-align: center; }
-      .hero-actions, .hero-proof { justify-content: center; }
-      .phone-zone { min-height: 420px; }
-      .steps, .solution-grid, .pricing { grid-template-columns: 1fr; }
-      .price-card.featured { transform: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+    [data-reveal] { opacity: 0; transform: translateY(20px); transition: .65s ease; }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      [data-reveal] { opacity: 1; transform: none; }
     }
+    @media(max-width: 860px) {
+      .nav-links { display: none; }
+      .burger { display: block; }
+      .nav-links.open { position: absolute; top: 68px; left: 20px; right: 20px; display: flex; flex-direction: column; gap: 0; padding: 10px; border: 1px solid var(--border); border-radius: 16px; background: white; box-shadow: var(--shadow); }
+      .nav-links.open a { padding: 12px; }
+      .hero-grid, .steps, .solution-grid, .pricing, .footer-grid { grid-template-columns: 1fr; }
+      .hero-copy, .hero-actions, .hero-proof { text-align: center; justify-content: center; }
+    }
+    @media(max-width: 700px) { .trial-grid { grid-template-columns: 1fr; } }
     @media(max-width: 520px) {
       .container { width: min(100% - 28px, 1150px); }
-      .hero h1 { font-size: 39px; letter-spacing: -1.3px; }
-      .hero-text { font-size: 15px; }
-      .float-card.left { left: -8px; top: 48px; }
-      .float-card.right { right: -8px; bottom: 50px; }
-      .float-card { padding: 9px 10px; }
-      .float-card span { display: none; }
+      .hero h1 { font-size: 39px; }
       .section, .cta { padding: 65px 0; }
-      .cta-box { padding: 40px 18px; }
-      .cta-form { flex-direction: column; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .hero-proof { gap: 15px; }
+      .float-card span { display: none; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .wave, .phone, .float-card { animation: none; }
-      [data-reveal] { opacity: 1; transform: none; transition: none; }
-    }
-  </style>
+</style>
 </head>
 <body>
   <div class="waves"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
@@ -218,14 +194,10 @@
         <a href="#tarifs">Tarifs</a>
         <a href="#faq">FAQ</a>
       </nav>
-     <div class="nav-actions">
-          <a href="./patient.html" class="btn btn-outline">
-            App patient
-          </a>
-          <a href="#tarifs" class="btn btn-primary js-trial-open">
-            Essai gratuit
-          </a>
-        </div>
+      <div class="nav-actions">
+        <a href="./patient.html" class="btn btn-outline">App patient</a>
+        <a href="#tarifs" class="btn btn-primary js-trial-open">Essai gratuit</a>
+      </div>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     </div>
   </header>
@@ -234,413 +206,387 @@
     <section class="hero" id="accueil">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <span class="eyebrow">Concu pour les cabinets medicaux algeriens</span>
+          <span class="eyebrow">Pour les cabinets medicaux en Algerie</span>
           <h1>La file d'attente medicale, <span>simple et humaine.</span></h1>
-          <p class="hero-text">Avec TAFWITA, vos patients prennent leur ticket a distance, suivent leur tour en direct et arrivent au cabinet au bon moment. Vous gardez le controle de votre file, sans stress et sans papier perdu.</p>
+          <p class="hero-text">Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file depuis l'application bureau, y compris les tickets papier.</p>
           <div class="hero-actions">
-            <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Essayer gratuitement</a>
+            <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Essayer 14 jours</a>
             <a href="#fonctionnement" class="btn btn-outline btn-large">Voir comment ca marche</a>
           </div>
           <div class="hero-proof">
-            <div class="proof"><strong>3 espaces</strong><span>Patient, cabinet et TV</span></div>
+            <div class="proof"><strong>2 espaces</strong><span>Patient web et app cabinet</span></div>
             <div class="proof"><strong>14 jours</strong><span>Essai gratuit</span></div>
-            <div class="proof"><strong>Sans engagement</strong><span>Annulation libre</span></div>
           </div>
         </div>
-
         <div class="phone-zone" data-reveal>
-          <div class="float-card left"><div class="float-icon">✓</div><div><b>Ticket confirme</b><span>Suivi en direct active</span></div></div>
+          <div class="float-card left"><div class="float-icon">✓</div><div><b>Ticket confirme</b><span>Suivi en direct</span></div></div>
           <div class="phone">
             <div class="phone-notch"></div>
             <div class="phone-app">
               <div class="phone-brand">TAF<span>WITA</span></div>
-              <div class="phone-welcome">Bonjour, Farid</div>
-              <div class="phone-doctor"><small>Votre cabinet</small><strong>Dr. Karim Benali</strong><span class="phone-pill">3 patients avant vous</span></div>
-              <div class="phone-row-title">Suivez votre tour en direct</div>
-              <div class="phone-mini-card"><div class="phone-avatar">KB</div><div><b>Ticket P-08</b><span>Temps estime : 24 min</span></div></div>
-              <div class="phone-mini-card"><div class="phone-avatar">●</div><div><b>File synchronisee</b><span>Mise a jour instantanee</span></div></div>
+              <div class="phone-welcome">Bonjour</div>
+              <div class="phone-doctor"><small>Votre cabinet</small><strong>File en direct</strong><span class="phone-pill">Suivi du numero</span></div>
+              <div class="phone-row-title">Votre ticket</div>
+              <div class="phone-mini-card"><div class="phone-avatar">P</div><div><b>Ticket P-08</b><span>Mise a jour automatique</span></div></div>
+              <div class="phone-mini-card"><div class="phone-avatar">●</div><div><b>Alerte sonore</b><span>Quand c'est votre tour</span></div></div>
             </div>
           </div>
-          <div class="float-card right"><div class="float-icon">⌁</div><div><b>Console cabinet</b><span>File mise a jour en direct</span></div></div>
+          <div class="float-card right"><div class="float-icon">⌁</div><div><b>App cabinet</b><span>File mise a jour</span></div></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="fonctionnement">
       <div class="container">
-        <div class="section-head" data-reveal><span class="tag">Comment ca marche</span><h2>Une experience fluide, du patient au cabinet</h2><p>TAFWITA connecte la prise de ticket, la console du cabinet et le suivi patient dans une seule file en temps reel.</p></div>
+        <div class="section-head" data-reveal>
+          <span class="tag">Comment ca marche</span>
+          <h2>Du telephone du patient a la console du cabinet</h2>
+          <p>Une seule file : tickets a distance et tickets papier.</p>
+        </div>
         <div class="steps">
-          <article class="step" data-reveal><div class="step-number">01</div><h3>Le patient choisit un medecin</h3><p>Il recherche un cabinet par nom, specialite ou wilaya, puis consulte ses informations et ses horaires.</p></article>
-          <article class="step" data-reveal><div class="step-number">02</div><h3>Il prend son ticket a distance</h3><p>Son ticket est ajoute immediatement a la file du cabinet, sans appel ni deplacement inutile.</p></article>
-          <article class="step" data-reveal><div class="step-number">03</div><h3>Il est averti au bon moment</h3><p>Le patient suit son tour en direct et recoit une alerte sonore quand sa consultation approche.</p></article>
+          <article class="step" data-reveal><div class="step-number">01</div><h3>Le patient choisit un cabinet</h3><p>Recherche par nom, specialite ou wilaya, puis consultation des horaires.</p></article>
+          <article class="step" data-reveal><div class="step-number">02</div><h3>Il prend son ticket</h3><p>Le ticket entre dans la file. Un QR code au cabinet ouvre la meme page.</p></article>
+          <article class="step" data-reveal><div class="step-number">03</div><h3>Il est averti</h3><p>Suivi en direct et alerte sonore quand le cabinet l'appelle.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-soft" id="solutions">
       <div class="container">
-        <div class="section-head" data-reveal><span class="tag">Un seul ecosysteme</span><h2>Trois interfaces, une seule file</h2><p>Chaque personne utilise l'outil qui lui convient, sans complexite pour le cabinet.</p></div>
+        <div class="section-head" data-reveal>
+          <span class="tag">Ce qui existe aujourd'hui</span>
+          <h2>Deux interfaces, une seule file</h2>
+        </div>
         <div class="solution-grid">
-          <article class="solution" data-reveal><div class="solution-icon">⌕</div><h3>Application patient</h3><ul><li>Recherche de medecins et cabinets</li><li>Favoris et derniers cabinets</li><li>Prise de ticket a distance</li><li>Suivi et rappel sonore</li></ul></article>
-          <article class="solution featured" data-reveal><span class="ribbon">Essentiel</span><div class="solution-icon">▦</div><h3>Console cabinet</h3><ul><li>File d'attente en direct</li><li>Appel du patient suivant</li><li>Ajout de ticket papier</li><li>Historique et duree de consultation</li></ul></article>
-          <article class="solution" data-reveal><div class="solution-icon">▣</div><h3>Ecran salle d'attente</h3><ul><li>Affichage du numero en cours prevu pour la TV</li><li>Meme file que la console cabinet</li><li>Affichage simple et lisible</li><li>Compatible avec le suivi mobile</li></ul></article>
+          <article class="solution" data-reveal>
+            <div class="solution-icon">⌕</div>
+            <h3>Site patient</h3>
+            <ul>
+              <li>Recherche de cabinets</li>
+              <li>Favoris</li>
+              <li>Prise de ticket a distance</li>
+              <li>Suivi et alerte sonore</li>
+            </ul>
+          </article>
+          <article class="solution featured" data-reveal>
+            <span class="ribbon">Cabinet</span>
+            <div class="solution-icon">▦</div>
+            <h3>Application bureau</h3>
+            <ul>
+              <li>File en direct</li>
+              <li>Appel du patient suivant</li>
+              <li>Ajout de ticket papier</li>
+              <li>Historique et horaires</li>
+              <li>Affiche QR a imprimer</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="avantages">
+    <section class="section" id="tarifs">
       <div class="container">
-        <div class="section-head" data-reveal><span class="tag">Pourquoi TAFWITA</span><h2>Une solution adaptee au terrain</h2><p>Simple pour les patients, pratique pour le medecin et abordable pour les cabinets individuels.</p></div>
-        <div class="compare-wrap" data-reveal>
-          <table class="compare"><thead><tr><th>Fonctionnalite</th><th>TAFWITA</th><th>Solutions lourdes classiques</th></tr></thead><tbody>
-            <tr><td>Ticket a distance</td><td><span class="yes">✓</span> Inclus</td><td class="muted">Variable</td></tr>
-            <tr><td>Application desktop pour cabinet</td><td><span class="yes">✓</span> Incluse</td><td class="muted">Souvent web uniquement</td></tr>
-            <tr><td>Ajout de ticket papier</td><td><span class="yes">✓</span> Inclus</td><td class="muted">Rarement prevu</td></tr>
-            <tr><td>Suivi patient et alerte</td><td><span class="yes">✓</span> Inclus</td><td class="muted">Option ou supplement</td></tr>
-            <tr><td>Engagement</td><td><span class="yes">✓</span> Mensuel</td><td class="muted">Souvent annuel</td></tr>
-          </tbody></table>
+        <div class="section-head" data-reveal>
+          <span class="tag">Tarifs</span>
+          <h2>Un essai, puis un cabinet</h2>
+          <p>Pas de paiement en ligne pour le moment. L'abonnement est active par TAFWITA.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="tarifs">
-      <div class="container">
-        <div class="section-head" data-reveal><span class="tag">Tarifs transparents</span><h2>Choisissez la formule adaptee</h2><p>Commencez gratuitement, sans carte bancaire ni engagement.</p></div>
         <div class="pricing">
-          <article class="price-card" data-reveal><h3>Essai gratuit</h3><div class="price">0 <small>DA / 14 jours</small></div><p class="price-note">Testez toutes les fonctions.</p><ul><li>Un cabinet</li><li>Tickets illimites</li><li>Console et application patient</li></ul><a href="#tarifs" class="js-trial-open btn btn-outline">Commencer l'essai</a></article>
-          <article class="price-card featured" data-reveal><span class="ribbon">Recommande</span><h3>Cabinet individuel</h3><div class="price">2 500 <small>DA / mois</small></div><p class="price-note"><span class="strike">36 000 DA / an</span> sans engagement.</p><ul><li>App desktop cabinet</li><li>Application patient</li><li>Ajout ticket papier</li><li>Historique et statistiques</li><li>Ecran TV synchronise</li></ul><a href="#tarifs" class="btn btn-primary js-trial-open">Demarrer maintenant</a></article>
-          <article class="price-card" data-reveal><h3>Multi-praticiens</h3><div class="price">Sur devis</div><p class="price-note">Pour cliniques et centres medicaux.</p><ul><li>Plusieurs medecins</li><li>Files separees</li><li>Statistiques avancees</li><li>Accompagnement prioritaire</li></ul><a href="mailto:tafwitacontact@gmail.com" class="btn btn-outline">Nous contacter</a></article>
+          <article class="price-card" data-reveal>
+            <h3>Essai gratuit</h3>
+            <div class="price">0 <small>DA / 14 jours</small></div>
+            <p class="price-note">Un cabinet, tickets illimites.</p>
+            <ul>
+              <li>Site patient</li>
+              <li>Application bureau</li>
+              <li>Tickets papier</li>
+            </ul>
+            <a href="#tarifs" class="js-trial-open btn btn-outline">Commencer l'essai</a>
+          </article>
+          <article class="price-card featured" data-reveal>
+            <span class="ribbon">Actuel</span>
+            <h3>Cabinet individuel</h3>
+            <div class="price">2 500 <small>DA / mois</small></div>
+            <p class="price-note">36 000 DA / an. Contactez-nous pour activer.</p>
+            <ul>
+              <li>App bureau cabinet</li>
+              <li>Site patient</li>
+              <li>Tickets papier</li>
+              <li>Historique</li>
+            </ul>
+            <a href="mailto:tafwitacontact@gmail.com" class="btn btn-primary">Ecrire a TAFWITA</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="faq">
+    <section class="section section-soft" id="faq">
       <div class="container">
-        <div class="section-head" data-reveal><span class="tag">Questions frequentes</span><h2>Tout ce qu'il faut savoir</h2></div>
+        <div class="section-head" data-reveal><span class="tag">Questions</span><h2>FAQ</h2></div>
         <div class="faq" data-reveal>
-          <div class="faq-item"><button class="faq-question">Le patient doit-il installer une application ? <span class="faq-sign">+</span></button><div class="faq-answer"><p>Non. Il peut prendre un ticket depuis une page web sur son telephone. L'application peut etre ajoutee plus tard pour une experience encore plus complete.</p></div></div>
-          <div class="faq-item"><button class="faq-question">Comment gerer les patients sans smartphone ? <span class="faq-sign">+</span></button><div class="faq-answer"><p>La secretaire ou le medecin ajoute un ticket papier depuis la console desktop. Ce ticket entre directement dans la meme file numerique.</p></div></div>
-          <div class="faq-item"><button class="faq-question">Puis-je arreter mon abonnement ? <span class="faq-sign">+</span></button><div class="faq-answer"><p>Oui. La formule cabinet individuel est mensuelle et sans engagement. Vous pouvez arreter quand vous le souhaitez.</p></div></div>
-          <div class="faq-item"><button class="faq-question">La file est-elle mise a jour en direct ? <span class="faq-sign">+</span></button><div class="faq-answer"><p>Oui. Le site patient, la console cabinet et l'ecran TV consultent la meme base de donnees pour afficher l'evolution de la file.</p></div></div>
+          <div class="faq-item">
+            <button class="faq-question" type="button">Le patient doit-il installer une application ? <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p>Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button">Comment gerer les patients sans smartphone ? <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p>Le cabinet ajoute un ticket papier depuis l'application bureau. Il rejoint la meme file.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button">Comment payer l'abonnement ? <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p>Il n'y a pas encore de paiement automatique. Ecrivez a tafwitacontact@gmail.com pour l'essai ou l'abonnement (2500 DA / mois ou 36000 DA / an).</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button">La file est-elle mise a jour en direct ? <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p>Oui. Le site patient et l'application bureau lisent la meme file.</p></div>
+          </div>
         </div>
       </div>
     </section>
 
-    
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box" data-reveal>
+          <h2>Essayer TAFWITA 14 jours</h2>
+          <p>Creez un cabinet d'essai, puis ouvrez l'application bureau avec votre PIN a 6 chiffres.</p>
+          <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Commencer l'essai</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="container footer-grid">
-      <div><a href="#accueil" class="logo">TAF<span>WITA</span></a><p>La solution algerienne de gestion de file d'attente pour cabinets medicaux.</p></div>
-      <div><h4>Produit</h4><a href="#fonctionnement">Comment ca marche</a><a href="#solutions">Solutions</a><a href="#tarifs">Tarifs</a></div>
-      <div><h4>Support</h4><a href="#faq">FAQ</a><a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a></div>
-      <div><h4>Legal</h4><a href="mailto:tafwitacontact@gmail.com">Conditions d'utilisation</a><a href="mailto:tafwitacontact@gmail.com">Confidentialite</a></div>
+      <div>
+        <a href="#accueil" class="logo">TAF<span>WITA</span></a>
+        <p>File d'attente pour cabinets medicaux en Algerie.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <a href="#fonctionnement">Comment ca marche</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="./patient.html">App patient</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a>
+      </div>
     </div>
-    <div class="container copyright">© 2026 TAFWITA - Tous droits reserves. Fait avec soin en Algerie.</div>
+    <div class="container copyright">© 2026 TAFWITA</div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 12); });
-
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', function(){
-      const open = navLinks.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    navLinks.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        navLinks.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    document.querySelectorAll('.faq-question').forEach(function(button){
-      button.addEventListener('click', function(){
-        const item = button.parentElement;
-        document.querySelectorAll('.faq-item').forEach(function(other){ if(other !== item) other.classList.remove('open'); });
-        item.classList.toggle('open');
-      });
-    });
-
-    const revealObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
-    }, {threshold:.12});
-    document.querySelectorAll('[data-reveal]').forEach(function(el){ revealObserver.observe(el); });
-  </script>
-
-<style id="trial-modal-style">
-.trial-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
-.trial-modal.open{display:flex}
-.trial-backdrop{position:absolute;inset:0;background:rgba(18,32,40,.58);backdrop-filter:blur(4px)}
-.trial-dialog{position:relative;z-index:1;width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;border:1px solid #dcefeb;border-radius:24px;box-shadow:0 30px 70px rgba(16,48,58,.22);padding:26px}
-.trial-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:999px;border:1px solid #dcefeb;background:#fff;color:#50646b;font-size:24px;cursor:pointer}
-.trial-header h2{margin:0 0 8px;font-size:28px}
-.trial-header p{margin:0 0 16px;color:#50646b;font-size:14px}
-.trial-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.trial-field label{display:block;margin-bottom:6px;font-size:12px;font-weight:700;color:#50646b}
-.trial-field input,
-.trial-field select{width:100%;min-height:46px;padding:0 14px;border:1px solid #dcefeb;border-radius:14px;font-size:14px;outline:none;background:#fff}
-.trial-field input:focus,
-.trial-field select:focus{border-color:#16b6b0;box-shadow:0 0 0 4px rgba(22,182,176,.12)}
-.trial-note{margin-top:14px;padding:12px 14px;border:1px solid #bfeee3;background:#f1fbf8;border-radius:14px;font-size:13px;color:#50646b}
-.trial-message{min-height:22px;margin-top:12px;font-size:13px}
-.trial-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}
-@media(max-width:700px){
-  .trial-grid{grid-template-columns:1fr}
-  .trial-dialog{padding:18px}
-}
-</style>
-
-<div id="trialModal" class="trial-modal" aria-hidden="true">
-  <div class="trial-backdrop" id="trialBackdrop"></div>
-  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
-    <button type="button" class="trial-close" id="trialClose" aria-label="Fermer">×</button>
-    <div class="trial-header">
-      <h2 id="trialTitle">Commencer l'essai gratuit</h2>
-      <p>Renseignez les informations du praticien. Les donnees seront envoyees a l'API.</p>
+  <div id="trialModal" class="trial-modal" aria-hidden="true">
+    <div class="trial-backdrop" id="trialBackdrop"></div>
+    <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
+      <button type="button" class="trial-close" id="trialClose" aria-label="Fermer">×</button>
+      <div class="trial-header">
+        <h2 id="trialTitle">Commencer l'essai gratuit</h2>
+        <p>Un cabinet est cree pour 14 jours. Le PIN ouvre l'application bureau.</p>
+      </div>
+      <form id="trialForm">
+        <div class="trial-grid">
+          <div class="trial-field"><label for="trialNom">Nom</label><input id="trialNom" required></div>
+          <div class="trial-field"><label for="trialPrenom">Prenom</label><input id="trialPrenom" required></div>
+          <div class="trial-field"><label for="trialCabinet">Nom du cabinet</label><input id="trialCabinet" required></div>
+          <div class="trial-field"><label for="trialTel">Telephone</label><input id="trialTel" type="tel" required></div>
+          <div class="trial-field"><label for="trialEmail">E-mail</label><input id="trialEmail" type="email" required></div>
+          <div class="trial-field">
+            <label for="trialSpecialite">Specialite</label>
+            <select id="trialSpecialite" required>
+              <option value="">Choisir une specialite</option>
+              <option value="Medecine generale">Medecine generale</option>
+              <option value="Cardiologie">Cardiologie</option>
+              <option value="Pediatrie">Pediatrie</option>
+              <option value="Dermatologie">Dermatologie</option>
+              <option value="Gynecologie-obstetrique">Gynecologie-obstetrique</option>
+              <option value="Chirurgie dentaire">Chirurgie dentaire</option>
+              <option value="Ophtalmologie">Ophtalmologie</option>
+              <option value="ORL">ORL</option>
+              <option value="Radiologie">Radiologie</option>
+              <option value="Rhumatologie">Rhumatologie</option>
+              <option value="Gastro-enterologie">Gastro-enterologie</option>
+              <option value="Pneumologie">Pneumologie</option>
+              <option value="Endocrinologie">Endocrinologie</option>
+              <option value="Nephrologie">Nephrologie</option>
+              <option value="Urologie">Urologie</option>
+              <option value="Oncologie">Oncologie</option>
+              <option value="Medecine interne">Medecine interne</option>
+              <option value="Medecine du travail">Medecine du travail</option>
+              <option value="Psychiatrie">Psychiatrie</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="trial-field">
+            <label for="trialWilaya">Wilaya</label>
+            <select id="trialWilaya" required>
+              <option value="">Choisir une wilaya</option>
+              <option value="Adrar">01 - Adrar</option>
+              <option value="Chlef">02 - Chlef</option>
+              <option value="Laghouat">03 - Laghouat</option>
+              <option value="Oum El Bouaghi">04 - Oum El Bouaghi</option>
+              <option value="Batna">05 - Batna</option>
+              <option value="Bejaia">06 - Bejaia</option>
+              <option value="Biskra">07 - Biskra</option>
+              <option value="Bechar">08 - Bechar</option>
+              <option value="Blida">09 - Blida</option>
+              <option value="Bouira">10 - Bouira</option>
+              <option value="Tamanrasset">11 - Tamanrasset</option>
+              <option value="Tebessa">12 - Tebessa</option>
+              <option value="Tlemcen">13 - Tlemcen</option>
+              <option value="Tiaret">14 - Tiaret</option>
+              <option value="Tizi Ouzou">15 - Tizi Ouzou</option>
+              <option value="Alger">16 - Alger</option>
+              <option value="Djelfa">17 - Djelfa</option>
+              <option value="Jijel">18 - Jijel</option>
+              <option value="Setif">19 - Setif</option>
+              <option value="Saida">20 - Saida</option>
+              <option value="Skikda">21 - Skikda</option>
+              <option value="Sidi Bel Abbes">22 - Sidi Bel Abbes</option>
+              <option value="Annaba">23 - Annaba</option>
+              <option value="Guelma">24 - Guelma</option>
+              <option value="Constantine">25 - Constantine</option>
+              <option value="Medea">26 - Medea</option>
+              <option value="Mostaganem">27 - Mostaganem</option>
+              <option value="M'Sila">28 - M'Sila</option>
+              <option value="Mascara">29 - Mascara</option>
+              <option value="Ouargla">30 - Ouargla</option>
+              <option value="Oran">31 - Oran</option>
+              <option value="El Bayadh">32 - El Bayadh</option>
+              <option value="Illizi">33 - Illizi</option>
+              <option value="Bordj Bou Arreridj">34 - Bordj Bou Arreridj</option>
+              <option value="Boumerdes">35 - Boumerdes</option>
+              <option value="El Tarf">36 - El Tarf</option>
+              <option value="Tindouf">37 - Tindouf</option>
+              <option value="Tissemsilt">38 - Tissemsilt</option>
+              <option value="El Oued">39 - El Oued</option>
+              <option value="Khenchela">40 - Khenchela</option>
+              <option value="Souk Ahras">41 - Souk Ahras</option>
+              <option value="Tipaza">42 - Tipaza</option>
+              <option value="Mila">43 - Mila</option>
+              <option value="Ain Defla">44 - Ain Defla</option>
+              <option value="Naama">45 - Naama</option>
+              <option value="Ain Temouchent">46 - Ain Temouchent</option>
+              <option value="Ghardaia">47 - Ghardaia</option>
+              <option value="Relizane">48 - Relizane</option>
+              <option value="Timimoun">49 - Timimoun</option>
+              <option value="Bordj Badji Mokhtar">50 - Bordj Badji Mokhtar</option>
+              <option value="Ouled Djellal">51 - Ouled Djellal</option>
+              <option value="Beni Abbes">52 - Beni Abbes</option>
+              <option value="In Salah">53 - In Salah</option>
+              <option value="In Guezzam">54 - In Guezzam</option>
+              <option value="Touggourt">55 - Touggourt</option>
+              <option value="Djanet">56 - Djanet</option>
+              <option value="El Mghair">57 - El Mghair</option>
+              <option value="El Meniaa">58 - El Meniaa</option>
+              <option value="Aflou">59 - Aflou</option>
+              <option value="Barika">60 - Barika</option>
+              <option value="El Kantara">61 - El Kantara</option>
+              <option value="Bir El Ater">62 - Bir El Ater</option>
+              <option value="El Aricha">63 - El Aricha</option>
+              <option value="Ksar Chellala">64 - Ksar Chellala</option>
+              <option value="Ain Oussera">65 - Ain Oussera</option>
+              <option value="Messaad">66 - Messaad</option>
+              <option value="Ksar El Boukhari">67 - Ksar El Boukhari</option>
+              <option value="Bousaada">68 - Bousaada</option>
+              <option value="El Abiodh Sidi Cheikh">69 - El Abiodh Sidi Cheikh</option>
+            </select>
+          </div>
+          <div class="trial-field"><label for="trialPwd">PIN (6 chiffres)</label><input id="trialPwd" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
+          <div class="trial-field"><label for="trialPwd2">Confirmer le PIN</label><input id="trialPwd2" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
+        </div>
+        <div class="trial-note">Ce PIN ouvre l'application bureau. L'identifiant est le nom du cabinet (slug).</div>
+        <div class="trial-message" id="trialMessage"></div>
+        <div class="trial-actions">
+          <button type="button" class="btn btn-outline" id="trialCancel">Annuler</button>
+          <button type="submit" class="btn btn-primary" id="trialSubmit">Creer l'essai</button>
+        </div>
+      </form>
     </div>
-    <form id="trialForm">
-      <div class="trial-grid">
-        <div class="trial-field">
-          <label for="trialNom">Nom</label>
-          <input id="trialNom" required>
-        </div>
-        <div class="trial-field">
-          <label for="trialPrenom">Prenom</label>
-          <input id="trialPrenom" required>
-        </div>
-        <div class="trial-field">
-          <label for="trialCabinet">Nom du cabinet</label>
-          <input id="trialCabinet" required>
-        </div>
-        <div class="trial-field">
-          <label for="trialTel">N° de telephone</label>
-          <input
-            id="trialTel"
-            type="tel"
-            inputmode="tel"
-            autocomplete="tel"
-            placeholder="+213 5 XX XX XX XX"
-            required
-          >
-        </div>
-        <div class="trial-field">
-          <label for="trialEmail">E-mail</label>
-          <input id="trialEmail" type="email" autocomplete="email" required>
-        </div>
-
-        <!-- NOUVEAU : Spécialité en liste déroulante -->
-        <div class="trial-field">
-          <label for="trialSpecialite">Specialite</label>
-          <select id="trialSpecialite" required>
-            <option value="">Choisir une specialite</option>
-            <option value="Medecine generale">Medecine generale</option>
-            <option value="Cardiologie">Cardiologie</option>
-            <option value="Pediatrie">Pediatrie</option>
-            <option value="Dermatologie">Dermatologie</option>
-            <option value="Gynecologie-obstetrique">Gynecologie-obstetrique</option>
-            <option value="Chirurgie dentaire">Chirurgie dentaire</option>
-            <option value="Ophtalmologie">Ophtalmologie</option>
-            <option value="ORL">ORL</option>
-            <option value="Radiologie">Radiologie</option>
-            <option value="Neurologie">Neurologie</option>
-            <option value="Rhumatologie">Rhumatologie</option>
-            <option value="Gastro-enterologie">Gastro-enterologie</option>
-            <option value="Pneumologie">Pneumologie</option>
-            <option value="Endocrinologie">Endocrinologie</option>
-            <option value="Nephrologie">Nephrologie</option>
-            <option value="Urologie">Urologie</option>
-            <option value="Oncologie">Oncologie</option>
-            <option value="Medecine interne">Medecine interne</option>
-            <option value="Medecine du travail">Medecine du travail</option>
-            <option value="Psychiatrie">Psychiatrie</option>
-            <option value="Autre">Autre</option>
-          </select>
-        </div>
-
-        <!-- Wilaya en liste déroulante complète -->
-      <div class="trial-field">
-  <label for="trialWilaya">Wilaya</label>
-  <select id="trialWilaya" required>
-    <option value="">Choisir une wilaya</option>
-
-    <option value="Adrar">01 - Adrar</option>
-    <option value="Chlef">02 - Chlef</option>
-    <option value="Laghouat">03 - Laghouat</option>
-    <option value="Oum El Bouaghi">04 - Oum El Bouaghi</option>
-    <option value="Batna">05 - Batna</option>
-    <option value="Bejaia">06 - Bejaia</option>
-    <option value="Biskra">07 - Biskra</option>
-    <option value="Bechar">08 - Bechar</option>
-    <option value="Blida">09 - Blida</option>
-    <option value="Bouira">10 - Bouira</option>
-    <option value="Tamanrasset">11 - Tamanrasset</option>
-    <option value="Tebessa">12 - Tebessa</option>
-    <option value="Tlemcen">13 - Tlemcen</option>
-    <option value="Tiaret">14 - Tiaret</option>
-    <option value="Tizi Ouzou">15 - Tizi Ouzou</option>
-    <option value="Alger">16 - Alger</option>
-    <option value="Djelfa">17 - Djelfa</option>
-    <option value="Jijel">18 - Jijel</option>
-    <option value="Setif">19 - Setif</option>
-    <option value="Saida">20 - Saida</option>
-    <option value="Skikda">21 - Skikda</option>
-    <option value="Sidi Bel Abbes">22 - Sidi Bel Abbes</option>
-    <option value="Annaba">23 - Annaba</option>
-    <option value="Guelma">24 - Guelma</option>
-    <option value="Constantine">25 - Constantine</option>
-    <option value="Medea">26 - Medea</option>
-    <option value="Mostaganem">27 - Mostaganem</option>
-    <option value="M'Sila">28 - M'Sila</option>
-    <option value="Mascara">29 - Mascara</option>
-    <option value="Ouargla">30 - Ouargla</option>
-    <option value="Oran">31 - Oran</option>
-    <option value="El Bayadh">32 - El Bayadh</option>
-    <option value="Illizi">33 - Illizi</option>
-    <option value="Bordj Bou Arreridj">34 - Bordj Bou Arreridj</option>
-    <option value="Boumerdes">35 - Boumerdes</option>
-    <option value="El Tarf">36 - El Tarf</option>
-    <option value="Tindouf">37 - Tindouf</option>
-    <option value="Tissemsilt">38 - Tissemsilt</option>
-    <option value="El Oued">39 - El Oued</option>
-    <option value="Khenchela">40 - Khenchela</option>
-    <option value="Souk Ahras">41 - Souk Ahras</option>
-    <option value="Tipaza">42 - Tipaza</option>
-    <option value="Mila">43 - Mila</option>
-    <option value="Ain Defla">44 - Ain Defla</option>
-    <option value="Naama">45 - Naama</option>
-    <option value="Ain Temouchent">46 - Ain Temouchent</option>
-    <option value="Ghardaia">47 - Ghardaia</option>
-    <option value="Relizane">48 - Relizane</option>
-    <option value="Timimoun">49 - Timimoun</option>
-    <option value="Bordj Badji Mokhtar">50 - Bordj Badji Mokhtar</option>
-    <option value="Ouled Djellal">51 - Ouled Djellal</option>
-    <option value="Beni Abbes">52 - Beni Abbes</option>
-    <option value="In Salah">53 - In Salah</option>
-    <option value="In Guezzam">54 - In Guezzam</option>
-    <option value="Touggourt">55 - Touggourt</option>
-    <option value="Djanet">56 - Djanet</option>
-    <option value="El Mghair">57 - El Mghair</option>
-    <option value="El Meniaa">58 - El Meniaa</option>
-    <option value="Aflou">59 - Aflou</option>
-    <option value="Barika">60 - Barika</option>
-    <option value="El Kantara">61 - El Kantara</option>
-    <option value="Bir El Ater">62 - Bir El Ater</option>
-    <option value="El Aricha">63 - El Aricha</option>
-    <option value="Ksar Chellala">64 - Ksar Chellala</option>
-    <option value="Ain Oussera">65 - Ain Oussera</option>
-    <option value="Messaad">66 - Messaad</option>
-    <option value="Ksar El Boukhari">67 - Ksar El Boukhari</option>
-    <option value="Bousaada">68 - Bousaada</option>
-    <option value="El Abiodh Sidi Cheikh">69 - El Abiodh Sidi Cheikh</option>
-  </select>
-</div>
-
-        <div class="trial-field">
-          <label for="trialPwd">Code PIN (6 chiffres)</label>
-          <input id="trialPwd" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" required>
-        </div>
-        <div class="trial-field">
-          <label for="trialPwd2">Confirmer le PIN</label>
-          <input id="trialPwd2" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="new-password" required>
-        </div>
-      </div>
-
-      <div class="trial-note">Ce PIN sert a ouvrir l'application bureau du cabinet. Votre identifiant sera le nom du cabinet.</div>
-      <div id="trialMessage" class="trial-message"></div>
-      <div class="trial-actions">
-        <button type="button" class="btn btn-outline" id="trialCancel">Annuler</button>
-        <button type="submit" class="btn btn-primary" id="trialSubmit">Envoyer</button>
-      </div>
-    </form>
   </div>
-</div>
 
 <script>
 (function(){
-  const m = document.getElementById('trialModal'),
-        f = document.getElementById('trialForm'),
-        msg = document.getElementById('trialMessage'),
-        submit = document.getElementById('trialSubmit');
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 12); });
 
-  function open(){
-    m.classList.add('open');
-    m.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-  }
-  function close(){
-    m.classList.remove('open');
-    m.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-  }
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
 
-  document.querySelectorAll('.js-trial-open').forEach(x =>
-    x.addEventListener('click',e => {
-      e.preventDefault();
-      e.stopPropagation();
-      open();
-    })
-  );
-  document.getElementById('trialBackdrop').onclick = close;
-  document.getElementById('trialClose').onclick = close;
-  document.getElementById('trialCancel').onclick = close;
-  document.addEventListener('keydown',e => {if(e.key==='Escape')close()});
+  document.querySelectorAll('.faq-question').forEach(function(button){
+    button.addEventListener('click', function(){
+      button.parentElement.classList.toggle('open');
+    });
+  });
 
-  f.addEventListener('submit',async e => {
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('visible'); });
+
+  var m = document.getElementById('trialModal');
+  var f = document.getElementById('trialForm');
+  var msg = document.getElementById('trialMessage');
+  var submit = document.getElementById('trialSubmit');
+  function openModal(){ m.classList.add('open'); m.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeModal(){ m.classList.remove('open'); m.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  document.querySelectorAll('.js-trial-open').forEach(function(x){
+    x.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+  });
+  document.getElementById('trialBackdrop').onclick = closeModal;
+  document.getElementById('trialClose').onclick = closeModal;
+  document.getElementById('trialCancel').onclick = closeModal;
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  f.addEventListener('submit', async function(e){
     e.preventDefault();
-    const p = {
-      nom: trialNom.value.trim(),
-      prenom: trialPrenom.value.trim(),
-      cabinet: trialCabinet.value.trim(),
-      telephone: trialTel.value.trim(),
-      email: trialEmail.value.trim(),
-      specialite: trialSpecialite.value.trim(),
-      wilaya: trialWilaya.value.trim(),
-      password: trialPwd.value
+    var p = {
+      nom: document.getElementById('trialNom').value.trim(),
+      prenom: document.getElementById('trialPrenom').value.trim(),
+      cabinet: document.getElementById('trialCabinet').value.trim(),
+      telephone: document.getElementById('trialTel').value.trim(),
+      email: document.getElementById('trialEmail').value.trim(),
+      specialite: document.getElementById('trialSpecialite').value.trim(),
+      wilaya: document.getElementById('trialWilaya').value.trim(),
+      password: document.getElementById('trialPwd').value
     };
-    const p2 = trialPwd2.value;
-
-    if (Object.values(p).some(v => !v)){
-      msg.style.color = '#c05050';
-      msg.textContent = 'Tous les champs sont obligatoires.';
-      return;
+    var p2 = document.getElementById('trialPwd2').value;
+    if (Object.keys(p).some(function(k){ return !p[k]; })) {
+      msg.style.color = '#c05050'; msg.textContent = 'Tous les champs sont obligatoires.'; return;
     }
-    if (!/^\d{6}$/.test(p.password)){
-      msg.style.color = '#c05050';
-      msg.textContent = 'Le PIN doit contenir exactement 6 chiffres.';
-      return;
+    if (!/^\d{6}$/.test(p.password)) {
+      msg.style.color = '#c05050'; msg.textContent = 'Le PIN doit contenir exactement 6 chiffres.'; return;
     }
-    if (p.password !== p2){
-      msg.style.color = '#c05050';
-      msg.textContent = 'Les PIN ne correspondent pas.';
-      return;
+    if (p.password !== p2) {
+      msg.style.color = '#c05050'; msg.textContent = 'Les PIN ne correspondent pas.'; return;
     }
-
     submit.disabled = true;
-    msg.textContent = 'Envoi en cours...';
-    try{
-      const r = await fetch('https://tafwita-api.onrender.com/api/trial-signup',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(p)
+    try {
+      var r = await fetch('https://tafwita-api.onrender.com/api/trial-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(p)
       });
-      const d = await r.json().catch(()=>({}));
+      var d = await r.json().catch(function(){ return {}; });
       if (!r.ok) throw Error(d.detail || d.message || 'Erreur inscription');
       msg.style.color = '#2e8b57';
-      const slug = d.cabinet_slug || p.cabinet;
-      msg.textContent = 'Essai active. Identifiant cabinet : ' + slug + '. Connectez-vous a l app bureau avec ce PIN.';
+      msg.textContent = 'Essai active. Identifiant : ' + (d.cabinet_slug || p.cabinet) + '. Ouvrez l app bureau avec ce PIN.';
       f.reset();
-    }catch(e){
+    } catch (err) {
       msg.style.color = '#c05050';
-      msg.textContent = e.message;
-    }finally{
+      msg.textContent = err.message;
+    } finally {
       submit.disabled = false;
     }
   });
 })();
 </script>
-
 </body>
 </html>
