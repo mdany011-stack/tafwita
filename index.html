@@ -56,6 +56,16 @@
     .btn-outline { color: var(--turquoise-dark); background: var(--surface); border-color: var(--border-strong); }
     .btn-outline:hover { background: var(--turquoise-pale); }
     .burger { display: none; border: 1px solid var(--border); width: 42px; height: 42px; color: var(--text); background: var(--surface); border-radius: 12px; cursor: pointer; font-size: 20px; }
+    .lang-btn { min-width: 42px; height: 42px; padding: 0 10px; border: 1px solid var(--border); border-radius: 12px; background: #fff; color: var(--turquoise-dark); font-weight: 800; cursor: pointer; }
+    html[dir="rtl"] { text-align: right; }
+    html[dir="rtl"] body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; }
+    html[dir="rtl"] .solution li, html[dir="rtl"] .price-card li { padding-left: 0; padding-right: 20px; }
+    html[dir="rtl"] .solution li::before, html[dir="rtl"] .price-card li::before { left: auto; right: 0; }
+    html[dir="rtl"] .ribbon { right: auto; left: 17px; }
+    html[dir="rtl"] .faq-question { text-align: right; }
+    html[dir="rtl"] .float-card.left { left: auto; right: 0; }
+    html[dir="rtl"] .float-card.right { right: auto; left: -12px; }
+    html[dir="rtl"] .trial-close { right: auto; left: 14px; }
 
     .hero { padding: 93px 0 70px; background: radial-gradient(circle at 85% 15%, rgba(142,229,212,.29), transparent 28rem), linear-gradient(145deg, var(--bg-soft), var(--bg)); }
     .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 58px; align-items: center; }
@@ -189,15 +199,16 @@
     <div class="container nav-inner">
       <a href="#accueil" class="logo">TAF<span>WITA</span></a>
       <nav class="nav-links" id="navLinks">
-        <a href="#fonctionnement">Comment ca marche</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#tarifs">Tarifs</a>
-        <a href="#faq">FAQ</a>
+        <a href="#fonctionnement" data-i="navHow">Comment ca marche</a>
+        <a href="#solutions" data-i="navSol">Solutions</a>
+        <a href="#tarifs" data-i="navPrice">Tarifs</a>
+        <a href="#faq" data-i="navFaq">FAQ</a>
       </nav>
       <div class="nav-actions">
-        <a href="./patient.html" class="btn btn-outline">App patient</a>
-        <a href="./mysetup.exe" class="btn btn-outline" download="TAFWITA-cabinet-setup.exe">Telecharger TAFWITA cabinet</a>
-        <a href="#tarifs" class="btn btn-primary js-trial-open">Essai gratuit</a>
+        <button type="button" class="lang-btn" id="language" aria-label="Langue">FR</button>
+        <a href="./patient.html" class="btn btn-outline" data-i="navPatient">App patient</a>
+        <a href="./mysetup.exe" class="btn btn-outline" download="TAFWITA-cabinet-setup.exe" data-i="navDownload">Telecharger TAFWITA cabinet</a>
+        <a href="#tarifs" class="btn btn-primary js-trial-open" data-i="navTrial">Essai gratuit</a>
       </div>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     </div>
@@ -207,32 +218,32 @@
     <section class="hero" id="accueil">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <span class="eyebrow">Pour les cabinets medicaux en Algerie</span>
-          <h1>La file d'attente medicale, <span>simple et humaine.</span></h1>
-          <p class="hero-text">Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file depuis l'application bureau, y compris les tickets papier.</p>
+          <span class="eyebrow" data-i="eyebrow">Pour les cabinets medicaux en Algerie</span>
+          <h1><span data-i="heroTitle">La file d'attente medicale,</span> <span data-i="heroTitleEm">simple et humaine.</span></h1>
+          <p class="hero-text" data-i="heroText">Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file depuis l'application bureau, y compris les tickets papier.</p>
           <div class="hero-actions">
-            <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Essayer 45 jours</a>
-            <a href="#fonctionnement" class="btn btn-outline btn-large">Voir comment ca marche</a>
+            <a href="#tarifs" class="btn btn-primary btn-large js-trial-open" data-i="heroCta">Essayer 45 jours</a>
+            <a href="#fonctionnement" class="btn btn-outline btn-large" data-i="heroHow">Voir comment ca marche</a>
           </div>
           <div class="hero-proof">
-            <div class="proof"><strong>2 espaces</strong><span>Patient web et app cabinet</span></div>
-            <div class="proof"><strong>45 jours</strong><span>Promotion lancement</span></div>
+            <div class="proof"><strong data-i="proof1">2 espaces</strong><span data-i="proof1s">Patient web et app cabinet</span></div>
+            <div class="proof"><strong data-i="proof2">45 jours</strong><span data-i="proof2s">Promotion lancement</span></div>
           </div>
         </div>
         <div class="phone-zone" data-reveal>
-          <div class="float-card left"><div class="float-icon">✓</div><div><b>Ticket confirme</b><span>Suivi en direct</span></div></div>
+          <div class="float-card left"><div class="float-icon">✓</div><div><b data-i="floatOk">Ticket confirme</b><span data-i="floatOkS">Suivi en direct</span></div></div>
           <div class="phone">
             <div class="phone-notch"></div>
             <div class="phone-app">
               <div class="phone-brand">TAF<span>WITA</span></div>
-              <div class="phone-welcome">Bonjour</div>
-              <div class="phone-doctor"><small>Votre cabinet</small><strong>File en direct</strong><span class="phone-pill">Suivi du numero</span></div>
-              <div class="phone-row-title">Votre ticket</div>
-              <div class="phone-mini-card"><div class="phone-avatar">P</div><div><b>Ticket P-08</b><span>Mise a jour automatique</span></div></div>
-              <div class="phone-mini-card"><div class="phone-avatar">●</div><div><b>Alerte sonore</b><span>Quand c'est votre tour</span></div></div>
+              <div class="phone-welcome" data-i="phoneHi">Bonjour</div>
+              <div class="phone-doctor"><small data-i="phoneCab">Votre cabinet</small><strong data-i="phoneLive">File en direct</strong><span class="phone-pill" data-i="phonePill">Suivi du numero</span></div>
+              <div class="phone-row-title" data-i="phoneTicket">Votre ticket</div>
+              <div class="phone-mini-card"><div class="phone-avatar">P</div><div><b>Ticket P-08</b><span data-i="phoneUpd">Mise a jour automatique</span></div></div>
+              <div class="phone-mini-card"><div class="phone-avatar">●</div><div><b data-i="phoneAlert">Alerte sonore</b><span data-i="phoneTurn">Quand c'est votre tour</span></div></div>
             </div>
           </div>
-          <div class="float-card right"><div class="float-icon">⌁</div><div><b>App cabinet</b><span>File mise a jour</span></div></div>
+          <div class="float-card right"><div class="float-icon">⌁</div><div><b data-i="floatApp">App cabinet</b><span data-i="floatAppS">File mise a jour</span></div></div>
         </div>
       </div>
     </section>
@@ -240,14 +251,14 @@
     <section class="section" id="fonctionnement">
       <div class="container">
         <div class="section-head" data-reveal>
-          <span class="tag">Comment ca marche</span>
-          <h2>Du telephone du patient a la console du cabinet</h2>
-          <p>Une seule file : tickets a distance et tickets papier.</p>
+          <span class="tag" data-i="howTag">Comment ca marche</span>
+          <h2 data-i="howTitle">Du telephone du patient a la console du cabinet</h2>
+          <p data-i="howLead">Une seule file : tickets a distance et tickets papier.</p>
         </div>
         <div class="steps">
-          <article class="step" data-reveal><div class="step-number">01</div><h3>Le patient choisit un cabinet</h3><p>Recherche par nom, specialite ou wilaya, puis consultation des horaires.</p></article>
-          <article class="step" data-reveal><div class="step-number">02</div><h3>Il prend son ticket</h3><p>Le ticket entre dans la file. Un QR code au cabinet ouvre la meme page.</p></article>
-          <article class="step" data-reveal><div class="step-number">03</div><h3>Il est averti</h3><p>Suivi en direct et alerte sonore quand le cabinet l'appelle.</p></article>
+          <article class="step" data-reveal><div class="step-number">01</div><h3 data-i="how1t">Le patient choisit un cabinet</h3><p data-i="how1p">Recherche par nom, specialite ou wilaya, puis consultation des horaires.</p></article>
+          <article class="step" data-reveal><div class="step-number">02</div><h3 data-i="how2t">Il prend son ticket</h3><p data-i="how2p">Le ticket entre dans la file. Un QR code au cabinet ouvre la meme page.</p></article>
+          <article class="step" data-reveal><div class="step-number">03</div><h3 data-i="how3t">Il est averti</h3><p data-i="how3p">Suivi en direct et alerte sonore quand le cabinet l'appelle.</p></article>
         </div>
       </div>
     </section>
@@ -255,32 +266,32 @@
     <section class="section section-soft" id="solutions">
       <div class="container">
         <div class="section-head" data-reveal>
-          <span class="tag">Ce qui existe aujourd'hui</span>
-          <h2>Deux interfaces, une seule file</h2>
+          <span class="tag" data-i="solTag">Ce qui existe aujourd'hui</span>
+          <h2 data-i="solTitle">Deux interfaces, une seule file</h2>
         </div>
         <div class="solution-grid">
           <article class="solution" data-reveal>
             <div class="solution-icon">⌕</div>
-            <h3>Site patient</h3>
+            <h3 data-i="solPat">Site patient</h3>
             <ul>
-              <li>Recherche de cabinets</li>
-              <li>Favoris</li>
-              <li>Prise de ticket a distance</li>
-              <li>Suivi et alerte sonore</li>
+              <li data-i="solPat1">Recherche de cabinets</li>
+              <li data-i="solPat2">Favoris</li>
+              <li data-i="solPat3">Prise de ticket a distance</li>
+              <li data-i="solPat4">Suivi et alerte sonore</li>
             </ul>
           </article>
           <article class="solution featured" data-reveal>
-            <span class="ribbon">Cabinet</span>
+            <span class="ribbon" data-i="solCabRib">Cabinet</span>
             <div class="solution-icon">▦</div>
-            <h3>Application bureau</h3>
+            <h3 data-i="solCab">Application bureau</h3>
             <ul>
-              <li>File en direct</li>
-              <li>Appel du patient suivant</li>
-              <li>Ajout de ticket papier</li>
-              <li>Historique et horaires</li>
-              <li>Affiche QR a imprimer</li>
+              <li data-i="solCab1">File en direct</li>
+              <li data-i="solCab2">Appel du patient suivant</li>
+              <li data-i="solCab3">Ajout de ticket papier</li>
+              <li data-i="solCab4">Historique et horaires</li>
+              <li data-i="solCab5">Affiche QR a imprimer</li>
             </ul>
-            <a href="./mysetup.exe" class="btn btn-primary" download="TAFWITA-cabinet-setup.exe" style="margin-top:18px">Telecharger TAFWITA cabinet</a>
+            <a href="./mysetup.exe" class="btn btn-primary" download="TAFWITA-cabinet-setup.exe" style="margin-top:18px" data-i="navDownload">Telecharger TAFWITA cabinet</a>
           </article>
         </div>
       </div>
@@ -289,34 +300,34 @@
     <section class="section" id="tarifs">
       <div class="container">
         <div class="section-head" data-reveal>
-          <span class="tag">Tarifs</span>
-          <h2>Un essai, puis un cabinet</h2>
-          <p>Promotion de lancement : 45 jours d'essai pour les premiers cabinets. L'abonnement est ensuite active par TAFWITA.</p>
+          <span class="tag" data-i="navPrice">Tarifs</span>
+          <h2 data-i="priceTitle">Un essai, puis un cabinet</h2>
+          <p data-i="priceLead">Promotion de lancement : 45 jours d'essai pour les premiers cabinets. L'abonnement est ensuite active par TAFWITA.</p>
         </div>
         <div class="pricing">
           <article class="price-card" data-reveal>
-            <h3>Essai gratuit</h3>
-            <div class="price">0 <small>DA / 45 jours</small></div>
-            <p class="price-note">Un cabinet, tickets illimites.</p>
+            <h3 data-i="navTrial">Essai gratuit</h3>
+            <div class="price">0 <small data-i="price45">DA / 45 jours</small></div>
+            <p class="price-note" data-i="priceTrialNote">Un cabinet, tickets illimites.</p>
             <ul>
-              <li>Site patient</li>
-              <li>Application bureau</li>
-              <li>Tickets papier</li>
+              <li data-i="solPat">Site patient</li>
+              <li data-i="solCab">Application bureau</li>
+              <li data-i="liPaper">Tickets papier</li>
             </ul>
-            <a href="#tarifs" class="js-trial-open btn btn-outline">Commencer l'essai</a>
+            <a href="#tarifs" class="js-trial-open btn btn-outline" data-i="startTrial">Commencer l'essai</a>
           </article>
           <article class="price-card featured" data-reveal>
-            <span class="ribbon">Actuel</span>
-            <h3>Cabinet individuel</h3>
-            <div class="price">2 500 <small>DA / mois</small></div>
-            <p class="price-note">36 000 DA / an. Contactez-nous pour activer.</p>
+            <span class="ribbon" data-i="priceNow">Actuel</span>
+            <h3 data-i="priceIndiv">Cabinet individuel</h3>
+            <div class="price">2 500 <small data-i="priceMonth">DA / mois</small></div>
+            <p class="price-note" data-i="priceYear">36 000 DA / an. Contactez-nous pour activer.</p>
             <ul>
-              <li>App bureau cabinet</li>
-              <li>Site patient</li>
-              <li>Tickets papier</li>
-              <li>Historique</li>
+              <li data-i="solCab">Application bureau</li>
+              <li data-i="solPat">Site patient</li>
+              <li data-i="liPaper">Tickets papier</li>
+              <li data-i="liHist">Historique</li>
             </ul>
-            <a href="mailto:tafwitacontact@gmail.com" class="btn btn-primary">Ecrire a TAFWITA</a>
+            <a href="mailto:tafwitacontact@gmail.com" class="btn btn-primary" data-i="writeUs">Ecrire a TAFWITA</a>
           </article>
         </div>
       </div>
@@ -324,23 +335,23 @@
 
     <section class="section section-soft" id="faq">
       <div class="container">
-        <div class="section-head" data-reveal><span class="tag">Questions</span><h2>FAQ</h2></div>
+        <div class="section-head" data-reveal><span class="tag" data-i="faqTag">Questions</span><h2 data-i="navFaq">FAQ</h2></div>
         <div class="faq" data-reveal>
           <div class="faq-item">
-            <button class="faq-question" type="button">Le patient doit-il installer une application ? <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p>Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil.</p></div>
+            <button class="faq-question" type="button"><span data-i="faq1q">Le patient doit-il installer une application ?</span> <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p data-i="faq1a">Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" type="button">Comment gerer les patients sans smartphone ? <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p>Le cabinet ajoute un ticket papier depuis l'application bureau. Il rejoint la meme file.</p></div>
+            <button class="faq-question" type="button"><span data-i="faq2q">Comment gerer les patients sans smartphone ?</span> <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p data-i="faq2a">Le cabinet ajoute un ticket papier depuis l'application bureau. Il rejoint la meme file.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" type="button">Comment payer l'abonnement ? <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p>Il n'y a pas encore de paiement automatique. Ecrivez a tafwitacontact@gmail.com pour l'essai ou l'abonnement (2500 DA / mois ou 36000 DA / an).</p></div>
+            <button class="faq-question" type="button"><span data-i="faq3q">Comment payer l'abonnement ?</span> <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p data-i="faq3a">Il n'y a pas encore de paiement automatique. Ecrivez a tafwitacontact@gmail.com pour l'essai ou l'abonnement (2500 DA / mois ou 36000 DA / an).</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" type="button">La file est-elle mise a jour en direct ? <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p>Oui. Le site patient et l'application bureau lisent la meme file.</p></div>
+            <button class="faq-question" type="button"><span data-i="faq4q">La file est-elle mise a jour en direct ?</span> <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p data-i="faq4a">Oui. Le site patient et l'application bureau lisent la meme file.</p></div>
           </div>
         </div>
       </div>
@@ -349,9 +360,9 @@
     <section class="cta">
       <div class="container">
         <div class="cta-box" data-reveal>
-          <h2>Essayer TAFWITA 45 jours</h2>
-          <p>Creez un cabinet d'essai. A la fin, TAFWITA cabinet se telecharge. Installez-le et ouvrez-le avec votre PIN a 6 chiffres.</p>
-          <a href="#tarifs" class="btn btn-primary btn-large js-trial-open">Commencer l'essai</a>
+          <h2 data-i="ctaTitle">Essayer TAFWITA 45 jours</h2>
+          <p data-i="ctaText">Creez un cabinet d'essai. A la fin, TAFWITA cabinet se telecharge. Installez-le et ouvrez-le avec votre PIN a 6 chiffres.</p>
+          <a href="#tarifs" class="btn btn-primary btn-large js-trial-open" data-i="startTrial">Commencer l'essai</a>
         </div>
       </div>
     </section>
@@ -361,18 +372,18 @@
     <div class="container footer-grid">
       <div>
         <a href="#accueil" class="logo">TAF<span>WITA</span></a>
-        <p>File d'attente pour cabinets medicaux en Algerie.</p>
+        <p data-i="footLead">File d'attente pour cabinets medicaux en Algerie.</p>
       </div>
       <div>
-        <h4>Produit</h4>
-        <a href="#fonctionnement">Comment ca marche</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#tarifs">Tarifs</a>
-        <a href="./patient.html">App patient</a>
-        <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe">Telecharger TAFWITA cabinet</a>
+        <h4 data-i="footProd">Produit</h4>
+        <a href="#fonctionnement" data-i="navHow">Comment ca marche</a>
+        <a href="#solutions" data-i="navSol">Solutions</a>
+        <a href="#tarifs" data-i="navPrice">Tarifs</a>
+        <a href="./patient.html" data-i="navPatient">App patient</a>
+        <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe" data-i="navDownload">Telecharger TAFWITA cabinet</a>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h4 data-i="footContact">Contact</h4>
         <a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a>
       </div>
     </div>
@@ -384,20 +395,20 @@
     <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
       <button type="button" class="trial-close" id="trialClose" aria-label="Fermer">×</button>
       <div class="trial-header">
-        <h2 id="trialTitle">Commencer l'essai gratuit</h2>
-        <p>Promotion lancement : un cabinet est cree pour 45 jours. Le PIN ouvre l'application bureau.</p>
+        <h2 id="trialTitle" data-i="trialTitle">Commencer l'essai gratuit</h2>
+        <p data-i="trialLead">Promotion lancement : un cabinet est cree pour 45 jours. Le PIN ouvre l'application bureau.</p>
       </div>
       <form id="trialForm">
         <div class="trial-grid">
-          <div class="trial-field"><label for="trialNom">Nom</label><input id="trialNom" required></div>
-          <div class="trial-field"><label for="trialPrenom">Prenom</label><input id="trialPrenom" required></div>
-          <div class="trial-field"><label for="trialCabinet">Nom du cabinet</label><input id="trialCabinet" required></div>
-          <div class="trial-field"><label for="trialTel">Telephone</label><input id="trialTel" type="tel" required></div>
-          <div class="trial-field"><label for="trialEmail">E-mail</label><input id="trialEmail" type="email" required></div>
+          <div class="trial-field"><label for="trialNom" data-i="lblNom">Nom</label><input id="trialNom" required></div>
+          <div class="trial-field"><label for="trialPrenom" data-i="lblPrenom">Prenom</label><input id="trialPrenom" required></div>
+          <div class="trial-field"><label for="trialCabinet" data-i="lblCab">Nom du cabinet</label><input id="trialCabinet" required></div>
+          <div class="trial-field"><label for="trialTel" data-i="lblTel">Telephone</label><input id="trialTel" type="tel" required></div>
+          <div class="trial-field"><label for="trialEmail" data-i="lblEmail">E-mail</label><input id="trialEmail" type="email" required></div>
           <div class="trial-field">
-            <label for="trialSpecialite">Specialite</label>
+            <label for="trialSpecialite" data-i="lblSpec">Specialite</label>
             <select id="trialSpecialite" required>
-              <option value="">Choisir une specialite</option>
+              <option value="" data-i="optSpec">Choisir une specialite</option>
               <option value="Medecine generale">Medecine generale</option>
               <option value="Cardiologie">Cardiologie</option>
               <option value="Pediatrie">Pediatrie</option>
@@ -421,9 +432,9 @@
             </select>
           </div>
           <div class="trial-field">
-            <label for="trialWilaya">Wilaya</label>
+            <label for="trialWilaya" data-i="lblWilaya">Wilaya</label>
             <select id="trialWilaya" required>
-              <option value="">Choisir une wilaya</option>
+              <option value="" data-i="optWilaya">Choisir une wilaya</option>
               <option value="Adrar">01 - Adrar</option>
               <option value="Chlef">02 - Chlef</option>
               <option value="Laghouat">03 - Laghouat</option>
@@ -495,14 +506,14 @@
               <option value="El Abiodh Sidi Cheikh">69 - El Abiodh Sidi Cheikh</option>
             </select>
           </div>
-          <div class="trial-field"><label for="trialPwd">PIN (6 chiffres)</label><input id="trialPwd" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
-          <div class="trial-field"><label for="trialPwd2">Confirmer le PIN</label><input id="trialPwd2" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
+          <div class="trial-field"><label for="trialPwd" data-i="lblPin">PIN (6 chiffres)</label><input id="trialPwd" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
+          <div class="trial-field"><label for="trialPwd2" data-i="lblPin2">Confirmer le PIN</label><input id="trialPwd2" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
         </div>
-        <div class="trial-note">Ce PIN ouvre l'application bureau. L'identifiant est le nom du cabinet (slug).</div>
+        <div class="trial-note" data-i="trialNote">Ce PIN ouvre l'application bureau. L'identifiant est le nom du cabinet (slug).</div>
         <div class="trial-message" id="trialMessage"></div>
         <div class="trial-actions">
-          <button type="button" class="btn btn-outline" id="trialCancel">Annuler</button>
-          <button type="submit" class="btn btn-primary" id="trialSubmit">Creer l'essai</button>
+          <button type="button" class="btn btn-outline" id="trialCancel" data-i="cancel">Annuler</button>
+          <button type="submit" class="btn btn-primary" id="trialSubmit" data-i="createTrial">Creer l'essai</button>
         </div>
       </form>
     </div>
@@ -510,6 +521,179 @@
 
 <script>
 (function(){
+  var LK = 'tafwita_patient_v5_language';
+  var lang = localStorage.getItem(LK) || 'FR';
+  var I = {
+    FR: {
+      navHow: "Comment ca marche", navSol: "Solutions", navPrice: "Tarifs", navFaq: "FAQ",
+      navPatient: "App patient", navDownload: "Telecharger TAFWITA cabinet", navTrial: "Essai gratuit",
+      eyebrow: "Pour les cabinets medicaux en Algerie",
+      heroTitle: "La file d'attente medicale,", heroTitleEm: "simple et humaine.",
+      heroText: "Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file depuis l'application bureau, y compris les tickets papier.",
+      heroCta: "Essayer 45 jours", heroHow: "Voir comment ca marche",
+      proof1: "2 espaces", proof1s: "Patient web et app cabinet", proof2: "45 jours", proof2s: "Promotion lancement",
+      floatOk: "Ticket confirme", floatOkS: "Suivi en direct",
+      phoneHi: "Bonjour", phoneCab: "Votre cabinet", phoneLive: "File en direct", phonePill: "Suivi du numero",
+      phoneTicket: "Votre ticket", phoneUpd: "Mise a jour automatique", phoneAlert: "Alerte sonore", phoneTurn: "Quand c'est votre tour",
+      floatApp: "App cabinet", floatAppS: "File mise a jour",
+      howTag: "Comment ca marche", howTitle: "Du telephone du patient a la console du cabinet",
+      howLead: "Une seule file : tickets a distance et tickets papier.",
+      how1t: "Le patient choisit un cabinet", how1p: "Recherche par nom, specialite ou wilaya, puis consultation des horaires.",
+      how2t: "Il prend son ticket", how2p: "Le ticket entre dans la file. Un QR code au cabinet ouvre la meme page.",
+      how3t: "Il est averti", how3p: "Suivi en direct et alerte sonore quand le cabinet l'appelle.",
+      solTag: "Ce qui existe aujourd'hui", solTitle: "Deux interfaces, une seule file",
+      solPat: "Site patient", solPat1: "Recherche de cabinets", solPat2: "Favoris", solPat3: "Prise de ticket a distance", solPat4: "Suivi et alerte sonore",
+      solCabRib: "Cabinet", solCab: "Application bureau",
+      solCab1: "File en direct", solCab2: "Appel du patient suivant", solCab3: "Ajout de ticket papier", solCab4: "Historique et horaires", solCab5: "Affiche QR a imprimer",
+      priceTitle: "Un essai, puis un cabinet",
+      priceLead: "Promotion de lancement : 45 jours d'essai pour les premiers cabinets. L'abonnement est ensuite active par TAFWITA.",
+      price45: "DA / 45 jours", priceTrialNote: "Un cabinet, tickets illimites.", liPaper: "Tickets papier",
+      startTrial: "Commencer l'essai", priceNow: "Actuel", priceIndiv: "Cabinet individuel",
+      priceMonth: "DA / mois", priceYear: "36 000 DA / an. Contactez-nous pour activer.", liHist: "Historique", writeUs: "Ecrire a TAFWITA",
+      faqTag: "Questions",
+      faq1q: "Le patient doit-il installer une application ?", faq1a: "Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil.",
+      faq2q: "Comment gerer les patients sans smartphone ?", faq2a: "Le cabinet ajoute un ticket papier depuis l'application bureau. Il rejoint la meme file.",
+      faq3q: "Comment payer l'abonnement ?", faq3a: "Il n'y a pas encore de paiement automatique. Ecrivez a tafwitacontact@gmail.com pour l'essai ou l'abonnement (2500 DA / mois ou 36000 DA / an).",
+      faq4q: "La file est-elle mise a jour en direct ?", faq4a: "Oui. Le site patient et l'application bureau lisent la meme file.",
+      ctaTitle: "Essayer TAFWITA 45 jours",
+      ctaText: "Creez un cabinet d'essai. A la fin, TAFWITA cabinet se telecharge. Installez-le et ouvrez-le avec votre PIN a 6 chiffres.",
+      footLead: "File d'attente pour cabinets medicaux en Algerie.", footProd: "Produit", footContact: "Contact",
+      trialTitle: "Commencer l'essai gratuit",
+      trialLead: "Promotion lancement : un cabinet est cree pour 45 jours. Le PIN ouvre l'application bureau.",
+      lblNom: "Nom", lblPrenom: "Prenom", lblCab: "Nom du cabinet", lblTel: "Telephone", lblEmail: "E-mail",
+      lblSpec: "Specialite", optSpec: "Choisir une specialite", lblWilaya: "Wilaya", optWilaya: "Choisir une wilaya",
+      lblPin: "PIN (6 chiffres)", lblPin2: "Confirmer le PIN",
+      trialNote: "Ce PIN ouvre l'application bureau. L'identifiant est le nom du cabinet (slug).",
+      cancel: "Annuler", createTrial: "Creer l'essai",
+      errRequired: "Tous les champs sont obligatoires.", errPin: "Le PIN doit contenir exactement 6 chiffres.",
+      errPinMatch: "Les PIN ne correspondent pas.", errSignup: "Erreur inscription",
+      trialOk: "Essai active. Identifiant : {slug}. Telechargement de TAFWITA cabinet. Installez puis ouvrez avec ce PIN.",
+      trialOkLink: "Cliquez ici si le fichier ne part pas",
+      pageTitle: "TAFWITA - La file d'attente medicale, simplement",
+      pageDesc: "TAFWITA modernise la file d'attente des cabinets medicaux en Algerie.",
+      close: "Fermer", menu: "Ouvrir le menu"
+    },
+    EN: {
+      navHow: "How it works", navSol: "Solutions", navPrice: "Pricing", navFaq: "FAQ",
+      navPatient: "Patient app", navDownload: "Download TAFWITA cabinet", navTrial: "Free trial",
+      eyebrow: "For medical clinics in Algeria",
+      heroTitle: "The medical waiting line,", heroTitleEm: "simple and human.",
+      heroText: "Patients take a ticket remotely and follow their turn. The clinic manages the queue from the desktop app, including paper tickets.",
+      heroCta: "Try 45 days", heroHow: "See how it works",
+      proof1: "2 spaces", proof1s: "Patient web and clinic app", proof2: "45 days", proof2s: "Launch offer",
+      floatOk: "Ticket confirmed", floatOkS: "Live tracking",
+      phoneHi: "Hello", phoneCab: "Your clinic", phoneLive: "Live queue", phonePill: "Number tracking",
+      phoneTicket: "Your ticket", phoneUpd: "Automatic update", phoneAlert: "Sound alert", phoneTurn: "When it is your turn",
+      floatApp: "Clinic app", floatAppS: "Queue updated",
+      howTag: "How it works", howTitle: "From the patient's phone to the clinic console",
+      howLead: "One queue: remote tickets and paper tickets.",
+      how1t: "The patient chooses a clinic", how1p: "Search by name, specialty or wilaya, then check opening hours.",
+      how2t: "They take a ticket", how2p: "The ticket joins the queue. A QR code at the clinic opens the same page.",
+      how3t: "They are notified", how3p: "Live tracking and a sound alert when the clinic calls them.",
+      solTag: "What exists today", solTitle: "Two interfaces, one queue",
+      solPat: "Patient site", solPat1: "Clinic search", solPat2: "Favorites", solPat3: "Remote ticket", solPat4: "Tracking and sound alert",
+      solCabRib: "Clinic", solCab: "Desktop app",
+      solCab1: "Live queue", solCab2: "Call the next patient", solCab3: "Add a paper ticket", solCab4: "History and hours", solCab5: "Printable QR poster",
+      priceTitle: "A trial, then a clinic",
+      priceLead: "Launch offer: 45-day trial for the first clinics. The subscription is then activated by TAFWITA.",
+      price45: "DZD / 45 days", priceTrialNote: "One clinic, unlimited tickets.", liPaper: "Paper tickets",
+      startTrial: "Start the trial", priceNow: "Current", priceIndiv: "Individual clinic",
+      priceMonth: "DZD / month", priceYear: "36,000 DZD / year. Contact us to activate.", liHist: "History", writeUs: "Write to TAFWITA",
+      faqTag: "Questions",
+      faq1q: "Does the patient need to install an app?", faq1a: "No. They open a web page on their phone. They can also add it to the home screen.",
+      faq2q: "How do you handle patients without a smartphone?", faq2a: "The clinic adds a paper ticket from the desktop app. It joins the same queue.",
+      faq3q: "How do I pay the subscription?", faq3a: "There is no automatic payment yet. Write to tafwitacontact@gmail.com for the trial or subscription (2,500 DZD / month or 36,000 DZD / year).",
+      faq4q: "Is the queue updated live?", faq4a: "Yes. The patient site and the desktop app read the same queue.",
+      ctaTitle: "Try TAFWITA for 45 days",
+      ctaText: "Create a trial clinic. At the end, TAFWITA cabinet downloads. Install it and open it with your 6-digit PIN.",
+      footLead: "Queue management for medical clinics in Algeria.", footProd: "Product", footContact: "Contact",
+      trialTitle: "Start the free trial",
+      trialLead: "Launch offer: a clinic is created for 45 days. The PIN opens the desktop app.",
+      lblNom: "Last name", lblPrenom: "First name", lblCab: "Clinic name", lblTel: "Phone", lblEmail: "Email",
+      lblSpec: "Specialty", optSpec: "Choose a specialty", lblWilaya: "Wilaya", optWilaya: "Choose a wilaya",
+      lblPin: "PIN (6 digits)", lblPin2: "Confirm PIN",
+      trialNote: "This PIN opens the desktop app. The login is the clinic name (slug).",
+      cancel: "Cancel", createTrial: "Create the trial",
+      errRequired: "All fields are required.", errPin: "The PIN must contain exactly 6 digits.",
+      errPinMatch: "The PINs do not match.", errSignup: "Signup error",
+      trialOk: "Trial activated. Login: {slug}. TAFWITA cabinet is downloading. Install it, then open it with this PIN.",
+      trialOkLink: "Click here if the file does not start",
+      pageTitle: "TAFWITA - Medical queue, simply",
+      pageDesc: "TAFWITA modernizes the waiting line for medical clinics in Algeria.",
+      close: "Close", menu: "Open menu"
+    },
+    AR: {
+      navHow: "كيف يعمل", navSol: "الحلول", navPrice: "الأسعار", navFaq: "أسئلة",
+      navPatient: "تطبيق المريض", navDownload: "تحميل تافويتا للعيادة", navTrial: "تجربة مجانية",
+      eyebrow: "للعيادات الطبية في الجزائر",
+      heroTitle: "طابور الانتظار الطبي،", heroTitleEm: "بسيط وإنساني.",
+      heroText: "يأخذ المرضى تذكرة عن بُعد ويتابعون دورهم. تدير العيادة الطابور من تطبيق المكتب، بما في ذلك التذاكر الورقية.",
+      heroCta: "جرّب 45 يوماً", heroHow: "شاهد كيف يعمل",
+      proof1: "فضاءان", proof1s: "موقع المريض وتطبيق العيادة", proof2: "45 يوماً", proof2s: "عرض الإطلاق",
+      floatOk: "تم تأكيد التذكرة", floatOkS: "متابعة مباشرة",
+      phoneHi: "مرحباً", phoneCab: "عيادتك", phoneLive: "الطابور مباشر", phonePill: "متابعة الرقم",
+      phoneTicket: "تذكرتك", phoneUpd: "تحديث تلقائي", phoneAlert: "تنبيه صوتي", phoneTurn: "عندما يحين دورك",
+      floatApp: "تطبيق العيادة", floatAppS: "الطابور محدّث",
+      howTag: "كيف يعمل", howTitle: "من هاتف المريض إلى شاشة العيادة",
+      howLead: "طابور واحد: تذاكر عن بُعد وتذاكر ورقية.",
+      how1t: "يختار المريض عيادة", how1p: "بحث بالاسم أو التخصص أو الولاية، ثم الاطلاع على الأوقات.",
+      how2t: "يأخذ تذكرته", how2p: "تدخل التذكرة إلى الطابور. رمز QR في العيادة يفتح نفس الصفحة.",
+      how3t: "يتم إشعاره", how3p: "متابعة مباشرة وتنبيه صوتي عندما تناديه العيادة.",
+      solTag: "ما هو متاح اليوم", solTitle: "واجهتان، طابور واحد",
+      solPat: "موقع المريض", solPat1: "البحث عن العيادات", solPat2: "المفضلة", solPat3: "أخذ تذكرة عن بُعد", solPat4: "متابعة وتنبيه صوتي",
+      solCabRib: "العيادة", solCab: "تطبيق المكتب",
+      solCab1: "الطابور مباشر", solCab2: "مناداة المريض التالي", solCab3: "إضافة تذكرة ورقية", solCab4: "السجل والأوقات", solCab5: "ملصق QR للطباعة",
+      priceTitle: "تجربة، ثم عيادة",
+      priceLead: "عرض الإطلاق: 45 يوماً تجريبياً للعيادات الأولى. يفعّل الاشتراك بعد ذلك من تافويتا.",
+      price45: "دج / 45 يوماً", priceTrialNote: "عيادة واحدة، تذاكر غير محدودة.", liPaper: "تذاكر ورقية",
+      startTrial: "ابدأ التجربة", priceNow: "الحالي", priceIndiv: "عيادة فردية",
+      priceMonth: "دج / شهر", priceYear: "36 000 دج / سنة. راسلونا للتفعيل.", liHist: "السجل", writeUs: "راسل تافويتا",
+      faqTag: "أسئلة",
+      faq1q: "هل يجب على المريض تثبيت تطبيق؟", faq1a: "لا. يفتح صفحة ويب على هاتفه. يمكنه أيضاً إضافتها إلى الشاشة الرئيسية.",
+      faq2q: "كيف ندير المرضى دون هاتف ذكي؟", faq2a: "تضيف العيادة تذكرة ورقية من تطبيق المكتب. تدخل نفس الطابور.",
+      faq3q: "كيف أدفع الاشتراك؟", faq3a: "لا يوجد دفع آلي بعد. راسلوا tafwitacontact@gmail.com للتجربة أو الاشتراك (2500 دج / شهر أو 36000 دج / سنة).",
+      faq4q: "هل يتحدّث الطابور مباشرة؟", faq4a: "نعم. موقع المريض وتطبيق المكتب يقرآن نفس الطابور.",
+      ctaTitle: "جرّب تافويتا 45 يوماً",
+      ctaText: "أنشئ عيادة تجريبية. في النهاية يُحمَّل تطبيق تافويتا للعيادة. ثبّته وافتحه برمز PIN المكوّن من 6 أرقام.",
+      footLead: "طابور انتظار للعيادات الطبية في الجزائر.", footProd: "المنتج", footContact: "اتصل بنا",
+      trialTitle: "ابدأ التجربة المجانية",
+      trialLead: "عرض الإطلاق: تُنشأ عيادة لمدة 45 يوماً. رمز PIN يفتح تطبيق المكتب.",
+      lblNom: "اللقب", lblPrenom: "الاسم", lblCab: "اسم العيادة", lblTel: "الهاتف", lblEmail: "البريد الإلكتروني",
+      lblSpec: "التخصص", optSpec: "اختر تخصصاً", lblWilaya: "الولاية", optWilaya: "اختر ولاية",
+      lblPin: "رمز PIN (6 أرقام)", lblPin2: "تأكيد رمز PIN",
+      trialNote: "هذا الرمز يفتح تطبيق المكتب. المعرّف هو اسم العيادة (slug).",
+      cancel: "إلغاء", createTrial: "إنشاء التجربة",
+      errRequired: "كل الحقول إلزامية.", errPin: "يجب أن يحتوي رمز PIN على 6 أرقام بالضبط.",
+      errPinMatch: "رمزا PIN غير متطابقين.", errSignup: "خطأ في التسجيل",
+      trialOk: "تم تفعيل التجربة. المعرّف : {slug}. جاري تحميل تافويتا للعيادة. ثبّت ثم افتح بهذا الرمز.",
+      trialOkLink: "انقر هنا إذا لم يبدأ التحميل",
+      pageTitle: "تافويتا - طابور الانتظار الطبي، ببساطة",
+      pageDesc: "تافويتا يحدّث طابور انتظار العيادات الطبية في الجزائر.",
+      close: "إغلاق", menu: "فتح القائمة"
+    }
+  };
+  function tr(k){ return (I[lang] && I[lang][k]) || (I.FR[k] || k); }
+  function translate(){
+    document.documentElement.lang = lang === 'AR' ? 'ar' : lang.toLowerCase();
+    document.documentElement.dir = lang === 'AR' ? 'rtl' : 'ltr';
+    var btn = document.getElementById('language');
+    if (btn) btn.textContent = lang;
+    document.querySelectorAll('[data-i]').forEach(function(e){ e.textContent = tr(e.dataset.i); });
+    document.title = tr('pageTitle');
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', tr('pageDesc'));
+    var closeBtn = document.getElementById('trialClose');
+    if (closeBtn) closeBtn.setAttribute('aria-label', tr('close'));
+    var burgerBtn = document.getElementById('burger');
+    if (burgerBtn) burgerBtn.setAttribute('aria-label', tr('menu'));
+  }
+  document.getElementById('language').onclick = function(){
+    lang = {FR:'EN', EN:'AR', AR:'FR'}[lang];
+    localStorage.setItem(LK, lang);
+    translate();
+  };
+  translate();
+
   var navbar = document.getElementById('navbar');
   window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY > 12); });
 
@@ -562,13 +746,13 @@
     };
     var p2 = document.getElementById('trialPwd2').value;
     if (Object.keys(p).some(function(k){ return !p[k]; })) {
-      msg.style.color = '#c05050'; msg.textContent = 'Tous les champs sont obligatoires.'; return;
+      msg.style.color = '#c05050'; msg.textContent = tr('errRequired'); return;
     }
     if (!/^\d{6}$/.test(p.password)) {
-      msg.style.color = '#c05050'; msg.textContent = 'Le PIN doit contenir exactement 6 chiffres.'; return;
+      msg.style.color = '#c05050'; msg.textContent = tr('errPin'); return;
     }
     if (p.password !== p2) {
-      msg.style.color = '#c05050'; msg.textContent = 'Les PIN ne correspondent pas.'; return;
+      msg.style.color = '#c05050'; msg.textContent = tr('errPinMatch'); return;
     }
     submit.disabled = true;
     try {
@@ -578,10 +762,11 @@
         body: JSON.stringify(p)
       });
       var d = await r.json().catch(function(){ return {}; });
-      if (!r.ok) throw Error(d.detail || d.message || 'Erreur inscription');
+      if (!r.ok) throw Error(d.detail || d.message || tr('errSignup'));
       var slug = d.cabinet_slug || p.cabinet;
       msg.style.color = '#2e8b57';
-      msg.innerHTML = 'Essai active. Identifiant : <b>' + slug + '</b>. Telechargement de TAFWITA cabinet. <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe">Cliquez ici si le fichier ne part pas</a>. Installez puis ouvrez avec ce PIN.';
+      msg.innerHTML = tr('trialOk').replace('{slug}', '<b>' + slug + '</b>') +
+        ' <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe">' + tr('trialOkLink') + '</a>.';
       var a = document.createElement('a');
       a.href = './mysetup.exe';
       a.download = 'TAFWITA-cabinet-setup.exe';
