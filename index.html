@@ -209,7 +209,7 @@
         <button type="button" class="lang-btn" id="language" aria-label="Langue">FR</button>
         <a href="./cabinet.html" class="btn btn-outline" data-i="navCabinet">Console cabinet</a>
         <a href="./patient.html" class="btn btn-outline" data-i="navPatient">App patient</a>
-        <a href="./mysetup.exe" class="btn btn-outline" download="TAFWITA-cabinet-setup.exe" data-i="navDownload">Telecharger TAFWITA cabinet</a>
+        <a href="./cabinet.html" class="btn btn-outline" data-i="navDownload">Ouvrir la console cabinet</a>
         <a href="#tarifs" class="btn btn-primary js-trial-open" data-i="navTrial">Essai gratuit</a>
       </div>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
@@ -304,7 +304,7 @@
               <li data-i="solCab4">Historique et horaires</li>
               <li data-i="solCab5">Affiche QR a imprimer</li>
             </ul>
-            <a href="./mysetup.exe" class="btn btn-primary" download="TAFWITA-cabinet-setup.exe" style="margin-top:18px" data-i="navDownload">Telecharger TAFWITA cabinet</a>
+            <a href="./cabinet.html" class="btn btn-primary" style="margin-top:18px" data-i="navDownload">Ouvrir la console cabinet</a>
           </article>
         </div>
       </div>
@@ -400,7 +400,7 @@
         <a href="#tarifs" data-i="navPrice">Tarifs</a>
         <a href="./cabinet.html" data-i="navCabinet">Console cabinet</a>
         <a href="./patient.html" data-i="navPatient">App patient</a>
-        <a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe" data-i="navDownload">Telecharger TAFWITA cabinet</a>
+        <a href="./cabinet.html" data-i="navDownload">Ouvrir la console cabinet</a>
       </div>
       <div>
         <h4 data-i="footContact">Contact</h4>
@@ -416,7 +416,7 @@
       <button type="button" class="trial-close" id="trialClose" aria-label="Fermer">×</button>
       <div class="trial-header">
         <h2 id="trialTitle" data-i="trialTitle">Commencer l'essai gratuit</h2>
-        <p data-i="trialLead">Promotion lancement : un cabinet est cree pour 45 jours. Le PIN ouvre l'application bureau.</p>
+        <p data-i="trialLead">Promotion lancement : un cabinet est cree pour 45 jours. Le mot de passe ouvre la console.</p>
       </div>
       <form id="trialForm">
         <div class="trial-grid">
@@ -526,10 +526,10 @@
               <option value="El Abiodh Sidi Cheikh">69 - El Abiodh Sidi Cheikh</option>
             </select>
           </div>
-          <div class="trial-field"><label for="trialPwd" data-i="lblPin">PIN (6 chiffres)</label><input id="trialPwd" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
-          <div class="trial-field"><label for="trialPwd2" data-i="lblPin2">Confirmer le PIN</label><input id="trialPwd2" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required></div>
+          <div class="trial-field"><label for="trialPwd" data-i="lblPin">Mot de passe</label><input id="trialPwd" type="password" minlength="8" autocomplete="new-password" required></div>
+          <div class="trial-field"><label for="trialPwd2" data-i="lblPin2">Confirmer le mot de passe</label><input id="trialPwd2" type="password" minlength="8" autocomplete="new-password" required></div>
         </div>
-        <div class="trial-note" data-i="trialNote">Ce PIN ouvre l'application bureau. L'identifiant est le nom du cabinet (slug).</div>
+        <div class="trial-note" data-i="trialNote">Au moins 8 caracteres, une lettre et un chiffre. L'identifiant est le nom du cabinet.</div>
         <div class="trial-message" id="trialMessage"></div>
         <div class="trial-actions">
           <button type="button" class="btn btn-outline" id="trialCancel" data-i="cancel">Annuler</button>
@@ -546,7 +546,7 @@
   var I = {
     FR: {
       navHow: "Comment ca marche", navSol: "Solutions", navPrice: "Tarifs", navFaq: "FAQ",
-      navPatient: "App patient", navCabinet: "Console cabinet", navDownload: "Telecharger TAFWITA cabinet", navTrial: "Essai gratuit",
+      navPatient: "App patient", navCabinet: "Console cabinet", navDownload: "Ouvrir la console cabinet", navTrial: "Essai gratuit",
       eyebrow: "Pour les cabinets medicaux en Algerie",
       heroTitle: "La file d'attente medicale,", heroTitleEm: "simple et humaine.",
       heroText: "Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file sur telephone ou depuis l'application bureau, y compris les tickets papier.",
@@ -581,16 +581,16 @@
       ctaText: "Creez un cabinet d'essai. Vous pouvez gerer la file sur telephone. Un e-mail contient l'affiche QR. L'application Windows reste disponible.",
       footLead: "File d'attente pour cabinets medicaux en Algerie.", footProd: "Produit", footContact: "Contact",
       trialTitle: "Commencer l'essai gratuit",
-      trialLead: "Promotion lancement : un cabinet est cree pour 45 jours. Le PIN ouvre l'application bureau.",
+      trialLead: "Promotion lancement : un cabinet est cree pour 45 jours. Le mot de passe ouvre la console.",
       lblNom: "Nom", lblPrenom: "Prenom", lblCab: "Nom du cabinet", lblTel: "Telephone", lblEmail: "E-mail",
       lblSpec: "Specialite", optSpec: "Choisir une specialite", lblWilaya: "Wilaya", optWilaya: "Choisir une wilaya",
-      lblPin: "PIN (6 chiffres)", lblPin2: "Confirmer le PIN",
-      trialNote: "Ce PIN ouvre l'application bureau. L'identifiant est le nom du cabinet (slug).",
+      lblPin: "Mot de passe", lblPin2: "Confirmer le mot de passe",
+      trialNote: "Au moins 8 caracteres, une lettre et un chiffre. L'identifiant est le nom du cabinet.",
       cancel: "Annuler", createTrial: "Creer l'essai",
-      errRequired: "Tous les champs sont obligatoires.", errPin: "Le PIN doit contenir exactement 6 chiffres.",
-      errPinMatch: "Les PIN ne correspondent pas.", errSignup: "Erreur inscription",
+      errRequired: "Tous les champs sont obligatoires.", errPin: "Le mot de passe doit contenir au moins 8 caracteres, une lettre et un chiffre.",
+      errPinMatch: "Les mots de passe ne correspondent pas.", errSignup: "Erreur inscription",
       trialOk: "Essai active. Identifiant : {slug}. Ouvrez la console telephone ou installez Windows avec ce PIN. L'affiche QR part par e-mail.",
-      trialOkLink: "Telecharger TAFWITA cabinet",
+      trialOkLink: "Ouvrir la console cabinet",
       trialOkConsole: "Ouvrir la console telephone",
       pageTitle: "TAFWITA - La file d'attente medicale, simplement",
       pageDesc: "TAFWITA modernise la file d'attente des cabinets medicaux en Algerie.",
@@ -598,7 +598,7 @@
     },
     EN: {
       navHow: "How it works", navSol: "Solutions", navPrice: "Pricing", navFaq: "FAQ",
-      navPatient: "Patient app", navCabinet: "Clinic console", navDownload: "Download TAFWITA cabinet", navTrial: "Free trial",
+      navPatient: "Patient app", navCabinet: "Clinic console", navDownload: "Open clinic console", navTrial: "Free trial",
       eyebrow: "For medical clinics in Algeria",
       heroTitle: "The medical waiting line,", heroTitleEm: "simple and human.",
       heroText: "Patients take a ticket remotely and follow their turn. The clinic manages the queue on a phone or from the desktop app, including paper tickets.",
@@ -633,16 +633,16 @@
       ctaText: "Create a trial clinic. You can run the queue on a phone. An email includes the QR poster. The Windows app remains available.",
       footLead: "Queue management for medical clinics in Algeria.", footProd: "Product", footContact: "Contact",
       trialTitle: "Start the free trial",
-      trialLead: "Launch offer: a clinic is created for 45 days. The PIN opens the desktop app.",
+      trialLead: "Launch offer: a clinic is created for 45 days. The password opens the console.",
       lblNom: "Last name", lblPrenom: "First name", lblCab: "Clinic name", lblTel: "Phone", lblEmail: "Email",
       lblSpec: "Specialty", optSpec: "Choose a specialty", lblWilaya: "Wilaya", optWilaya: "Choose a wilaya",
-      lblPin: "PIN (6 digits)", lblPin2: "Confirm PIN",
-      trialNote: "This PIN opens the desktop app. The login is the clinic name (slug).",
+      lblPin: "Password", lblPin2: "Confirm password",
+      trialNote: "At least 8 characters, one letter and one number. The login is the clinic name.",
       cancel: "Cancel", createTrial: "Create the trial",
-      errRequired: "All fields are required.", errPin: "The PIN must contain exactly 6 digits.",
-      errPinMatch: "The PINs do not match.", errSignup: "Signup error",
+      errRequired: "All fields are required.", errPin: "Password must have at least 8 characters, one letter and one number.",
+      errPinMatch: "The passwords do not match.", errSignup: "Signup error",
       trialOk: "Trial activated. Login: {slug}. Open the phone console or install Windows with this PIN. The QR poster is sent by email.",
-      trialOkLink: "Download TAFWITA cabinet",
+      trialOkLink: "Open clinic console",
       trialOkConsole: "Open the phone console",
       pageTitle: "TAFWITA - Medical queue, simply",
       pageDesc: "TAFWITA modernizes the waiting line for medical clinics in Algeria.",
@@ -650,7 +650,7 @@
     },
     AR: {
       navHow: "كيف يعمل", navSol: "الحلول", navPrice: "الأسعار", navFaq: "أسئلة",
-      navPatient: "تطبيق المريض", navCabinet: "شاشة العيادة", navDownload: "تحميل تافويتا للعيادة", navTrial: "تجربة مجانية",
+      navPatient: "تطبيق المريض", navCabinet: "شاشة العيادة", navDownload: "فتح شاشة العيادة", navTrial: "تجربة مجانية",
       eyebrow: "للعيادات الطبية في الجزائر",
       heroTitle: "طابور الانتظار الطبي،", heroTitleEm: "بسيط وإنساني.",
       heroText: "يأخذ المرضى تذكرة عن بُعد ويتابعون دورهم. تدير العيادة الطابور على الهاتف أو من تطبيق المكتب، بما في ذلك التذاكر الورقية.",
@@ -685,16 +685,16 @@
       ctaText: "أنشئ عيادة تجريبية. يمكن إدارة الطابور على الهاتف. يصل ملصق QR بالبريد. تطبيق ويندوز يبقى متاحاً.",
       footLead: "طابور انتظار للعيادات الطبية في الجزائر.", footProd: "المنتج", footContact: "اتصل بنا",
       trialTitle: "ابدأ التجربة المجانية",
-      trialLead: "عرض الإطلاق: تُنشأ عيادة لمدة 45 يوماً. رمز PIN يفتح تطبيق المكتب.",
+      trialLead: "عرض الإطلاق: تُنشأ عيادة لمدة 45 يوماً. كلمة المرور تفتح الشاشة.",
       lblNom: "اللقب", lblPrenom: "الاسم", lblCab: "اسم العيادة", lblTel: "الهاتف", lblEmail: "البريد الإلكتروني",
       lblSpec: "التخصص", optSpec: "اختر تخصصاً", lblWilaya: "الولاية", optWilaya: "اختر ولاية",
-      lblPin: "رمز PIN (6 أرقام)", lblPin2: "تأكيد رمز PIN",
-      trialNote: "هذا الرمز يفتح تطبيق المكتب. المعرّف هو اسم العيادة (slug).",
+      lblPin: "كلمة المرور", lblPin2: "تأكيد كلمة المرور",
+      trialNote: "8 أحرف على الأقل، حرف ورقم. المعرّف هو اسم العيادة.",
       cancel: "إلغاء", createTrial: "إنشاء التجربة",
-      errRequired: "كل الحقول إلزامية.", errPin: "يجب أن يحتوي رمز PIN على 6 أرقام بالضبط.",
-      errPinMatch: "رمزا PIN غير متطابقين.", errSignup: "خطأ في التسجيل",
+      errRequired: "كل الحقول إلزامية.", errPin: "كلمة المرور 8 أحرف على الأقل، مع حرف ورقم.",
+      errPinMatch: "كلمتا المرور غير متطابقتين.", errSignup: "خطأ في التسجيل",
       trialOk: "تم تفعيل التجربة. المعرّف : {slug}. افتح شاشة الهاتف أو ثبّت ويندوز بهذا الرمز. ملصق QR يُرسل بالبريد.",
-      trialOkLink: "تحميل تافويتا للعيادة",
+      trialOkLink: "فتح شاشة العيادة",
       trialOkConsole: "فتح شاشة الهاتف",
       pageTitle: "تافويتا - طابور الانتظار الطبي، ببساطة",
       pageDesc: "تافويتا يحدّث طابور انتظار العيادات الطبية في الجزائر.",
@@ -777,7 +777,7 @@
     if (Object.keys(p).some(function(k){ return !p[k]; })) {
       msg.style.color = '#c05050'; msg.textContent = tr('errRequired'); return;
     }
-    if (!/^\d{6}$/.test(p.password)) {
+    if (p.password.length < 8 || !/[A-Za-z]/.test(p.password) || !/\d/.test(p.password)) {
       msg.style.color = '#c05050'; msg.textContent = tr('errPin'); return;
     }
     if (p.password !== p2) {
@@ -785,7 +785,8 @@
     }
     submit.disabled = true;
     try {
-      var r = await fetch('https://tafwita-api.onrender.com/api/trial-signup', {
+      var api = localStorage.getItem('tafwita_api') || 'https://tafwita-api.onrender.com';
+      var r = await fetch(api.replace(/\/$/, '') + '/api/trial-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(p)
@@ -795,14 +796,7 @@
       var slug = d.cabinet_slug || p.cabinet;
       msg.style.color = '#2e8b57';
       msg.innerHTML = tr('trialOk').replace('{slug}', '<b>' + slug + '</b>') +
-        ' <a href="./cabinet.html">' + tr('trialOkConsole') + '</a>. ' +
-        '<a href="./mysetup.exe" download="TAFWITA-cabinet-setup.exe">' + tr('trialOkLink') + '</a>.';
-      var a = document.createElement('a');
-      a.href = './mysetup.exe';
-      a.download = 'TAFWITA-cabinet-setup.exe';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+        ' <a href="./cabinet.html">' + tr('trialOkConsole') + '</a>.';
     } catch (err) {
       msg.style.color = '#c05050';
       msg.textContent = err.message;
