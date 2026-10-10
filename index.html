@@ -112,13 +112,13 @@
     .section-head h2 { margin: 0 0 13px; font-size: clamp(28px,4vw,40px); line-height: 1.17; letter-spacing: -.9px; }
     .section-head p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
-    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
     .step { padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 8px 18px rgba(45,121,115,.05); }
     .step-number { color: var(--turquoise); font-size: 32px; font-weight: 850; }
     .step h3 { margin: 16px 0 9px; font-size: 18px; }
     .step p { margin: 0; color: var(--text-soft); font-size: 14px; line-height: 1.6; }
 
-    .solution-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .solution-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
     .pricing { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
     .solution, .price-card { position: relative; padding: 29px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 8px 18px rgba(45,121,115,.05); }
     .solution.featured, .price-card.featured { border-color: var(--turquoise-light); background: linear-gradient(145deg, #ffffff, #edfaf7); }
@@ -149,7 +149,12 @@
     .cta-box p { max-width: 600px; margin: 0 auto 27px; color: var(--text-soft); line-height: 1.6; }
 
     footer { padding: 56px 0 28px; background: #eaf5f2; border-top: 1px solid var(--border); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 28px; align-items: start; }
+    .contact-card { padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+    .contact-card textarea { width: 100%; min-height: 120px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; font: inherit; resize: vertical; }
+    .contact-status { min-height: 22px; margin-top: 12px; font-size: 13px; }
+    .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; }
     .footer-grid p { max-width: 280px; margin: 12px 0 0; color: var(--text-muted); font-size: 13px; line-height: 1.55; }
     .footer-grid h4 { margin: 4px 0 12px; font-size: 13px; }
     .footer-grid a { display: block; margin: 8px 0; color: var(--text-muted); font-size: 13px; }
@@ -176,12 +181,15 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       [data-reveal] { opacity: 1; transform: none; }
     }
+    @media(max-width: 1100px) {
+      .steps { grid-template-columns: repeat(2,1fr); }
+    }
     @media(max-width: 860px) {
       .nav-links { display: none; }
       .burger { display: block; }
       .nav-links.open { position: absolute; top: 68px; left: 20px; right: 20px; display: flex; flex-direction: column; gap: 0; padding: 10px; border: 1px solid var(--border); border-radius: 16px; background: white; box-shadow: var(--shadow); }
       .nav-links.open a { padding: 12px; }
-      .hero-grid, .steps, .solution-grid, .pricing, .footer-grid { grid-template-columns: 1fr; }
+      .hero-grid, .steps, .solution-grid, .pricing, .footer-grid, .contact-grid { grid-template-columns: 1fr; }
       .hero-copy, .hero-actions, .hero-proof { text-align: center; justify-content: center; }
     }
     @media(max-width: 700px) { .trial-grid { grid-template-columns: 1fr; } }
@@ -204,12 +212,12 @@
         <a href="#solutions" data-i="navSol">Solutions</a>
         <a href="#tarifs" data-i="navPrice">Tarifs</a>
         <a href="#faq" data-i="navFaq">FAQ</a>
+        <a href="#contact" data-i="navContact">Contact</a>
       </nav>
       <div class="nav-actions">
         <button type="button" class="lang-btn" id="language" aria-label="Langue">FR</button>
         <a href="./cabinet.html" class="btn btn-outline" data-i="navCabinet">Console cabinet</a>
         <a href="./patient.html" class="btn btn-outline" data-i="navPatient">App patient</a>
-        <a href="./cabinet.html" class="btn btn-outline" data-i="navDownload">Ouvrir la console cabinet</a>
         <a href="#tarifs" class="btn btn-primary js-trial-open" data-i="navTrial">Essai gratuit</a>
       </div>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
@@ -222,13 +230,13 @@
         <div class="hero-copy" data-reveal>
           <span class="eyebrow" data-i="eyebrow">Pour les cabinets medicaux en Algerie</span>
           <h1><span data-i="heroTitle">La file d'attente medicale,</span> <span data-i="heroTitleEm">simple et humaine.</span></h1>
-          <p class="hero-text" data-i="heroText">Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file depuis l'application bureau, y compris les tickets papier.</p>
+          <p class="hero-text" data-i="heroText">Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file sur telephone ou dans le navigateur sur ordinateur, y compris les tickets papier. La file peut s afficher sur une tele via HDMI.</p>
           <div class="hero-actions">
             <a href="#tarifs" class="btn btn-primary btn-large js-trial-open" data-i="heroCta">Essayer 45 jours</a>
             <a href="#fonctionnement" class="btn btn-outline btn-large" data-i="heroHow">Voir comment ca marche</a>
           </div>
           <div class="hero-proof">
-            <div class="proof"><strong data-i="proof1">2 espaces</strong><span data-i="proof1s">Patient web et app cabinet</span></div>
+            <div class="proof"><strong data-i="proof1">4 acces</strong><span data-i="proof1s">Patient, telephone, ordinateur, TV</span></div>
             <div class="proof"><strong data-i="proof2">45 jours</strong><span data-i="proof2s">Promotion lancement</span></div>
           </div>
         </div>
@@ -261,6 +269,7 @@
           <article class="step" data-reveal><div class="step-number">01</div><h3 data-i="how1t">Le patient choisit un cabinet</h3><p data-i="how1p">Recherche par nom, specialite ou wilaya, puis consultation des horaires.</p></article>
           <article class="step" data-reveal><div class="step-number">02</div><h3 data-i="how2t">Il prend son ticket</h3><p data-i="how2p">Le ticket entre dans la file. Un QR code au cabinet ouvre la meme page.</p></article>
           <article class="step" data-reveal><div class="step-number">03</div><h3 data-i="how3t">Il est averti</h3><p data-i="how3p">Suivi en direct et alerte sonore quand le cabinet l'appelle.</p></article>
+          <article class="step" data-reveal><div class="step-number">04</div><h3 data-i="how4t">Le cabinet appelle</h3><p data-i="how4p">Depuis le telephone ou l ordinateur. La file peut s afficher sur une tele HDMI, numeros seulement.</p></article>
         </div>
       </div>
     </section>
@@ -269,7 +278,7 @@
       <div class="container">
         <div class="section-head" data-reveal>
           <span class="tag" data-i="solTag">Ce qui existe aujourd'hui</span>
-          <h2 data-i="solTitle">Une file, trois acces</h2>
+          <h2 data-i="solTitle">Une file, quatre acces</h2>
         </div>
         <div class="solution-grid">
           <article class="solution" data-reveal>
@@ -280,9 +289,12 @@
               <li data-i="solPat2">Favoris</li>
               <li data-i="solPat3">Prise de ticket a distance</li>
               <li data-i="solPat4">Suivi et alerte sonore</li>
+              <li data-i="solPat5">Ajoutable a l ecran d accueil</li>
             </ul>
+            <a href="./patient.html" class="btn btn-outline" style="margin-top:18px" data-i="solPatOpen">Ouvrir l app patient</a>
           </article>
-          <article class="solution" data-reveal>
+          <article class="solution featured" data-reveal>
+            <span class="ribbon" data-i="solCabRib">Cabinet</span>
             <div class="solution-icon">☎</div>
             <h3 data-i="solPhone">Console telephone</h3>
             <ul>
@@ -290,21 +302,32 @@
               <li data-i="solPhone2">File et appel du suivant</li>
               <li data-i="solPhone3">Tickets papier</li>
               <li data-i="solPhone4">Historique et horaires</li>
+              <li data-i="solPhone5">Installable sur telephone</li>
             </ul>
-            <a href="./cabinet.html" class="btn btn-outline" style="margin-top:18px" data-i="navCabinet">Ouvrir la console</a>
+            <a href="./cabinet.html" class="btn btn-primary" style="margin-top:18px" data-i="navCabinet">Ouvrir la console</a>
           </article>
-          <article class="solution featured" data-reveal>
-            <span class="ribbon" data-i="solCabRib">Cabinet</span>
+          <article class="solution" data-reveal>
             <div class="solution-icon">▦</div>
-            <h3 data-i="solCab">Application bureau</h3>
+            <h3 data-i="solCab">Console ordinateur</h3>
             <ul>
-              <li data-i="solCab1">File en direct</li>
+              <li data-i="solCab1">La meme console, dans le navigateur</li>
               <li data-i="solCab2">Appel du patient suivant</li>
               <li data-i="solCab3">Ajout de ticket papier</li>
               <li data-i="solCab4">Historique et horaires</li>
               <li data-i="solCab5">Affiche QR a imprimer</li>
             </ul>
-            <a href="./cabinet.html" class="btn btn-primary" style="margin-top:18px" data-i="navDownload">Ouvrir la console cabinet</a>
+            <a href="./cabinet.html" class="btn btn-outline" style="margin-top:18px" data-i="solOpenConsole">Ouvrir dans le navigateur</a>
+          </article>
+          <article class="solution" data-reveal>
+            <div class="solution-icon">▢</div>
+            <h3 data-i="solTv">Ecran TV</h3>
+            <ul>
+              <li data-i="solTv1">Tele normale avec cable HDMI</li>
+              <li data-i="solTv2">Numeros seulement, pas de noms</li>
+              <li data-i="solTv3">Ouvert depuis la console</li>
+              <li data-i="solTv4">Plein ecran dans la salle d attente</li>
+            </ul>
+            <a href="./cabinet.html" class="btn btn-outline" style="margin-top:18px" data-i="solTvOpen">Ouvrir depuis la console</a>
           </article>
         </div>
       </div>
@@ -325,7 +348,8 @@
             <ul>
               <li data-i="solPat">Site patient</li>
               <li data-i="solPhone">Console telephone</li>
-              <li data-i="solCab">Application bureau</li>
+              <li data-i="solCab">Console ordinateur</li>
+              <li data-i="solTv">Ecran TV</li>
               <li data-i="liPaper">Tickets papier</li>
             </ul>
             <a href="#tarifs" class="js-trial-open btn btn-outline" data-i="startTrial">Commencer l'essai</a>
@@ -336,11 +360,13 @@
             <div class="price">2 500 <small data-i="priceMonth">DA / mois</small></div>
             <p class="price-note" data-i="priceYear">36 000 DA / an. Contactez-nous pour activer.</p>
             <ul>
-              <li data-i="solCab">Application bureau</li>
-              <li data-i="solPhone">Console telephone</li>
               <li data-i="solPat">Site patient</li>
+              <li data-i="solPhone">Console telephone</li>
+              <li data-i="solCab">Console ordinateur</li>
+              <li data-i="solTv">Ecran TV</li>
               <li data-i="liPaper">Tickets papier</li>
               <li data-i="liHist">Historique</li>
+              <li data-i="liSupport">Activation et suivi par TAFWITA</li>
             </ul>
             <a href="mailto:tafwitacontact@gmail.com" class="btn btn-primary" data-i="writeUs">Ecrire a TAFWITA</a>
           </article>
@@ -354,15 +380,15 @@
         <div class="faq" data-reveal>
           <div class="faq-item">
             <button class="faq-question" type="button"><span data-i="faq1q">Le patient doit-il installer une application ?</span> <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p data-i="faq1a">Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil.</p></div>
+            <div class="faq-answer"><p data-i="faq1a">Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil (PWA).</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button"><span data-i="faq2q">Comment gerer les patients sans smartphone ?</span> <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p data-i="faq2a">Le cabinet ajoute un ticket papier depuis le telephone ou l'application bureau. Il rejoint la meme file.</p></div>
+            <div class="faq-answer"><p data-i="faq2a">Le cabinet ajoute un ticket papier depuis la console telephone ou ordinateur. Il rejoint la meme file.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button"><span data-i="faq5q">Et si le cabinet n'a pas d'ordinateur ?</span> <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p data-i="faq5a">La secretaire ouvre la console cabinet sur son telephone. L'affiche QR arrive par e-mail a l'inscription.</p></div>
+            <div class="faq-answer"><p data-i="faq5a">La secretaire ouvre la console cabinet sur son telephone. Elle peut aussi l'ajouter a l'ecran d'accueil. L'affiche QR arrive par e-mail a l'inscription.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button"><span data-i="faq3q">Comment payer l'abonnement ?</span> <span class="faq-sign">+</span></button>
@@ -370,8 +396,48 @@
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button"><span data-i="faq4q">La file est-elle mise a jour en direct ?</span> <span class="faq-sign">+</span></button>
-            <div class="faq-answer"><p data-i="faq4a">Oui. Le site patient et l'application bureau lisent la meme file.</p></div>
+            <div class="faq-answer"><p data-i="faq4a">Oui. Le site patient, la console telephone ou ordinateur, et l ecran TV lisent la meme file.</p></div>
           </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button"><span data-i="faq6q">Comment afficher la file sur une tele ?</span> <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p data-i="faq6a">Branchez un ordinateur ou un telephone a la tele avec un cable HDMI. Ouvrez l ecran TV depuis la console, puis plein ecran. Une tele normale suffit. Seuls les numeros s affichent.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button"><span data-i="faq7q">Peut-on installer la console cabinet sur un telephone ?</span> <span class="faq-sign">+</span></button>
+            <div class="faq-answer"><p data-i="faq7a">Oui. Ouvrez la console dans le navigateur du telephone, puis ajoutez-la a l ecran d accueil. C est une application web, sans magasin d applications.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="tag" data-i="navContact">Contact</span>
+          <h2 data-i="contactTitle">Ecrire a TAFWITA</h2>
+          <p data-i="contactLead">Une question sur l essai, l abonnement ou le cabinet ? Envoyez un message. Votre application e-mail s ouvre avec le texte pret.</p>
+        </div>
+        <div class="contact-grid">
+          <div data-reveal>
+            <p data-i="contactHint">Vous pouvez aussi ecrire directement a</p>
+            <a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a>
+          </div>
+          <form class="contact-card" id="contactForm" data-reveal>
+            <div class="trial-field" style="margin-bottom:14px">
+              <label for="contactNom" data-i="contactName">Nom</label>
+              <input id="contactNom" required>
+            </div>
+            <div class="trial-field" style="margin-bottom:14px">
+              <label for="contactEmail" data-i="contactEmail">E-mail</label>
+              <input id="contactEmail" type="email" required>
+            </div>
+            <div class="trial-field">
+              <label for="contactMessage" data-i="contactMsg">Message</label>
+              <textarea id="contactMessage" required></textarea>
+            </div>
+            <div class="contact-status" id="contactStatus"></div>
+            <button type="submit" class="btn btn-primary" style="margin-top:8px" data-i="contactSend">Envoyer</button>
+          </form>
         </div>
       </div>
     </section>
@@ -380,7 +446,7 @@
       <div class="container">
         <div class="cta-box" data-reveal>
           <h2 data-i="ctaTitle">Essayer TAFWITA 45 jours</h2>
-          <p data-i="ctaText">Creez un cabinet d'essai. Vous pouvez gerer la file sur telephone. Un e-mail contient l'affiche QR. L'application Windows reste disponible.</p>
+          <p data-i="ctaText">Creez un cabinet d essai. Gerez la file sur telephone ou ordinateur. Un e-mail contient l affiche QR. L ecran TV s ouvre depuis la console.</p>
           <a href="#tarifs" class="btn btn-primary btn-large js-trial-open" data-i="startTrial">Commencer l'essai</a>
         </div>
       </div>
@@ -400,11 +466,16 @@
         <a href="#tarifs" data-i="navPrice">Tarifs</a>
         <a href="./cabinet.html" data-i="navCabinet">Console cabinet</a>
         <a href="./patient.html" data-i="navPatient">App patient</a>
-        <a href="./cabinet.html" data-i="navDownload">Ouvrir la console cabinet</a>
       </div>
       <div>
         <h4 data-i="footContact">Contact</h4>
+        <a href="#contact" data-i="navContact">Contact</a>
         <a href="mailto:tafwitacontact@gmail.com">tafwitacontact@gmail.com</a>
+      </div>
+      <div>
+        <h4 data-i="footLegal">Informations</h4>
+        <a href="./mentions.html" data-i="mentions">Mentions legales</a>
+        <a href="./confidentialite.html" data-i="privacy">Confidentialite</a>
       </div>
     </div>
     <div class="container copyright">© 2026 TAFWITA</div>
@@ -419,6 +490,10 @@
         <p data-i="trialLead">Promotion lancement : un cabinet est cree pour 45 jours. Le mot de passe ouvre la console.</p>
       </div>
       <form id="trialForm">
+        <div class="hp-field" aria-hidden="true">
+          <label for="trialWebsite">Site web</label>
+          <input id="trialWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="trial-grid">
           <div class="trial-field"><label for="trialNom" data-i="lblNom">Nom</label><input id="trialNom" required></div>
           <div class="trial-field"><label for="trialPrenom" data-i="lblPrenom">Prenom</label><input id="trialPrenom" required></div>
@@ -545,13 +620,13 @@
   var lang = localStorage.getItem(LK) || 'FR';
   var I = {
     FR: {
-      navHow: "Comment ca marche", navSol: "Solutions", navPrice: "Tarifs", navFaq: "FAQ",
-      navPatient: "App patient", navCabinet: "Console cabinet", navDownload: "Ouvrir la console cabinet", navTrial: "Essai gratuit",
+      navHow: "Comment ca marche", navSol: "Solutions", navPrice: "Tarifs", navFaq: "FAQ", navContact: "Contact",
+      navPatient: "App patient", navCabinet: "Console cabinet", navTrial: "Essai gratuit",
       eyebrow: "Pour les cabinets medicaux en Algerie",
       heroTitle: "La file d'attente medicale,", heroTitleEm: "simple et humaine.",
-      heroText: "Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file sur telephone ou depuis l'application bureau, y compris les tickets papier.",
+      heroText: "Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file sur telephone ou dans le navigateur sur ordinateur, y compris les tickets papier. La file peut s afficher sur une tele via HDMI.",
       heroCta: "Essayer 45 jours", heroHow: "Voir comment ca marche",
-      proof1: "2 espaces", proof1s: "Patient web et app cabinet", proof2: "45 jours", proof2s: "Promotion lancement",
+      proof1: "4 acces", proof1s: "Patient, telephone, ordinateur, TV", proof2: "45 jours", proof2s: "Promotion lancement",
       floatOk: "Ticket confirme", floatOkS: "Suivi en direct",
       phoneHi: "Bonjour", phoneCab: "Votre cabinet", phoneLive: "File en direct", phonePill: "Suivi du numero",
       phoneTicket: "Votre ticket", phoneUpd: "Mise a jour automatique", phoneAlert: "Alerte sonore", phoneTurn: "Quand c'est votre tour",
@@ -561,25 +636,35 @@
       how1t: "Le patient choisit un cabinet", how1p: "Recherche par nom, specialite ou wilaya, puis consultation des horaires.",
       how2t: "Il prend son ticket", how2p: "Le ticket entre dans la file. Un QR code au cabinet ouvre la meme page.",
       how3t: "Il est averti", how3p: "Suivi en direct et alerte sonore quand le cabinet l'appelle.",
-      solTag: "Ce qui existe aujourd'hui", solTitle: "Une file, trois acces",
+      how4t: "Le cabinet appelle", how4p: "Depuis le telephone ou l ordinateur. La file peut s afficher sur une tele HDMI, numeros seulement.",
+      solTag: "Ce qui existe aujourd'hui", solTitle: "Une file, quatre acces",
       solPat: "Site patient", solPat1: "Recherche de cabinets", solPat2: "Favoris", solPat3: "Prise de ticket a distance", solPat4: "Suivi et alerte sonore",
+      solPat5: "Ajoutable a l ecran d accueil", solPatOpen: "Ouvrir l app patient",
       solPhone: "Console telephone", solPhone1: "Pour les cabinets sans PC", solPhone2: "File et appel du suivant", solPhone3: "Tickets papier", solPhone4: "Historique et horaires",
-      solCabRib: "Cabinet", solCab: "Application bureau",
-      solCab1: "File en direct", solCab2: "Appel du patient suivant", solCab3: "Ajout de ticket papier", solCab4: "Historique et horaires", solCab5: "Affiche QR a imprimer",
+      solPhone5: "Installable sur telephone",
+      solCabRib: "Cabinet", solCab: "Console ordinateur",
+      solCab1: "La meme console, dans le navigateur", solCab2: "Appel du patient suivant", solCab3: "Ajout de ticket papier", solCab4: "Historique et horaires", solCab5: "Affiche QR a imprimer",
+      solOpenConsole: "Ouvrir dans le navigateur",
+      solTv: "Ecran TV", solTv1: "Tele normale avec cable HDMI", solTv2: "Numeros seulement, pas de noms", solTv3: "Ouvert depuis la console", solTv4: "Plein ecran dans la salle d attente", solTvOpen: "Ouvrir depuis la console",
       priceTitle: "Un essai, puis un cabinet",
       priceLead: "Promotion de lancement : 45 jours d'essai pour les premiers cabinets. L'abonnement est ensuite active par TAFWITA.",
       price45: "DA / 45 jours", priceTrialNote: "Un cabinet, tickets illimites.", liPaper: "Tickets papier",
       startTrial: "Commencer l'essai", priceNow: "Actuel", priceIndiv: "Cabinet individuel",
-      priceMonth: "DA / mois", priceYear: "36 000 DA / an. Contactez-nous pour activer.", liHist: "Historique", writeUs: "Ecrire a TAFWITA",
+      priceMonth: "DA / mois", priceYear: "36 000 DA / an. Contactez-nous pour activer.", liHist: "Historique", liSupport: "Activation et suivi par TAFWITA", writeUs: "Ecrire a TAFWITA",
       faqTag: "Questions",
-      faq1q: "Le patient doit-il installer une application ?", faq1a: "Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil.",
-      faq2q: "Comment gerer les patients sans smartphone ?", faq2a: "Le cabinet ajoute un ticket papier depuis le telephone ou l'application bureau. Il rejoint la meme file.",
-      faq5q: "Et si le cabinet n'a pas d'ordinateur ?", faq5a: "La secretaire ouvre la console cabinet sur son telephone. L'affiche QR arrive par e-mail a l'inscription.",
+      faq1q: "Le patient doit-il installer une application ?", faq1a: "Non. Il ouvre une page web sur son telephone. Il peut aussi l'ajouter a l'ecran d'accueil (PWA).",
+      faq2q: "Comment gerer les patients sans smartphone ?", faq2a: "Le cabinet ajoute un ticket papier depuis la console telephone ou ordinateur. Il rejoint la meme file.",
+      faq5q: "Et si le cabinet n'a pas d'ordinateur ?", faq5a: "La secretaire ouvre la console cabinet sur son telephone. Elle peut aussi l'ajouter a l'ecran d'accueil. L'affiche QR arrive par e-mail a l'inscription.",
       faq3q: "Comment payer l'abonnement ?", faq3a: "Il n'y a pas encore de paiement automatique. Ecrivez a tafwitacontact@gmail.com pour l'essai ou l'abonnement (2500 DA / mois ou 36000 DA / an).",
-      faq4q: "La file est-elle mise a jour en direct ?", faq4a: "Oui. Le site patient et l'application bureau lisent la meme file.",
+      faq4q: "La file est-elle mise a jour en direct ?", faq4a: "Oui. Le site patient, la console telephone ou ordinateur, et l ecran TV lisent la meme file.",
+      faq6q: "Comment afficher la file sur une tele ?", faq6a: "Branchez un ordinateur ou un telephone a la tele avec un cable HDMI. Ouvrez l ecran TV depuis la console, puis plein ecran. Une tele normale suffit. Seuls les numeros s affichent.",
+      faq7q: "Peut-on installer la console cabinet sur un telephone ?", faq7a: "Oui. Ouvrez la console dans le navigateur du telephone, puis ajoutez-la a l ecran d accueil. C est une application web, sans magasin d applications.",
       ctaTitle: "Essayer TAFWITA 45 jours",
-      ctaText: "Creez un cabinet d'essai. Vous pouvez gerer la file sur telephone. Un e-mail contient l'affiche QR. L'application Windows reste disponible.",
+      ctaText: "Creez un cabinet d essai. Gerez la file sur telephone ou ordinateur. Un e-mail contient l affiche QR. L ecran TV s ouvre depuis la console.",
       footLead: "File d'attente pour cabinets medicaux en Algerie.", footProd: "Produit", footContact: "Contact",
+      footLegal: "Informations", mentions: "Mentions legales", privacy: "Confidentialite",
+      contactTitle: "Ecrire a TAFWITA", contactLead: "Une question sur l essai, l abonnement ou le cabinet ? Envoyez un message. Votre application e-mail s ouvre avec le texte pret.",
+      contactHint: "Vous pouvez aussi ecrire directement a", contactName: "Nom", contactEmail: "E-mail", contactMsg: "Message", contactSend: "Envoyer", contactOk: "Votre application e-mail va s ouvrir.",
       trialTitle: "Commencer l'essai gratuit",
       trialLead: "Promotion lancement : un cabinet est cree pour 45 jours. Le mot de passe ouvre la console.",
       lblNom: "Nom", lblPrenom: "Prenom", lblCab: "Nom du cabinet", lblTel: "Telephone", lblEmail: "E-mail",
@@ -589,21 +674,20 @@
       cancel: "Annuler", createTrial: "Creer l'essai",
       errRequired: "Tous les champs sont obligatoires.", errPin: "Le mot de passe doit contenir au moins 8 caracteres, une lettre et un chiffre.",
       errPinMatch: "Les mots de passe ne correspondent pas.", errSignup: "Erreur inscription",
-      trialOk: "Essai active. Identifiant : {slug}. Ouvrez la console telephone ou installez Windows avec ce PIN. L'affiche QR part par e-mail.",
-      trialOkLink: "Ouvrir la console cabinet",
-      trialOkConsole: "Ouvrir la console telephone",
+      trialOk: "Essai active. Identifiant : {slug}. Connectez-vous avec ce mot de passe. L affiche QR part par e-mail. L ecran TV s ouvre depuis la console.",
+      trialOkConsole: "Ouvrir la console",
       pageTitle: "TAFWITA - La file d'attente medicale, simplement",
       pageDesc: "TAFWITA modernise la file d'attente des cabinets medicaux en Algerie.",
       close: "Fermer", menu: "Ouvrir le menu"
     },
     EN: {
-      navHow: "How it works", navSol: "Solutions", navPrice: "Pricing", navFaq: "FAQ",
-      navPatient: "Patient app", navCabinet: "Clinic console", navDownload: "Open clinic console", navTrial: "Free trial",
+      navHow: "How it works", navSol: "Solutions", navPrice: "Pricing", navFaq: "FAQ", navContact: "Contact",
+      navPatient: "Patient app", navCabinet: "Clinic console", navTrial: "Free trial",
       eyebrow: "For medical clinics in Algeria",
       heroTitle: "The medical waiting line,", heroTitleEm: "simple and human.",
-      heroText: "Patients take a ticket remotely and follow their turn. The clinic manages the queue on a phone or from the desktop app, including paper tickets.",
+      heroText: "Patients take a ticket remotely and follow their turn. The clinic manages the queue on a phone or in the browser on a computer, including paper tickets. The queue can be shown on a TV via HDMI.",
       heroCta: "Try 45 days", heroHow: "See how it works",
-      proof1: "2 spaces", proof1s: "Patient web and clinic app", proof2: "45 days", proof2s: "Launch offer",
+      proof1: "4 ways in", proof1s: "Patient, phone, computer, TV", proof2: "45 days", proof2s: "Launch offer",
       floatOk: "Ticket confirmed", floatOkS: "Live tracking",
       phoneHi: "Hello", phoneCab: "Your clinic", phoneLive: "Live queue", phonePill: "Number tracking",
       phoneTicket: "Your ticket", phoneUpd: "Automatic update", phoneAlert: "Sound alert", phoneTurn: "When it is your turn",
@@ -613,25 +697,35 @@
       how1t: "The patient chooses a clinic", how1p: "Search by name, specialty or wilaya, then check opening hours.",
       how2t: "They take a ticket", how2p: "The ticket joins the queue. A QR code at the clinic opens the same page.",
       how3t: "They are notified", how3p: "Live tracking and a sound alert when the clinic calls them.",
-      solTag: "What exists today", solTitle: "One queue, three ways in",
+      how4t: "The clinic calls", how4p: "From a phone or computer. The queue can be shown on an HDMI TV, numbers only.",
+      solTag: "What exists today", solTitle: "One queue, four ways in",
       solPat: "Patient site", solPat1: "Clinic search", solPat2: "Favorites", solPat3: "Remote ticket", solPat4: "Tracking and sound alert",
+      solPat5: "Add to the home screen", solPatOpen: "Open the patient app",
       solPhone: "Phone console", solPhone1: "For clinics without a PC", solPhone2: "Queue and call next", solPhone3: "Paper tickets", solPhone4: "History and hours",
-      solCabRib: "Clinic", solCab: "Desktop app",
-      solCab1: "Live queue", solCab2: "Call the next patient", solCab3: "Add a paper ticket", solCab4: "History and hours", solCab5: "Printable QR poster",
+      solPhone5: "Installable on a phone",
+      solCabRib: "Clinic", solCab: "Computer console",
+      solCab1: "The same console, in the browser", solCab2: "Call the next patient", solCab3: "Add a paper ticket", solCab4: "History and hours", solCab5: "Printable QR poster",
+      solOpenConsole: "Open in the browser",
+      solTv: "TV screen", solTv1: "Normal TV with an HDMI cable", solTv2: "Numbers only, no names", solTv3: "Opened from the console", solTv4: "Fullscreen in the waiting room", solTvOpen: "Open from the console",
       priceTitle: "A trial, then a clinic",
       priceLead: "Launch offer: 45-day trial for the first clinics. The subscription is then activated by TAFWITA.",
       price45: "DZD / 45 days", priceTrialNote: "One clinic, unlimited tickets.", liPaper: "Paper tickets",
       startTrial: "Start the trial", priceNow: "Current", priceIndiv: "Individual clinic",
-      priceMonth: "DZD / month", priceYear: "36,000 DZD / year. Contact us to activate.", liHist: "History", writeUs: "Write to TAFWITA",
+      priceMonth: "DZD / month", priceYear: "36,000 DZD / year. Contact us to activate.", liHist: "History", liSupport: "Activation and follow-up by TAFWITA", writeUs: "Write to TAFWITA",
       faqTag: "Questions",
-      faq1q: "Does the patient need to install an app?", faq1a: "No. They open a web page on their phone. They can also add it to the home screen.",
-      faq2q: "How do you handle patients without a smartphone?", faq2a: "The clinic adds a paper ticket from the phone console or the desktop app. It joins the same queue.",
-      faq5q: "What if the clinic has no computer?", faq5a: "The secretary opens the clinic console on a phone. The QR poster is sent by email at signup.",
+      faq1q: "Does the patient need to install an app?", faq1a: "No. They open a web page on their phone. They can also add it to the home screen (PWA).",
+      faq2q: "How do you handle patients without a smartphone?", faq2a: "The clinic adds a paper ticket from the phone or computer console. It joins the same queue.",
+      faq5q: "What if the clinic has no computer?", faq5a: "The secretary opens the clinic console on a phone. She can also add it to the home screen. The QR poster is sent by email at signup.",
       faq3q: "How do I pay the subscription?", faq3a: "There is no automatic payment yet. Write to tafwitacontact@gmail.com for the trial or subscription (2,500 DZD / month or 36,000 DZD / year).",
-      faq4q: "Is the queue updated live?", faq4a: "Yes. The patient site and the desktop app read the same queue.",
+      faq4q: "Is the queue updated live?", faq4a: "Yes. The patient site, the phone or computer console, and the TV screen read the same queue.",
+      faq6q: "How do I show the queue on a TV?", faq6a: "Plug a computer or phone into the TV with an HDMI cable. Open the TV screen from the console, then go fullscreen. A normal TV is enough. Only numbers are shown.",
+      faq7q: "Can the clinic console be installed on a phone?", faq7a: "Yes. Open the console in the phone browser, then add it to the home screen. It is a web app, not a store download.",
       ctaTitle: "Try TAFWITA for 45 days",
-      ctaText: "Create a trial clinic. You can run the queue on a phone. An email includes the QR poster. The Windows app remains available.",
+      ctaText: "Create a trial clinic. Run the queue on a phone or computer. An email includes the QR poster. The TV screen opens from the console.",
       footLead: "Queue management for medical clinics in Algeria.", footProd: "Product", footContact: "Contact",
+      footLegal: "Information", mentions: "Legal notice", privacy: "Privacy",
+      contactTitle: "Write to TAFWITA", contactLead: "A question about the trial, subscription or clinic? Send a message. Your email app opens with the text ready.",
+      contactHint: "You can also write directly to", contactName: "Name", contactEmail: "Email", contactMsg: "Message", contactSend: "Send", contactOk: "Your email app will open.",
       trialTitle: "Start the free trial",
       trialLead: "Launch offer: a clinic is created for 45 days. The password opens the console.",
       lblNom: "Last name", lblPrenom: "First name", lblCab: "Clinic name", lblTel: "Phone", lblEmail: "Email",
@@ -641,21 +735,20 @@
       cancel: "Cancel", createTrial: "Create the trial",
       errRequired: "All fields are required.", errPin: "Password must have at least 8 characters, one letter and one number.",
       errPinMatch: "The passwords do not match.", errSignup: "Signup error",
-      trialOk: "Trial activated. Login: {slug}. Open the phone console or install Windows with this PIN. The QR poster is sent by email.",
-      trialOkLink: "Open clinic console",
-      trialOkConsole: "Open the phone console",
+      trialOk: "Trial activated. Login: {slug}. Sign in with this password. The QR poster is sent by email. The TV screen opens from the console.",
+      trialOkConsole: "Open the console",
       pageTitle: "TAFWITA - Medical queue, simply",
       pageDesc: "TAFWITA modernizes the waiting line for medical clinics in Algeria.",
       close: "Close", menu: "Open menu"
     },
     AR: {
-      navHow: "كيف يعمل", navSol: "الحلول", navPrice: "الأسعار", navFaq: "أسئلة",
-      navPatient: "تطبيق المريض", navCabinet: "شاشة العيادة", navDownload: "فتح شاشة العيادة", navTrial: "تجربة مجانية",
+      navHow: "كيف يعمل", navSol: "الحلول", navPrice: "الأسعار", navFaq: "أسئلة", navContact: "اتصل بنا",
+      navPatient: "تطبيق المريض", navCabinet: "شاشة العيادة", navTrial: "تجربة مجانية",
       eyebrow: "للعيادات الطبية في الجزائر",
       heroTitle: "طابور الانتظار الطبي،", heroTitleEm: "بسيط وإنساني.",
-      heroText: "يأخذ المرضى تذكرة عن بُعد ويتابعون دورهم. تدير العيادة الطابور على الهاتف أو من تطبيق المكتب، بما في ذلك التذاكر الورقية.",
+      heroText: "يأخذ المرضى تذكرة عن بُعد ويتابعون دورهم. تدير العيادة الطابور على الهاتف أو في المتصفح على الحاسوب، بما في ذلك التذاكر الورقية. يمكن عرض الطابور على التلفاز عبر HDMI.",
       heroCta: "جرّب 45 يوماً", heroHow: "شاهد كيف يعمل",
-      proof1: "فضاءان", proof1s: "موقع المريض وتطبيق العيادة", proof2: "45 يوماً", proof2s: "عرض الإطلاق",
+      proof1: "4 مداخل", proof1s: "المريض، الهاتف، الحاسوب، التلفاز", proof2: "45 يوماً", proof2s: "عرض الإطلاق",
       floatOk: "تم تأكيد التذكرة", floatOkS: "متابعة مباشرة",
       phoneHi: "مرحباً", phoneCab: "عيادتك", phoneLive: "الطابور مباشر", phonePill: "متابعة الرقم",
       phoneTicket: "تذكرتك", phoneUpd: "تحديث تلقائي", phoneAlert: "تنبيه صوتي", phoneTurn: "عندما يحين دورك",
@@ -665,25 +758,35 @@
       how1t: "يختار المريض عيادة", how1p: "بحث بالاسم أو التخصص أو الولاية، ثم الاطلاع على الأوقات.",
       how2t: "يأخذ تذكرته", how2p: "تدخل التذكرة إلى الطابور. رمز QR في العيادة يفتح نفس الصفحة.",
       how3t: "يتم إشعاره", how3p: "متابعة مباشرة وتنبيه صوتي عندما تناديه العيادة.",
-      solTag: "ما هو متاح اليوم", solTitle: "طابور واحد، ثلاثة مداخل",
+      how4t: "تنادي العيادة", how4p: "من الهاتف أو الحاسوب. يمكن عرض الطابور على تلفاز HDMI، الأرقام فقط.",
+      solTag: "ما هو متاح اليوم", solTitle: "طابور واحد، أربعة مداخل",
       solPat: "موقع المريض", solPat1: "البحث عن العيادات", solPat2: "المفضلة", solPat3: "أخذ تذكرة عن بُعد", solPat4: "متابعة وتنبيه صوتي",
+      solPat5: "يمكن إضافته إلى الشاشة الرئيسية", solPatOpen: "فتح تطبيق المريض",
       solPhone: "شاشة الهاتف", solPhone1: "للعيادات دون حاسوب", solPhone2: "الطابور ومناداة التالي", solPhone3: "تذاكر ورقية", solPhone4: "السجل والأوقات",
-      solCabRib: "العيادة", solCab: "تطبيق المكتب",
-      solCab1: "الطابور مباشر", solCab2: "مناداة المريض التالي", solCab3: "إضافة تذكرة ورقية", solCab4: "السجل والأوقات", solCab5: "ملصق QR للطباعة",
+      solPhone5: "قابل للتثبيت على الهاتف",
+      solCabRib: "العيادة", solCab: "شاشة الحاسوب",
+      solCab1: "نفس الشاشة، في المتصفح", solCab2: "مناداة المريض التالي", solCab3: "إضافة تذكرة ورقية", solCab4: "السجل والأوقات", solCab5: "ملصق QR للطباعة",
+      solOpenConsole: "فتح في المتصفح",
+      solTv: "شاشة التلفاز", solTv1: "تلفاز عادي بكابل HDMI", solTv2: "الأرقام فقط، دون أسماء", solTv3: "تُفتح من الكونسول", solTv4: "ملء الشاشة في قاعة الانتظار", solTvOpen: "فتح من الكونسول",
       priceTitle: "تجربة، ثم عيادة",
       priceLead: "عرض الإطلاق: 45 يوماً تجريبياً للعيادات الأولى. يفعّل الاشتراك بعد ذلك من تافويتا.",
       price45: "دج / 45 يوماً", priceTrialNote: "عيادة واحدة، تذاكر غير محدودة.", liPaper: "تذاكر ورقية",
       startTrial: "ابدأ التجربة", priceNow: "الحالي", priceIndiv: "عيادة فردية",
-      priceMonth: "دج / شهر", priceYear: "36 000 دج / سنة. راسلونا للتفعيل.", liHist: "السجل", writeUs: "راسل تافويتا",
+      priceMonth: "دج / شهر", priceYear: "36 000 دج / سنة. راسلونا للتفعيل.", liHist: "السجل", liSupport: "تفعيل ومتابعة من تافويتا", writeUs: "راسل تافويتا",
       faqTag: "أسئلة",
       faq1q: "هل يجب على المريض تثبيت تطبيق؟", faq1a: "لا. يفتح صفحة ويب على هاتفه. يمكنه أيضاً إضافتها إلى الشاشة الرئيسية.",
-      faq2q: "كيف ندير المرضى دون هاتف ذكي؟", faq2a: "تضيف العيادة تذكرة ورقية من الهاتف أو تطبيق المكتب. تدخل نفس الطابور.",
-      faq5q: "ماذا لو لم يكن للعيادة حاسوب؟", faq5a: "تفتح السكرتيرة شاشة العيادة على هاتفها. ملصق QR يصل بالبريد عند التسجيل.",
+      faq2q: "كيف ندير المرضى دون هاتف ذكي؟", faq2a: "تضيف العيادة تذكرة ورقية من شاشة الهاتف أو الحاسوب. تدخل نفس الطابور.",
+      faq5q: "ماذا لو لم يكن للعيادة حاسوب؟", faq5a: "تفتح السكرتيرة شاشة العيادة على هاتفها. يمكنها أيضاً إضافتها إلى الشاشة الرئيسية. ملصق QR يصل بالبريد عند التسجيل.",
       faq3q: "كيف أدفع الاشتراك؟", faq3a: "لا يوجد دفع آلي بعد. راسلوا tafwitacontact@gmail.com للتجربة أو الاشتراك (2500 دج / شهر أو 36000 دج / سنة).",
-      faq4q: "هل يتحدّث الطابور مباشرة؟", faq4a: "نعم. موقع المريض وتطبيق المكتب يقرآن نفس الطابور.",
+      faq4q: "هل يتحدّث الطابور مباشرة؟", faq4a: "نعم. موقع المريض وشاشة الهاتف أو الحاسوب وشاشة التلفاز يقرأون نفس الطابور.",
+      faq6q: "كيف أعرض الطابور على التلفاز؟", faq6a: "اربط حاسوباً أو هاتفاً بالتلفاز بكابل HDMI. افتح شاشة التلفاز من الكونسول ثم ملء الشاشة. يكفي تلفاز عادي. تُعرض الأرقام فقط.",
+      faq7q: "هل يمكن تثبيت شاشة العيادة على الهاتف؟", faq7a: "نعم. افتح الكونسول في متصفح الهاتف ثم أضفه إلى الشاشة الرئيسية. إنه تطبيق ويب، دون متجر تطبيقات.",
       ctaTitle: "جرّب تافويتا 45 يوماً",
-      ctaText: "أنشئ عيادة تجريبية. يمكن إدارة الطابور على الهاتف. يصل ملصق QR بالبريد. تطبيق ويندوز يبقى متاحاً.",
+      ctaText: "أنشئ عيادة تجريبية. أدِر الطابور على الهاتف أو الحاسوب. يصل ملصق QR بالبريد. شاشة التلفاز تُفتح من الكونسول.",
       footLead: "طابور انتظار للعيادات الطبية في الجزائر.", footProd: "المنتج", footContact: "اتصل بنا",
+      footLegal: "معلومات", mentions: "إشعارات قانونية", privacy: "الخصوصية",
+      contactTitle: "راسل تافويتا", contactLead: "سؤال عن التجربة أو الاشتراك أو العيادة؟ أرسل رسالة. يفتح تطبيق البريد بالنص جاهزاً.",
+      contactHint: "يمكنك أيضاً الكتابة مباشرة إلى", contactName: "الاسم", contactEmail: "البريد الإلكتروني", contactMsg: "الرسالة", contactSend: "إرسال", contactOk: "سيفتح تطبيق البريد.",
       trialTitle: "ابدأ التجربة المجانية",
       trialLead: "عرض الإطلاق: تُنشأ عيادة لمدة 45 يوماً. كلمة المرور تفتح الشاشة.",
       lblNom: "اللقب", lblPrenom: "الاسم", lblCab: "اسم العيادة", lblTel: "الهاتف", lblEmail: "البريد الإلكتروني",
@@ -693,9 +796,8 @@
       cancel: "إلغاء", createTrial: "إنشاء التجربة",
       errRequired: "كل الحقول إلزامية.", errPin: "كلمة المرور 8 أحرف على الأقل، مع حرف ورقم.",
       errPinMatch: "كلمتا المرور غير متطابقتين.", errSignup: "خطأ في التسجيل",
-      trialOk: "تم تفعيل التجربة. المعرّف : {slug}. افتح شاشة الهاتف أو ثبّت ويندوز بهذا الرمز. ملصق QR يُرسل بالبريد.",
-      trialOkLink: "فتح شاشة العيادة",
-      trialOkConsole: "فتح شاشة الهاتف",
+      trialOk: "تم تفعيل التجربة. المعرّف : {slug}. سجّل الدخول بهذه الكلمة. ملصق QR يُرسل بالبريد. شاشة التلفاز تُفتح من الكونسول.",
+      trialOkConsole: "فتح الشاشة",
       pageTitle: "تافويتا - طابور الانتظار الطبي، ببساطة",
       pageDesc: "تافويتا يحدّث طابور انتظار العيادات الطبية في الجزائر.",
       close: "إغلاق", menu: "فتح القائمة"
@@ -761,6 +863,27 @@
   document.getElementById('trialCancel').onclick = closeModal;
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
 
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var nom = document.getElementById('contactNom').value.trim();
+      var email = document.getElementById('contactEmail').value.trim();
+      var message = document.getElementById('contactMessage').value.trim();
+      var status = document.getElementById('contactStatus');
+      if (!nom || !email || !message) {
+        status.style.color = '#c05050';
+        status.textContent = tr('errRequired');
+        return;
+      }
+      var sujet = encodeURIComponent('TAFWITA');
+      var corps = encodeURIComponent('Nom : ' + nom + '\nE-mail : ' + email + '\n\n' + message);
+      status.style.color = '#2e8b57';
+      status.textContent = tr('contactOk');
+      window.location.href = 'mailto:tafwitacontact@gmail.com?subject=' + sujet + '&body=' + corps;
+    });
+  }
+
   f.addEventListener('submit', async function(e){
     e.preventDefault();
     var p = {
@@ -783,9 +906,13 @@
     if (p.password !== p2) {
       msg.style.color = '#c05050'; msg.textContent = tr('errPinMatch'); return;
     }
+    p.website = document.getElementById('trialWebsite').value;
     submit.disabled = true;
     try {
-      var api = localStorage.getItem('tafwita_api') || 'https://tafwita-api.onrender.com';
+      var host = location.hostname;
+      var api = (host === 'localhost' || host === '127.0.0.1')
+        ? 'http://127.0.0.1:8000'
+        : 'https://tafwita-api.onrender.com';
       var r = await fetch(api.replace(/\/$/, '') + '/api/trial-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -793,10 +920,16 @@
       });
       var d = await r.json().catch(function(){ return {}; });
       if (!r.ok) throw Error(d.detail || d.message || tr('errSignup'));
-      var slug = d.cabinet_slug || p.cabinet;
+      var slug = d.cabinet_slug;
+      if (!slug) throw Error(tr('errSignup'));
       msg.style.color = '#2e8b57';
-      msg.innerHTML = tr('trialOk').replace('{slug}', '<b>' + slug + '</b>') +
-        ' <a href="./cabinet.html">' + tr('trialOkConsole') + '</a>.';
+      msg.textContent = '';
+      msg.appendChild(document.createTextNode(tr('trialOk').replace('{slug}', slug) + ' '));
+      var lien = document.createElement('a');
+      lien.href = './cabinet.html';
+      lien.textContent = tr('trialOkConsole');
+      msg.appendChild(lien);
+      msg.appendChild(document.createTextNode('.'));
     } catch (err) {
       msg.style.color = '#c05050';
       msg.textContent = err.message;
