@@ -154,6 +154,9 @@
     .contact-card textarea { width: 100%; min-height: 120px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; font: inherit; resize: vertical; }
     .contact-status { min-height: 22px; margin-top: 12px; font-size: 13px; }
     .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .consent { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 4px; font-size: 13px; color: #50646b; line-height: 1.45; }
+    .consent input { margin-top: 3px; flex: 0 0 auto; }
+    .consent a { color: #16b6b0; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; }
     .footer-grid p { max-width: 280px; margin: 12px 0 0; color: var(--text-muted); font-size: 13px; line-height: 1.55; }
     .footer-grid h4 { margin: 4px 0 12px; font-size: 13px; }
@@ -316,8 +319,7 @@
               <li data-i="solCab4">Historique et horaires</li>
               <li data-i="solCab5">Affiche QR a imprimer</li>
             </ul>
-            <a href="./mysetup.exe" class="btn btn-primary" style="margin-top:18px" download data-i="navDownload">Telecharger Windows (.exe)</a>
-            <a href="./cabinet.html" class="btn btn-outline" style="margin-top:10px" data-i="solOpenConsole">Ouvrir dans le navigateur</a>
+            <a href="./cabinet.html" class="btn btn-primary" style="margin-top:18px" data-i="solOpenConsole">Ouvrir dans le navigateur</a>
           </article>
           <article class="solution" data-reveal>
             <div class="solution-icon">▢</div>
@@ -440,6 +442,11 @@
               <label for="contactMessage" data-i="contactMsg">Message</label>
               <textarea id="contactMessage" required></textarea>
             </div>
+            <label class="consent">
+              <input id="contactAccept" type="checkbox" required>
+              <span data-i="consentContact">J'accepte la politique de confidentialite. Nom et e-mail sont heberges hors d'Algerie (Render, Cloudflare, Gmail).</span>
+            </label>
+            <p class="trial-note"><a href="./confidentialite.html" target="_blank" rel="noopener">Confidentialite</a> · <a href="./cgu.html" target="_blank" rel="noopener">CGU</a></p>
             <div class="contact-status" id="contactStatus"></div>
             <button type="submit" class="btn btn-primary" style="margin-top:8px" data-i="contactSend">Envoyer</button>
           </form>
@@ -471,7 +478,7 @@
         <a href="#tarifs" data-i="navPrice">Tarifs</a>
         <a href="./cabinet.html" data-i="navCabinet">Console cabinet</a>
         <a href="./patient.html" data-i="navPatient">App patient</a>
-        <a href="./mysetup.exe" download data-i="navDownload">Telecharger Windows (.exe)</a>
+        <a href="./cabinet.html" data-i="navDownload">Console ordinateur</a>
       </div>
       <div>
         <h4 data-i="footContact">Contact</h4>
@@ -482,6 +489,9 @@
         <h4 data-i="footLegal">Informations</h4>
         <a href="./mentions.html" data-i="mentions">Mentions legales</a>
         <a href="./confidentialite.html" data-i="privacy">Confidentialite</a>
+        <a href="./cgu.html" data-i="cgu">Conditions d'utilisation</a>
+        <a href="./sous-traitance.html" data-i="dpa">Acte de sous-traitance</a>
+        <a href="./demarches.html" data-i="demarches">Demarches 18-07</a>
       </div>
     </div>
     <div class="container copyright">© 2026 TAFWITA</div>
@@ -611,6 +621,11 @@
           <div class="trial-field"><label for="trialPwd2" data-i="lblPin2">Confirmer le mot de passe</label><input id="trialPwd2" type="password" minlength="8" autocomplete="new-password" required></div>
         </div>
         <div class="trial-note" data-i="trialNote">Au moins 8 caracteres, une lettre et un chiffre. L'identifiant est le nom du cabinet.</div>
+        <label class="consent">
+          <input id="trialAccept" type="checkbox" required>
+          <span data-i="consentTrial">J'accepte les CGU, la politique de confidentialite et l'acte de sous-traitance. Des donnees (nom, telephone, e-mail) sont hebergees hors d'Algerie (Render, Cloudflare Pages, Brevo).</span>
+        </label>
+        <p class="trial-note"><a href="./cgu.html" target="_blank" rel="noopener">CGU</a> · <a href="./confidentialite.html" target="_blank" rel="noopener">Confidentialite</a> · <a href="./sous-traitance.html" target="_blank" rel="noopener">Sous-traitance</a></p>
         <div class="trial-message" id="trialMessage"></div>
         <div class="trial-actions">
           <button type="button" class="btn btn-outline" id="trialCancel" data-i="cancel">Annuler</button>
@@ -627,7 +642,7 @@
   var I = {
     FR: {
       navHow: "Comment ca marche", navSol: "Solutions", navPrice: "Tarifs", navFaq: "FAQ", navContact: "Contact",
-      navPatient: "App patient", navCabinet: "Console cabinet", navDownload: "Telecharger Windows (.exe)", navTrial: "Essai gratuit",
+      navPatient: "App patient", navCabinet: "Console cabinet", navDownload: "Console ordinateur", navTrial: "Essai gratuit",
       eyebrow: "Pour les cabinets medicaux en Algerie",
       heroTitle: "La file d'attente medicale,", heroTitleEm: "simple et humaine.",
       heroText: "Les patients prennent un ticket a distance et suivent leur tour. Le cabinet gere la file sur telephone ou dans le navigateur sur ordinateur, y compris les tickets papier. La file peut s afficher sur une tele via HDMI.",
@@ -669,6 +684,10 @@
       ctaText: "Creez un cabinet d essai. Gerez la file sur telephone ou ordinateur. L affiche QR s imprime depuis la console. L ecran TV aussi.",
       footLead: "File d'attente pour cabinets medicaux en Algerie.", footProd: "Produit", footContact: "Contact",
       footLegal: "Informations", mentions: "Mentions legales", privacy: "Confidentialite",
+      cgu: "Conditions d'utilisation", dpa: "Acte de sous-traitance", demarches: "Demarches 18-07",
+      consentTrial: "J'accepte les CGU, la politique de confidentialite et l'acte de sous-traitance. Des donnees (nom, telephone, e-mail) sont hebergees hors d'Algerie (Render, Cloudflare Pages, Brevo).",
+      consentContact: "J'accepte la politique de confidentialite. Nom et e-mail sont heberges hors d'Algerie (Render, Cloudflare, Gmail).",
+      errConsent: "Veuillez accepter la politique de confidentialite.",
       contactTitle: "Ecrire a TAFWITA", contactLead: "Une question sur l essai, l abonnement ou le cabinet ? Envoyez un message. TAFWITA le recoit dans la console admin.",
       contactHint: "Vous pouvez aussi ecrire directement a", contactName: "Nom", contactEmail: "E-mail", contactMsg: "Message", contactSend: "Envoyer", contactOk: "Message recu. TAFWITA vous repondra.",
       contactErr: "Impossible d envoyer le message. Reessayez.",
@@ -691,7 +710,7 @@
     },
     EN: {
       navHow: "How it works", navSol: "Solutions", navPrice: "Pricing", navFaq: "FAQ", navContact: "Contact",
-      navPatient: "Patient app", navCabinet: "Clinic console", navDownload: "Download Windows (.exe)", navTrial: "Free trial",
+      navPatient: "Patient app", navCabinet: "Clinic console", navDownload: "Computer console", navTrial: "Free trial",
       eyebrow: "For medical clinics in Algeria",
       heroTitle: "The medical waiting line,", heroTitleEm: "simple and human.",
       heroText: "Patients take a ticket remotely and follow their turn. The clinic manages the queue on a phone or in the browser on a computer, including paper tickets. The queue can be shown on a TV via HDMI.",
@@ -733,6 +752,10 @@
       ctaText: "Create a trial clinic. Run the queue on a phone or computer. Print the QR poster from the console. The TV screen opens from there too.",
       footLead: "Queue management for medical clinics in Algeria.", footProd: "Product", footContact: "Contact",
       footLegal: "Information", mentions: "Legal notice", privacy: "Privacy",
+      cgu: "Terms of use", dpa: "Processor agreement", demarches: "18-07 steps",
+      consentTrial: "I accept the terms, the privacy policy and the processor agreement. Data (name, phone, email) is hosted outside Algeria (Render, Cloudflare Pages, Brevo).",
+      consentContact: "I accept the privacy policy. Name and email are hosted outside Algeria (Render, Cloudflare, Gmail).",
+      errConsent: "Please accept the privacy policy.",
       contactTitle: "Write to TAFWITA", contactLead: "A question about the trial, subscription or clinic? Send a message. TAFWITA receives it in the admin console.",
       contactHint: "You can also write directly to", contactName: "Name", contactEmail: "Email", contactMsg: "Message", contactSend: "Send", contactOk: "Message received. TAFWITA will reply.",
       contactErr: "Could not send the message. Try again.",
@@ -755,7 +778,7 @@
     },
     AR: {
       navHow: "كيف يعمل", navSol: "الحلول", navPrice: "الأسعار", navFaq: "أسئلة", navContact: "اتصل بنا",
-      navPatient: "تطبيق المريض", navCabinet: "شاشة العيادة", navDownload: "تحميل ويندوز (.exe)", navTrial: "تجربة مجانية",
+      navPatient: "تطبيق المريض", navCabinet: "شاشة العيادة", navDownload: "شاشة الحاسوب", navTrial: "تجربة مجانية",
       eyebrow: "للعيادات الطبية في الجزائر",
       heroTitle: "طابور الانتظار الطبي،", heroTitleEm: "بسيط وإنساني.",
       heroText: "يأخذ المرضى تذكرة عن بُعد ويتابعون دورهم. تدير العيادة الطابور على الهاتف أو في المتصفح على الحاسوب، بما في ذلك التذاكر الورقية. يمكن عرض الطابور على التلفاز عبر HDMI.",
@@ -797,6 +820,10 @@
       ctaText: "أنشئ عيادة تجريبية. أدِر الطابور على الهاتف أو الحاسوب. يُطبع ملصق QR من الكونسول. شاشة التلفاز أيضاً.",
       footLead: "طابور انتظار للعيادات الطبية في الجزائر.", footProd: "المنتج", footContact: "اتصل بنا",
       footLegal: "معلومات", mentions: "إشعارات قانونية", privacy: "الخصوصية",
+      cgu: "شروط الاستخدام", dpa: "عقد المعالجة", demarches: "إجراءات 18-07",
+      consentTrial: "أوافق على الشروط وسياسة الخصوصية وعقد المعالجة. تُستضاف البيانات (الاسم، الهاتف، البريد) خارج الجزائر (Render، Cloudflare Pages، Brevo).",
+      consentContact: "أوافق على سياسة الخصوصية. يُستضاف الاسم والبريد خارج الجزائر (Render، Cloudflare، Gmail).",
+      errConsent: "يرجى قبول سياسة الخصوصية.",
       contactTitle: "راسل تافويتا", contactLead: "سؤال عن التجربة أو الاشتراك أو العيادة؟ أرسل رسالة. تصل إلى كونسول الإدارة.",
       contactHint: "يمكنك أيضاً الكتابة مباشرة إلى", contactName: "الاسم", contactEmail: "البريد الإلكتروني", contactMsg: "الرسالة", contactSend: "إرسال", contactOk: "تم استلام الرسالة. سترد تافويتا.",
       contactErr: "تعذّر إرسال الرسالة. أعد المحاولة.",
@@ -928,9 +955,14 @@
         status.textContent = tr('errRequired');
         return;
       }
+      if (!document.getElementById('contactAccept').checked) {
+        status.style.color = '#c05050';
+        status.textContent = tr('errConsent');
+        return;
+      }
       btn.disabled = true;
       try {
-        await apiPost('/api/contact', { nom: nom, email: email, message: message, website: website });
+        await apiPost('/api/contact', { nom: nom, email: email, message: message, website: website, accepte_politique: true });
         status.style.color = '#2e8b57';
         status.textContent = tr('contactOk');
         contactForm.reset();
@@ -965,7 +997,11 @@
     if (p.password !== p2) {
       msg.style.color = '#c05050'; msg.textContent = tr('errPinMatch'); return;
     }
+    if (!document.getElementById('trialAccept').checked) {
+      msg.style.color = '#c05050'; msg.textContent = tr('errConsent'); return;
+    }
     p.website = document.getElementById('trialWebsite').value;
+    p.accepte_politique = true;
     submit.disabled = true;
     try {
       var d = await apiPost('/api/trial-signup', p);
